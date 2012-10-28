@@ -1,0 +1,128 @@
+body {
+    font-family: Ubuntu, Helvetica, sans-serif;
+    font-size: 12pt;
+    background: #7777dd;
+    width: 1024px;
+}
+
+#maincontent {
+    position: absolute;
+    width: 70%;
+    top: 0px;
+    left: 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+#printblock {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background: #ffffff;
+    font-size: 11pt;
+    margin: 5px;
+    padding: 5px;
+}
+
+#TOChead {
+    position: fixed;
+    top: 10px;
+    height: 80px;
+    width: 25%;
+    right: 10px;
+    font-size: 10pt;
+    border: outset black 1px;
+    background: #ddddaa;
+    z-index: 10;
+}
+
+#TOChead h2 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    padding: 0px;
+}
+
+#TOChead h4 {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#TOC {
+    position: fixed;
+    top: 90px;
+    width: 25%;
+    right: 10px;
+    font-size: 10pt;
+    border: outset black 1px;
+    background: #ddddaa;
+    z-index: 10;
+    overflow: scroll;
+    height: 600px;
+}
+
+pre {
+    font-family: Courier, fixed;
+}
+
+code {
+    font-family: Courier, fixed;
+}
+
+h1 {
+    border-top: solid black;
+    border-width: 2px;
+}
+
+h2 {
+
+}
+
+dl {
+    font-size: 10pt;   
+}
+
+dt {
+    font-weight: bold;
+}
+
+.figure {
+    border-top: groove black 2px; 
+    border-bottom: groove black 2px;
+    width: 50%;
+}
+
+.caption {
+    text-decoration: underline;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.toggler {
+   cursor: pointer;
+   color: blue;
+   text-decoration: underline;
+}
+
+.toctoggler {
+   cursor: pointer;
+   color: blue;
+   text-decoration: underline;
+}
+
+.printlink {
+   cursor: pointer;
+   color: green;
+   text-decoration: underline;
+}
+
+.hideable {
+}
+
+.chapterdiv {
+   background: #ffffff;
+}
+
