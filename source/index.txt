@@ -1,0 +1,81 @@
+.. cosc101text documentation master file, created by
+   sphinx-quickstart on Sun Oct 28 14:22:10 2012.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+
+######################################
+Solving Problems with Python
+COSC 101 - Introduction to Computing I
+######################################
+
+.. raw:: html
+
+   <div id="credits">
+
+This book was originally written by A. Downey under the titles "How to
+think like a computer scientist", and "Python for software design."
+Under terms of the GNU Public License, his text has been remixed and
+modified for use in COSC 101, Intro to Computing I, at Colgate
+University. For the original source text, see <http://thinkpython.com>.
+See the Postscript for original book credits.
+
+Generation of the book output in pdf, ebook, and HTML is done, in large
+part, by the fine pandoc tool by John MacFarlane
+http://johnmacfarlane.net/pandoc. Some post-processing of the ebook
+format is done with a custom Python script, and the HTML format is
+prettified using some custom CSS and JavaScript. All code and book
+source is available under terms of the GNU Public License.
+
+Contributors:
+
+-  M. Hay
+
+-  A.D. Jaggard
+
+-  J. Sommers
+
+Current Editor:
+
+-  J. Sommers
+
+Version 2012.08.
+
+.. raw:: html
+
+   <!-- JS: clean up title page for various formats and make it look nicer -->
+   </div>
+
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   wayofprogram.txt
+   varexpr.txt
+   usingfunctions.txt
+   conditionals.txt
+   functionsindepth.txt
+   programdesign.txt
+   iteration.txt
+   strings.txt
+   recursion.txt
+   fileio.txt
+   lists.txt
+   dictionaries.txt
+   tuples.txt
+   datastruct.txt
+   oo.txt
+   search.txt
+   sort.txt
+   debugging.txt
+   postfix.txt
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
