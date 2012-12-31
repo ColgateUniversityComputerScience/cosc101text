@@ -1,4 +1,3 @@
-
 **********************
 The way of the program
 **********************
@@ -60,6 +59,7 @@ reading lines and performing computations.
    :alt: Running an "interpreted" program.
 
    Running an "interpreted" program.
+
 A compiler reads the program and translates it completely before the
 program starts running. In this context, the high-level program is
 called the **source code**, and the translated program is called the
@@ -71,6 +71,7 @@ can execute it repeatedly without further translation.
    :alt: Running a "compiled" program.
 
    Running a "compiled" program.
+
 Python is considered an interpreted language because Python programs are
 executed by an interpreter. There are two ways to use the interpreter:
 **interactive mode** and **script mode**. In interactive mode, you type
@@ -99,6 +100,7 @@ own computer, the window may look slightly different.)
    :alt: Main IDLE window (the "shell").
 
    Main IDLE window (the "shell").
+
 This window is what you'll see once IDLE first starts up. This window is
 also referred to as the "shell". All that means is that it is this
 window in which you can directly interact with the Python interpreter.
@@ -117,6 +119,7 @@ different.
    :alt: IDLE with a script window.
 
    IDLE with a script window.
+
 There are other ways to execute Python scripts. For example, you can
 open a terminal window and type ``python myprogram.py`` (assuming you
 saved a script in the file ``myprogram.py``). The details of opening a

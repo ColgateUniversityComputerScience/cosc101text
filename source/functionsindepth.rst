@@ -1,5 +1,6 @@
+******************
 Functions in depth
-==================
+******************
 
 Adding new functions
 --------------------
@@ -432,7 +433,6 @@ example looks like this:
    :align: center
    :alt: Example stack diagram.
 
-   Example stack diagram.
 The frames are arranged in a stack that indicates which function called
 which, and so on. In this example, ``print_twice`` was called by
 ``cat_twice``, and ``cat_twice`` was called by ``__main__``, which is a
@@ -936,7 +936,7 @@ Exercises
 
         .. math:: a^n + b^n = c^n 
 
-         for any values of :math:`n` greater than 2.
+        for any values of :math:`n` greater than 2.
 
         a. Write a function named ``check_fermat`` that takes four
            parameters---``a``, ``b``, ``c`` and ``n``---and that checks
@@ -945,7 +945,7 @@ Exercises
 
            .. math:: a^n + b^n = c^n 
 
-           , the function should return ``True``. Otherwise, the
+           the function should return ``True``. Otherwise, the
            function should return ``False``.
 
         b. Write a function that prompts the user to input values for

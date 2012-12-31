@@ -1,8 +1,9 @@
+****************
 Making decisions
-================
+****************
 
 Boolean expressions
--------------------
+===================
 
 Solving almost any problem requires that we make *decisions*, and at the
 heart of decision-making within programs are **Boolean** values and

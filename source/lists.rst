@@ -1,5 +1,6 @@
+*****
 Lists
-=====
+*****
 
 In this chapter, we go into more depth on lists. Lists are an incredibly
 useful data structure for solving a variety of problems. Before we dive
@@ -272,11 +273,11 @@ whether they refer to the *same* string. There are two possible states:
 
 .. figure:: figs/list1.png
    :align: center
-   :alt: Variables referring to different objects, and variables that
-   refer to the same object.
+   :alt: Variables referring to different objects, and variables that refer to the same object.
 
    Variables referring to different objects, and variables that refer to
    the same object.
+
 In one case, ``a`` and ``b`` refer to two different objects that have
 the same value. In the second case, they refer to the same object.
 
@@ -309,6 +310,7 @@ So the state diagram looks like this:
    :alt: Variables that refer to two different list objects.
 
    Variables that refer to two different list objects.
+
 In this case we would say that the two lists are **equivalent**, because
 they have the same elements, but not **identical**, because they are not
 the same object. If two objects are identical, they are also equivalent,
@@ -337,11 +339,11 @@ The state diagram looks like this:
 
 .. figure:: figs/list3.png
    :align: center
-   :alt: Variables that are "aliases" of each other; they refer to the
-   same list object.
+   :alt: Variables that are "aliases" of each other; they refer to the same list object.
 
    Variables that are "aliases" of each other; they refer to the same
    list object.
+
 The association of a variable with an object is called a **reference**.
 In this example, there are two references to the same object.
 
@@ -398,11 +400,11 @@ same object. The stack diagram looks like this:
 
 .. figure:: figs/stack5.png
    :align: center
-   :alt: Variable ``letters`` and parameter variable ``t`` refer to the
-   same list object in memory.
+   :alt: Variable ``letters`` and parameter variable ``t`` refer to the same list object in memory.
 
    Variable ``letters`` and parameter variable ``t`` refer to the same
    list object in memory.
+
 Since the list is shared by two frames, I drew it between them.
 
 It is important to distinguish between operations that modify lists and

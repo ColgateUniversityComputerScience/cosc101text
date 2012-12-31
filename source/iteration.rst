@@ -1,5 +1,6 @@
+*********
 Iteration
-=========
+*********
 
 In this chapter, we'll learn about a way to repeat (loop) over a set of
 statements that is more general than the ``for`` loop we have already
@@ -80,6 +81,7 @@ and ``empty``:
    :alt: Using lists to make "mappings".
 
    Using lists to make "mappings".
+
 Lists are represented by boxes with the word “list” outside and the
 elements of the list inside. ``cheeses`` refers to a list with three
 elements indexed 0, 1 and 2. ``numbers`` contains two elements; the
@@ -365,7 +367,7 @@ with the following formula:
 
 .. math:: y = \frac{x+\frac{a}{x}}{2}
 
- For example, if :math:`a` is 4 and :math:`x` is 3:
+For example, if :math:`a` is 4 and :math:`x` is 3:
 
 ::
 

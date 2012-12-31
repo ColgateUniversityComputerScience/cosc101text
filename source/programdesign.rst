@@ -1,5 +1,6 @@
+**************
 Program design
-==============
+**************
 
 Why functions?
 --------------
@@ -54,7 +55,7 @@ the Pythagorean theorem, the distance is:
 
    \mathrm{distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
 
- The first step is to consider what a ``distance`` function should look
+The first step is to consider what a ``distance`` function should look
 like in Python. In other words, what are the inputs (parameters) and
 what is the output (return value)?
 
@@ -251,6 +252,7 @@ directly right again.
    :alt: Turtle window after running the example program
 
    Turtle window after running the example program
+
 The ``turtle`` module contains other functions to steer the turtle
 around the screen, including ``backward``, ``right``, ``setposition``,
 and ``setheading``. The Python ``turtle`` documentation has all the

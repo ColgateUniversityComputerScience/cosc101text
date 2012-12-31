@@ -1,5 +1,6 @@
+************
 Dictionaries
-============
+************
 
 A **dictionary** is like a list, but more general. In a list, the
 indices have to be integers; in a dictionary they can be (almost) any
@@ -360,6 +361,7 @@ And here is a diagram showing ``hist`` and ``inv``:
    :alt: The dictionary ``hist`` and its "inverted" equivalent ``inv``.
 
    The dictionary ``hist`` and its "inverted" equivalent ``inv``.
+
 A dictionary is represented as a box with the type ``dict`` above it and
 the key-value pairs inside. If the values are integers, floats or
 strings, I usually draw them inside the box, but I usually draw lists
@@ -424,6 +426,7 @@ To understand why, consider this **call graph** for ``fibonacci`` with
    :alt: Fibonacci function call graph.
 
    Fibonacci function call graph.
+
 A call graph shows a set of function frames, with lines connecting each
 frame to the frames of the functions it calls. At the top of the graph,
 ``fibonacci`` with ``n=4`` calls ``fibonacci`` with ``n=3`` and ``n=2``.

@@ -1,5 +1,6 @@
+*******************
 Classes and objects
-===================
+*******************
 
 We have used many of Python’s built-in types, like integers, strings,
 lists, and dictionaries. Each instance of a type in Python (e.g., a
@@ -145,6 +146,7 @@ diagram**:
    :alt: Class diagram of a ``point`` object.
 
    Class diagram of a ``point`` object.
+
 The variable ``blank`` refers to a Point object, which contains two
 attributes. Each attribute refers to a floating-point number.
 
@@ -520,10 +522,10 @@ The figure shows the state of this object:
 
 .. figure:: figs/rectangle.png
    :align: center
-   :alt: Diagram of a ``rectangle`` object that refers to a ``point``
-   object.
+   :alt: Diagram of a ``rectangle`` object that refers to a ``point`` object.
 
    Diagram of a ``rectangle`` object that refers to a ``point`` object.
+
 An object that is an attribute of another object is **embedded**: the
 ``Point`` object that represents the lower-left corner of the rectangle
 is *embedded* in the ``Rectangle`` object. This sort of relationship is
@@ -769,11 +771,11 @@ Here is what the object diagram looks like:
 
 .. figure:: figs/rectangle2.png
    :align: center
-   :alt: Two ``rectangle`` objects that refer to the same ``point``
-   object in memory.
+   :alt: Two ``rectangle`` objects that refer to the same ``point`` object in memory.
 
    Two ``rectangle`` objects that refer to the same ``point`` object in
    memory.
+
 This operation is called a **shallow copy** because it copies the object
 and any references it contains, but not the embedded objects.
 
@@ -934,10 +936,10 @@ With the methods we have so far, we can create and print cards:
 
 .. figure:: figs/card1.png
    :align: center
-   :alt: Diagram that shows the ``Card`` class object and one Card
-   instance.
+   :alt: Diagram that shows the ``Card`` class object and one Card instance.
 
    Diagram that shows the ``Card`` class object and one Card instance.
+
 ``Card`` is a class object, so it has type ``type``. ``card1`` has type
 ``Card``. (To save space, I didn’t draw the contents of ``suit_names``
 and ``rank_names``).
@@ -1253,10 +1255,10 @@ between ``Card``, ``Deck`` and ``Hand``.
 
 .. figure:: figs/class1.png
    :align: center
-   :alt: Inheritance diagram for ``Point``, ``Shape``, and
-   ``Rectangle``.
+   :alt: Inheritance diagram for ``Point``, ``Shape``, and ``Rectangle``.
 
    Inheritance diagram for ``Point``, ``Shape``, and ``Rectangle``.
+
 The arrow with a hollow triangle head represents an IS-A relationship;
 in this case it indicates that Rectangle inherits from Shape.
 

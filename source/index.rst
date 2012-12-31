@@ -4,10 +4,11 @@
    contain the root `toctree` directive.
 
 
-######################################
 Solving Problems with Python
+============================
+
 COSC 101 - Introduction to Computing I
-######################################
+--------------------------------------
 
 .. raw:: html
 
@@ -20,12 +21,11 @@ modified for use in COSC 101, Intro to Computing I, at Colgate
 University. For the original source text, see <http://thinkpython.com>.
 See the Postscript for original book credits.
 
-Generation of the book output in pdf, ebook, and HTML is done, in large
-part, by the fine pandoc tool by John MacFarlane
-http://johnmacfarlane.net/pandoc. Some post-processing of the ebook
-format is done with a custom Python script, and the HTML format is
-prettified using some custom CSS and JavaScript. All code and book
-source is available under terms of the GNU Public License.
+The source text for this book is written in reStructuredText and converted
+to pdf, ebook, and HTML using the excellent Sphinx documentation tool
+(<http://sphinx.pocoo.org>).  All code and book
+source is available under terms of the GNU Public License and hosted
+at bitbucket.org <http://bitbucket.org/jsommers>.
 
 Contributors:
 
@@ -39,7 +39,7 @@ Current Editor:
 
 -  J. Sommers
 
-Version 2012.08.
+Version 2013.01.
 
 .. raw:: html
 
@@ -51,26 +51,25 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
 
-   wayofprogram.txt
-   varexpr.txt
-   usingfunctions.txt
-   conditionals.txt
-   functionsindepth.txt
-   programdesign.txt
-   iteration.txt
-   strings.txt
-   recursion.txt
-   fileio.txt
-   lists.txt
-   dictionaries.txt
-   tuples.txt
-   datastruct.txt
-   oo.txt
-   search.txt
-   sort.txt
-   debugging.txt
-   postfix.txt
+   wayofprogram.rst
+   varexpr.rst
+   usingfunctions.rst
+   conditionals.rst
+   functionsindepth.rst
+   programdesign.rst
+   iteration.rst
+   strings.rst
+   recursion.rst
+   fileio.rst
+   lists.rst
+   dictionaries.rst
+   tuples.rst
+   datastruct.rst
+   oo.rst
+   debugging.rst
+   postfix.rst
 
 Indices and tables
 ==================

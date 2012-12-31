@@ -1,8 +1,9 @@
+************************************
 Case study: data structure selection
-====================================
+************************************
 
 Word frequency analysis
------------------------
+=======================
 
 As usual, you should at least attempt the following exercises before you
 read the sections that follow.
@@ -72,7 +73,7 @@ read the sections that follow.
        list, chosen uniformly at random.
 
 Word histogram
---------------
+==============
 
 Here is a program that reads a file and builds a histogram of the words
 in the file:
@@ -147,7 +148,7 @@ And the results:
     Number of different words: 7212
 
 Most common words
------------------
+=================
 
 To find the most common words, we can apply the DSU pattern;
 ``most_common`` takes a histogram and returns a list of word-frequency
@@ -189,7 +190,7 @@ And here are the results from *Emma*:
     she     2364
 
 Optional parameters
--------------------
+===================
 
 We have seen built-in functions and methods that take a variable number
 of arguments. It is possible to write user-defined functions with
@@ -226,7 +227,7 @@ If a function has both required and optional parameters, all the
 required parameters have to come first, followed by the optional ones.
 
 Dictionary subtraction
-----------------------
+======================
 
 Finding the words from the book that are not in the word list from
 ``words.txt`` is a problem you might recognize as set subtraction; that
@@ -281,7 +282,7 @@ really be in the list!
        in the word list.
 
 Random words
-------------
+============
 
 To choose a random word from the histogram, the simplest algorithm is to
 build a list with multiple copies of each word, according to the
@@ -326,7 +327,7 @@ except that the argument is a sequence.
        from the book.
 
 Markov analysis
----------------
+===============
 
 If you choose words from the book at random, you can get a sense of the
 vocabulary, you probably won’t get a sentence:
@@ -405,7 +406,7 @@ called the “order” of the analysis.
        in interesting ways.
 
 Data structures
----------------
+===============
 
 Using Markov analysis to generate random text is fun, but there is also
 a point to this exercise: data structure selection. In your solution to
@@ -484,7 +485,7 @@ would be a net win if the time saved during generation exceeded the time
 spent in conversion.
 
 Debugging
----------
+=========
 
 When you are debugging a program, and especially if you are working on a
 hard bug, there are four things to try:
@@ -554,7 +555,7 @@ Finding a hard bug requires reading, running, ruminating, and sometimes
 retreating. If you get stuck on one of these activities, try the others.
 
 Glossary
---------
+========
 
 default value:
     The value given to an optional parameter if no argument is provided.
@@ -567,7 +568,7 @@ benchmarking:
     alternatives and testing them on a sample of the possible inputs.
 
 Exercises
----------
+=========
 
     1. The “rank” of a word is its position in a list of words sorted by
        frequency: the most common word has rank 1, the second most
@@ -580,13 +581,13 @@ Exercises
 
        .. math:: f = c r^{-s} 
 
-        where :math:`s` and :math:`c` are parameters that depend on the
+       where :math:`s` and :math:`c` are parameters that depend on the
        language and the text. If you take the logarithm of both sides of
        this equation, you get:
 
        .. math:: \log f = \log c - s \log r 
 
-        So if you plot :math:`\log f` versus :math:`\log r`, you should
+       So if you plot :math:`\log f` versus :math:`\log r`, you should
        get a straight line with slope :math:`-s` and intercept
        :math:`\log c`.
 

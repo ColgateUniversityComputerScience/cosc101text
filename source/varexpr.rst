@@ -1,5 +1,6 @@
+*************************************
 Variables, expressions and statements
-=====================================
+*************************************
 
 Values and types
 ----------------
@@ -102,6 +103,7 @@ result of the previous example:
    :alt: Variable assignment examples.
 
    Variable assignment examples.
+
 To display the value of a variable, you can use a print statement:
 
 ::
@@ -442,6 +444,7 @@ Here is what **reassignment** looks like in a state diagram:
    :alt: Reassignment state diagram.
 
    Reassignment state diagram.
+
 With reassignment it is especially important to distinguish between an
 assignment operation and a statement of equality. Because Python uses
 the equal sign (``=``) for assignment, it is tempting to interpret a

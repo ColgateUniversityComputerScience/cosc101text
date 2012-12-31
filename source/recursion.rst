@@ -1,5 +1,6 @@
+*********
 Recursion
-=========
+*********
 
 Chicken, meet egg
 -----------------
@@ -23,11 +24,8 @@ http://en.wikipedia.org/wiki/Recursive_acronym). On the other hand, if
 you looked up the definition of the factorial function, denoted with the
 symbol :math:`!`, you might get something like this:
 
-+-----------------------+
-| ``0! = 1``            |
-+-----------------------+
-| ``n! = n * (n-1)!``   |
-+-----------------------+
+  * :math:`0! = 1`
+  * :math:`n! = n * (n-1)!` 
 
 This definition says that the factorial of 0 is 1, and the factorial of
 any other value, :math:`n`, is :math:`n` multiplied by the factorial of
@@ -100,6 +98,7 @@ calls:
    :alt: Stack diagram for ``factorial(3)``
 
    Stack diagram for ``factorial(3)``
+
 The four frames have different values for the parameter ``n``. The
 return values are shown being passed back up the stack. In each frame,
 the return value is the value of ``result``, which is the product of
@@ -212,13 +211,13 @@ mathematical function is ``fibonacci``. Similar to the ``factorial``
 function, it follows a *decrease and conquer* approach. The
 ``fibonacci`` function has the following definition [1]_:
 
-+------------------------------------------------------+
-| ``fibonacci(0) = 0``                                 |
-+------------------------------------------------------+
-| ``fibonacci(1) = 1``                                 |
-+------------------------------------------------------+
-| ``fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)``   |
-+------------------------------------------------------+
+
+  * :math:`fibonacci(0) = 0`
+
+  * :math:`fibonacci(1) = 1`
+
+  * :math:`fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)`
+
 
 Translated into Python, it looks like this:
 
@@ -482,6 +481,7 @@ Exercises
           :alt: Koch curve fractal.
 
           Koch curve fractal.
+
        To draw a Koch curve with length :math:`x`, all you have to do is
 
        1. Draw a Koch curve with length :math:`x/3`.
@@ -514,28 +514,25 @@ Exercises
 
     6. The Ackermann function, :math:`A(m, n)`, is defined [3]_ as:
 
-    +-------------------------+--------------------------+
-    | ``A(m,n) =``            |                          |
-    +-------------------------+--------------------------+
-    | ``n+1``                 | ``if m = 0``             |
-    +-------------------------+--------------------------+
-    | ``A(m-1,1)``            | ``if m > 0 and n = 0``   |
-    +-------------------------+--------------------------+
-    | ``A(m-1, A(m, n-1))``   | ``if m > 0 and n > 0``   |
-    +-------------------------+--------------------------+
+       :math:`A(m,n) =`
+       
+         * :math:`n+1` if :math:`m = 0`
+         * :math:`A(m-1,1)` if :math:`m > 0 and n = 0`
+         * :math:`A(m-1, A(m, n-1))` if :math:`m > 0` and :math:`n > 0`
+
 
     ::
 
-         Write a function named `ack` that evaluates Ackerman’s function.
-         Use your function to evaluate `ack(3, 4)`, which should be 125. What
-         happens for larger values of `m` and `n`?
+       Write a function named `ack` that evaluates Ackerman’s function.
+       Use your function to evaluate `ack(3, 4)`, which should be 125. What
+       happens for larger values of `m` and `n`?
 
-    1. A number, :math:`a`, is a power of :math:`b` if it is divisible
+    7. A number, :math:`a`, is a power of :math:`b` if it is divisible
        by :math:`b` and :math:`a/b` is a power of :math:`b`. Write a
        function called ``is_power`` that takes parameters ``a`` and
        ``b`` and returns ``True`` if ``a`` is a power of ``b``.
 
-    2. The greatest common divisor (GCD) of :math:`a` and :math:`b` is
+    8. The greatest common divisor (GCD) of :math:`a` and :math:`b` is
        the largest number that divides both of them with no
        remainder [4]_.
 

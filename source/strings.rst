@@ -1,5 +1,6 @@
+*******
 Strings
-=======
+*******
 
 In this chapter, we dive into a bit more depth on strings.
 
@@ -104,7 +105,6 @@ following diagram:
    :align: center
    :alt: image
 
-   image
 If you omit the first index (before the colon), the slice starts at the
 beginning of the string. If you omit the second index, the slice goes to
 the end of the string:
@@ -522,6 +522,7 @@ iteration, the frame for ``is_reverse`` looks like this:
    :alt: State diagram for ``is_reverse`` example.
 
    State diagram for ``is_reverse`` example.
+
 I took a little license by arranging the variables in the frame and
 adding dotted lines to show that the values of ``i`` and ``j`` indicate
 characters in ``word1`` and ``word2``.

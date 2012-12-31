@@ -1,5 +1,6 @@
+**********
 Postscript
-==========
+**********
 
 Note: this was originally the preface to "How to think like a computer
 scientist" by Allen Downey.

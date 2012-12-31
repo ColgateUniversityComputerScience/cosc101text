@@ -1,5 +1,6 @@
+***************
 Using functions
-===============
+***************
 
 In this chapter we'll learn about how to use functions that are built in
 to Python. Python contains hundreds, if not thousands, of *modules* that
@@ -807,8 +808,9 @@ Exercises
        square root.
 
     #. The interest earned on an investment can be computed as
-        ``interest = principal * rate``.
-        Write a program that asks a user for an interest rate as a
+       ``interest = principal * rate``.
+
+       Write a program that asks a user for an interest rate as a
        floating point number, an investment amount as a floating point
        number, and the number of years. Your program should print, for
        each year, the current amount of the principal. Note to

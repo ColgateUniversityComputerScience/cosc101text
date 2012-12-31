@@ -1,5 +1,6 @@
+*******************
 Appendix: Debugging
-===================
+*******************
 
 Different kinds of errors can occur in a program, and it is useful to
 distinguish among them in order to track them down more quickly:
@@ -26,7 +27,7 @@ dealing with. Although the following sections are organized by error
 type, some techniques are applicable in more than one situation.
 
 Syntax errors
--------------
+=============
 
 Syntax errors are usually easy to fix once you figure out what they are.
 Unfortunately, the error messages are often not helpful. The most common
@@ -111,7 +112,7 @@ you can get a known program to run. Then gradually add the pieces of the
 original program to the new one.
 
 Runtime errors
---------------
+==============
 
 Once your program is syntactically correct, Python can compile it and at
 least start running it. What could possibly go wrong?
@@ -204,7 +205,7 @@ you will see the parameters. If the parameters are not moving toward the
 base case, you will get some ideas about why not.
 
 Flow of Execution
-^^^^^^^^^^^^^^^^^
+=================
 
 If you are not sure how the flow of execution is moving through your
 program, add ``print`` statements to the beginning of each function with
@@ -312,7 +313,7 @@ you make a change that you think shouldn’t affect the program, and it
 does, that can tip you off.
 
 Semantic errors
----------------
+===============
 
 In some ways, semantic errors are the hardest to debug, because the
 interpreter provides no information about what is wrong. Only you know

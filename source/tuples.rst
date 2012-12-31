@@ -1,5 +1,6 @@
+******
 Tuples
-======
+******
 
 Tuples are immutable
 --------------------
@@ -405,6 +406,7 @@ list. For example, the tuple ``('Cleese', 'John')`` would appear:
    :alt: 2-tuple example
 
    2-tuple example
+
 But in a larger diagram you might want to leave out the details. For
 example, a diagram of the telephone directory might appear:
 
@@ -413,6 +415,7 @@ example, a diagram of the telephone directory might appear:
    :alt: Another tuple example
 
    Another tuple example
+
 Here the tuples are shown using Python syntax as a graphical shorthand.
 
 The telephone number in the diagram is the complaints line for the BBC,
