@@ -1,3 +1,6 @@
+
+ * Some template files left over from old pandoc-driven format need to be cleaned up and/or removed.
+
  * Need to index keywords, functions, and other concepts using sphinx index-generating markup
 
  * Add SOFA (short, do one thing, take few arguments, consistent level of abstraction) and code smells (duplicated code, long functions, functions with many arguments, global variables) to text?
