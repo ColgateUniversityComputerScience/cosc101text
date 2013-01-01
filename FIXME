@@ -1,37 +1,3 @@
-* How much do you want to do on analysis of algorithms?  My thought is to have an informal analysis in the main text and then an optional subsection that expands on this, but the cutoff could be in different places.
+ * Need to index keywords, functions, and other concepts using sphinx index-generating markup
+ * Add SOFA (short, do one thing, take few arguments, consistent level of abstraction) and code smells (duplicated code, long functions, functions with many arguments, global variables) to text?
 
-* clicking on TOC should open the chapter if it isn't already open
-
-* We need some way to generate an index (I don't see this in a very quick search, but I don't know markdown-related tools well)
-
-  * may not be possible in this early version of the text.  with a change
-    to using sphinx as the doc generator, we'll be able to create
-    an index.  i.e., no index is basically a limitation of pandoc and
-    markdown. restructured text doesn't have that limitation.  oh well.
-
-* Do we want to use // in the Python 2.7 version (to avoid problems when switching to 3.x, although this would need to be covered in class)?  (If I were teaching, I think I'd argue for---although I didn't take this approach last year---emphasizing this for integer division from the beginning while noting the behavior of '/' with ints in 2.7.)
-
-  * Some text has been added in varexpr.txt to include the // operator
-
-  * Great; I've switched to // when an integer output is assumed.
-
-* Need to test added code in search and sort sections.
-
-* Minor issue: both indices and indexes are used in the text.  Both are 
-  correct (contrary to popular belief :-)), but we should probably be consistent.  
-
-  * I like "indices" for new writing [here I'd probably go with whatever was used by Downey], but I'm fine with either.  (It may be worth adding a footnote to this effect---that seems like good general knowledge for them---and reminding students that "indice" is *not* OK.)
-
-  * For recent writing on sort.txt, I used "indexes"---gritting my teeth as I did so ;)
-
-* I'm not getting footnote text to display in the HTML version, although they do in the PDF version.
-
-* You might have some good graphic/animation for merge sort; if so, that would be good to add to the text there.
-
-* The makefile seems to have problems with files (presumably missing EOL with my default TextEdit settings) that don't end with a carriage return eating the section header for the subsequent setting.
-
-* Probably either add a graphic (I don't have that set up yet) or delete the second way of arguing that 1+2+...+n = (n^2 + n)/2.
-
-* Last footnote before "Extra topics" on sorting: I think the example for the effects of a particular system is correct, but there could be something more natural that would come to your mind.
-
-* The search and sort sections are probably somewhat rough being new text.  There may also be some (unintentional) switching between "the algorithm does ... next" and "we do ... next".  I'm not sure which you prefer.

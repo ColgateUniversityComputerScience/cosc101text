@@ -25,7 +25,7 @@ The source text for this book is written in reStructuredText and converted
 to pdf, ebook, and HTML using the excellent Sphinx documentation tool
 (<http://sphinx.pocoo.org>).  All code and book
 source is available under terms of the GNU Public License and hosted
-at bitbucket.org <http://bitbucket.org/jsommers>.
+at github.com <https://github.com/ColgateUniversityComputerScience>.
 
 Contributors:
 
