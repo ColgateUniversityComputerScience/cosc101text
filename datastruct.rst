@@ -17,9 +17,7 @@ read the sections that follow.
        Hint: The ``string`` module provides strings named
        ``whitespace``, which contains space, tab, newline, etc., and
        ``punctuation`` which contains the punctuation characters. Let’s
-       see if we can make Python swear:
-
-       ::
+       see if we can make Python swear::
 
            >>> import string
            >>> print string.punctuation
@@ -55,9 +53,7 @@ read the sections that follow.
        histogram as defined `in the dictionary
        chapter <#sec:histogram>`_ and returns a random value from the
        histogram, chosen with probability in proportion to frequency.
-       For example, for this histogram:
-
-       ::
+       For example, for this histogram::
 
            >>> t = ['a', 'a', 'b']
            >>> h = histogram(t)
@@ -78,7 +74,7 @@ Word histogram
 Here is a program that reads a file and builds a histogram of the words
 in the file:
 
-::
+.. code-block:: python
 
     import string
 
@@ -120,7 +116,7 @@ or incrementing an existing one.
 To count the total number of words in the file, we can add up the
 frequencies in the histogram:
 
-::
+.. code-block:: python
 
     def total_words(h):
         return sum(h.values())
@@ -128,21 +124,21 @@ frequencies in the histogram:
 The number of different words is just the number of items in the
 dictionary:
 
-::
+.. code-block:: python
 
     def different_words(h):
         return len(h)
 
 Here is some code to print the results:
 
-::
+.. code-block:: python
 
     print 'Total number of words:', total_words(hist)
     print 'Number of different words:', different_words(hist)
 
 And the results:
 
-::
+.. code-block:: python
 
     Total number of words: 161073
     Number of different words: 7212
@@ -154,7 +150,7 @@ To find the most common words, we can apply the DSU pattern;
 ``most_common`` takes a histogram and returns a list of word-frequency
 tuples, sorted in reverse order by frequency:
 
-::
+.. code-block:: python
 
     def most_common(h):
         t = []
@@ -166,7 +162,7 @@ tuples, sorted in reverse order by frequency:
 
 Here is a loop that prints the ten most common words:
 
-::
+.. code-block:: python
 
     t = most_common(hist)
     print 'The most common words are:'
@@ -175,7 +171,7 @@ Here is a loop that prints the ten most common words:
 
 And here are the results from *Emma*:
 
-::
+.. code-block:: python
 
     The most common words are:
     to      5242
@@ -197,7 +193,7 @@ of arguments. It is possible to write user-defined functions with
 optional arguments, too. For example, here is a function that prints the
 most common words in a histogram
 
-::
+.. code-block:: python
 
     def print_most_common(hist, num=10)
         t = most_common(hist)
@@ -210,13 +206,13 @@ value** of ``num`` is 10.
 
 If you only provide one argument:
 
-::
+.. code-block:: python
 
     print_most_common(hist)
 
 ``num`` gets the default value. If you provide two arguments:
 
-::
+.. code-block:: python
 
     print_most_common(hist, 20)
 
@@ -239,7 +235,7 @@ dictionary that contains all the keys from ``d1`` that are not in
 ``d2``. Since we don’t really care about the values, we set them all to
 None.
 
-::
+.. code-block:: python
 
     def subtract(d1, d2):
         res = dict()
@@ -252,7 +248,7 @@ To find the words in the book that are not in ``words.txt``, we can use
 ``process_file`` to build a histogram for ``words.txt``, and then
 subtract:
 
-::
+.. code-block:: python
 
     words = process_file('words.txt')
     diff = subtract(hist, words)
@@ -288,7 +284,7 @@ To choose a random word from the histogram, the simplest algorithm is to
 build a list with multiple copies of each word, according to the
 observed frequency, and then choose from the list:
 
-::
+.. code-block:: python
 
     def random_word(h):
         t = []
@@ -437,7 +433,7 @@ elements, but we also need to be able to use the prefixes as keys in a
 dictionary, so that rules out lists. With tuples, you can’t append or
 remove, but you can use the addition operator to form a new tuple:
 
-::
+.. code-block:: python
 
     def shift(prefix, word):
         return prefix[1:] + (word,)
@@ -567,36 +563,33 @@ benchmarking:
     The process of choosing between data structures by implementing
     alternatives and testing them on a sample of the possible inputs.
 
-Exercises
-=========
 
-    1. The “rank” of a word is its position in a list of words sorted by
-       frequency: the most common word has rank 1, the second most
-       common has rank 2, etc.
+.. rubric:: Exercises
 
-       Zipf’s law describes a relationship between the ranks and
-       frequencies of words in natural languages [2]_. Specifically, it
-       predicts that the frequency, :math:`f`, of the word with rank
-       :math:`r` is:
+1. The "rank" of a word is its position in a list of words sorted by
+   frequency: the most common word has rank 1, the second most
+   common has rank 2, etc.
 
-       .. math:: f = c r^{-s} 
+   Zipf’s law describes a relationship between the ranks and
+   frequencies of words in natural languages [2]_. Specifically, it
+   predicts that the frequency, :math:`f`, of the word with rank
+   :math:`r` is :math:`f = c r^{-s}` 
+   where :math:`s` and :math:`c` are parameters that depend on the
+   language and the text. If you take the logarithm of both sides of
+   this equation, you get :math:`\log f = \log c - s \log r`.
 
-       where :math:`s` and :math:`c` are parameters that depend on the
-       language and the text. If you take the logarithm of both sides of
-       this equation, you get:
+   So if you plot :math:`\log f` versus :math:`\log r`, you should
+   get a straight line with slope :math:`-s` and intercept
+   :math:`\log c`.
 
-       .. math:: \log f = \log c - s \log r 
+   Write a program that reads a text from a file, counts word
+   frequencies, and prints one line for each word, in descending
+   order of frequency, with :math:`\log f` and :math:`\log r`. Use
+   the graphing program of your choice to plot the results and check
+   whether they form a straight line. Can you estimate the value of
+   :math:`s`?
 
-       So if you plot :math:`\log f` versus :math:`\log r`, you should
-       get a straight line with slope :math:`-s` and intercept
-       :math:`\log c`.
-
-       Write a program that reads a text from a file, counts word
-       frequencies, and prints one line for each word, in descending
-       order of frequency, with :math:`\log f` and :math:`\log r`. Use
-       the graphing program of your choice to plot the results and check
-       whether they form a straight line. Can you estimate the value of
-       :math:`s`?
+.. rubric:: Footnotes
 
 .. [1]
    This case study is based on an example from Kernighan and Pike, *The
