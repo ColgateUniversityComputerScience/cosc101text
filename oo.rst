@@ -42,7 +42,7 @@ Every type in Python is defined by the type's **class**. You can think
 of a class as a blueprint or model from which objects can be created. A
 minimal class definition looks like this:
 
-::
+.. code-block:: python
 
     class Point(object):
         """represents a point in 2-D space"""
@@ -56,7 +56,7 @@ definition; we will get to that shortly.
 
 Defining a class named ``Point`` creates a class object.
 
-::
+.. code-block:: python
 
     >>> print Point
     <class '__main__.Point'>
@@ -68,7 +68,7 @@ Besides being like a blueprint, the class object is also like a factory
 for creating objects. To create a Point, you call ``Point`` as if it
 were a function.
 
-::
+.. code-block:: python
 
     >>> blank = Point()
     >>> print blank
@@ -86,7 +86,7 @@ Even though it might feel a little strange using the class name as a
 function, you can construct any built-in Python type using the same
 syntax:
 
-::
+.. code-block:: python
 
     >>> mylist = list()
     >>> print list
@@ -111,9 +111,7 @@ them.
 
 -  We've already used **methods** on objects. These are functions that
    are, in a sense, *attached* to an object. In Python, a method is
-   invoked by using the dot notation syntax:
-
-   ::
+   invoked by using the dot notation syntax::
 
        >>> # object.method(parameters)
        >>> s = "aabbcc"
@@ -131,7 +129,7 @@ Adding attributes
 You can assign new attributes to an instance using dot notation and the
 assignment operator:
 
-::
+.. code-block:: python
 
     >>> blank = Point()
     >>> blank.x = 3.0
@@ -152,7 +150,7 @@ attributes. Each attribute refers to a floating-point number.
 
 You can read the value of an attribute using the same syntax:
 
-::
+.. code-block:: python
 
     >>> print blank.y
     4.0
@@ -168,7 +166,7 @@ and the attribute ``x``.
 Interestingly (and usefully), *objects are mutable* --- we can change
 the values of attributes:
 
-::
+.. code-block:: python
 
     >>> blank.x = 5.5
     >>> blank.y = blank.x * 2
@@ -191,7 +189,7 @@ syntactic differences:
 Let's get started writing a method to set the ``x`` and ``y`` attributes
 in the object to new values:
 
-::
+.. code-block:: python
 
     class Point(object):
         '''represents a point in 2-D space'''
@@ -209,7 +207,7 @@ in the object to new values:
 We might use our ``Point`` class to create an object and set its ``x``
 and ``y`` attributes using the ``setXY`` method as follows:
 
-::
+.. code-block:: python
 
     >>> p = Point()
     >>> p.setXY(8.0, 7.5)
@@ -230,7 +228,7 @@ parameter, so in this case ``p`` is assigned to ``point``.
 By convention in Python, the first parameter of a method is called
 ``self``, so the Pythonically correct way to write ``setXY`` would be:
 
-::
+.. code-block:: python
 
     class Point(object):
         '''represents a point in 2-D space'''
@@ -256,7 +254,7 @@ Let's modify our ``Point`` class to include an ``__init__`` method that
 accepts two parameters for initializing our ``x`` and ``y`` coordinates.
 We'll still retain the ``setXY`` method, too.
 
-::
+.. code-block:: python
 
     class Point(object):
         '''represents a point in 2-D space'''
@@ -273,7 +271,7 @@ We'll still retain the ``setXY`` method, too.
 To create a new ``Point`` object, we have to change our call to
 ``Point`` to pass in initial values for ``x`` and ``y``:
 
-::
+.. code-block:: python
 
     >>> p = Point(3.2, 8.9)
     >>> print p.x
@@ -284,7 +282,7 @@ To create a new ``Point`` object, we have to change our call to
 Since ``__init__`` and ``setXY`` are nearly identical, we could even
 refine our code a bit to reduce redundancy:
 
-::
+.. code-block:: python
 
     class Point(object):
         '''represents a point in 2-D space'''
@@ -317,7 +315,7 @@ Let's add to our ``Point`` class by writing two more methods:
 
 First, the ``getXY`` method:
 
-::
+.. code-block:: python
 
     class Point(object):
 
@@ -335,7 +333,7 @@ consisting of the ``x`` and ``y`` components.
 
 In a program, we might use the ``getXY`` method as follows:
 
-::
+.. code-block:: python
 
     >>> p = Point(5,2)
     >>> coord_tuple = p.getXY()
@@ -344,7 +342,7 @@ In a program, we might use the ``getXY`` method as follows:
 
 Now, for the ``distance`` method:
 
-::
+.. code-block:: python
 
     import math
 
@@ -360,7 +358,7 @@ Now, for the ``distance`` method:
 
 In a program, we might use the ``distance`` method as follows:
 
-::
+.. code-block:: python
 
     >>> p1 = Point(5,1)
     >>> p2 = Point(3,7)
@@ -375,7 +373,7 @@ Printing objects
 return a string representation of an object. For the ``Point`` class, we
 might write the ``__str__`` method as follows:
 
-::
+.. code-block:: python
 
     class Point(object):
 
@@ -387,7 +385,7 @@ might write the ``__str__`` method as follows:
 When you ``print`` an object, Python automatically and implicitly
 invokes the ``__str__`` method:
 
-::
+.. code-block:: python
 
     >>> print p1
     'Point (5.0,1.0)'
@@ -409,7 +407,7 @@ The full ``Point`` class
 Putting all our work together, here is the full definition of the
 ``Point`` class that we created:
 
-::
+.. code-block:: python
 
     import math
 
@@ -491,7 +489,7 @@ so we’ll implement the first one, just as an example.
 Here is the class definition, starting with ``__init__`` and
 ``__str__``:
 
-::
+.. code-block:: python
 
     class Rectangle(object):
         """represent a rectangle. 
@@ -512,7 +510,7 @@ Here is the class definition, starting with ``__init__`` and
 Once we create the ``Rectangle`` class, we might use the two methods
 we've written to construct and print a rectangle object:
 
-::
+.. code-block:: python
 
     >>> r = Rectangle(100.0, 200.0, Point(0, 0))
     >>> print r
@@ -556,7 +554,7 @@ radius or diameter of the circle. Before you look carefully at the code
 below, see if you can write out the class definition for ``Circle``,
 including the constructor and ``__str__`` magic method.
 
-::
+.. code-block:: python
 
     class Circle(object):
         def __init__(self, center, radius):
@@ -566,6 +564,8 @@ including the constructor and ``__str__`` magic method.
         def __str__(self):
             return "Circle ({:.1f},{:.1f}) with radius {:.1f}".format(
                 self.center.x, self.center.y, self.radius)
+
+..
 
     **Examples**:
 
@@ -614,7 +614,7 @@ Let's first make our amorphous shape class. Just to make things somewhat
 interesting, let's give shapes a name and color. We'll also define
 ``area`` and ``perimeter`` methods; they can just return 0.
 
-::
+.. code-block:: python
 
     def Shape(object):
         '''A generic shape class.'''
@@ -637,7 +637,7 @@ Refactoring ``Rectangle``
 Now, let's modify the ``Rectangle`` class so that it inherit from
 ``Shape``. We'll start with the ``__init__`` method:
 
-::
+.. code-block:: python
 
     class Rectangle(Shape):
         def __init__(self, corner, width, height, color):
@@ -666,7 +666,7 @@ a ``name`` and ``color``. When we return, we add the ``corner``,
 
 Now the fun begins. Let's create a ``Rectangle`` and manipulate it:
 
-::
+.. code-block:: python
 
     >>> r = Rectangle(Point(3,5), 5, 10, "blue")
     >>> print r
@@ -679,7 +679,7 @@ of its parent class, ``Shape``!
 What if we try to get the ``perimeter`` and ``area`` for the
 ``Rectangle``?
 
-::
+.. code-block:: python
 
     >>> print r.perimeter()
     0.0
@@ -690,7 +690,7 @@ Since we inherited the methods from ``Shape``, we got zeroes. To make
 our ``Rectangle`` more useful, what we can do is **override** and
 redefine how ``area`` and ``perimeter`` should work for a rectangle:
 
-::
+.. code-block:: python
 
     # inside the Rectangle class definition
 
@@ -703,13 +703,15 @@ redefine how ``area`` and ``perimeter`` should work for a rectangle:
 Now, when we ask a rectangle to give us its perimeter and area, it
 responds appropriately:
 
-::
+.. code-block:: python
 
     >>> r = Rectangle(Point(3,5), 5, 10, "blue")
     >>> print r.perimeter()
     30
     >>> print r.area()
     50
+
+..
 
     **Examples**:
 
@@ -726,7 +728,7 @@ Copying an object is often an alternative to aliasing. The ``copy``
 module contains a function called ``copy`` that can duplicate any
 object:
 
-::
+.. code-block:: python
 
     >>> p1 = Point(3.0, 4.0)
     >>> import copy
@@ -735,7 +737,7 @@ object:
 ``p1`` and ``p2`` contain the same data, but they are not the same
 Point.
 
-::
+.. code-block:: python
 
     >>> print p1
     Point (3.0, 4.0)
@@ -757,7 +759,7 @@ changed—we’ll see how later.
 If you use ``copy.copy`` to duplicate a Rectangle, you will find that it
 copies the Rectangle object but not the embedded Point.
 
-::
+.. code-block:: python
 
     >>> import copy
     >>> box = Rectangle(Point(3, 2), 5, 10)
@@ -789,7 +791,7 @@ that copies not only the object but also the objects it refers to, and
 the objects *they* refer to, and so on. You will not be surprised to
 learn that this operation is called a **deep copy**.
 
-::
+.. code-block:: python
 
     >>> box3 = copy.deepcopy(box)
     >>> box3 is box
@@ -860,7 +862,7 @@ program design, but they don’t appear explicitly in the code.
 
 The class definition for ``Card`` looks like this:
 
-::
+.. code-block:: python
 
     class Card(object):
         """represents a standard playing card."""
@@ -875,7 +877,7 @@ attribute. The default card is the 2 of Clubs.
 To create a Card, you call ``Card`` with the suit and rank of the card
 you want.
 
-::
+.. code-block:: python
 
     queen_of_diamonds = Card(1, 12)
 
@@ -887,7 +889,7 @@ need a mapping from the integer codes to the corresponding ranks and
 suits. A natural way to do that is with lists of strings. We assign
 these lists to **class attributes**:
 
-::
+.. code-block:: python
 
     # inside class Card:
 
@@ -928,7 +930,7 @@ instead of a list.
 
 With the methods we have so far, we can create and print cards:
 
-::
+.. code-block:: python
 
     >>> card1 = Card(2, 11)
     >>> print card1
@@ -968,7 +970,7 @@ all of the Spades outrank all of the Diamonds, and so on.
 
 With that decided, we can write ``__cmp__``:
 
-::
+.. code-block:: python
 
     # inside class Card:
 
@@ -986,7 +988,7 @@ With that decided, we can write ``__cmp__``:
 
 You can write this more concisely using tuple comparison:
 
-::
+.. code-block:: python
 
     # inside class Card:
 
@@ -1011,7 +1013,7 @@ The following is a class definition for ``Deck``. The init method
 creates the attribute ``cards`` and generates the standard set of
 fifty-two cards:
 
-::
+.. code-block:: python
 
     class Deck(object):
 
@@ -1032,7 +1034,7 @@ Printing the deck
 
 Here is a ``__str__`` method for ``Deck``:
 
-::
+.. code-block:: python
 
     #inside class Deck:
 
@@ -1050,7 +1052,7 @@ the string representation.
 Since we invoke ``join`` on a newline character, the cards are separated
 by newlines. Here’s what the result looks like:
 
-::
+.. code-block:: python
 
     >>> deck = Deck()
     >>> print deck
@@ -1073,7 +1075,7 @@ To deal cards, we would like a method that removes a card from the deck
 and returns it. The list method ``pop`` provides a convenient way to do
 that:
 
-::
+.. code-block:: python
 
     #inside class Deck:
 
@@ -1086,7 +1088,7 @@ upon [1]_, but in this context it’s ok.
 
 To add a card, we can use the list method ``append``:
 
-::
+.. code-block:: python
 
     #inside class Deck:
 
@@ -1104,7 +1106,7 @@ operation in terms that are appropriate for decks.
 As another example, we can write a Deck method named ``shuffle`` using
 the function ``shuffle`` from the ``random`` module:
 
-::
+.. code-block:: python
 
     # inside class Deck:
 
@@ -1138,7 +1140,7 @@ inheritance.
 The definition of a child class is like other class definitions, but the
 name of the parent class appears in parentheses:
 
-::
+.. code-block:: python
 
     class Hand(Deck):
         """represents a hand of playing cards"""
@@ -1154,7 +1156,7 @@ init method for Hands should initialize ``cards`` with an empty list.
 If we provide an init method in the ``Hand`` class, it overrides the one
 in the ``Deck`` class:
 
-::
+.. code-block:: python
 
     # inside class Hand:
 
@@ -1164,7 +1166,7 @@ in the ``Deck`` class:
 
 So when you create a Hand, Python invokes this init method:
 
-::
+.. code-block:: python
 
     >>> hand = Hand('new hand')
     >>> print hand.cards
@@ -1175,7 +1177,7 @@ So when you create a Hand, Python invokes this init method:
 But the other methods are inherited from ``Deck``, so we can use
 ``pop_card`` and ``add_card`` to deal a card:
 
-::
+.. code-block:: python
 
     >>> deck = Deck()
     >>> card = deck.pop_card()
@@ -1186,7 +1188,7 @@ But the other methods are inherited from ``Deck``, so we can use
 A natural next step is to encapsulate this code in a method called
 ``move_cards``:
 
-::
+.. code-block:: python
 
     #inside class Deck:
 
@@ -1276,7 +1278,7 @@ When you start working with objects, you are likely to encounter some
 new exceptions. If you try to access an attribute that doesn’t exist,
 you get an ``AttributeError``:
 
-::
+.. code-block:: python
 
     >>> p = Point()
     >>> print p.z
@@ -1284,7 +1286,7 @@ you get an ``AttributeError``:
 
 If you are not sure what type an object is, you can ask:
 
-::
+.. code-block:: python
 
     >>> type(p)
     <type '__main__.Point'>
@@ -1292,7 +1294,7 @@ If you are not sure what type an object is, you can ask:
 If you are not sure whether an object has a particular attribute, you
 can use the built-in function ``hasattr``:
 
-::
+.. code-block:: python
 
     >>> hasattr(p, 'x')
     True
@@ -1316,7 +1318,7 @@ Another way to access the attributes of an object is through the special
 attribute ``__dict__``, which is a dictionary that maps attribute names
 (as strings) and values:
 
-::
+.. code-block:: python
 
     >>> p = Point(3, 4)
     >>> print p.__dict__
@@ -1325,7 +1327,7 @@ attribute ``__dict__``, which is a dictionary that maps attribute names
 For purposes of debugging, you might find it useful to keep this
 function handy:
 
-::
+.. code-block:: python
 
     def print_attributes(obj):
         for attr in obj.__dict__:
@@ -1356,7 +1358,7 @@ As an alternative, you could use this function, which takes an object
 and a method name (as a string) and returns the class that provides the
 definition of the method:
 
-::
+.. code-block:: python
 
     def find_defining_class(obj, meth_name):
         for ty in type(obj).mro():
@@ -1365,7 +1367,7 @@ definition of the method:
 
 Here’s an example:
 
-::
+.. code-block:: python
 
     >>> hand = Hand()
     >>> print find_defining_class(hand, 'shuffle')
@@ -1477,87 +1479,48 @@ class diagram:
     A diagram that shows the classes in a program and the relationships
     between them.
 
-.. raw:: html
+.. rubric:: Exercises
 
-   <!--
+1. Write a class definition for a Date object that has attributes
+   ``day``, ``month`` and ``year``. Write a function called
+   ``increment_date`` that takes a Date object, ``date`` and an
+   integer, ``n``, and returns a new Date object that represents the
+   day ``n`` days after ``date``. Hint: "Thirty days hath
+   September..." Challenge: does your function deal with leap years
+   correctly? See http://wikipedia.org/wiki/Leap_year.
 
-   operator overloading:
-     ~ Changing the behavior of an operator like `==` so it works with a
-       user-defined type.
+2. The built in ``datetime`` module provides ``date`` and ``time``
+   objects, each with a rich set of methods and operators. Read the
+   documentation at http://docs.python.org/lib/datetime-date.html.
 
-   polymorphic:
-     ~ Pertaining to a function that can work with more than one type.
+   a. Use the ``datetime`` module to write a program that gets the
+      current date and prints the day of the week.
 
-   multiplicity:
-     ~ A notation in a class diagram that shows, for a HAS-A relationship,
-       how many references there are to instances of another class.
+   b. Write a program that takes a birthday as input and prints the
+      user’s age and the number of days, hours, minutes and seconds
+      until their next birthday.
 
-   prototype and patch:
-     ~ A development plan that involves writing a rough draft of a program,
-       testing, and correcting errors as they are found.
+3. Write a definition for a class named ``Kangaroo`` with the
+   following methods:
 
-   planned development:
-     ~ A development plan that involves high-level insight into the problem
-       and more planning than incremental development or prototype
-       development.
+   a. An ``__init__`` method that initializes an attribute named
+      ``pouch_contents`` to an empty list.
 
-   pure function:
-     ~ A function that does not modify any of the objects it receives as
-       arguments. Most pure functions are fruitful.
+   b. A method named ``put_in_pouch`` that takes an object of any
+      type and adds it to ``pouch_contents``.
 
-   modifier:
-     ~ A function that changes one or more of the objects it receives as
-       arguments. Most modifiers are fruitless.
+   c. A ``__str__`` method that returns a string representation of
+      the Kangaroo object and the contents of the pouch.
 
-   functional programming style:
-     ~ A style of program design in which the majority of functions are
-       pure.
+   Test your code by creating two ``Kangaroo`` objects, assigning
+   them to variables named ``kanga`` and ``roo``, and then adding
+   ``roo`` to the contents of ``kanga``\ ’s pouch.
 
-    -->
+4. The following code is a solution to the previous problem, except
+   that it contains a nasty bug. Find, describe, and fix the
+   problem.
 
-Exercises
----------
-
-    1. Write a class definition for a Date object that has attributes
-       ``day``, ``month`` and ``year``. Write a function called
-       ``increment_date`` that takes a Date object, ``date`` and an
-       integer, ``n``, and returns a new Date object that represents the
-       day ``n`` days after ``date``. Hint: "Thirty days hath
-       September..." Challenge: does your function deal with leap years
-       correctly? See http://wikipedia.org/wiki/Leap_year.
-
-    2. The built in ``datetime`` module provides ``date`` and ``time``
-       objects, each with a rich set of methods and operators. Read the
-       documentation at http://docs.python.org/lib/datetime-date.html.
-
-       a. Use the ``datetime`` module to write a program that gets the
-          current date and prints the day of the week.
-
-       b. Write a program that takes a birthday as input and prints the
-          user’s age and the number of days, hours, minutes and seconds
-          until their next birthday.
-
-    3. Write a definition for a class named ``Kangaroo`` with the
-       following methods:
-
-       a. An ``__init__`` method that initializes an attribute named
-          ``pouch_contents`` to an empty list.
-
-       b. A method named ``put_in_pouch`` that takes an object of any
-          type and adds it to ``pouch_contents``.
-
-       c. A ``__str__`` method that returns a string representation of
-          the Kangaroo object and the contents of the pouch.
-
-       Test your code by creating two ``Kangaroo`` objects, assigning
-       them to variables named ``kanga`` and ``roo``, and then adding
-       ``roo`` to the contents of ``kanga``\ ’s pouch.
-
-    4. The following code is a solution to the previous problem, except
-       that it contains a nasty bug. Find, describe, and fix the
-       problem.
-
-       ::
+.. code-block:: python
 
            class Kangaroo(object):
                """a Kangaroo is a marsupial"""
@@ -1591,77 +1554,79 @@ Exercises
            # If you run this program as is, it seems to work.
            # To see the problem, trying printing roo.
 
-    5. The table below shows possible hands in poker, in increasing
-       order of value (and decreasing order of probability):
+..
 
-       +------------------+-------------------------------------------------------+
-       | *pair*           | two cards with the same rank                          |
-       +------------------+-------------------------------------------------------+
-       | *two pair*       | two pairs of cards with the same rank                 |
-       +------------------+-------------------------------------------------------+
-       | *three of a      | three cards with the same rank                        |
-       | kind*            |                                                       |
-       +------------------+-------------------------------------------------------+
-       | *straight*       | five cards with ranks in sequence (aces can be high   |
-       |                  | or low, so ``Ace-2-3-4-5`` is a straight and so is    |
-       |                  | ``10-Jack-Queen-King-Ace``, but                       |
-       |                  | ``Queen-King-Ace-2-3`` is not.)                       |
-       +------------------+-------------------------------------------------------+
-       | *flush*          | five cards with the same suit                         |
-       +------------------+-------------------------------------------------------+
-       | *full house*     | three cards with one rank, two cards with another     |
-       +------------------+-------------------------------------------------------+
-       | *four of a kind* | four cards with the same rank                         |
-       +------------------+-------------------------------------------------------+
-       | *straight flush* | five cards in sequence (as defined above) and with    |
-       |                  | the same suit                                         |
-       +------------------+-------------------------------------------------------+
+5. The table below shows possible hands in poker, in increasing
+   order of value (and decreasing order of probability):
 
-       The goal of these exercises is to estimate the probability of
-       drawing these various hands.
+   +------------------+-------------------------------------------------------+
+   | *pair*           | two cards with the same rank                          |
+   +------------------+-------------------------------------------------------+
+   | *two pair*       | two pairs of cards with the same rank                 |
+   +------------------+-------------------------------------------------------+
+   | *three of a      | three cards with the same rank                        |
+   | kind*            |                                                       |
+   +------------------+-------------------------------------------------------+
+   | *straight*       | five cards with ranks in sequence (aces can be high   |
+   |                  | or low, so ``Ace-2-3-4-5`` is a straight and so is    |
+   |                  | ``10-Jack-Queen-King-Ace``, but                       |
+   |                  | ``Queen-King-Ace-2-3`` is not.)                       |
+   +------------------+-------------------------------------------------------+
+   | *flush*          | five cards with the same suit                         |
+   +------------------+-------------------------------------------------------+
+   | *full house*     | three cards with one rank, two cards with another     |
+   +------------------+-------------------------------------------------------+
+   | *four of a kind* | four cards with the same rank                         |
+   +------------------+-------------------------------------------------------+
+   | *straight flush* | five cards in sequence (as defined above) and with    |
+   |                  | the same suit                                         |
+   +------------------+-------------------------------------------------------+
 
-       a. Using the ``Card``, ``Hand``, and ``Deck`` classes created in
-          this chapter, create a ``PokerHand`` class that can hold up to
-          7 cards at once.
+   The goal of these exercises is to estimate the probability of
+   drawing these various hands.
 
-       b. Write a ``main`` function that deals cards from a ``Deck``
-          object and adds them to a ``PokerHand`` object.
+   a. Using the ``Card``, ``Hand``, and ``Deck`` classes created in
+      this chapter, create a ``PokerHand`` class that can hold up to
+      7 cards at once.
 
-       c. Write a ``isStraightFlush`` method for the ``PokerHand`` class
-          that tests whether the hand contains a straight flush.
+   b. Write a ``main`` function that deals cards from a ``Deck``
+      object and adds them to a ``PokerHand`` object.
 
-       d. Add methods to ``PokerHand`` named ``has_pair``,
-          ``has_twopair``, etc. that return True or False according to
-          whether or not the hand meets the relevant criteria. Your code
-          should work correctly for “hands” that contain any number of
-          cards (although 5 and 7 are the most common sizes).
+   c. Write a ``isStraightFlush`` method for the ``PokerHand`` class
+      that tests whether the hand contains a straight flush.
 
-       e. Write a method named ``classify`` that figures out the
-          highest-value classification for a hand and sets the ``label``
-          attribute accordingly. For example, a 7-card hand might
-          contain a flush and a pair; it should be labeled "flush".
+   d. Add methods to ``PokerHand`` named ``has_pair``,
+      ``has_twopair``, etc. that return True or False according to
+      whether or not the hand meets the relevant criteria. Your code
+      should work correctly for “hands” that contain any number of
+      cards (although 5 and 7 are the most common sizes).
 
-       f. When you are convinced that your classification methods are
-          working, the next step is to estimate the probabilities of the
-          various hands. Write a function that shuffles a deck of cards,
-          divides it into hands, classifies the hands, and counts the
-          number of times various classifications appear.
+   e. Write a method named ``classify`` that figures out the
+      highest-value classification for a hand and sets the ``label``
+      attribute accordingly. For example, a 7-card hand might
+      contain a flush and a pair; it should be labeled "flush".
 
-       g. Print a table of the classifications and their probabilities.
-          Run your program with larger and larger numbers of hands until
-          the output values converge to a reasonable degree of accuracy.
-          Compare your results to the values at
-          http://wikipedia.org/wiki/Hand_rankings.
+   f. When you are convinced that your classification methods are
+      working, the next step is to estimate the probabilities of the
+      various hands. Write a function that shuffles a deck of cards,
+      divides it into hands, classifies the hands, and counts the
+      number of times various classifications appear.
 
-    6. This exercise uses the ``turtle`` module. You will write code
-       that makes Turtles play tag. If you are not familiar with the
-       rules of tag, see http://wikipedia.org/wiki/Tag_(game).
+   g. Print a table of the classifications and their probabilities.
+      Run your program with larger and larger numbers of hands until
+      the output values converge to a reasonable degree of accuracy.
+      Compare your results to the values at
+      http://wikipedia.org/wiki/Hand_rankings.
 
-       a. Type in the following code and run it. You should see a turtle
-          screen with three turtles that start wandering around the
-          screen at random.
+6. This exercise uses the ``turtle`` module. You will write code
+   that makes Turtles play tag. If you are not familiar with the
+   rules of tag, see http://wikipedia.org/wiki/Tag_(game).
 
-          ::
+   a. Type in the following code and run it. You should see a turtle
+      screen with three turtles that start wandering around the
+      screen at random.
+
+.. code-block:: python
 
               '''
               Wobbler class originally written by Allen Downey.
@@ -1731,44 +1696,48 @@ Exercises
                   timerfunction()
                   turtle.mainloop()
 
-       b. Read the code and make sure you understand how it works. The
-          ``Wobbler`` class inherits from ``Turtle``, which means that
-          the ``Turtle`` methods ``left``, ``right``, ``forward`` and
-          ``backward`` work on Wobblers.
+..
 
-          The ``step`` method gets invoked by the ``timerfunction``. It
-          invokes ``steer``, which turns the Turtle in the desired
-          direction, ``wobble``, which makes a random turn in proportion
-          to the Turtle’s clumsiness, and ``move``, which moves forward
-          a few pixels, depending on the Turtle’s speed.
+   b. Read the code and make sure you understand how it works. The
+      ``Wobbler`` class inherits from ``Turtle``, which means that
+      the ``Turtle`` methods ``left``, ``right``, ``forward`` and
+      ``backward`` work on Wobblers.
 
-       c. Create a class named ``Tagger`` that inherits from
-          ``Wobbler``. Change the call in ``main`` to invoke ``Tagger``
-          instead of ``Wobbler`` when creating the turtles.
+      The ``step`` method gets invoked by the ``timerfunction``. It
+      invokes ``steer``, which turns the Turtle in the desired
+      direction, ``wobble``, which makes a random turn in proportion
+      to the Turtle’s clumsiness, and ``move``, which moves forward
+      a few pixels, depending on the Turtle’s speed.
 
-       d. Add a ``steer`` method to ``Tagger`` to override the one in
-          ``Wobbler``. As a starting place, write a version that always
-          points the Turtle toward the origin. Hint: use the math
-          function ``atan2`` and the Turtle attributes ``x``, ``y`` and
-          ``heading``.
+   c. Create a class named ``Tagger`` that inherits from
+      ``Wobbler``. Change the call in ``main`` to invoke ``Tagger``
+      instead of ``Wobbler`` when creating the turtles.
 
-       e. Modify ``steer`` so that the Turtles stay on the screen.
+   d. Add a ``steer`` method to ``Tagger`` to override the one in
+      ``Wobbler``. As a starting place, write a version that always
+      points the Turtle toward the origin. Hint: use the math
+      function ``atan2`` and the Turtle attributes ``x``, ``y`` and
+      ``heading``.
 
-       f. Modify ``steer`` so that each Turtle points toward its nearest
-          neighbor. Hint: Turtles have an attribute, ``screen``, that is
-          a reference to the ``Screen`` they live in, and ``Screen`` has
-          a method ``turtles`` that returns a list of all the ``Turtle``
-          objects on the screen.
+   e. Modify ``steer`` so that the Turtles stay on the screen.
 
-       g. Modify ``steer`` so the Turtles play tag. You can add methods
-          to ``Tagger`` and you can override ``steer`` and ``__init__``,
-          but you may not modify or override ``step``, ``wobble`` or
-          ``move``. Also, ``steer`` is allowed to change the heading of
-          the Turtle but not the position.
+   f. Modify ``steer`` so that each Turtle points toward its nearest
+      neighbor. Hint: Turtles have an attribute, ``screen``, that is
+      a reference to the ``Screen`` they live in, and ``Screen`` has
+      a method ``turtles`` that returns a list of all the ``Turtle``
+      objects on the screen.
 
-       Adjust the rules and your ``steer`` method for good quality play;
-       for example, it should be possible for the slow Turtle to tag the
-       faster Turtles eventually.
+   g. Modify ``steer`` so the Turtles play tag. You can add methods
+      to ``Tagger`` and you can override ``steer`` and ``__init__``,
+      but you may not modify or override ``step``, ``wobble`` or
+      ``move``. Also, ``steer`` is allowed to change the heading of
+      the Turtle but not the position.
+
+   Adjust the rules and your ``steer`` method for good quality play;
+   for example, it should be possible for the slow Turtle to tag the
+   faster Turtles eventually.
+
+.. rubric:: Footnotes
 
 .. [1]
    See http://wikipedia.org/wiki/Bottom_dealing
