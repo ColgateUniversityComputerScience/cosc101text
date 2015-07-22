@@ -14,7 +14,7 @@ the beginning, select each character in turn, do something to it, and
 continue until the end. This pattern of processing is called a
 **traversal**. For example:
 
-::
+.. code-block:: python
 
     index = 0
     while index < len(fruit):
@@ -50,7 +50,7 @@ alphabetical order). In Robert McCloskey’s book *Make Way for
 Ducklings*, the names of the ducklings are Jack, Kack, Lack, Mack, Nack,
 Ouack, Pack, and Quack. This loop outputs these names in order:
 
-::
+.. code-block:: python
 
     prefixes = 'JKLMNOPQ'
     suffix = 'ack'
@@ -74,7 +74,7 @@ The output is:
 Of course, that’s not quite right because “Ouack” and “Quack” are
 misspelled.
 
-    **Example**:
+    **Examples**:
 
     1. Modify the program to fix this error.
 
@@ -87,7 +87,7 @@ String slices
 A segment of a string is called a **slice**. Selecting a slice is
 similar to selecting a character:
 
-::
+.. code-block:: python
 
     >>> s = 'Monty Python'
     >>> print s[0:5]
@@ -109,7 +109,7 @@ If you omit the first index (before the colon), the slice starts at the
 beginning of the string. If you omit the second index, the slice goes to
 the end of the string:
 
-::
+.. code-block:: python
 
     >>> fruit = 'banana'
     >>> fruit[:3]
@@ -120,7 +120,7 @@ the end of the string:
 If the first index is greater than or equal to the second the result is
 an **empty string**, represented by two quotation marks:
 
-::
+.. code-block:: python
 
     >>> fruit = 'banana'
     >>> fruit[3:3]
@@ -132,7 +132,7 @@ that, it is the same as any other string.
 Another way to slice a string is to use *three* indices. The third value
 is referred to as the ``step``:
 
-::
+.. code-block:: python
 
     >>> fruit = 'banana'
     >>> fruit[0:5:2]
@@ -159,13 +159,13 @@ It is tempting to use the ``[]`` operator on the left side of an
 assignment, with the intention of changing a character in a string. For
 example:
 
-::
+.. code-block:: python
 
     >>> greeting = 'Hello, world!'
     >>> greeting[0] = 'J'
     TypeError: object does not support item assignment
 
-The “object” in this case is the string and the "item" is the character
+The "object" in this case is the string and the "item" is the character
 you tried to assign. For now, an **object** is the same thing as a
 value, but we will refine that definition later. An **item** is one of
 the values in a sequence.
@@ -174,7 +174,7 @@ The reason for the error is that strings are **immutable**, which means
 you can’t change an existing string. The best you can do is create a new
 string that is a variation on the original:
 
-::
+.. code-block:: python
 
     >>> greeting = 'Hello, world!'
     >>> new_greeting = 'J' + greeting[1:]
@@ -192,7 +192,7 @@ moving on. If it helps, you can trace the operation of two different
 calls to this function: ``find('magic', 'i')`` and
 ``find('magic', 'z')``.
 
-::
+.. code-block:: python
 
     def find(word, letter):
         index = 0
@@ -217,7 +217,7 @@ loop normally and returns ``-1``.
 This pattern of computation—traversing a sequence and returning when we
 find what we are looking for—is called a **search**.
 
-    **Example**:
+    **Examples**:
 
     1. Modify ``find`` so that it has a third parameter, the index in
        ``word`` where it should start looking.
@@ -232,7 +232,7 @@ Looping and counting
 The following program counts the number of times the letter ``a``
 appears in a string:
 
-::
+.. code-block:: python
 
     word = 'banana'
     count = 0
@@ -271,7 +271,7 @@ takes a string and returns a new string with all uppercase letters:
 Instead of the function syntax ``upper(word)``, it uses the method
 syntax ``word.upper()``.
 
-::
+.. code-block:: python
 
     >>> word = 'banana'
     >>> new_word = word.upper()
@@ -288,7 +288,7 @@ that we are invoking ``upper`` on the ``word``.
 As it turns out, there is a string method named ``find`` that is
 remarkably similar to the function we wrote:
 
-::
+.. code-block:: python
 
     >>> word = 'banana'
     >>> index = word.find('a')
@@ -301,21 +301,21 @@ are looking for as a parameter.
 Actually, the ``find`` method is more general than our function; it can
 find substrings, not just characters:
 
-::
+.. code-block:: python
 
     >>> word.find('na')
     2
 
 It can take as a second argument the index where it should start:
 
-::
+.. code-block:: python
 
     >>> word.find('na', 3)
     4
 
 And as a third argument the index where it should stop:
 
-::
+.. code-block:: python
 
     >>> name = 'bob'
     >>> name.find('b', 1, 2)
@@ -337,32 +337,26 @@ http://docs.python.org/library/stdtypes.html#string-methods. Below, we
 review several of the useful methods:
 
 +-------------------------+---------------------------------------------------------+
-| method                  | description                                             |
+| **method**              | **description**                                         |
 +=========================+=========================================================+
 | ``upper``               | Return an upper-cased copy of the string.               |
 +-------------------------+---------------------------------------------------------+
 | ``lower``               | Return a lower-cased copy of the string.                |
 +-------------------------+---------------------------------------------------------+
 | ``capitalize``          | Return a copy of the string with the first character    |
-+-------------------------+---------------------------------------------------------+
 |                         | capitalized.                                            |
 +-------------------------+---------------------------------------------------------+
 | ``count(s)``            | Return the number of non-overlapping occurrences        |
-+-------------------------+---------------------------------------------------------+
 |                         | of the substring ``s`` in the string.                   |
 +-------------------------+---------------------------------------------------------+
 | ``replace(old, new)``   | Return a copy of the string with all occurrences of     |
-+-------------------------+---------------------------------------------------------+
 |                         | ``old`` replaced by ``new``.                            |
 +-------------------------+---------------------------------------------------------+
 | ``strip``               | Return a copy of the string with leading and trailing   |
-+-------------------------+---------------------------------------------------------+
 |                         | "whitespace" characters removed (spaces, tabs, and      |
-+-------------------------+---------------------------------------------------------+
 |                         | newline characters).                                    |
 +-------------------------+---------------------------------------------------------+
 | ``split``               | Return a list of words in the string, separating the    |
-+-------------------------+---------------------------------------------------------+
 |                         | string by any whitespace characters.                    |
 +-------------------------+---------------------------------------------------------+
 
@@ -384,7 +378,7 @@ Python includes two built-in functions to help with this: ``ord`` and
 ``chr(n)`` returns the character corresponding to a given number ``n``.
 For example:
 
-::
+.. code-block:: python
 
     >>> ord('A')
     65
@@ -439,7 +433,7 @@ to get the beginning and end of the traversal right. Here is a function
 that is supposed to compare two words and return ``True`` if one of the
 words is the reverse of the other, but it contains two errors:
 
-::
+.. code-block:: python
 
     def is_reverse(word1, word2):
         if len(word1) != len(word2):
@@ -468,7 +462,7 @@ loop and all the letters match, we return ``True``.
 If we test this function with the words "pots" and "stop", we expect the
 return value ``True``, but we get an IndexError:
 
-::
+.. code-block:: python
 
     >>> is_reverse('pots', 'stop')
     ...
@@ -479,7 +473,7 @@ return value ``True``, but we get an IndexError:
 For debugging this kind of error, my first move is to print the values
 of the indices immediately before the line where the error appears.
 
-::
+.. code-block:: python
 
         while j > 0:
             print i, j        # print here
@@ -491,7 +485,7 @@ of the indices immediately before the line where the error appears.
 
 Now when I run the program again, I get more information:
 
-::
+.. code-block:: python
 
     >>> is_reverse('pots', 'stop')
     0 4
@@ -504,7 +498,7 @@ of range for the string ``'pots'``. The index of the last character is
 
 If I fix that error and run the program again, I get:
 
-::
+.. code-block:: python
 
     >>> is_reverse('pots', 'stop')
     0 3
@@ -580,74 +574,77 @@ method:
 invocation:
     A statement that calls a method.
 
-Exercises
----------
 
-    1. Write a function named ``inboth`` that takes two strings as
-       parameters, and returns a list of all the characters that are
-       contained in both strings. Write the function in a case-sensitive
-       way.
+.. rubric:: Exercises
 
-    2. Rewrite the ``inboth`` function to work in a case-insensitive
-       way.
+1. Write a function named ``inboth`` that takes two strings as
+   parameters, and returns a list of all the characters that are
+   contained in both strings. Write the function in a case-sensitive
+   way.
 
-    3. The following functions are all *intended* to check whether a
-       string contains any lowercase letters, but at least some of them
-       are wrong. For each function, describe what the function actually
-       does (assuming that the parameter is a string).
+2. Rewrite the ``inboth`` function to work in a case-insensitive
+   way.
 
-       ::
+3. The following functions are all *intended* to check whether a
+   string contains any lowercase letters, but at least some of them
+   are wrong. For each function, describe what the function actually
+   does (assuming that the parameter is a string).
 
-           def any_lowercase1(s):
-               for c in s:
-                   if c.islower():
-                       return True
-                   else:
-                       return False
+.. code-block:: python
 
-           def any_lowercase2(s):
-               for c in s:
-                   if 'c'.islower():
-                       return 'True'
-                   else:
-                       return 'False'
+   def any_lowercase1(s):
+      for c in s:
+          if c.islower():
+              return True
+          else:
+              return False
 
-           def any_lowercase3(s):
-               for c in s:
-                   flag = c.islower()
-               return flag
+   def any_lowercase2(s):
+       for c in s:
+           if 'c'.islower():
+               return 'True'
+           else:
+               return 'False'
 
-           def any_lowercase4(s):
-               flag = False
-               for c in s:
-                   flag = flag or c.islower()
-               return flag
+   def any_lowercase3(s):
+       for c in s:
+           flag = c.islower()
+       return flag
 
-           def any_lowercase5(s):
-               for c in s:
-                   if not c.islower():
-                       return False
-               return True
+   def any_lowercase4(s):
+       flag = False
+       for c in s:
+           flag = flag or c.islower()
+       return flag
 
-    4. ROT13 is a weak form of encryption that involves "rotating" each
-       letter in a word by 13 places [1]_. To rotate a letter means to
-       shift it through the alphabet, wrapping around to the beginning
-       if necessary, so 'A' shifted by 3 is 'D' and 'Z' shifted by 1 is
-       'A'.
+   def any_lowercase5(s):
+       for c in s:
+           if not c.islower():
+               return False
+       return True
 
-       Write a function called ``rotate_word`` that takes a string and
-       an integer as parameters, and that returns a new string that
-       contains the letters from the original string "rotated" by the
-       given amount.
+4. ROT13 is a weak form of encryption that involves "rotating" each
+   letter in a word by 13 places [1]_. To rotate a letter means to
+   shift it through the alphabet, wrapping around to the beginning
+   if necessary, so 'A' shifted by 3 is 'D' and 'Z' shifted by 1 is
+   'A'.
 
-       For example, "cheer" rotated by 7 is "jolly" and "melon" rotated
-       by -10 is "cubed".
+   Write a function called ``rotate_word`` that takes a string and
+   an integer as parameters, and that returns a new string that
+   contains the letters from the original string "rotated" by the
+   given amount.
 
-    5. Write a program that asks for a phrase, then computes and prints
-       the number of words and number of characters in the phrase.
+   For example, "cheer" rotated by 7 is "jolly" and "melon" rotated
+   by -10 is "cubed".
 
-    6. Write a program that asks for a phrase, then computes the number
-       of upper and lower case letters, and prints the two counts.
+5. Write a program that asks for a phrase, then computes and prints
+   the number of words and number of characters in the phrase.
+
+6. Write a program that asks for a phrase, then computes the number
+   of upper and lower case letters, and prints the two counts.
+
+
+.. rubric:: Footnotes
 
 .. [1]
    See http://wikipedia.org/wiki/ROT13.
