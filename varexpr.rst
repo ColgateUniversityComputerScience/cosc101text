@@ -1,4 +1,3 @@
-*************************************
 Variables, expressions and statements
 *************************************
 
@@ -115,7 +114,7 @@ To display the value of a variable, you can use a print statement:
 
 The type of a variable is the type of the value it refers to.
 
-::
+.. code-block:: python
 
     >>> type(message)
     <type 'str'>
@@ -123,6 +122,8 @@ The type of a variable is the type of the value it refers to.
     <type 'int'>
     >>> type(pi)
     <type 'float'>
+
+..
 
     **Example**:
 
@@ -161,7 +162,7 @@ in names with multiple words, such as ``my_name`` or
 
 If you give a variable an illegal name, you get a syntax error:
 
-::
+.. code-block:: python
 
     >>> 76trombones = 'big parade'
     SyntaxError: invalid syntax
@@ -211,7 +212,7 @@ normally read a page in English.
 
 For example, the script
 
-::
+.. code-block:: python
 
     print 1
     x = 2
@@ -243,7 +244,7 @@ The operators ``+``, ``-``, ``*``, ``/`` and ``**`` perform addition,
 subtraction, multiplication, division and exponentiation, as in the
 following examples:
 
-::
+.. code-block:: python
 
     20+32   
     hour-1   
@@ -302,7 +303,7 @@ A value all by itself is considered an expression, and so is a variable,
 so the following are all legal expressions (assuming that the variable
 ``x`` has been assigned a value):
 
-::
+.. code-block:: python
 
     17
     x
@@ -311,7 +312,7 @@ so the following are all legal expressions (assuming that the variable
 If you type an expression in interactive mode, the interpreter
 **evaluates** it and displays the result:
 
-::
+.. code-block:: python
 
     >>> 1 + 1
     2
@@ -369,7 +370,7 @@ String operations
 As mentioned above, strings in Python can be enclosed in single or
 double quotes. The following two statements are equivalent:
 
-::
+.. code-block:: python
 
     mystring = 'green eggs and spam'
     mystring = "green eggs and spam"
@@ -378,9 +379,9 @@ Sometimes you might need to create really long strings that span
 multiple lines. You can use yet another quoting method for that:
 *triple* quotes (three single quotes in a row). For example:
 
-::
+.. code-block:: python
 
-        mystring = '''
+    mystring = '''
     green
     eggs 
     and
@@ -398,7 +399,7 @@ The ``+`` operator works with strings, but it might not do what you
 expect: it performs **concatenation**, which means joining the strings
 by glueing them end-to-end. For example:
 
-::
+.. code-block:: python
 
     first = 'throat'
     second = 'warbler'
@@ -425,7 +426,7 @@ It is legal to make more than one assignment to the same variable. A new
 assignment makes an existing variable refer to a new value (and stop
 referring to the old value).
 
-::
+.. code-block::  python
 
     bruce = 5
     print bruce,
@@ -459,7 +460,7 @@ false, for all time. If :math:`a = b` now, then :math:`a` will always
 equal :math:`b`. In Python, an assignment statement can make two
 variables equal, but they don’t have to stay that way:
 
-::
+.. code-block::  python
 
     a = 5
     b = a    # a and b are now equal
@@ -474,7 +475,7 @@ difficult to read and debug.
 
 You can also make multiple assignments on the same line:
 
-::
+.. code-block:: python
 
     a = b = c = 5
     # a, b, and c each refer to the integer value 5    
@@ -489,7 +490,7 @@ Updating variables
 One of the most common forms of assignment is an **update**, where the
 new value of the variable depends on the old.
 
-::
+.. code-block:: python
 
     x = x+1
 
@@ -500,7 +501,7 @@ If you try to update a variable that doesn’t exist, you get an error,
 because Python evaluates the right side before it assigns a value to
 ``x``:
 
-::
+.. code-block:: python
 
     >>> x = x+1
     NameError: name 'x' is not defined
@@ -508,7 +509,7 @@ because Python evaluates the right side before it assigns a value to
 Before you can update a variable, you have to **initialize** it, usually
 with a simple assignment:
 
-::
+.. code-block:: python
 
     >>> x = 0
     >>> x = x+1
@@ -519,13 +520,13 @@ Updating a variable by adding 1 is called an **increment**; subtracting
 There are "convenience operators" built in to Python that make updating
 variables slightly simpler, syntactically. For example:
 
-::
+.. code-block:: python
 
     x += 2
 
 does the same thing as
 
-::
+.. code-block:: python
 
     x = x + 2
 
@@ -546,7 +547,7 @@ For this reason, it is a good idea to add notes to your programs to
 explain in natural language what the program is doing. These notes are
 called **comments**, and they start with the ``#`` symbol:
 
-::
+.. code-block:: python
 
     # compute the percentage of the hour that has elapsed
     percentage = (minute * 100) / 60
@@ -554,7 +555,7 @@ called **comments**, and they start with the ``#`` symbol:
 In this case, the comment appears on a line by itself. You can also put
 comments at the end of a line:
 
-::
+.. code-block:: python
 
     percentage = (minute * 100) / 60 # percentage of an hour
 
@@ -567,13 +568,13 @@ the code does; it is much more useful to explain *why*.
 
 This comment is redundant with the code and useless:
 
-::
+.. code-block:: python
 
     v = 5     # assign 5 to v
 
 This comment contains useful information that is not in the code:
 
-::
+.. code-block:: python
 
     v = 5     # velocity in meters/second. 
 
@@ -595,7 +596,7 @@ variable name, like ``class`` and ``yield``, which are keywords, or
 If you put a space in a variable name, Python thinks it is two operands
 without an operator:
 
-::
+.. code-block:: python
 
     >>> bad name = 5
     SyntaxError: invalid syntax
@@ -608,7 +609,7 @@ The runtime error you are most likely to make is a "use before def";
 that is, trying to use a variable before you have assigned a value. This
 can happen if you spell a variable name wrong:
 
-::
+.. code-block:: python
 
     >>> principal = 327.68
     >>> interest = principle * rate
@@ -621,7 +622,7 @@ At this point the most likely cause of a semantic error is the order of
 operations. For example, to evaluate :math:`\frac{1}{2 \pi}`, you might
 be tempted to write
 
-::
+.. code-block:: python
 
     >>> 1.0 / 2.0 * pi
 
@@ -630,7 +631,7 @@ is not the same thing! There is no way for Python to know what you meant
 to write, so in this case you don't get an error message; you just get
 the wrong answer.
 
-    Exercise:
+    **Example**:
 
     1. Rewrite the last expression (``1.0 / 2.0 * pi``) so that the
        correct answer is reached.
@@ -714,63 +715,59 @@ comment:
     anyone reading the source code) and has no effect on the execution
     of the program.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. Assume that we execute the following assignment statements:
+1. Assume that we execute the following assignment statements::
 
-       ``width = 17``
+       width = 17
+       height = 12.0
+       delimiter = '.'
 
-       ``height = 12.0``
+   For each of the following expressions, write the value of the
+   expression and the type (of the value of the expression).
 
-       ``delimiter = '.'``
+   a. ``width/2``
 
-       For each of the following expressions, write the value of the
-       expression and the type (of the value of the expression).
+   b. ``width/2.0``
 
-       a. ``width/2``
+   c. ``height/3``
 
-       b. ``width/2.0``
+   d. ``1 + 2 * 5``
 
-       c. ``height/3``
+   e. ``delimiter * 5``
 
-       d. ``1 + 2 * 5``
+   Use the Python interpreter to check your answers.
 
-       e. ``delimiter * 5``
+2. Practice using the Python interpreter as a calculator:
 
-       Use the Python interpreter to check your answers.
+   a. The volume of a sphere with radius :math:`r` is
+      :math:`\frac{4}{3} \pi r^3`. What is the volume of a sphere
+      with radius 5? Hint: 392.6 is wrong!
 
-    2. Practice using the Python interpreter as a calculator:
+   b. Suppose the cover price of a book is $24.95, but bookstores
+      get a 40% discount. Shipping costs $3 for the first copy and
+      75 cents for each additional copy. What is the total wholesale
+      cost for 60 copies?
 
-       a. The volume of a sphere with radius :math:`r` is
-          :math:`\frac{4}{3} \pi r^3`. What is the volume of a sphere
-          with radius 5? Hint: 392.6 is wrong!
+   c. If I leave my house at 6:52 am and run 1 mile at an easy pace
+      (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1
+      mile at easy pace again, what time do I get home for
+      breakfast?
 
-       b. Suppose the cover price of a book is $24.95, but bookstores
-          get a 40% discount. Shipping costs $3 for the first copy and
-          75 cents for each additional copy. What is the total wholesale
-          cost for 60 copies?
+3. Consider the following two variable assignments::
 
-       c. If I leave my house at 6:52 am and run 1 mile at an easy pace
-          (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1
-          mile at easy pace again, what time do I get home for
-          breakfast?
+        panicstring = "don't panic"
+        answer = 42
 
-    3. Consider the following two variable assignments:
+   Write a Python statement to print the following: ``don't panic -- think 42``
 
-       ::
+4. Consider a modern computer processor that runs at 2 GHz, which
+   simply means "2 billion cycles per second". If the speed of light
+   is 299, 792, 458 meters per second, how many centimeters does
+   light travel in the time it takes a processor to execute one
+   cycle? Write a one-line Python program to print the answer.
 
-              panicstring = "don't panic"
-              answer = 42
-
-       Write a Python statement to print the following:
-       ``don't panic -- think 42``
-
-    4. Consider a modern computer processor that runs at 2 GHz, which
-       simply means "2 billion cycles per second". If the speed of light
-       is 299, 792, 458 meters per second, how many centimeters does
-       light travel in the time it takes a processor to execute one
-       cycle? Write a one-line Python program to print the answer.
+.. rubric:: Footnotes
 
 .. [1]
    In Python 3.0, ``exec`` is no longer a keyword, but ``nonlocal`` is.

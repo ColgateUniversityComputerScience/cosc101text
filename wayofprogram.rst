@@ -576,6 +576,8 @@ print statement:
    b. How many seconds are there in 8 weeks? Write a one-line Python
       program to print the answer.
 
+.. rubric:: Footnotes
+
 .. [1]
    This idiom means that someone realized something after a period of
    confusion.
