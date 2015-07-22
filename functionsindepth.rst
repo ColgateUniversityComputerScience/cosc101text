@@ -12,7 +12,7 @@ execute when the function is called.
 
 Here is an example:
 
-::
+.. code-block:: python
 
     def print_lyrics():
         print "I'm a lumberjack, and I'm okay."
@@ -40,7 +40,7 @@ If you type a function definition in interactive mode, the interpreter
 prints ellipses (*...*) to let you know that the definition isn’t
 complete:
 
-::
+.. code-block:: python
 
     >>> def print_lyrics():
     ...     print "I'm a lumberjack, and I'm okay."
@@ -52,7 +52,7 @@ necessary in a script).
 
 Defining a function creates a variable with the same name.
 
-::
+.. code-block:: python
 
     >>> print print_lyrics
     <function print_lyrics at 0xb7e99e9c>
@@ -68,7 +68,7 @@ where that function exists in Python's memory space).
 The syntax for calling the new function is the same as for built-in
 functions:
 
-::
+.. code-block:: python
 
     >>> print_lyrics()
     I'm a lumberjack, and I'm okay.
@@ -78,7 +78,7 @@ Once you have defined a function, you can use it inside another
 function. For example, to repeat the previous refrain, we could write a
 function called ``repeat_lyrics``:
 
-::
+.. code-block:: python
 
     def repeat_lyrics():
         print_lyrics()
@@ -86,7 +86,7 @@ function called ``repeat_lyrics``:
 
 And then call ``repeat_lyrics``:
 
-::
+.. code-block:: python
 
     >>> repeat_lyrics()
     I'm a lumberjack, and I'm okay.
@@ -102,7 +102,7 @@ Definitions and uses
 Pulling together the code fragments from the previous section, the whole
 program looks like this:
 
-::
+.. code-block:: python
 
     def print_lyrics():
         print "I'm a lumberjack, and I'm okay."
@@ -179,7 +179,7 @@ Inside the function, the arguments are assigned to variables called
 **parameters**. Here is an example of a user-defined function that takes
 an argument:
 
-::
+.. code-block:: python
 
     def print_twice(bruce):
         print bruce
@@ -191,7 +191,7 @@ it is) twice.
 
 This function works with any value that can be printed.
 
-::
+.. code-block:: python
 
     >>> print_twice('Spam')
     Spam
@@ -207,9 +207,9 @@ The same rules of composition that apply to built-in functions also
 apply to user-defined functions, so we can use any kind of expression as
 an argument for ``print_twice``:
 
-::
+.. code-block:: python
 
-    >>> print_twice('Spam '*4)
+    >>> print_twice('Spam ' * 4)
     Spam Spam Spam Spam
     Spam Spam Spam Spam
     >>> print_twice(math.cos(math.pi))
@@ -222,7 +222,7 @@ only evaluated once.
 
 You can also use a variable as an argument:
 
-::
+.. code-block:: python
 
     >>> michael = 'Eric, the half a bee.'
     >>> print_twice(michael)
@@ -240,7 +240,7 @@ Variables and parameters are local
 When you create a variable inside a function, it is **local**, which
 means that it only exists inside the function. For example:
 
-::
+.. code-block:: python
 
     def cat_twice(part1, part2):
         cat = part1 + part2
@@ -249,7 +249,7 @@ means that it only exists inside the function. For example:
 This function takes two arguments, concatenates them, and prints the
 result twice. Here is an example that uses it:
 
-::
+.. code-block:: python
 
     >>> line1 = 'Bing tiddle '
     >>> line2 = 'tiddle bang.'
@@ -260,7 +260,7 @@ result twice. Here is an example that uses it:
 When ``cat_twice`` terminates, the variable ``cat`` is destroyed. If we
 try to print it, we get an exception:
 
-::
+.. code-block:: python
 
     >>> print cat
     NameError: name 'cat' is not defined
@@ -280,7 +280,7 @@ produce results. When you call a function that returns a result, like
 for example, you might assign it to a variable or use it as part of an
 expression:
 
-::
+.. code-block:: python
 
     x = math.cos(radians)
     golden = (math.sqrt(5) + 1) / 2
@@ -288,7 +288,7 @@ expression:
 When you call a function in interactive mode, Python displays the
 result:
 
-::
+.. code-block:: python
 
     >>> math.sqrt(5)
     2.2360679774997898
@@ -297,7 +297,7 @@ But in a script, if you call a function that returns a result all by
 itself, the return value is lost forever, and does not even show up in
 the console as output!
 
-::
+.. code-block:: python
 
     math.sqrt(5)
 
@@ -311,7 +311,7 @@ they don’t explicitly pass back a result. However, Python will
 implicitly return the special value ``None``. Say ``print_twice`` is
 defined as follows:
 
-::
+.. code-block:: python
 
     def print_twice(s):
         print s
@@ -321,7 +321,7 @@ defined as follows:
 In the interactive interpreter, we call the function and assign its
 result to the variable ``result``:
 
-::
+.. code-block:: python
 
     >>> result = print_twice('Bing')
     Bing
@@ -332,7 +332,7 @@ result to the variable ``result``:
 The value ``None`` is not the same as the string ``'None'``. It is a
 special value that has its own type:
 
-::
+.. code-block:: python
 
     >>> print type(None)
     <type 'NoneType'>
@@ -345,7 +345,7 @@ function, we can use the ``return`` statement with an expression. For
 example, the following function ``area`` returns the area of a circle
 with a given radius:
 
-::
+.. code-block:: python
 
     import math
 
@@ -358,7 +358,7 @@ and use the following expression as a return value."* The expression can
 be arbitrarily complicated, so we could have written this function more
 concisely:
 
-::
+.. code-block:: python
 
     def area(radius):
         return math.pi * radius**2
@@ -369,7 +369,7 @@ debugging easier.
 Sometimes it is useful to have multiple return statements, one in each
 branch of a conditional:
 
-::
+.. code-block:: python
 
     def absolute_value(x):
         if x < 0:
@@ -389,7 +389,7 @@ In a function that returns a result, it is a good idea to ensure that
 every possible path through the program hits a ``return`` statement. For
 example:
 
-::
+.. code-block:: python
 
     # warning: this is problematic code!
     def absolute_value(x):
@@ -403,7 +403,7 @@ condition is true, and the function ends without hitting a ``return``
 statement. If the flow of execution gets to the end of a function, the
 return value is ``None``, which is not the absolute value of 0.
 
-::
+.. code-block:: python
 
     >>> print absolute_value(0)
     None
@@ -450,7 +450,7 @@ the function that called *that*, all the way back to ``__main__``.
 For example, if you try to access ``cat`` from within ``print_twice``,
 you get a ``NameError``:
 
-::
+.. code-block:: python
 
     Traceback (innermost last):
       File "test.py", line 13, in __main__
@@ -490,7 +490,7 @@ indicate whether ``x`` is divisible by ``y``.
 
 Here is an example:
 
-::
+.. code-block:: python
 
     >>> is_divisible(6, 4)
     False
@@ -500,21 +500,21 @@ Here is an example:
 The result of the ``==`` operator is a boolean, so we can write the
 function more concisely by returning it directly:
 
-::
+.. code-block:: python
 
     def is_divisible(x, y):
         return x % y == 0
 
 Boolean functions are often used in conditional statements:
 
-::
+.. code-block:: python
 
     if is_divisible(x, y):
         print 'x is divisible by y'
 
 It might be tempting to write something like:
 
-::
+.. code-block:: python
 
     if is_divisible(x, y) == True:
         print 'x is divisible by y'
@@ -593,7 +593,7 @@ as a parameter, and count up and return the number of upper- and
 lower-case ``'A'``\ s in the string. It has two bugs. Before you read
 on, see if you can figure out what they are.
 
-::
+.. code-block:: python
 
     # function should count up all the lower- and upper-case
     # A's in a string and return the count.
@@ -616,7 +616,7 @@ that calls the function, and compares the return value to the expected
 output. In the ``assert`` calls, we are making assertions (duh!) about
 what the output should be:
 
-::
+.. code-block:: python
 
     def unit_tests():
         # three test cases using three different
@@ -633,7 +633,7 @@ When we run this program, we'll first call ``unit_tests``, then we'll
 call each of the ``assert`` statements, in order. Because of the bugs in
 ``count_As``, we'll crash on the first ``assert`` call:
 
-::
+.. code-block:: python
 
     Traceback (most recent call last):
       File "test2.py", line 16, in <module>
@@ -649,7 +649,7 @@ should be!) If we look carefully at the ``count_As`` function, we'll see
 one problem: there's no ``return`` statement! The function currently
 *always* returns ``None``. Easy to fix:
 
-::
+.. code-block:: python
 
     def count_As(mystring):
         count = 0
@@ -660,7 +660,7 @@ one problem: there's no ``return`` statement! The function currently
 
 When we run the program now, we hit another ``AssertionError``:
 
-::
+.. code-block:: python
 
     Traceback (most recent call last):
       File "test2.py", line 17, in <module>
@@ -786,200 +786,179 @@ assertion:
     point in a program. The built-in ``assert`` function can be used to
     test Boolean propositional statements.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1.  Fix the last bug in the ``count_As`` function. Can you think of
-        any additional test cases that should be added for this
-        function?
+1.  Fix the last bug in the ``count_As`` function. Can you think of
+    any additional test cases that should be added for this
+    function?
 
-    2.  Write a function named ``compare_ab`` that takes one string as
-        parameters, and counts the occurrences of ``'a'``\ s and
-        ``'b'``\ s in the string. The function should return ``True`` if
-        the number of ``'a'``\ s and ``'b'``\ s is the same, and
-        ``False`` otherwise. Think of a set of test cases for this
-        function, and write them.
+2.  Write a function named ``compare_ab`` that takes one string as
+    parameters, and counts the occurrences of ``'a'``\ s and
+    ``'b'``\ s in the string. The function should return ``True`` if
+    the number of ``'a'``\ s and ``'b'``\ s is the same, and
+    ``False`` otherwise. Think of a set of test cases for this
+    function, and write them.
 
-    3.  Write a function named ``right_justify`` that takes a string
-        named ``s`` as a parameter and prints the string with enough
-        leading spaces so that the last letter of the string is in
-        column 60 of the display.
+3.  Write a function named ``right_justify`` that takes a string
+    named ``s`` as a parameter and prints the string with enough
+    leading spaces so that the last letter of the string is in
+    column 60 of the display::
 
-        ::
-
-               >>> right_justify('allen')
+        >>> right_justify('allen')
                                                            allen
 
-    4.  Write a function called ``is_leap`` that takes a year value as a
-        parameter, and returns ``True`` if the year is a leap year or
-        ``False`` if it is not. Refer to one of the exercises from the
-        last chapter for the definition of a leap year.
 
-    5.  A function object is a value you can assign to a variable or
-        pass as an argument. For example, ``do_twice`` is a function
-        that takes a function object as an argument and calls it twice:
+4.  Write a function called ``is_leap`` that takes a year value as a
+    parameter, and returns ``True`` if the year is a leap year or
+    ``False`` if it is not. Refer to one of the exercises from the
+    last chapter for the definition of a leap year.
 
-        ::
+5.  A function object is a value you can assign to a variable or
+    pass as an argument. For example, ``do_twice`` is a function
+    that takes a function object as an argument and calls it twice::
 
-               def do_twice(f):
-                   f()
-                   f()
+        def do_twice(f):
+            f()
+            f()
 
-        Here's an example that uses ``do_twice`` to call a function
-        named ``print_spam`` twice.
+    Here's an example that uses ``do_twice`` to call a function
+    named ``print_spam`` twice::
 
-        ::
+        def print_spam():
+            print 'spam'
 
-               def print_spam():
-                   print 'spam'
+        do_twice(print_spam)
 
-               do_twice(print_spam)
+    a. Type this example into a script and test it.
 
-        a. Type this example into a script and test it.
+    b. Modify ``do_twice`` so that it takes two arguments, a
+       function object and a value, and calls the function twice,
+       passing the value as an argument.
 
-        b. Modify ``do_twice`` so that it takes two arguments, a
-           function object and a value, and calls the function twice,
-           passing the value as an argument.
+    c. Write a more general version of ``print_spam``, called
+       ``print_twice``, that takes a string as a parameter and
+       prints it twice.
 
-        c. Write a more general version of ``print_spam``, called
-           ``print_twice``, that takes a string as a parameter and
-           prints it twice.
+    d. Use the modified version of ``do_twice`` to call
+       ``print_twice`` twice, passing ``'spam'`` as an argument.
 
-        d. Use the modified version of ``do_twice`` to call
-           ``print_twice`` twice, passing ``'spam'`` as an argument.
+    e. Define a new function called ``do_four`` that takes a
+       function object and a value and calls the function four
+       times, passing the value as a parameter. There should be only
+       two statements in the body of this function, not four.
 
-        e. Define a new function called ``do_four`` that takes a
-           function object and a value and calls the function four
-           times, passing the value as a parameter. There should be only
-           two statements in the body of this function, not four.
+6.  This exercise [2]_ can be done using only the statements and
+    other features we have learned so far.
 
-    6.  This exercise [2]_ can be done using only the statements and
-        other features we have learned so far.
+    Write a function that draws a grid like the following::
 
-        Write a function that draws a grid like the following:
+        + - - - - + - - - - +
+        |         |         |
+        |         |         |
+        |         |         |
+        |         |         |
+        + - - - - + - - - - +
+        |         |         |
+        |         |         |
+        |         |         |
+        |         |         |
+        + - - - - + - - - - +
 
-        ::
+    Hint: to print more than one value on a line, you can print a
+    comma-separated sequence::
 
-                + - - - - + - - - - +
-                |         |         |
-                |         |         |
-                |         |         |
-                |         |         |
-                + - - - - + - - - - +
-                |         |         |
-                |         |         |
-                |         |         |
-                |         |         |
-                + - - - - + - - - - +
+        print '+', '-'
 
-        Hint: to print more than one value on a line, you can print a
-        comma-separated sequence:
+    If the sequence ends with a comma, Python leaves the line
+    unfinished, so the value printed next appears on the same line.
 
-        ::
+    ::
 
-                print '+', '-'
+        print '+', 
+        print '-'
 
-        If the sequence ends with a comma, Python leaves the line
-        unfinished, so the value printed next appears on the same line.
+    The output of these statements is ``'+ -'``.
 
-        ::
+    A ``print`` statement all by itself ends the current line and
+    goes to the next line.
 
-                print '+', 
-                print '-'
+7.  Use the previous function to draw a similar grid with four rows
+    and four columns.
 
-        The output of these statements is ``'+ -'``.
+8.  Write a function that takes one integer named ``size`` as a
+    parameter and prints an equilateral triangle composed of
+    asterisks of length ``size``. For example, the call
+    ``make_triangle(4)`` should result in the following triangle
+    printed::
 
-        A ``print`` statement all by itself ends the current line and
-        goes to the next line.
+           *
+          * *
+         * * *
+        * * * *
 
-    7.  Use the previous function to draw a similar grid with four rows
-        and four columns.
+9.  Draw a stack diagram for the following program. What does the
+    program print?
 
-    8.  Write a function that takes one integer named ``size`` as a
-        parameter and prints an equilateral triangle composed of
-        asterisks of length ``size``. For example, the call
-        ``make_triangle(4)`` should result in the following triangle
-        printed:
+    ::
 
-        ::
+        def b(z):
+            prod = a(z, z)
+            print z, prod
+            return prod
 
-                  *
-                 * *
-                * * *
-               * * * *
+        def a(x, y):
+            x = x + 1
+            return x * y
 
-    9.  Draw a stack diagram for the following program. What does the
-        program print?
+        def c(x, y, z):
+            sum = x + y + z
+            pow = b(sum)**2
+            return pow
 
-        ::
+        x = 1
+        y = x + 1
+        print c(x, y+3, x+y)
 
-               def b(z):
-                   prod = a(z, z)
-                   print z, prod
-                   return prod
+10. Fermat’s Last Theorem says that there are no integers :math:`a`,
+    :math:`b`, and :math:`c` such that :math:`a^n + b^n = c^n`
+    for any values of :math:`n` greater than 2.
 
-               def a(x, y):
-                   x = x + 1
-                   return x * y
+    a. Write a function named ``check_fermat`` that takes four
+       parameters---``a``, ``b``, ``c`` and ``n``---and that checks
+       to see if Fermat’s theorem holds. If :math:`n` is greater
+       than 2 and it turns out to be true that :math:`a^n + b^n = c^n`
+       the function should return ``True``. Otherwise, the
+       function should return ``False``.
 
-               def c(x, y, z):
-                   sum = x + y + z
-                   pow = b(sum)**2
-                   return pow
+    b. Write a function that prompts the user to input values for
+       ``a``, ``b``, ``c`` and ``n``, converts them to integers, and
+       uses ``check_fermat`` to check whether they violate Fermat’s
+       theorem. If the result of calling ``check_fermat`` is
+       ``False``, this function should print "Holy smokes, Fermat
+       was wrong!". Otherwise, it should print "No, that doesn't
+       work."
 
-               x = 1
-               y = x + 1
-               print c(x, y+3, x+y)
+11. If you are given three sticks, you may or may not be able to
+    arrange them in a triangle. For example, if one of the sticks is
+    12 inches long and the other two are one inch long, it is clear
+    that you will not be able to get the short sticks to meet in the
+    middle. For any three lengths, there is a simple test to see if
+    it is possible to form a triangle:
 
-    10. Fermat’s Last Theorem says that there are no integers :math:`a`,
-        :math:`b`, and :math:`c` such that:
+    If any of the three lengths is greater than the sum of the other
+    two, then you cannot form a triangle. Otherwise, you can.
 
-        .. math:: a^n + b^n = c^n 
+    a. Write a function named ``is_triangle`` that takes three
+       integers as arguments, and that returns ``True`` or
+       ``False``, depending on whether you can or cannot form a
+       triangle from sticks with the given lengths.
 
-        for any values of :math:`n` greater than 2.
+    b. Write a function that prompts the user to input three stick
+       lengths, converts them to integers, and uses ``is_triangle``
+       to check whether sticks with the given lengths can form a
+       triangle.
 
-        a. Write a function named ``check_fermat`` that takes four
-           parameters---``a``, ``b``, ``c`` and ``n``---and that checks
-           to see if Fermat’s theorem holds. If :math:`n` is greater
-           than 2 and it turns out to be true that
-
-           .. math:: a^n + b^n = c^n 
-
-           the function should return ``True``. Otherwise, the
-           function should return ``False``.
-
-        b. Write a function that prompts the user to input values for
-           ``a``, ``b``, ``c`` and ``n``, converts them to integers, and
-           uses ``check_fermat`` to check whether they violate Fermat’s
-           theorem. If the result of calling ``check_fermat`` is
-           ``False``, this function should print "Holy smokes, Fermat
-           was wrong!". Otherwise, it should print "No, that doesn't
-           work."
-
-    11. If you are given three sticks, you may or may not be able to
-        arrange them in a triangle. For example, if one of the sticks is
-        12 inches long and the other two are one inch long, it is clear
-        that you will not be able to get the short sticks to meet in the
-        middle. For any three lengths, there is a simple test to see if
-        it is possible to form a triangle:
-
-        If any of the three lengths is greater than the sum of the other
-        two, then you cannot form a triangle. Otherwise, you can.
-
-        a. Write a function named ``is_triangle`` that takes three
-           integers as arguments, and that returns ``True`` or
-           ``False``, depending on whether you can or cannot form a
-           triangle from sticks with the given lengths.
-
-        b. Write a function that prompts the user to input three stick
-           lengths, converts them to integers, and uses ``is_triangle``
-           to check whether sticks with the given lengths can form a
-           triangle.
-
-.. raw:: html
-
-   <!-- end of chapter -->
-
+.. rubric:: Footnotes
 
 .. [1]
    Stack diagrams can either be drawn starting from the top, working

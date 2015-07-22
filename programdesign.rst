@@ -65,7 +65,7 @@ floating-point value.
 
 Already you can write an outline of the function:
 
-::
+.. code-block:: python
 
     def distance(x1, y1, x2, y2):
         return 0.0
@@ -76,7 +76,7 @@ can test it before you make it more complicated.
 
 To test the new function, call it with sample arguments:
 
-::
+.. code-block:: python
 
     >>> distance(1, 2, 4, 6)
     0.0
@@ -92,7 +92,7 @@ step is to find the differences :math:`x_2 - x_1` and :math:`y_2 - y_1`.
 The next version stores those values in temporary variables and prints
 them.
 
-::
+.. code-block:: python
 
     def distance(x1, y1, x2, y2):
         dx = x2 - x1
@@ -108,7 +108,7 @@ are only a few lines to check.
 
 Next we compute the sum of squares of ``dx`` and ``dy``:
 
-::
+.. code-block:: python
 
     def distance(x1, y1, x2, y2):
         dx = x2 - x1
@@ -121,7 +121,7 @@ Again, you would run the program at this stage and check the output
 (which should be 25). Finally, you can use ``math.sqrt`` to compute and
 return the result:
 
-::
+.. code-block:: python
 
     def distance(x1, y1, x2, y2):
         dx = x2 - x1
@@ -167,45 +167,50 @@ The key aspects of the process are:
        right triangle given the lengths of the two legs as arguments.
        Record each stage of the development process as you go.
 
-.. raw:: html
+Composition
+-----------
 
-   <!--
-   ## Composition
+As you should expect by now, you can call one function from within
+another.  This ability is called **composition**.
 
-   As you should expect by now, you can call one function from within
-   another.  This ability is called **composition**.
+As an example, we’ll write a function that takes two points, the center
+of the circle and a point on the perimeter, and computes the area of the
+circle.
 
-   As an example, we’ll write a function that takes two points, the center
-   of the circle and a point on the perimeter, and computes the area of the
-   circle.
+Assume that the center point is stored in the variables ``xc`` and ``y`c`,
+and the perimeter point is in ``xp`` and ``yp``. The first step is to find
+the radius of the circle, which is the distance between the two points.
+We just wrote a function, ``distance``, that does that:
 
-   Assume that the center point is stored in the variables `xc` and `yc`,
-   and the perimeter point is in `xp` and `yp`. The first step is to find
-   the radius of the circle, which is the distance between the two points.
-   We just wrote a function, `distance`, that does that:
+.. code-block:: python
 
-       radius = distance(xc, yc, xp, yp)
+    radius = distance(xc, yc, xp, yp)
 
-   The next step is to find the area of a circle with that radius; we just
-   wrote that, too:
+The next step is to find the area of a circle with that radius; we just
+wrote that, too:
 
-       result = area(radius)
+.. code-block:: python
 
-   Encapsulating these steps in a function, we get:
+    result = area(radius)
 
-       def circle_area(xc, yc, xp, yp):
-           radius = distance(xc, yc, xp, yp)
-           result = area(radius)
-           return result
+Encapsulating these steps in a function, we get:
 
-   The temporary variables `radius` and `result` are useful for development
-   and debugging, but once the program is working, we can make it more
-   concise by composing the function calls:
+.. code-block:: python
 
-       def circle_area(xc, yc, xp, yp):
-           return area(distance(xc, yc, xp, yp))
+    def circle_area(xc, yc, xp, yp):
+        radius = distance(xc, yc, xp, yp)
+        result = area(radius)
+        return result
 
-   -->
+The temporary variables ``radius`` and ``result`` are useful for development
+and debugging, but once the program is working, we can make it more
+concise by composing the function calls:
+
+.. code-block:: python
+
+    def circle_area(xc, yc, xp, yp):
+        return area(distance(xc, yc, xp, yp))
+
 
 Turtles
 -------
@@ -215,7 +220,7 @@ Python as a way to get more practice with program design concepts. The
 ``turtle`` module provides a fairly simple way to draw on the screen.
 Here is an example to get started:
 
-::
+.. code-block:: python
 
     import turtle
 
@@ -271,52 +276,51 @@ operating systems behave differently in this regard. Especially on
 Windows systems, you should remember to call ``turtle.done()`` at the
 end of a turtle drawing program.)
 
-Exercise
---------
+    **Exercises**:
 
-    1. See if you can simplify the above program by using a ``for`` loop
+       First, see if you can simplify the above program by using a ``for`` loop
        to draw each side of the square.
 
-The following is a series of exercises using ``turtle``. They are meant
-to be fun, but they have a point, too. While you are working on them,
-think about what the point is.
+       Now, consider the following series using ``turtle``. They are meant
+       to be fun, but they have a point, too. While you are working on them,
+       think about what the point is.
 
-The sections that immediately follow have solutions to the exercises, so
-don’t look until you have finished (or at least tried).
+       The sections that immediately follow have solutions to the exercises, so
+       don’t look until you have finished (or at least tried).
 
-    1. Write a function called ``square`` that uses ``turtle`` to draw a
-       square.
+        1. Write a function called ``square`` that uses ``turtle`` to draw a
+           square.
 
-    2. Add a parameter, named ``length``, to ``square``. Modify the
-       function so length of the sides is ``length``, and then modify
-       the function call to provide an argument for the length. Run the
-       program again. Test your program with a range of values for
-       ``length``.
+        2. Add a parameter, named ``length``, to ``square``. Modify the
+           function so length of the sides is ``length``, and then modify
+           the function call to provide an argument for the length. Run the
+           program again. Test your program with a range of values for
+           ``length``.
 
-    3. Make a copy of ``square`` and change the name to ``polygon``. Add
-       another parameter named ``n`` and modify the body so it draws an
-       n-sided regular polygon.
+        3. Make a copy of ``square`` and change the name to ``polygon``. Add
+           another parameter named ``n`` and modify the body so it draws an
+           n-sided regular polygon.
+    
+           Hint: instead of passing 90 to the ``left`` or ``right`` function
+           for turning the turtle, you'll need to specify a different value.
+           As another hint, the exterior angles of an n-sided regular
+           polygon are :math:`360.0 / n` degrees.
+    
+        4. Write a function called ``circle`` that takes a radius, ``r``, as
+           a parameter and that draws an approximate circle by invoking
+           ``polygon`` with an appropriate length and number of sides. Test
+           your function with a range of values of ``r``.
 
-       Hint: instead of passing 90 to the ``left`` or ``right`` function
-       for turning the turtle, you'll need to specify a different value.
-       As another hint, the exterior angles of an n-sided regular
-       polygon are :math:`360.0 / n` degrees.
+           Hint: figure out the circumference of the circle and make sure
+           that ``length * n = circumference``.
 
-    4. Write a function called ``circle`` that takes a radius, ``r``, as
-       a parameter and that draws an approximate circle by invoking
-       ``polygon`` with an appropriate length and number of sides. Test
-       your function with a range of values of ``r``.
+           Another hint: if the turtle drawing is too slow for your taste,
+           you can call ``turtle.speed('fastest')``.
 
-       Hint: figure out the circumference of the circle and make sure
-       that ``length * n = circumference``.
-
-       Another hint: if the turtle drawing is too slow for your taste,
-       you can call ``turtle.speed('fastest')``.
-
-    5. Make a more general version of ``circle`` called ``arc`` that
-       takes an additional parameter ``angle``, which determines what
-       fraction of a circle to draw. ``angle`` is in units of degrees,
-       so when ``angle=360``, ``arc`` should draw a complete circle.
+        5. Make a more general version of ``circle`` called ``arc`` that
+           takes an additional parameter ``angle``, which determines what
+           fraction of a circle to draw. ``angle`` is in units of degrees,
+           so when ``angle=360``, ``arc`` should draw a complete circle.
 
 Encapsulation
 -------------
@@ -325,7 +329,7 @@ The first exercise asks you to put your square-drawing code into a
 function definition and then call the function, passing the turtle as a
 parameter. Here is a solution:
 
-::
+.. code-block:: python
 
     import turtle
 
@@ -360,7 +364,7 @@ Generalization
 The next step is to add a ``length`` parameter to ``square``. Here is a
 solution:
 
-::
+.. code-block:: python
 
     import turtle
 
@@ -380,7 +384,7 @@ The next step is also a generalization. Instead of drawing squares,
 ``polygon`` draws regular polygons with any number of sides. Here is a
 solution:
 
-::
+.. code-block:: python
 
     import turtle
 
@@ -398,7 +402,7 @@ a few numeric arguments, it is easy to forget what they are, or what
 order they should be in. It is legal, and sometimes helpful, to include
 the names of the parameters in the argument list:
 
-::
+.. code-block:: python
 
     polygon(n=7, length=70)
 
@@ -417,7 +421,7 @@ The next step is to write ``circle``, which takes a radius, ``r``, as a
 parameter. Here is a simple solution that uses ``polygon`` to draw a
 50-sided polygon:
 
-::
+.. code-block:: python
 
     def circle(r):
         circumference = 2 * math.pi * r
@@ -453,7 +457,7 @@ details of *how* the circle should be rendered.
 Rather than clutter up the interface, it is better to choose an
 appropriate value of ``n`` depending on ``circumference``:
 
-::
+.. code-block:: python
 
     def circle(r):
         circumference = 2 * math.pi * r
@@ -477,7 +481,7 @@ arc.
 One alternative is to start with a copy of ``polygon`` and transform it
 into ``arc``. The result might look like this:
 
-::
+.. code-block:: python
 
     def arc(r, angle):
         arc_length = 2 * math.pi * r * angle / 360
@@ -495,7 +499,7 @@ re-use ``polygon`` without changing the interface. We could generalize
 would no longer be an appropriate name! Instead, let's call the more
 general function ``polyline``:
 
-::
+.. code-block:: python
 
     def polyline(n, length, angle):
         for i in range(n):
@@ -504,7 +508,7 @@ general function ``polyline``:
 
 Now we can rewrite ``polygon`` and ``arc`` to use ``polyline``:
 
-::
+.. code-block:: python
 
     def polygon(n, length):
         angle = 360.0 / n
@@ -519,7 +523,7 @@ Now we can rewrite ``polygon`` and ``arc`` to use ``polyline``:
 
 Finally, we can rewrite ``circle`` to use ``arc``:
 
-::
+.. code-block:: python
 
     def circle(r):
         arc(r, 360)
@@ -537,7 +541,7 @@ have learned something.
 
 Here's the full set of code we wrote:
 
-::
+.. code-block:: python
 
     import turtle
     import math
@@ -561,9 +565,8 @@ Here's the full set of code we wrote:
     def circle(r):
         arc(r, 360)
 
-.. raw:: html
+..
 
-   <!-- end of example code -->    
 
 A development plan
 ------------------
@@ -699,33 +702,38 @@ postcondition:
     A requirement that should be satisfied by the function before it
     ends.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. Write an appropriately general set of functions that can draw
-       flowers like this:
+1. Write an appropriately general set of functions that can draw
+   flowers like this:
 
-       .. figure:: figs/flowers.png
-          :align: center
-          :alt: Example flowers to draw with turtle graphics.
+.. figure:: figs/flowers.png
+   :align: center
+   :alt: Example flowers to draw with turtle graphics.
 
-          Example flowers to draw with turtle graphics.
-    2. Write an appropriately general set of functions that can draw
-       shapes like this:
+..
 
-       .. figure:: figs/pies.png
-          :align: center
-          :alt: Example shapes to draw with turtle graphics.
+   Example flowers to draw with turtle graphics.
 
-          Example shapes to draw with turtle graphics.
-    3. The letters of the alphabet can be constructed from a moderate
-       number of basic elements, like vertical and horizontal lines and
-       a few curves. Design a font that can be drawn with a minimal
-       number of basic elements and then write functions that draw
-       letters of the alphabet.
+2. Write an appropriately general set of functions that can draw
+   shapes like this:
 
-       You should write one function for each letter, with names
-       ``draw_a``, ``draw_b``, etc., and put your functions in a file
-       named ``letters.py``.
+.. figure:: figs/pies.png
+   :align: center
+   :alt: Example shapes to draw with turtle graphics.
+
+..
+
+   Example shapes to draw with turtle graphics.
+
+3. The letters of the alphabet can be constructed from a moderate
+   number of basic elements, like vertical and horizontal lines and
+   a few curves. Design a font that can be drawn with a minimal
+   number of basic elements and then write functions that draw
+   letters of the alphabet.
+
+   You should write one function for each letter, with names
+   ``draw_a``, ``draw_b``, etc., and put your functions in a file
+   named ``letters.py``.
 
 
