@@ -89,13 +89,10 @@ execute the contents of the file, which is called a **script**. By
 convention, Python scripts have names that end with ``.py``.
 
 In this course, we'll typically be writing programs within a text editor
-
 program called IDLE. A screenshot of IDLE is shown below. (Note that
 this screenshot was taken on a Linux system, and that one Python
 statement was executed in the interpreter after starting it up. On your
 own computer, the window may look slightly different.)
-
-.. todo:: fix this discussion about IDLE; need to update screenshots for Py3k
 
 .. figure:: figs/idlescreen.png
    :align: center
@@ -384,9 +381,9 @@ World!" In Python, it looks like this:
 
 .. code-block:: python
 
-    print ('Hello, World!')
+    print 'Hello, World!'
 
-This is an example of a **print function**, which doesn't
+This is an example of a **print statement**, which doesn't
 actually print anything on paper. It displays a value on the screen. In
 this case, the result is the words
 
