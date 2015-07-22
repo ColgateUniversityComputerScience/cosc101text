@@ -677,7 +677,7 @@ signal-to-noise ratio in decibels. The formula is
 
 In Python, you might write something like this:
 
-.. code-block:: python::
+.. code-block:: python
 
     import math
     signal_power = 9
