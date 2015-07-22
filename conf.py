@@ -233,7 +233,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'cosc140.tex', 'Solving Problems with Python',
+  ('index', 'spwpbook.tex', 'Solving Problems with Python',
 #   'Joel Sommers', 'memoir'),
    'Joel Sommers', 'manual'),
 ]
