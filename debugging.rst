@@ -168,7 +168,7 @@ of the condition.
 
 For example:
 
-::
+.. code-block:: python
 
     while x > 0 and y < 0 :
         # do something to x
@@ -371,13 +371,13 @@ expression into a series of assignments to temporary variables.
 
 For example:
 
-::
+.. code-block:: python
 
     self.hands[i].addCard(self.hands[self.findNeighbor(i)].popCard())
 
 This can be rewritten as:
 
-::
+.. code-block:: python
 
     neighbor = self.findNeighbor(i)
     pickedCard = self.hands[neighbor].popCard()
@@ -393,7 +393,7 @@ evaluation may not be what you expect. For example, if you are
 translating the expression :math:`\frac{x}{2 \pi}` into Python, you
 might write:
 
-::
+.. code-block:: python
 
     y = x / 2 * math.pi
 
@@ -404,7 +404,7 @@ computes :math:`x \pi / 2`.
 A good way to debug expressions is to add parentheses to make the order
 of evaluation explicit:
 
-::
+.. code-block:: python
 
      y = x / (2 * math.pi)
 
@@ -420,13 +420,13 @@ If you have a ``return`` statement with a complex expression, you don’t
 have a chance to print the ``return`` value before returning. Again, you
 can use a temporary variable. For example, instead of:
 
-::
+.. code-block:: python
 
     return self.hands[i].removeMatches()
 
 you could write:
 
-::
+.. code-block:: python
 
     count = self.hands[i].removeMatches()
     return count
