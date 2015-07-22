@@ -11,21 +11,21 @@ The important difference is that *tuples are immutable*.
 
 Syntactically, a tuple is a comma-separated list of values:
 
-::
+.. code-block:: python
 
     >>> t = 'a', 'b', 'c', 'd', 'e'
 
 Although it is not necessary, it is common to enclose tuples in
 parentheses:
 
-::
+.. code-block:: python
 
     >>> t = ('a', 'b', 'c', 'd', 'e')
 
 To create a tuple with a single element, you have to include a final
 comma:
 
-::
+.. code-block:: python
 
     >>> t1 = 'a',
     >>> type(t1)
@@ -33,7 +33,7 @@ comma:
 
 A value in parentheses is not a tuple:
 
-::
+.. code-block:: python
 
     >>> t2 = ('a')
     >>> type(t2)
@@ -42,7 +42,7 @@ A value in parentheses is not a tuple:
 Another way to create a tuple is the built-in function ``tuple``. With
 no argument, it creates an empty tuple:
 
-::
+.. code-block:: python
 
     >>> t = tuple()
     >>> print t
@@ -51,7 +51,7 @@ no argument, it creates an empty tuple:
 If the argument is a sequence (string, list or tuple), the result is a
 tuple with the elements of the sequence:
 
-::
+.. code-block:: python
 
     >>> t = tuple('lupins')
     >>> print t
@@ -63,7 +63,7 @@ using it as a variable name.
 Most list operators also work on tuples. The bracket operator is used to
 index an element:
 
-::
+.. code-block:: python
 
     >>> t = ('a', 'b', 'c', 'd', 'e')
     >>> print t[0]
@@ -71,7 +71,7 @@ index an element:
 
 And the slice operator selects a range of elements.
 
-::
+.. code-block:: python
 
     >>> print t[1:3]
     ('b', 'c')
@@ -79,7 +79,7 @@ And the slice operator selects a range of elements.
 But if you try to modify one of the elements of the tuple, you get an
 error:
 
-::
+.. code-block:: python
 
     >>> t[0] = 'A'
     TypeError: object doesn't support item assignment
@@ -87,7 +87,7 @@ error:
 You can't modify the elements of a tuple, but you can replace one tuple
 with another:
 
-::
+.. code-block:: python
 
     >>> t = ('A',) + t[1:]
     >>> print t
@@ -100,7 +100,7 @@ It is often useful to swap the values of two variables. With
 conventional assignments, you have to use a temporary variable. For
 example, to swap ``a`` and ``b``:
 
-::
+.. code-block:: python
 
     >>> temp = a
     >>> a = b
@@ -108,7 +108,7 @@ example, to swap ``a`` and ``b``:
 
 This solution is cumbersome; **tuple assignment** is more elegant:
 
-::
+.. code-block:: python
 
     >>> a, b = b, a
 
@@ -120,7 +120,7 @@ assignments.
 The number of variables on the left and the number of values on the
 right have to be the same:
 
-::
+.. code-block:: python
 
     >>> a, b = 1, 2, 3
     ValueError: too many values to unpack
@@ -129,7 +129,7 @@ More generally, the right side can be any kind of sequence (string, list
 or tuple). For example, to split an email address into a user name and a
 domain, you could write:
 
-::
+.. code-block:: python
 
     >>> addr = 'monty@python.org'
     >>> uname, domain = addr.split('@')
@@ -137,7 +137,7 @@ domain, you could write:
 The return value from ``split`` is a list with two elements; the first
 element is assigned to ``uname``, the second to ``domain``.
 
-::
+.. code-block:: python
 
     >>> print uname
     monty
@@ -157,7 +157,7 @@ The built-in function ``divmod`` takes two arguments and returns a tuple
 of two values, the quotient and remainder. You can store the result as a
 tuple:
 
-::
+.. code-block:: python
 
     >>> t = divmod(7, 3)
     >>> print t
@@ -165,7 +165,7 @@ tuple:
 
 Or use tuple assignment to store the elements separately:
 
-::
+.. code-block:: python
 
     >>> quot, rem = divmod(7, 3)
     >>> print quot
@@ -175,7 +175,7 @@ Or use tuple assignment to store the elements separately:
 
 Here is an example of a function that returns a tuple:
 
-::
+.. code-block:: python
 
     def min_max(t):
         return min(t), max(t)
@@ -191,7 +191,7 @@ Functions can take a variable number of arguments. A parameter name that
 begins with ``*`` **gathers** arguments into a tuple. For example,
 ``printall`` takes any number of arguments and prints them:
 
-::
+.. code-block:: python
 
     def printall(*args):
         print args
@@ -199,7 +199,7 @@ begins with ``*`` **gathers** arguments into a tuple. For example,
 The gather parameter can have any name you like, but ``args`` is
 conventional. Here's how the function works:
 
-::
+.. code-block:: python
 
     >>> printall(1, 2.0, '3')
     (1, 2.0, '3')
@@ -209,7 +209,7 @@ values and you want to pass it to a function as multiple arguments, you
 can use the ``*`` operator. For example, ``divmod`` takes exactly two
 arguments; it doesn't work with a tuple:
 
-::
+.. code-block:: python
 
     >>> t = (7, 3)
     >>> divmod(t)
@@ -217,25 +217,23 @@ arguments; it doesn't work with a tuple:
 
 But if you scatter the tuple, it works:
 
-::
+.. code-block:: python
 
     >>> divmod(*t)
     (2, 1)
+
+..
 
     **Example**:
 
     1. Many of the built-in functions use variable-length argument
        tuples. For example, ``max`` and ``min`` can take any number of
-       arguments:
-
-       ::
+       arguments::
 
            >>> max(1,2,3)
            3
 
-       But ``sum`` does not.
-
-       ::
+       But ``sum`` does not::
 
            >>> sum(1,2,3)
            TypeError: sum expected at most 2 arguments, got 3
@@ -252,7 +250,7 @@ element from each sequence.
 
 This example zips a string and a list:
 
-::
+.. code-block:: python
 
     >>> s = 'abc'
     >>> t = [0, 1, 2]
@@ -265,7 +263,7 @@ from the string and the corresponding element from the list.
 If the sequences are not the same length, the result has the length of
 the shorter one.
 
-::
+.. code-block:: python
 
     >>> zip('Anne', 'Elk')
     [('A', 'E'), ('n', 'l'), ('n', 'k')]
@@ -273,7 +271,7 @@ the shorter one.
 You can use tuple assignment in a ``for`` loop to traverse a list of
 tuples:
 
-::
+.. code-block:: python
 
     t = [('a', 0), ('b', 1), ('c', 2)]
     for letter, number in t:
@@ -283,7 +281,7 @@ Each time through the loop, Python selects the next tuple in the list
 and assigns the elements to ``letter`` and ``number``. The output of
 this loop is:
 
-::
+.. code-block:: python
 
     0 a
     1 b
@@ -295,7 +293,7 @@ example, ``has_match`` takes two sequences, ``t1`` and ``t2``, and
 returns ``True`` if there is an index ``i`` such that
 ``t1[i] == t2[i]``:
 
-::
+.. code-block:: python
 
     def has_match(t1, t2):
         for x, y in zip(t1, t2):
@@ -306,14 +304,14 @@ returns ``True`` if there is an index ``i`` such that
 If you need to traverse the elements of a sequence and their indices,
 you can use the built-in function ``enumerate``:
 
-::
+.. code-block:: python
 
     for index, element in enumerate('abc'):
         print index, element
 
 The output of this loop is:
 
-::
+.. code-block:: python
 
     0 a
     1 b
@@ -327,7 +325,7 @@ Dictionaries and tuples
 Dictionaries have a method called ``items`` that returns a list of
 tuples, where each tuple is a key-value pair [2]_.
 
-::
+.. code-block:: python
 
     >>> d = {'a':0, 'b':1, 'c':2}
     >>> t = d.items()
@@ -339,7 +337,7 @@ order.
 
 Conversely, you can use a list of tuples to initialize a new dictionary:
 
-::
+.. code-block:: python
 
     >>> t = [('a', 0), ('c', 2), ('b', 1)]
     >>> d = dict(t)
@@ -349,7 +347,7 @@ Conversely, you can use a list of tuples to initialize a new dictionary:
 Combining ``dict`` with ``zip`` yields a concise way to create a
 dictionary:
 
-::
+.. code-block:: python
 
     >>> d = dict(zip('abc', range(3)))
     >>> print d
@@ -361,14 +359,14 @@ them, as key-value pairs, to an existing dictionary.
 Combining ``items``, tuple assignment and ``for``, you get the idiom for
 traversing the keys and values of a dictionary:
 
-::
+.. code-block:: python
 
     for key, val in d.items():
         print val, key
 
 The output of this loop is:
 
-::
+.. code-block:: python
 
     0 a
     2 c
@@ -381,14 +379,14 @@ you can't use lists). For example, a telephone directory might map from
 last-name, first-name pairs to telephone numbers. Assuming that we have
 defined ``last``, ``first`` and ``number``, we could write:
 
-::
+.. code-block:: python
 
     directory[(last,first)] = number
 
 The expression in brackets is a tuple. We could use tuple assignment to
 traverse this dictionary.
 
-::
+.. code-block:: python
 
     for last, first in directory:
         print first, last, directory[(last,first)]
@@ -456,7 +454,7 @@ Undecorate
 For example, suppose you have a list of words and you want to sort them
 from longest to shortest:
 
-::
+.. code-block:: python
 
     def sort_by_length(words):
         t = []
@@ -544,7 +542,7 @@ that can test whether a variable is an instance of a particular data
 type. You can compose that with ``assert`` to ensure that the data types
 your function receives are what you expect.
 
-::
+.. code-block:: python
 
     >>> x = []
     >>> isinstance(x, list)
@@ -589,86 +587,85 @@ data structure:
 shape (of a data structure):
     A summary of the type, size and composition of a data structure.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. Write a function called ``most_frequent`` that takes a string and
-       prints the letters in decreasing order of frequency. Find text
-       samples from several different languages and see how letter
-       frequency varies between languages. Compare your results with the
-       tables at http://wikipedia.org/wiki/Letter_frequencies.
+1. Write a function called ``most_frequent`` that takes a string and
+   prints the letters in decreasing order of frequency. Find text
+   samples from several different languages and see how letter
+   frequency varies between languages. Compare your results with the
+   tables at http://wikipedia.org/wiki/Letter_frequencies.
 
-    2. Write a program that reads a word list from a file (see `this
-       section <#sec:wordlist>`_) and prints all the sets of words that
-       are anagrams.
+2. Write a program that reads a word list from a file (see `this
+   section <#sec:wordlist>`_) and prints all the sets of words that
+   are anagrams.
 
-       Here is an example of what the output might look like:
+   Here is an example of what the output might look like::
 
-       ::
+       ['deltas', 'desalt', 'lasted', 'salted', 'slated', 'staled']
+       ['retainers', 'ternaries']
+       ['generating', 'greatening']
+       ['resmelts', 'smelters', 'termless']
 
-           ['deltas', 'desalt', 'lasted', 'salted', 'slated', 'staled']
-           ['retainers', 'ternaries']
-           ['generating', 'greatening']
-           ['resmelts', 'smelters', 'termless']
+   Hint: you might want to build a dictionary that maps from a set
+   of letters to a list of words that can be spelled with those
+   letters. The question is, how can you represent the set of
+   letters in a way that can be used as a key?
 
-       Hint: you might want to build a dictionary that maps from a set
-       of letters to a list of words that can be spelled with those
-       letters. The question is, how can you represent the set of
-       letters in a way that can be used as a key?
+3. Modify the previous program so that it prints the largest set of
+   anagrams first, followed by the second largest set, and so on.
 
-    3. Modify the previous program so that it prints the largest set of
-       anagrams first, followed by the second largest set, and so on.
+4. In Scrabble, a "bingo" is when you play all seven tiles in your
+   rack along with a letter on the board to form an eight-letter
+   word. What set of 8 letters forms the most possible bingos? Hint:
+   there are seven.
 
-    4. In Scrabble, a "bingo" is when you play all seven tiles in your
-       rack along with a letter on the board to form an eight-letter
-       word. What set of 8 letters forms the most possible bingos? Hint:
-       there are seven.
+5. Two words form a "metathesis pair" if you can transform one into
+   the other by swapping two letters [3]_; for example, “converse”
+   and “conserve.” Write a program that finds all of the metathesis
+   pairs in the dictionary. Hint: don’t test all pairs of words, and
+   don’t test all possible swaps.
 
-    5. Two words form a "metathesis pair" if you can transform one into
-       the other by swapping two letters [3]_; for example, “converse”
-       and “conserve.” Write a program that finds all of the metathesis
-       pairs in the dictionary. Hint: don’t test all pairs of words, and
-       don’t test all possible swaps.
+6. Here’s another Car Talk Puzzler [4]_:
 
-    6. Here’s another Car Talk Puzzler [4]_:
+   "What is the longest English word, that remains a valid English
+   word, as you remove its letters one at a time?
 
-       "What is the longest English word, that remains a valid English
-       word, as you remove its letters one at a time?
+   "Now, letters can be removed from either end, or the middle, but
+   you can’t rearrange any of the letters. Every time you drop a
+   letter, you wind up with another English word. If you do that,
+   you’re eventually going to wind up with one letter and that too
+   is going to be an English word—one that’s found in the
+   dictionary. I want to know what’s the longest word and how many
+   letters does it have?
 
-       "Now, letters can be removed from either end, or the middle, but
-       you can’t rearrange any of the letters. Every time you drop a
-       letter, you wind up with another English word. If you do that,
-       you’re eventually going to wind up with one letter and that too
-       is going to be an English word—one that’s found in the
-       dictionary. I want to know what’s the longest word and how many
-       letters does it have?
+   I’m going to give you a little modest example: Sprite. Ok? You
+   start off with sprite, you take a letter off, one from the
+   interior of the word, take the r away, and we’re left with the
+   word spite, then we take the e off the end, we’re left with spit,
+   we take the s off, we’re left with pit, it, and I."
 
-       I’m going to give you a little modest example: Sprite. Ok? You
-       start off with sprite, you take a letter off, one from the
-       interior of the word, take the r away, and we’re left with the
-       word spite, then we take the e off the end, we’re left with spit,
-       we take the s off, we’re left with pit, it, and I."
+   Write a program to find all words that can be reduced in this
+   way, and then find the longest one.
 
-       Write a program to find all words that can be reduced in this
-       way, and then find the longest one.
+   This exercise is a little more challenging than most, so here are
+   some suggestions:
 
-       This exercise is a little more challenging than most, so here are
-       some suggestions:
+   -  You might want to write a function that takes a word and
+      computes a list of all the words that can be formed by
+      removing one letter. These are the “children” of the word.
 
-       -  You might want to write a function that takes a word and
-          computes a list of all the words that can be formed by
-          removing one letter. These are the “children” of the word.
+   -  Recursively, a word is reducible if any of its children are
+      reducible. As a base case, you can consider the empty string
+      reducible.
 
-       -  Recursively, a word is reducible if any of its children are
-          reducible. As a base case, you can consider the empty string
-          reducible.
+   -  The wordlist I provided, ``words.txt``, doesn’t contain single
+      letter words. So you might want to add “I”, “a”, and the empty
+      string.
 
-       -  The wordlist I provided, ``words.txt``, doesn’t contain single
-          letter words. So you might want to add “I”, “a”, and the empty
-          string.
+   -  To improve the performance of your program, you might want to
+      memoize the words that are known to be reducible.
 
-       -  To improve the performance of your program, you might want to
-          memoize the words that are known to be reducible.
+.. rubric:: Footnotes
 
 .. [1]
    In Python 3.0, ``zip`` returns an iterator of tuples, but for most
