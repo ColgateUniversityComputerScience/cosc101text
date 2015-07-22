@@ -19,7 +19,7 @@ can open it with a text editor, but you can also read it from Python.
 The built-in function ``open`` takes the name of the file as a parameter
 and returns a **file object** you can use to read the file.
 
-::
+.. code-block:: python
 
     >>> fin = open('words.txt')
     >>> print fin
@@ -33,7 +33,7 @@ The file object provides several methods for reading, including
 ``readline``, which reads characters from the file until it gets to a
 newline and returns the result as a string:
 
-::
+.. code-block:: python
 
     >>> fin.readline()
     'aa\r\n'
@@ -46,7 +46,7 @@ next.
 The file object keeps track of where it is in the file, so if you call
 ``readline`` again, you get the next word:
 
-::
+.. code-block:: python
 
     >>> fin.readline()
     'aah\r\n'
@@ -55,7 +55,7 @@ The next word is "aah," which is a perfectly legitimate word, so stop
 looking at me like that. If it's the whitespace that’s bothering you, we
 can get rid of it with the string method ``strip``:
 
-::
+.. code-block:: python
 
     >>> line = fin.readline()
     >>> word = line.strip()
@@ -65,7 +65,7 @@ can get rid of it with the string method ``strip``:
 You can also use a file object as part of a ``for`` loop. This program
 reads ``words.txt`` and prints each word, one per line:
 
-::
+.. code-block:: python
 
     fin = open('words.txt')
     for line in fin:
@@ -145,7 +145,7 @@ they can be solved with the search pattern we previously saw with the
 ``find`` function we wrote in the strings chapter. The simplest example
 is:
 
-::
+.. code-block:: python
 
     def has_no_e(word):
         for letter in word:
@@ -161,7 +161,7 @@ find an “e”, so we return ``True``.
 ``avoids`` is a more general version of ``has_no_e`` but it has the same
 structure:
 
-::
+.. code-block:: python
 
     def avoids(word, forbidden):
         for letter in word:
@@ -175,7 +175,7 @@ to the end of the loop, we return ``True``.
 ``uses_only`` is similar except that the sense of the condition is
 reversed:
 
-::
+.. code-block:: python
 
     def uses_only(word, available):
         for letter in word: 
@@ -190,7 +190,7 @@ we can return ``False``.
 ``uses_all`` is similar except that we reverse the role of the word and
 the string of letters:
 
-::
+.. code-block:: python
 
     def uses_all(word, required):
         for letter in required: 
@@ -206,7 +206,7 @@ If you were really thinking like a computer scientist, you would have
 recognized that ``uses_all`` was an instance of a previously-solved
 problem, and you would have written:
 
-::
+.. code-block:: python
 
     def uses_all(word, required):
         return uses_only(required, word)
@@ -226,7 +226,7 @@ anything with the indices.
 For ``is_abecedarian`` we have to compare adjacent letters, which is a
 little tricky with a ``for`` loop:
 
-::
+.. code-block:: python
 
     def is_abecedarian(word):
         previous = word[0]
@@ -238,7 +238,7 @@ little tricky with a ``for`` loop:
 
 An alternative is to use recursion:
 
-::
+.. code-block:: python
 
     def is_abecedarian(word):
         if len(word) <= 1:
@@ -249,7 +249,7 @@ An alternative is to use recursion:
 
 Another option is to use a ``while`` loop:
 
-::
+.. code-block:: python
 
     def is_abecedarian(word):
         i = 0
@@ -278,7 +278,7 @@ second-to-last character to the last, which is what we want.
 Here is a version of ``is_palindrome`` that uses two indices; one starts
 at the beginning and goes up; the other starts at the end and goes down.
 
-::
+.. code-block:: python
 
     def is_palindrome(word):
         i = 0
@@ -295,7 +295,7 @@ at the beginning and goes up; the other starts at the end and goes down.
 Or, if you noticed that this is an instance of a previously-solved
 problem, you might have written:
 
-::
+.. code-block:: python
 
     def is_palindrome(word):
         return is_reverse(word, word)
@@ -340,7 +340,7 @@ a file earlier <#sec:wordlist>`_.
 To write a file, you have to open it with mode ``'w'`` as a second
 parameter:
 
-::
+.. code-block:: python
 
     >>> fout = open('output.txt', 'w')
     >>> print fout
@@ -352,7 +352,7 @@ one is created.
 
 The ``write`` method puts data into the file.
 
-::
+.. code-block:: python
 
     >>> line1 = "This here's the wattle,\n"
     >>> fout.write(line1)
@@ -360,7 +360,7 @@ The ``write`` method puts data into the file.
 Again, the file object keeps track of where it is, so if you call
 ``write`` again, it adds the new data to the end.
 
-::
+.. code-block:: python
 
     >>> line2 = "the emblem of our land.\n"
     >>> fout.write(line2)
@@ -368,7 +368,7 @@ Again, the file object keeps track of where it is, so if you call
 As we saw with reading, when you are done writing, you should close the
 file.
 
-::
+.. code-block:: python
 
     >>> fout.close()
 
@@ -379,7 +379,7 @@ The argument of ``write`` has to be a string, so if we want to put other
 values in a file, we have to convert them to strings. The easiest way to
 do that is with the ``str`` conversion function:
 
-::
+.. code-block:: python
 
     >>> x = 52
     >>> f.write(str(x))
@@ -391,21 +391,23 @@ fields** surrounded by curly braces (``{}``). Arguments to the
 
 Here are some examples:
 
-    ::
+.. code-block:: python
 
+    "My name is {}!".format('Tim!')
 
-            "My name is {}!".format('Tim!')
+which results in the string ``'My name is Tim!'``
 
-    which results in the string ``'My name is Tim!'``
+.. code-block:: python
 
-    ::
+   '''{} is the answer to life, 
+      the universe, 
+      and something else, maybe'''.format(41)
 
-            '''{} is the answer to life, 
-               the universe, 
-               and something else, maybe'''.format(41)
+which results in:
 
-    which results in
-    ``'41 is the answer to life, the universe, and something else, maybe'``
+::
+
+    '41 is the answer to life, the universe, and something else, maybe'
 
 Within the curly braces, you can specify *how* the replacement item
 should be formatted. For example, you can specify that replacement items
@@ -413,53 +415,53 @@ should be centered, left justified, or right justified within some
 column width, or that a floating point number be shown with a certain
 number of decimal places:
 
-    ::
+.. code-block:: python
 
-            'I am {:d} years old in dog years'.format(age * 7)
+    'I am {:d} years old in dog years'.format(age * 7)
 
-        Assuming ``age`` is defined, this will convert ``age * 7`` to a
-        decimal integer (that's the ``d`` in the replacement field). If
-        ``age`` is 2, the resulting string is just
-        ``'I am 14 years old in dog years'``
+Assuming ``age`` is defined, this will convert ``age * 7`` to a
+decimal integer (that's the ``d`` in the replacement field). If
+``age`` is 2, the resulting string is just
+``'I am 14 years old in dog years'``
 
-    ::
+.. code-block:: python
 
-            'Center this: {:^30}'.format('my string')
+    'Center this: {:^30}'.format('my string')
 
-        In this example, the caret character (``^``) means to center the
-        replacement item, and the value 30 is the field width. So the
-        string ``my string`` is centered in a 30-character width. In
-        addition to ``^``, you can use ``<`` to left-justify an item,
-        and ``>`` to right-justify an item.
+In this example, the caret character (``^``) means to center the
+replacement item, and the value 30 is the field width. So the
+string ``my string`` is centered in a 30-character width. In
+addition to ``^``, you can use ``<`` to left-justify an item,
+and ``>`` to right-justify an item.
 
-    ::
+.. code-block:: python
 
-            'PI to 3 decimal places is {:.3f}'.format(math.pi)
+    'PI to 3 decimal places is {:.3f}'.format(math.pi)
 
-        In this example, we specify that we want to convert the
-        replacement item to a floating point number (the ``f``), and
-        show 3 decimal places (the ``.3`` preceding the ``f``).
+In this example, we specify that we want to convert the
+replacement item to a floating point number (the ``f``), and
+show 3 decimal places (the ``.3`` preceding the ``f``).
 
-    ::
+.. code-block:: python
 
-            coords = [4.2, 5.532]
-            'x,y = {:.1f},{:.1f}'.format(coords[0], coords[1])
+    coords = [4.2, 5.532]
+    'x,y = {:.1f},{:.1f}'.format(coords[0], coords[1])
 
-        In this example, we have two replacement fields, each with
-        floating point format specifiers. Because we have two
-        replacement fields, we need two replacement items as arguments
-        to the ``format`` method.
+In this example, we have two replacement fields, each with
+floating point format specifiers. Because we have two
+replacement fields, we need two replacement items as arguments
+to the ``format`` method.
 
 The ``format`` method is useful, but the replacement field syntax is a
-bit complex, and we won't go into any more depth here. For full details,
+bit complex and we won't go into any more depth here. For full details,
 please refer to the Python documentation:
 http://docs.python.org/library/string.html#formatstrings. (Finally, note
 that if you're using a version of Python less than 2.7, the format
 method works a bit differently. Please ensure that you're using Python
 2.7.)
 
-Filenames and paths
--------------------
+Advanced files: filenames and paths
+-----------------------------------
 
 Files are organized into **directories** (also called "folders"). Every
 running program has a "current directory," which is the default
@@ -470,7 +472,7 @@ The ``os`` module provides functions for working with files and
 directories ("os" stands for "operating system"). ``os.getcwd`` returns
 the name of the current directory:
 
-::
+.. code-block:: python
 
     >>> import os
     >>> cwd = os.getcwd()
@@ -489,21 +491,21 @@ The paths we have seen so far are simple filenames, so they are relative
 to the current directory. To find the absolute path to a file, you can
 use ``os.path.abspath``:
 
-::
+.. code-block:: python
 
     >>> os.path.abspath('memo.txt')
     '/Users/jsommers/memo.txt'
 
 ``os.path.exists`` checks whether a file or directory exists:
 
-::
+.. code-block:: python
 
     >>> os.path.exists('memo.txt')
     True
 
 If it exists, ``os.path.isdir`` checks whether it’s a directory:
 
-::
+.. code-block:: python
 
     >>> os.path.isdir('memo.txt')
     False
@@ -515,7 +517,7 @@ Similarly, ``os.path.isfile`` checks whether it’s a file.
 ``os.listdir`` returns a list of the files (and other directories) in
 the given directory:
 
-::
+.. code-block:: python
 
     >>> os.listdir(cwd)
     ['music', 'photos', 'memo.txt']
@@ -524,7 +526,7 @@ To demonstrate these functions, the following example "walks" through a
 directory, prints the names of all the files, and calls itself
 recursively on all the directories.
 
-::
+.. code-block:: python
 
     def walk(dir):
         for name in os.listdir(dir):
@@ -554,21 +556,21 @@ Catching exceptions
 A lot of things can go wrong when you try to read and write files. If
 you try to open a file that doesn’t exist, you get an ``IOError``:
 
-::
+.. code-block:: python
 
     >>> fin = open('bad_file')
     IOError: [Errno 2] No such file or directory: 'bad_file'
 
 If you don’t have permission to access a file:
 
-::
+.. code-block:: python
 
     >>> fout = open('/etc/passwd', 'w')
     IOError: [Errno 13] Permission denied: '/etc/passwd'
 
 And if you try to open a directory for reading, you get
 
-::
+.. code-block:: python
 
     >>> fin = open('/Users')
     IOError: [Errno 21] Is a directory
@@ -582,7 +584,7 @@ It is better to go ahead and try, and deal with problems if they happen,
 which is exactly what the ``try`` statement does. The syntax is similar
 to an ``if`` statement:
 
-::
+.. code-block:: python
 
     try:    
         fin = open('bad_file')
@@ -616,7 +618,7 @@ http://cs.colgate.edu/~jsommers/cosc101/words.txt. Using the ``urllib2``
 module, we can open and process the file, even though it isn't locally
 stored!
 
-::
+.. code-block:: python
 
     import urllib2
 
@@ -633,31 +635,6 @@ by a blank line. Make sure you understand *why* that's the case, and
 that you know how to modify the above program to *only* print each word
 on a line (and not the blank lines).
 
-.. raw:: html
-
-   <!--
-   Here's another example, that launches search queries on the Colgate
-   website.  (What we'll do below is equivalent to going to the Colgate
-   website and doing a "site search".)  For this example, we'll need to use
-
-       import urllib2
-       import urllib
-
-       query = raw_input("What's your query string? ")
-       encoded_query = urllib.quote(query)
-       print encoded_query
-
-       url = 'http://apps.colgate.edu/search/default.aspx?q=' + encoded_query
-       print url
-
-       fh = urllib2.urlopen(url)
-       for line in fh:
-           if 'a href' in line:
-               print line
-
-       fh.close()
-   -->
-
 Writing modules
 ---------------
 
@@ -665,7 +642,7 @@ Any file that contains Python code can be imported as a module. For
 example, suppose you have a file named ``wc.py`` with the following
 code:
 
-::
+.. code-block:: python
 
     def linecount(filename):
         count = 0
@@ -678,21 +655,21 @@ code:
 If you run this program, it reads itself and prints the number of lines
 in the file, which is 7. You can also import it like this:
 
-::
+.. code-block:: python
 
     >>> import wc
     7
 
 Now you have a module object ``wc``:
 
-::
+.. code-block:: python
 
     >>> print wc
     <module 'wc' from 'wc.py'>
 
 That provides a function called ``linecount``:
 
-::
+.. code-block:: python
 
     >>> wc.linecount('wc.py')
     7
@@ -705,7 +682,7 @@ it defines new functions but it doesn’t execute them.
 
 Programs that will be imported as modules often use the following idiom:
 
-::
+.. code-block:: python
 
     if __name__ == '__main__':
         print linecount('wc.py')
@@ -736,7 +713,7 @@ When you are reading and writing files, you might run into problems with
 whitespace. These errors can be hard to debug because spaces, tabs and
 newlines are normally invisible:
 
-::
+.. code-block:: python
 
     >>> s = '1 2\t 3\n 4'
     >>> print s
@@ -747,7 +724,7 @@ The built-in function ``repr`` can help. It takes any object as an
 argument and returns a string representation of the object. For strings,
 it represents whitespace characters with backslash sequences:
 
-::
+.. code-block:: python
 
     >>> print repr(s)
     '1 2\t 3\n 4'
@@ -812,151 +789,119 @@ catch:
     To prevent an exception from terminating a program using the ``try``
     and ``except`` statements.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. This question is based on a Puzzler that was broadcast on the
-       radio program *Car Talk*\  [2]_:
+1. This question is based on a Puzzler that was broadcast on the
+   radio program *Car Talk*\  [2]_:
 
-       Give me a word with three consecutive double letters. I’ll give
-       you a couple of words that almost qualify, but don’t. For
-       example, the word committee, c-o-m-m-i-t-t-e-e. It would be great
-       except for the ‘i’ that sneaks in there. Or Mississippi:
-       M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would
-       work. But there is a word that has three consecutive pairs of
-       letters and to the best of my knowledge this may be the only
-       word. Of course there are probably 500 more but I can only think
-       of one. What is the word?
+   Give me a word with three consecutive double letters. I’ll give
+   you a couple of words that almost qualify, but don’t. For
+   example, the word committee, c-o-m-m-i-t-t-e-e. It would be great
+   except for the ‘i’ that sneaks in there. Or Mississippi:
+   M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would
+   work. But there is a word that has three consecutive pairs of
+   letters and to the best of my knowledge this may be the only
+   word. Of course there are probably 500 more but I can only think
+   of one. What is the word?
 
-       Write a program to find it.
+   Write a program to find it.
 
-    2. Here’s another *Car Talk* Puzzler [3]_:
+2. Here’s another *Car Talk* Puzzler [3]_:
 
-       "I was driving on the highway the other day and I happened to
-       notice my odometer. Like most odometers, it shows six digits, in
-       whole miles only. So, if my car had 300,000 miles, for example,
-       I’d see 3-0-0-0-0-0.
+   "I was driving on the highway the other day and I happened to
+   notice my odometer. Like most odometers, it shows six digits, in
+   whole miles only. So, if my car had 300,000 miles, for example,
+   I’d see 3-0-0-0-0-0.
 
-       "Now, what I saw that day was very interesting. I noticed that
-       the last 4 digits were palindromic; that is, they read the same
-       forward as backward. For example, 5-4-4-5 is a palindrome, so my
-       odometer could have read 3-1-5-4-4-5.
+   "Now, what I saw that day was very interesting. I noticed that
+   the last 4 digits were palindromic; that is, they read the same
+   forward as backward. For example, 5-4-4-5 is a palindrome, so my
+   odometer could have read 3-1-5-4-4-5.
 
-       "One mile later, the last 5 numbers were palindromic. For
-       example, it could have read 3-6-5-4-5-6. One mile after that, the
-       middle 4 out of 6 numbers were palindromic. And you ready for
-       this? One mile later, all 6 were palindromic!
+   "One mile later, the last 5 numbers were palindromic. For
+   example, it could have read 3-6-5-4-5-6. One mile after that, the
+   middle 4 out of 6 numbers were palindromic. And you ready for
+   this? One mile later, all 6 were palindromic!
 
-       "The question is, what was on the odometer when I first looked?"
+   "The question is, what was on the odometer when I first looked?"
 
-       Write a Python program that tests all the six-digit numbers and
-       prints any numbers that satisfy these requirements.
+   Write a Python program that tests all the six-digit numbers and
+   prints any numbers that satisfy these requirements.
 
-    3. Here’s another *Car Talk* Puzzler you can solve with a
-       search [4]_:
+3. Here’s another *Car Talk* Puzzler you can solve with a
+   search [4]_:
 
-       "Recently I had a visit with my mom and we realized that the two
-       digits that make up my age when reversed resulted in her age. For
-       example, if she’s 73, I’m 37. We wondered how often this has
-       happened over the years but we got sidetracked with other topics
-       and we never came up with an answer.
+   "Recently I had a visit with my mom and we realized that the two
+   digits that make up my age when reversed resulted in her age. For
+   example, if she’s 73, I’m 37. We wondered how often this has
+   happened over the years but we got sidetracked with other topics
+   and we never came up with an answer.
 
-       "When I got home I figured out that the digits of our ages have
-       been reversible six times so far. I also figured out that if
-       we’re lucky it would happen again in a few years, and if we’re
-       really lucky it would happen one more time after that. In other
-       words, it would have happened 8 times over all. So the question
-       is, how old am I now?"
+   "When I got home I figured out that the digits of our ages have
+   been reversible six times so far. I also figured out that if
+   we’re lucky it would happen again in a few years, and if we’re
+   really lucky it would happen one more time after that. In other
+   words, it would have happened 8 times over all. So the question
+   is, how old am I now?"
 
-       Write a Python program that searches for solutions to this
-       Puzzler. Hint: you might find the string method ``zfill`` useful.
+   Write a Python program that searches for solutions to this
+   Puzzler. Hint: you might find the string method ``zfill`` useful.
 
-    4. The website http://www.uszip.com provides information about every
-       zip code in the country. For example, the URL
-       http://www.uszip.com/zip/13346 provides information about
-       Hamilton, NY, including population, longitude and latitude, etc.
+4. The website http://www.uszip.com provides information about every
+   zip code in the country. For example, the URL
+   http://www.uszip.com/zip/13346 provides information about
+   Hamilton, NY, including population, longitude and latitude, etc.
 
-       Using the ``urllib2`` module, write a program that prompts the
-       user for a zip code and prints the name and population of the
-       corresponding town.
+   Using the ``urllib2`` module, write a program that prompts the
+   user for a zip code and prints the name and population of the
+   corresponding town.
 
-       Note: the text you get from uszip.com is in HTML, the language
-       most web pages are written in. Even if you don't know HTML, you
-       should be able to extract the information you are looking for.
+   Note: the text you get from uszip.com is in HTML, the language
+   most web pages are written in. Even if you don't know HTML, you
+   should be able to extract the information you are looking for.
 
-       By the way, your program is an example of a "screen scraper." You
-       can read more about this term at
-       http://wikipedia.org/wiki/Screen_scraping.
+   By the way, your program is an example of a "screen scraper." You
+   can read more about this term at
+   http://wikipedia.org/wiki/Screen_scraping.
 
-    5. In a large collection of MP3 files, there may be more than one
-       copy of the same song, stored in different directories or with
-       different file names. The goal of this exercise is to search for
-       these duplicates.
+5. In a large collection of MP3 files, there may be more than one
+   copy of the same song, stored in different directories or with
+   different file names. The goal of this exercise is to search for
+   these duplicates.
 
-       a. Write a program that searches a directory and all of its
-          subdirectories, recursively, and returns a list of complete
-          paths for all files with a given suffix (like ``.mp3``). Hint:
-          ``os.path`` provides several useful functions for manipulating
-          file and path names.
+   a. Write a program that searches a directory and all of its
+      subdirectories, recursively, and returns a list of complete
+      paths for all files with a given suffix (like ``.mp3``). Hint:
+      ``os.path`` provides several useful functions for manipulating
+      file and path names.
 
-       b. To recognize duplicates, you can use a hash function that
-          reads the file and generates a short summary of the contents.
-          For example, MD5 (Message-Digest algorithm 5) takes an
-          arbitrarily-long "message" and returns a 128-bit "checksum."
-          The probability is very small that two files with different
-          contents will return the same checksum. You can read about MD5
-          at http://wikipedia.org/wiki/Md5.
+   b. To recognize duplicates, you can use a hash function that
+      reads the file and generates a short summary of the contents.
+      For example, MD5 (Message-Digest algorithm 5) takes an
+      arbitrarily-long "message" and returns a 128-bit "checksum."
+      The probability is very small that two files with different
+      contents will return the same checksum. You can read about MD5
+      at http://wikipedia.org/wiki/Md5.
 
-          To obtain the MD5 checksum on the contents of a file, you can
-          use the ``hashlib`` module, built in to Python:
+      To obtain the MD5 checksum on the contents of a file, you can
+      use the ``hashlib`` module, built in to Python:
 
-          ::
+      ::
 
-                    >>> import hashlib
-                    >>> csum = hashlib.md5()
-                    >>> csum.update("Nobody inspects the spammish repetition.")
-                    >>> csum.hexdigest()
-                    'dc6480df97e6f16ec0aa18c96522aee6'
+          >>> import hashlib
+          >>> csum = hashlib.md5()
+          >>> csum.update("Nobody inspects the spammish repetition.")
+          >>> csum.hexdigest()
+          'dc6480df97e6f16ec0aa18c96522aee6'
 
-          With the ``update`` method on the ``csum`` object, you can
-          update the checksum by adding new strings (or file contents).
-          When you're done processing the contents of a file, you can
-          use the ``hexdigest`` method to obtain the final checksum in
-          hexadecimal form.
+      With the ``update`` method on the ``csum`` object, you can
+      update the checksum by adding new strings (or file contents).
+      When you're done processing the contents of a file, you can
+      use the ``hexdigest`` method to obtain the final checksum in
+      hexadecimal form.
 
-.. raw:: html
+.. rubric:: Footnotes
 
-   <!--
-   1. The Internet Movie Database (IMDb) is an online collection of
-      information about movies.  Their database is available in plain text
-      format, so it is reasonably easy to read from Python.   Versions of
-      the `actors.list` and `actresses.list` files available from IMDb have
-      been pre-processed to make them easier to use with this exercise. 
-      They are available at:
-
-         * <http://cs.colgate.edu/~jsommers/cosc101/actors.txt.zip>
-         * <http://cs.colgate.edu/~jsommers/cosc101/actresses.txt.zip>
-
-        After you download the files, you'll need to use `unzip` software
-        to decompress the text files before using them.
-
-        (To download the original files, you can go to 
-        <http://www.imdb.com/interfaces#plain>.  The program to process
-        these files, written by Allen Downey, is available
-        at <http://thinkpython.com/code/imdb.py>.)
-
-         a. Two actors are "costars" if they have been in at least one movie
-            together.  Process the `actors.txt` and `actresses.txt` files and
-            build a dictionary that maps each actor or actress to a list of
-            his or her costars.
-
-         a. Write a program that can play the "Six Degrees of Kevin Bacon,"
-            which you can read about at
-            <http://wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon>.  This problem is
-            challenging because it requires you to find the shortest path in a
-            graph. You can read about shortest path algorithms at
-            <http://wikipedia.org/wiki/Shortest_path_problem>.
-   -->
 
 .. [1]
    http://wikipedia.org/wiki/Moby_Project.
