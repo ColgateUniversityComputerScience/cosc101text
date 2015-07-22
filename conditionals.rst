@@ -12,7 +12,7 @@ false. The following examples use the operator ``==``, which compares
 two operands and produces ``True`` if they are equal and ``False``
 otherwise:
 
-::
+.. code-block:: python
 
     >>> 5 == 5
     True
@@ -22,7 +22,7 @@ otherwise:
 ``True`` and ``False`` are special values that belong to the type
 ``bool``; they are not strings:
 
-::
+.. code-block:: python
 
     >>> type(True)
     <type 'bool'>
@@ -32,7 +32,7 @@ otherwise:
 The ``==`` operator is one of the **relational operators**; the others
 are:
 
-::
+.. code-block:: python
 
           x != y               # x is not equal to y
           x > y                # x is greater than y
@@ -49,7 +49,7 @@ relational operator. There is no such thing as ``=<`` or ``=>``.
 You can use the relational operators to check whether a value is within
 a numerical range:
 
-::
+.. code-block:: python
 
     >>> x = 4
     >>> 3 <= x < 5
@@ -58,7 +58,7 @@ a numerical range:
 Besides applying these relational operators to numerical operands, they
 can also be used with strings. To see if two strings are equal:
 
-::
+.. code-block:: python
 
     if word == 'banana':
         print  'All right, bananas.'
@@ -66,7 +66,7 @@ can also be used with strings. To see if two strings are equal:
 Other relational operations are useful for putting words in alphabetical
 order:
 
-::
+.. code-block:: python
 
     if word < 'banana':
         print 'Your word,' + word + ', comes before banana.'
@@ -88,14 +88,14 @@ whether a character or substring is contained within a string. For
 example, both of the following Boolean expressions would evaluate to
 ``True``:
 
-::
+.. code-block:: python
 
     'a' in 'banana'
     'nana' in 'banana'
 
 But this one would evaluate to ``False``:
 
-::
+.. code-block:: python
 
     'A' in 'banana'
 
@@ -109,7 +109,7 @@ integers and yields the remainder when the first operand is divided by
 the second. In Python, the modulus operator is a percent sign (``%``).
 The syntax is the same as for other operators:
 
-::
+.. code-block:: python
 
     >>> quotient = 7 / 3
     >>> print quotient
@@ -147,7 +147,7 @@ Strictly speaking, the operands of the logical operators should be
 boolean expressions, but Python is not very strict. Any nonzero number
 is interpreted as ``True``.
 
-::
+.. code-block:: python
 
     >>> 17 and True
     True
@@ -164,7 +164,7 @@ check conditions and change the behavior of the program accordingly.
 **Conditional statements** give us this ability. The simplest form is
 the ``if`` statement:
 
-::
+.. code-block:: python
 
     if x > 0:
         print 'x is positive'
@@ -187,7 +187,7 @@ one. Occasionally, it is useful to have a body with no statements
 (usually as a place keeper for code you haven’t written yet). In that
 case, you can use the ``pass`` statement, which does nothing.
 
-::
+.. code-block:: python
 
     if x < 0:
         pass          # need to handle negative values!
@@ -199,7 +199,7 @@ A second form of the ``if`` statement is **alternative execution**, in
 which there are two possibilities and the condition determines which one
 gets executed. The syntax looks like this:
 
-::
+.. code-block:: python
 
     if x%2 == 0:
         print 'x is even'
@@ -236,7 +236,7 @@ The function ``random`` returns a random float between 0.0 and 1.0
 (including 0.0 but not 1.0). Each time you call ``random``, you get the
 next number in a long series. To see a sample, run this loop:
 
-::
+.. code-block:: python
 
     import random
 
@@ -247,7 +247,7 @@ next number in a long series. To see a sample, run this loop:
 The function ``randint`` takes parameters ``low`` and ``high`` and
 returns an integer between ``low`` and ``high`` (including both).
 
-::
+.. code-block:: python
 
     >>> random.randint(5, 10)
     5
@@ -257,7 +257,7 @@ returns an integer between ``low`` and ``high`` (including both).
 So, one way to simulate tossing a fair coin (i.e., with equal chance it
 comes up heads or tails), we could use the following program:
 
-::
+.. code-block:: python
 
     import random
 
@@ -270,7 +270,7 @@ The ``randint`` function will return 0 or 1 with equal probability, so
 that will effectively simulate a coin toss. Alternatively, we could use
 the ``random`` function to do the same thing:
 
-::
+.. code-block:: python
 
     import random
 
@@ -286,7 +286,7 @@ Sometimes there are more than two possibilities and we need more than
 two branches. One way to express a computation like that is a **chained
 conditional**:
 
-::
+.. code-block:: python
 
     if x < y:
         print 'x is less than y'
@@ -300,7 +300,7 @@ will be executed*. There is no limit on the number of ``elif``
 statements. If there is an ``else`` clause, it has to be at the end, but
 there doesn't have to be one.
 
-::
+.. code-block:: python
 
     import random
 
@@ -323,7 +323,7 @@ Nested conditionals
 One conditional can also be nested within another. We could have written
 the trichotomy example like this:
 
-::
+.. code-block:: python
 
     if x == y:
         print 'x and y are equal'
@@ -347,7 +347,7 @@ Logical operators often provide a way to simplify nested conditional
 statements. For example, we can rewrite the following code using a
 single conditional:
 
-::
+.. code-block:: python
 
     if 0 < x:
         if x < 10:
@@ -356,7 +356,7 @@ single conditional:
 The ``print`` statement is executed only if we make it past both
 conditionals, so we can get the same effect with the ``and`` operator:
 
-::
+.. code-block:: python
 
     if 0 < x and x < 10:
         print 'x is a positive single-digit number.'
@@ -432,42 +432,43 @@ pseudorandom:
     Pertaining to a sequence of numbers that appear to be random, but
     are generated by a deterministic program.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. Consider the following program:
+1. Consider the following program:
 
-       ::
+.. code-block:: python
 
-           i = input("Gimme a number: ")
-           if i == 0:
-               print "You entered zero"
-           if i == 1:
-               print "You entered one"
-           else:
-               print "You entered something other than zero or one"
+    i = input("Gimme a number: ")
+    if i == 0:
+        print "You entered zero"
+    if i == 1:
+        print "You entered one"
+    else:
+        print "You entered something other than zero or one"
 
-       Given an input of ``0``, what will the program print? Why?
+..
 
-    2. Write a program that asks for the number of a year (e.g., 1982)
-       and prints whether that year was a leap year or not. A year is a
-       leap year if it is evenly divisible by 4. If a year is also
-       evenly divisible by 100 it is *not* a leap year, unless it is
-       evenly divisible by 400 as well.
+   Given an input of ``0``, what will the program print? Why?
 
-       For example, 1980 and 2012 were leap years. 1900 was *not* a leap
-       year (evenly divisible by 100), but 2000 was (evenly divisible by
-       100 *and* 400).
 
-    3. Write a short program to play one round of rock-paper-scissors.
-       Ask the user to enter 0, 1, or 2 to correspond to rock, paper,
-       and scissors. Use the ``random`` module to have the computer
-       randomly choose rock, paper, or scissors. Print a message
-       indicating who wins, or whether there was a tie.
+2. Write a program that asks for the number of a year (e.g., 1982)
+   and prints whether that year was a leap year or not. A year is a
+   leap year if it is evenly divisible by 4. If a year is also
+   evenly divisible by 100 it is *not* a leap year, unless it is
+   evenly divisible by 400 as well.
 
-       For those who haven't played rock, paper, scissors before (and
-       even if you have), read the Wikipedia page for detail on related
-       games, and programs (and robots) that have been built to play
-       RPS: http://en.wikipedia.org/wiki/Rock-paper-scissors.
+   For example, 1980 and 2012 were leap years. 1900 was *not* a leap
+   year (evenly divisible by 100), but 2000 was (evenly divisible by
+   100 *and* 400).
 
+3. Write a short program to play one round of rock-paper-scissors.
+   Ask the user to enter 0, 1, or 2 to correspond to rock, paper,
+   and scissors. Use the ``random`` module to have the computer
+   randomly choose rock, paper, or scissors. Print a message
+   indicating who wins, or whether there was a tie.
+
+   For those who haven't played rock, paper, scissors before (and
+   even if you have), read the Wikipedia page for detail on related
+   games, and programs (and robots) that have been built to play
+   RPS: http://en.wikipedia.org/wiki/Rock-paper-scissors.
 
