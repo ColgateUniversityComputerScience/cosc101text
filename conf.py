@@ -50,15 +50,15 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Solving Problems with Python'
-copyright = '2012-2015, Joel Sommers, Ed.'
+project = 'Solving Problems with Python: Developing Web Applications Edition'
+copyright = '2012-2016, Joel Sommers, Ed.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '07.2015'
+version = '01.2016'
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -233,7 +233,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'spwpbook.tex', 'Solving Problems with Python',
+  ('index', 'cosc140.tex', 'Solving Problems with Python',
 #   'Joel Sommers', 'memoir'),
    'Joel Sommers', 'manual'),
 ]
@@ -302,7 +302,7 @@ texinfo_documents = [
 epub_title = 'Solving Problems with Python'
 epub_author = 'Joel Sommers, Ed.'
 epub_publisher = 'Joel Sommers'
-epub_copyright = '2012-2015, Joel Sommers'
+epub_copyright = '2012-2016, Joel Sommers'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = 'cintro'
@@ -328,7 +328,7 @@ epub_copyright = '2012-2015, Joel Sommers'
 #epub_uid = ''
 
 # A tuple containing the cover image and cover page html template filenames.
-epub_cover = ('seaimg.jpg','epub_cover.html')
+# epub_cover = ('seaimg.jpg','epub_cover.html')
 
 # A sequence of (type, uri, title) tuples for the guide element of content.opf.
 #epub_guide = ()

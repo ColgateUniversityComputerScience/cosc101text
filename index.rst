@@ -4,8 +4,8 @@
    contain the root `toctree` directive.
 
 
-Solving Problems with Python
-============================
+Solving Problems with Python: Developing Web Applications Edition
+=================================================================
 
 .. todolist::
 
@@ -35,18 +35,17 @@ Solving Problems with Python
    datastruct.rst
    oo.rst
    debugging.rst
-   postfix.rst
 
-.. Copyright
-.. ========
+Copyright
+========
 
-.. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License: http://creativecommons.org/licenses/by-nc-sa/4.0/
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
 
-.. Indices and tables
-.. ==================
+Indices and tables
+==================
 
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
