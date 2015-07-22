@@ -12,7 +12,7 @@ List slices
 
 The slice operator we've used for strings also works on lists:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
     >>> t[1:3]
@@ -26,7 +26,7 @@ If you omit the first index, the slice starts at the beginning. If you
 omit the second, the slice goes to the end. So if you omit both, the
 slice is a copy of the whole list.
 
-::
+.. code-block:: python
 
     >>> t[:]
     ['a', 'b', 'c', 'd', 'e', 'f']
@@ -37,7 +37,7 @@ performing operations that fold, spindle, or mutilate lists. [1]_
 A slice operator on the left side of an assignment can update multiple
 elements:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
     >>> t[1:3] = ['x', 'y']
@@ -50,7 +50,7 @@ List methods
 Python provides methods that operate on lists. For example, ``append``
 adds a new element to the end of a list:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c']
     >>> t.append('d')
@@ -59,7 +59,7 @@ adds a new element to the end of a list:
 
 ``extend`` takes a list as an argument and appends all of the elements:
 
-::
+.. code-block:: python
 
     >>> t1 = ['a', 'b', 'c']
     >>> t2 = ['d', 'e']
@@ -71,7 +71,7 @@ This example leaves ``t2`` unmodified.
 
 ``sort`` arranges the elements of the list from low to high:
 
-::
+.. code-block:: python
 
     >>> t = ['d', 'c', 'e', 'b', 'a']
     >>> t.sort()
@@ -81,7 +81,7 @@ This example leaves ``t2`` unmodified.
 Note that the append, extend, and sort methods do not return anything
 (except None). So, a statement like:
 
-::
+.. code-block:: python
 
     t = t.sort()
 
@@ -91,7 +91,7 @@ There is a ``sorted`` *function* built in to Python that takes a list as
 a parameter, and returns a new, sorted list. The original list is
 unchanged:
 
-::
+.. code-block:: python
 
     >>> t = ['d', 'c', 'e', 'b', 'a']
     >>> sorted(t)
@@ -105,7 +105,7 @@ There is also a ``reverse`` method for lists, and a ``reversed``
 *iterator*. The way to turn the iterator into a list is to compose the
 list function with the ``reversed`` function:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c', 'd', 'e']
     >>> t.reverse()
@@ -122,7 +122,7 @@ The ``count`` method, similar to strings, takes one item as a parameter
 and returns an integer count of occurrences of all identical items in
 the list:
 
-::
+.. code-block:: python
 
     >>> t = ['d','c','e','b','a','c','d','c']
     >>> t.count('d')
@@ -140,7 +140,7 @@ if an item you search for (i.e., the first parameter to ``index``) is
 *not* in the list, you'll get a ``ValueError`` exception. Note that
 there is no ``find`` method for lists.
 
-::
+.. code-block:: python
 
     >>> t.index('c')
     1
@@ -157,7 +157,7 @@ Deleting elements
 There are several ways to delete elements from a list. If you know the
 index of the element you want, you can use ``pop``:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c']
     >>> x = t.pop(1)
@@ -171,7 +171,7 @@ you don’t provide an index, it deletes and returns the last element.
 
 If you don’t need the removed value, you can use the ``del`` operator:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c']
     >>> del t[1]
@@ -181,7 +181,7 @@ If you don’t need the removed value, you can use the ``del`` operator:
 If you know the element you want to remove (but not the index), you can
 use ``remove``:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c']
     >>> t.remove('b')
@@ -192,7 +192,7 @@ The return value from ``remove`` is ``None``.
 
 To remove more than one element, you can use ``del`` with a slice index:
 
-::
+.. code-block:: python
 
     >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
     >>> del t[1:5]
@@ -209,7 +209,7 @@ A string is a sequence of characters and a list is a sequence of values,
 but a list of characters is not the same as a string. To convert from a
 string to a list of characters, you can use ``list``:
 
-::
+.. code-block:: python
 
     >>> s = 'spam'
     >>> t = list(s)
@@ -225,7 +225,7 @@ The ``list`` function breaks a string into individual letters. If you
 want to break a string into words, you can use the ``split`` method, as
 we saw in the strings chapter:
 
-::
+.. code-block:: python
 
     >>> s = 'pining for the fjords'
     >>> t = s.split()
@@ -236,7 +236,7 @@ An optional argument called a **delimiter** specifies which characters
 to use as word boundaries. The following example uses a hyphen as a
 delimiter:
 
-::
+.. code-block:: python
 
     >>> s = 'spam-spam-spam'
     >>> delimiter = '-'
@@ -247,7 +247,7 @@ delimiter:
 concatenates the elements. ``join`` is a string method, so you have to
 invoke it on the delimiter and pass the list as a parameter:
 
-::
+.. code-block:: python
 
     >>> t = ['pining', 'for', 'the', 'fjords']
     >>> delimiter = ' '
@@ -263,7 +263,7 @@ Objects and values
 
 If we execute these assignment statements:
 
-::
+.. code-block:: python
 
     a = 'banana'
     b = 'banana'
@@ -284,7 +284,7 @@ the same value. In the second case, they refer to the same object.
 To check whether two variables refer to the same object, you can use the
 ``is`` operator.
 
-::
+.. code-block:: python
 
     >>> a = 'banana'
     >>> b = 'banana'
@@ -296,7 +296,7 @@ and ``b`` refer to it.
 
 But when you create two lists, you get two objects:
 
-::
+.. code-block:: python
 
     >>> a = [1, 2, 3]
     >>> b = [1, 2, 3]
@@ -328,7 +328,7 @@ Aliasing
 If ``a`` refers to an object and you assign ``b = a``, then both
 variables refer to the same object:
 
-::
+.. code-block:: python
 
     >>> a = [1, 2, 3]
     >>> b = a
@@ -353,7 +353,7 @@ that the object is **aliased**.
 If the aliased object is mutable, changes made with one alias affect the
 other:
 
-::
+.. code-block:: python
 
     >>> b[0] = 17
     >>> print a
@@ -365,7 +365,7 @@ is safer to avoid aliasing when you are working with mutable objects.
 For immutable objects like strings, aliasing is not as much of a
 problem. In this example:
 
-::
+.. code-block:: python
 
     a = 'banana'
     b = 'banana'
@@ -381,14 +381,14 @@ list. If the function modifies a list parameter, the caller sees the
 change. For example, ``delete_head`` removes the first element from a
 list:
 
-::
+.. code-block:: python
 
     def delete_head(t):
         del t[0]
 
 Here’s how it is used:
 
-::
+.. code-block:: python
 
     >>> letters = ['a', 'b', 'c']
     >>> delete_head(letters)
@@ -411,7 +411,7 @@ It is important to distinguish between operations that modify lists and
 operations that create new lists. For example, the ``append`` method
 modifies a list, but the ``+`` operator creates a new list:
 
-::
+.. code-block:: python
 
     >>> t1 = [1, 2]
     >>> t2 = t1.append(3)
@@ -430,7 +430,7 @@ This difference is important when you write functions that are supposed
 to modify lists. For example, this function *does not* delete the head
 of a list:
 
-::
+.. code-block:: python
 
     def bad_delete_head(t):
         t = t[1:]              # WRONG!
@@ -442,7 +442,7 @@ as an argument.
 An alternative is to write a function that creates and returns a new
 list. For example, ``tail`` returns all but the first element of a list:
 
-::
+.. code-block:: python
 
     def tail(t):
         return t[1:]
@@ -450,7 +450,7 @@ list. For example, ``tail`` returns all but the first element of a list:
 This function leaves the original list unmodified. Here’s how it is
 used:
 
-::
+.. code-block:: python
 
     >>> letters = ['a', 'b', 'c']
     >>> rest = tail(letters)
@@ -485,7 +485,7 @@ word in the list. Taking approach 3, if we wanted to write a function
 called ``findWord`` that returns the index of the word in the list (or
 -1 if the word isn't found), here's how we could do it:
 
-::
+.. code-block:: python
 
     def findWord(wordlist, word):
         '''
@@ -546,7 +546,7 @@ Map, filter and reduce
 
 To add up all the numbers in a list, you can use a loop like this:
 
-::
+.. code-block:: python
 
     def add_all(t):
         total = 0
@@ -563,7 +563,7 @@ variable used this way is sometimes called an **accumulator**.
 Adding up the elements of a list is such a common operation that Python
 provides the built-in function, ``sum``:
 
-::
+.. code-block:: python
 
     >>> t = [1, 2, 3]
     >>> sum(t)
@@ -576,7 +576,7 @@ Sometimes you want to traverse one list while building another. For
 example, the following function takes a list of strings and returns a
 new list that contains capitalized strings:
 
-::
+.. code-block:: python
 
     def capitalize_all(t):
         res = []
@@ -595,7 +595,7 @@ Another common operation is to select some of the elements from a list
 and return a sublist. For example, the following function takes a list
 of strings and returns a list that contains only the uppercase strings:
 
-::
+.. code-block:: python
 
     def only_upper(t):
         res = []
@@ -609,23 +609,6 @@ contains only upper case letters.
 
 An operation like ``only_upper`` is called a **filter** because it
 selects some of the elements and filters out the others.
-
-.. raw:: html
-
-   <!-- 
-   Most common list operations can be expressed as a combination of map,
-   filter and reduce.  Because these operations are so common, Python
-   provides language features to support them, including the built-in
-   function `map` and an operator called a “list comprehension.”
-    -->
-
-    **Example**:
-
-    1. Write an accumulator function that takes a list of numbers and
-       returns the cumulative sum; that is, a new list where the
-       :math:`i`\ th element is the sum of the first :math:`i+1`
-       elements from the original list. For example, the cumulative sum
-       of ``[1, 2, 3]`` is ``[1, 3, 6]``.
 
 First class functions
 ~~~~~~~~~~~~~~~~~~~~~
@@ -686,7 +669,7 @@ parameters, and returns their sum. We assign the result of the
 function object, just like any function object that gets created with
 ``def``:
 
-::
+.. code-block:: python
 
     >>> addtwo = lambda x, y: x + y
     >>> addtwo
@@ -697,7 +680,7 @@ function object, just like any function object that gets created with
 Now, to modify our example above using a ``lambda`` expression (and
 adding on a couple more examples of mapping):
 
-::
+.. code-block:: python
 
     def mapper(input_list, mapping_function):
         result = []
@@ -724,15 +707,11 @@ of debugging. Here are some common pitfalls and ways to avoid them:
    ``None``. This is the opposite of the string methods, which return a
    new string and leave the original alone.
 
-   If you are used to writing string code like this:
-
-   ::
+   If you are used to writing string code like this::
 
        word = word.strip()
 
-   It is tempting to write list code like this:
-
-   ::
+   It is tempting to write list code like this::
 
        t = t.sort()           # WRONG!
 
@@ -754,16 +733,12 @@ of debugging. Here are some common pitfalls and ways to avoid them:
 
    To add an element, you can use the ``append`` method or the ``+``
    operator. Assuming that ``t`` is a list and ``x`` is a list element,
-   these are right:
-
-   ::
+   these are right::
 
        t.append(x)
        t = t + [x]
 
-   And these are wrong:
-
-   ::
+   And these are wrong::
 
        t.append([x])          # WRONG!
        t = t.append(x)        # WRONG!
@@ -862,74 +837,75 @@ binary search:
     space" is repeately cut in half by applying this same idea to
     smaller and smaller portions of the list.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. Write a function called ``is_sorted`` that takes a list as a
-       parameter and returns ``True`` if the list is sorted in ascending
-       order and ``False`` otherwise. You can assume (as a precondition)
-       that the elements of the list can be compared with the relational
-       operators ``<``, ``>``, etc.
+1. Write a function called ``is_sorted`` that takes a list as a
+   parameter and returns ``True`` if the list is sorted in ascending
+   order and ``False`` otherwise. You can assume (as a precondition)
+   that the elements of the list can be compared with the relational
+   operators ``<``, ``>``, etc.
 
-       For example, ``is_sorted([1,2,2])`` should return ``True`` and
-       ``is_sorted(['b','a'])`` should return ``False``.
+   For example, ``is_sorted([1,2,2])`` should return ``True`` and
+   ``is_sorted(['b','a'])`` should return ``False``.
 
-    2. Two words are anagrams if you can rearrange the letters from one
-       to spell the other. Write a function called ``is_anagram`` that
-       takes two strings and returns ``True`` if they are anagrams.
+2. Two words are anagrams if you can rearrange the letters from one
+   to spell the other. Write a function called ``is_anagram`` that
+   takes two strings and returns ``True`` if they are anagrams.
 
-    3. The (so-called) Birthday Paradox:
+3. The (so-called) Birthday Paradox:
 
-       Write a function called ``has_duplicates`` that takes a list and
-       returns ``True`` if there is any element that appears more than
-       once. It should not modify the original list.
+   Write a function called ``has_duplicates`` that takes a list and
+   returns ``True`` if there is any element that appears more than
+   once. It should not modify the original list.
 
-       If there are 23 students in your class, what are the chances that
-       two of you have the same birthday? You can estimate this
-       probability by generating random samples of 23 birthdays and
-       checking for matches. Hint: you can generate random birthdays
-       with the ``randint`` function in the ``random`` module.
+   If there are 23 students in your class, what are the chances that
+   two of you have the same birthday? You can estimate this
+   probability by generating random samples of 23 birthdays and
+   checking for matches. Hint: you can generate random birthdays
+   with the ``randint`` function in the ``random`` module.
 
-       You can read about this problem at
-       http://wikipedia.org/wiki/Birthday_paradox.
+   You can read about this problem at
+   http://wikipedia.org/wiki/Birthday_paradox.
 
-    4. Write a function called ``remove_duplicates`` that takes a list
-       and returns a new list with only the unique elements from the
-       original. Hint: they don’t have to be in the same order.
+4. Write a function called ``remove_duplicates`` that takes a list
+   and returns a new list with only the unique elements from the
+   original. Hint: they don’t have to be in the same order.
 
-    5. Write a function that reads the file ``words.txt`` and builds a
-       list with one element per word. Write two versions of this
-       function, one using the ``append`` method and the other using the
-       idiom ``t = t + [x]``. Which one takes longer to run? Why?
+5. Write a function that reads the file ``words.txt`` and builds a
+   list with one element per word. Write two versions of this
+   function, one using the ``append`` method and the other using the
+   idiom ``t = t + [x]``. Which one takes longer to run? Why?
 
-    6. Two words are a “reverse pair” if each is the reverse of the
-       other. Write a program that finds all the reverse pairs in the
-       word list.
+6. Two words are a “reverse pair” if each is the reverse of the
+   other. Write a program that finds all the reverse pairs in the
+   word list.
 
-    7. Two words "interlock" if taking alternating letters from each
-       forms a new word [2]_. For example, “shoe” and “cold” interlock
-       to form “schooled.”
+7. Two words "interlock" if taking alternating letters from each
+   forms a new word [2]_. For example, “shoe” and “cold” interlock
+   to form “schooled.”
 
-       a. Write a program that finds all pairs of words that interlock.
-          Hint: don’t enumerate all pairs!
+   a. Write a program that finds all pairs of words that interlock.
+      Hint: don’t enumerate all pairs!
 
-       b. Can you find any words that are three-way interlocked; that
-          is, every third letter forms a word, starting from the first,
-          second or third?
+   b. Can you find any words that are three-way interlocked; that
+      is, every third letter forms a word, starting from the first,
+      second or third?
 
-    8. Binary search implementation.
+8. Binary search implementation.
 
-       a. Write a function called ``bisect_iterative`` that takes a
-          sorted list and a target value and *iteratively* finds and
-          returns the index of the value in the list, if it's there, or
-          ``None`` if it's not. You should use a ``while`` loop and no
-          recursion in this version.
+   a. Write a function called ``bisect_iterative`` that takes a
+      sorted list and a target value and *iteratively* finds and
+      returns the index of the value in the list, if it's there, or
+      ``None`` if it's not. You should use a ``while`` loop and no
+      recursion in this version.
 
-       b. Write a function called ``bisect_recursive`` that takes a
-          sorted list and a target value and *recursively* finds and
-          returns the index of the value in the list, if it's there, or
-          ``None`` if it's not. There should not be any explicit loops
-          in your solution.
+   b. Write a function called ``bisect_recursive`` that takes a
+      sorted list and a target value and *recursively* finds and
+      returns the index of the value in the list, if it's there, or
+      ``None`` if it's not. There should not be any explicit loops
+      in your solution.
+
+.. rubric:: Footnotes
 
 .. [1]
    The admonition "Do not fold, spindle, or mutilate" was printed on the
