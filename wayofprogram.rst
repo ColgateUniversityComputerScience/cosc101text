@@ -1,4 +1,3 @@
-**********************
 The way of the program
 **********************
 
@@ -77,7 +76,7 @@ executed by an interpreter. There are two ways to use the interpreter:
 **interactive mode** and **script mode**. In interactive mode, you type
 Python programs and the interpreter prints the result:
 
-::
+.. code-block:: python
 
     >>> 1 + 1
     2
@@ -89,11 +88,14 @@ Alternatively, you can store code in a file and use the interpreter to
 execute the contents of the file, which is called a **script**. By
 convention, Python scripts have names that end with ``.py``.
 
-In this course (COSC 101), we'll typically be writing programs within a
+In this course, we'll typically be writing programs within a text editor
+
 program called IDLE. A screenshot of IDLE is shown below. (Note that
 this screenshot was taken on a Linux system, and that one Python
 statement was executed in the interpreter after starting it up. On your
 own computer, the window may look slightly different.)
+
+.. todo:: fix this discussion about IDLE; need to update screenshots for Py3k
 
 .. figure:: figs/idlescreen.png
    :align: center
@@ -380,15 +382,15 @@ Traditionally, the first program you write in a new language is called
 "Hello, World!" because all it does is display the words, "Hello,
 World!" In Python, it looks like this:
 
-::
+.. code-block:: python
 
-    print 'Hello, World!'
+    print ('Hello, World!')
 
-This is an example of a **print statement**\  [2]_, which doesn't
+This is an example of a **print function**, which doesn't
 actually print anything on paper. It displays a value on the screen. In
 this case, the result is the words
 
-::
+.. code-block:: python
 
     Hello, World!
 
@@ -424,7 +426,7 @@ emotions. If you are struggling with a difficult bug, you might feel
 angry, despondent or embarrassed.
 
 There is evidence that people naturally respond to computers as if they
-were people. [3]_ When they work well, we think of them as teammates,
+were people[2]_.  When they work well, we think of them as teammates,
 and when they are obstinate or rude, we respond to them the same way we
 respond to rude, obstinate people.
 
@@ -543,48 +545,44 @@ print statement:
     An instruction that causes the Python interpreter to display a value
     on the screen.
 
-Exercises
-=========
 
-    1. Ways to get help in Python. These two quasi-exercises show you
-       ways in which you can get help on different statements and
-       operations in Python.
+.. rubric:: Exercises
 
-       a. Use a web browser to go to the Python website
-          http://python.org. This page contains information about Python
-          and links to Python-related pages, and it gives you the
-          ability to search the Python documentation.
+1. Ways to get help in Python. These two quasi-exercises show you
+   ways in which you can get help on different statements and
+   operations in Python.
 
-          For example, if you enter ``print`` in the search window, the
-          first link that appears is the documentation of the ``print``
-          statement. At this point, not all of it will make sense to
-          you, but it is good to know where it is.
+   a. Use a web browser to go to the Python website
+      http://python.org. This page contains information about Python
+      and links to Python-related pages, and it gives you the
+      ability to search the Python documentation.
 
-       b. Start the Python interpreter and type ``help()`` to start the
-          online help utility. Or you can type ``help('print')`` to get
-          information about the ``print`` statement.
+      For example, if you enter ``print`` in the search window, the
+      first link that appears is the documentation of the ``print``
+      statement. At this point, not all of it will make sense to
+      you, but it is good to know where it is.
 
-    2. Start the Python interpreter and use it as a calculator. Python's
-       syntax for math operations is almost the same as standard
-       mathematical notation. For example, the symbols ``+``, ``-`` and
-       ``/`` denote addition, subtraction and division, as you would
-       expect. The symbol for multiplication is ``*``.
+   b. Start the Python interpreter and type ``help()`` to start the
+      online help utility. Or you can type ``help('print')`` to get
+      information about the ``print`` statement.
 
-       a. If you run a 10 kilometer race in 43 minutes 30 seconds, what
-          is your average time per mile? What is your average speed in
-          miles per hour? (Hint: there are 1.61 kilometers in a mile).
+2. Start the Python interpreter and use it as a calculator. Python's
+   syntax for math operations is almost the same as standard
+   mathematical notation. For example, the symbols ``+``, ``-`` and
+   ``/`` denote addition, subtraction and division, as you would
+   expect. The symbol for multiplication is ``*``.
 
-       b. How many seconds are there in 8 weeks? Write a one-line Python
-          program to print the answer.
+   a. If you run a 10 kilometer race in 43 minutes 30 seconds, what
+      is your average time per mile? What is your average speed in
+      miles per hour? (Hint: there are 1.61 kilometers in a mile).
+
+   b. How many seconds are there in 8 weeks? Write a one-line Python
+      program to print the answer.
 
 .. [1]
    This idiom means that someone realized something after a period of
    confusion.
 
 .. [2]
-   In Python 3.0, ``print`` is a function, not a statement, so the
-   syntax is ``print('Hello, World!')``. We will get to functions soon!
-
-.. [3]
    See Reeves and Nass, *The Media Equation: How People Treat Computers,
    Television, and New Media Like Real People and Places*.
