@@ -16,7 +16,7 @@ a list are called **elements** or sometimes **items**.
 There are several ways to create a new list; the simplest is to enclose
 the comma-separated elements in square brackets (``[`` and ``]``):
 
-::
+.. code-block:: python
 
     [10, 20, 30, 40]
     ['crunchy frog', 'ram bladder', 'lark vomit']
@@ -26,7 +26,7 @@ three strings. (Mmmm... crunchy frog.) The elements of a list don’t have
 to be the same type. The following list contains a string, a float, an
 integer, and (lo!) another list:
 
-::
+.. code-block:: python
 
     ['spam', 2.0, 5, [10, 20]]
 
@@ -37,7 +37,7 @@ one with empty brackets, ``[]``.
 
 As you might expect, you can assign list values to variables:
 
-::
+.. code-block:: python
 
     >>> cheeses = ['Cheddar', 'Edam', 'Gouda']
     >>> numbers = [17, 123]
@@ -53,7 +53,7 @@ accessing the characters of a string---the bracket operator. The
 expression inside the brackets specifies the index. Remember that the
 indices start at 0:
 
-::
+.. code-block:: python
 
     >>> print cheeses[0]
     Cheddar
@@ -62,7 +62,7 @@ Unlike strings, lists are *mutable*. When the bracket operator appears
 on the left side of an assignment, it identifies the element of the list
 that will be modified through assignment.
 
-::
+.. code-block:: python
 
     >>> numbers = [17, 123]
     >>> numbers[1] = 5
@@ -100,7 +100,7 @@ List indices work the same way as string indices:
 
 The ``in`` operator also works on lists.
 
-::
+.. code-block:: python
 
     >>> cheeses = ['Cheddar', 'Edam', 'Gouda']
     >>> 'Edam' in cheeses
@@ -114,7 +114,7 @@ Traversing a list
 The most common way to traverse the elements of a list is with a ``for``
 loop. The syntax is the same as for strings:
 
-::
+.. code-block:: python
 
     for cheese in cheeses:
         print cheese
@@ -123,7 +123,7 @@ This works well if you only need to read the elements of the list. But
 if you want to write or update the elements, you need the indices. A
 common way to do that is to combine the functions ``range`` and ``len``:
 
-::
+.. code-block:: python
 
     for i in range(len(numbers)):
         numbers[i] = numbers[i] * 2
@@ -137,7 +137,7 @@ element and to assign the new value.
 
 A ``for`` loop over an empty list never executes the body:
 
-::
+.. code-block:: python
 
     for x in []:
         print 'This never happens.'
@@ -145,7 +145,7 @@ A ``for`` loop over an empty list never executes the body:
 Although a list can contain another list, the nested list still counts
 as a single element. The length of this list is four:
 
-::
+.. code-block:: python
 
     ['spam', 1, ['Brie', 'Roquefort', 'Pol le Veq'], [1, 2, 3]]
 
@@ -155,7 +155,7 @@ as a single element. The length of this list is four:
 Earlier, we learned to use the ``range`` function to loop over the
 indices of a string:
 
-::
+.. code-block:: python
 
     # count the lower case e's in a string
     count = 0
@@ -176,7 +176,7 @@ parameters, ``range(i, j, k)`` the third value represents a ``step`` to
 increment or decrement by when creating the sequence. It is, by default,
 1, but can be any integral value. Here are some examples with ``range``:
 
-::
+.. code-block:: python
 
     >>> range(4)
     [0, 1, 2, 3]
@@ -192,7 +192,7 @@ List operations
 
 The ``+`` operator concatenates lists, similar to string concatenation:
 
-::
+.. code-block:: python
 
     >>> a = [1, 2, 3]
     >>> b = [4, 5, 6]
@@ -203,7 +203,7 @@ The ``+`` operator concatenates lists, similar to string concatenation:
 In the same way, the ``*`` operator repeats a list a given number of
 times:
 
-::
+.. code-block:: python
 
     >>> [0] * 4
     [0, 0, 0, 0]
@@ -219,7 +219,7 @@ also ``min``, ``max``, and ``sum``, which return the minimum and maximum
 values in a list, and the sum of a list of integers, respectively. For
 example:
 
-::
+.. code-block:: python
 
     >>> mylist = [1,3,6,42]
     >>> len(mylist)
@@ -248,7 +248,7 @@ Let's say we're obsessed with rockets blasting off to the moon, and that
 we want a function that prints a "countdown" sequence. Here is how we
 might do that with a ``while`` statement:
 
-::
+.. code-block:: python
 
     def countdown(n):
         while n > 0:
@@ -283,7 +283,7 @@ the value of ``n`` gets smaller each time through the loop, so
 eventually we have to get to 0. In other cases, it is not so easy to
 tell:
 
-::
+.. code-block:: python
 
     def sequence(n):
         while n != 1:
@@ -324,7 +324,7 @@ through the body. In that case you can use the ``break`` statement to
 For example, suppose you want to take input from the user until they
 type ``done``. You could write:
 
-::
+.. code-block:: python
 
     while True:
         line = raw_input('> ')
@@ -342,7 +342,7 @@ user types ``done``, the ``break`` statement exits the loop. Otherwise
 the program echoes whatever the user types and goes back to the top of
 the loop. Here’s a sample run:
 
-::
+.. code-block:: python
 
     > not done
     not done
@@ -369,7 +369,7 @@ with the following formula:
 
 For example, if :math:`a` is 4 and :math:`x` is 3:
 
-::
+.. code-block:: python
 
     >>> a = 4.0
     >>> x = 3.0
@@ -380,7 +380,7 @@ For example, if :math:`a` is 4 and :math:`x` is 3:
 Which is closer to the correct answer (:math:`\sqrt{4} = 2`). If we
 repeat the process with the new estimate, it gets even closer:
 
-::
+.. code-block:: python
 
     >>> x = y
     >>> y = (x + a/x) / 2
@@ -389,7 +389,7 @@ repeat the process with the new estimate, it gets even closer:
 
 After a few more updates, the estimate is almost exact:
 
-::
+.. code-block:: python
 
     >>> x = y
     >>> y = (x + a/x) / 2
@@ -404,7 +404,7 @@ In general we don’t know ahead of time how many steps it will take to
 get to the right answer, but we know when we get there because the
 estimate stops changing:
 
-::
+.. code-block:: python
 
     >>> x = y
     >>> y = (x + a/x) / 2
@@ -418,7 +418,7 @@ estimate stops changing:
 When ``y == x``, we can stop. Here is a loop that starts with an initial
 estimate, ``x``, and improves it until it stops changing:
 
-::
+.. code-block:: python
 
     while True:
         print x
@@ -436,7 +436,7 @@ Rather than checking whether ``x`` and ``y`` are exactly equal, it is
 safer to use the built-in function ``abs`` to compute the absolute
 value, or magnitude, of the difference between them:
 
-::
+.. code-block:: python
 
         if abs(y-x) < epsilon:
             break
@@ -474,14 +474,6 @@ subtraction with borrowing, and long division are all algorithms. One of
 the characteristics of algorithms is that they do not require any
 intelligence to carry out. They are mechanical processes in which each
 step follows from the last according to a simple set of rules.
-
-.. raw:: html
-
-   <!--
-   In my opinion, it is embarrassing that humans spend so much time in
-   school learning to execute algorithms that, quite literally, require no
-   intelligence.
-   -->
 
 The process of designing algorithms is interesting, intellectually
 challenging, and a central part of what we call *program design*. Some
@@ -542,76 +534,79 @@ iteration:
 infinite loop:
     A loop in which the terminating condition is never satisfied.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. To test the square root algorithm in this chapter, you could
-       compare it with ``math.sqrt``. Write a function named
-       ``test_square_root`` that prints a table like this:
 
-       +-------------+----------------------+--------------------+---------------------+
-       | :math:`a`   | ``square_root(a)``   | ``math.sqrt(a)``   | difference          |
-       +=============+======================+====================+=====================+
-       | 1.0         | 1.0                  | 1.0                | 0.0                 |
-       +-------------+----------------------+--------------------+---------------------+
-       | 2.0         | 1.41421356237        | 1.41421356237      | 2.22044604925e-16   |
-       +-------------+----------------------+--------------------+---------------------+
-       | 3.0         | 1.73205080757        | 1.73205080757      | 0.0                 |
-       +-------------+----------------------+--------------------+---------------------+
-       | 4.0         | 2.0                  | 2.0                | 0.0                 |
-       +-------------+----------------------+--------------------+---------------------+
-       | 5.0         | 2.2360679775         | 2.2360679775       | 0.0                 |
-       +-------------+----------------------+--------------------+---------------------+
-       | 6.0         | 2.44948974278        | 2.44948974278      | 0.0                 |
-       +-------------+----------------------+--------------------+---------------------+
-       | 7.0         | 2.64575131106        | 2.64575131106      | 0.0                 |
-       +-------------+----------------------+--------------------+---------------------+
-       | 8.0         | 2.82842712475        | 2.82842712475      | 4.4408920985e-16    |
-       +-------------+----------------------+--------------------+---------------------+
-       | 9.0         | 3.0                  | 3.0                | 0.0                 |
-       +-------------+----------------------+--------------------+---------------------+
+1. To test the square root algorithm in this chapter, you could
+   compare it with ``math.sqrt``. Write a function named
+   ``test_square_root`` that prints a table like this:
 
-       The first column is a number, :math:`a`; the second column is the
-       square root of :math:`a` computed with the ``square_root``
-       function; the third column is the square root computed by
-       ``math.sqrt``; the fourth column is the absolute value of the
-       difference between the two estimates.
+   +-------------+----------------------+--------------------+---------------------+
+   | :math:`a`   | ``square_root(a)``   | ``math.sqrt(a)``   | difference          |
+   +=============+======================+====================+=====================+
+   | 1.0         | 1.0                  | 1.0                | 0.0                 |
+   +-------------+----------------------+--------------------+---------------------+
+   | 2.0         | 1.41421356237        | 1.41421356237      | 2.22044604925e-16   |
+   +-------------+----------------------+--------------------+---------------------+
+   | 3.0         | 1.73205080757        | 1.73205080757      | 0.0                 |
+   +-------------+----------------------+--------------------+---------------------+
+   | 4.0         | 2.0                  | 2.0                | 0.0                 |
+   +-------------+----------------------+--------------------+---------------------+
+   | 5.0         | 2.2360679775         | 2.2360679775       | 0.0                 |
+   +-------------+----------------------+--------------------+---------------------+
+   | 6.0         | 2.44948974278        | 2.44948974278      | 0.0                 |
+   +-------------+----------------------+--------------------+---------------------+
+   | 7.0         | 2.64575131106        | 2.64575131106      | 0.0                 |
+   +-------------+----------------------+--------------------+---------------------+
+   | 8.0         | 2.82842712475        | 2.82842712475      | 4.4408920985e-16    |
+   +-------------+----------------------+--------------------+---------------------+
+   | 9.0         | 3.0                  | 3.0                | 0.0                 |
+   +-------------+----------------------+--------------------+---------------------+
 
-    2. The built-in function ``eval`` takes a string and evaluates it
-       using the Python interpreter. For example:
+   The first column is a number, :math:`a`; the second column is the
+   square root of :math:`a` computed with the ``square_root``
+   function; the third column is the square root computed by
+   ``math.sqrt``; the fourth column is the absolute value of the
+   difference between the two estimates.
 
-       ::
+2. The built-in function ``eval`` takes a string and evaluates it
+   using the Python interpreter. For example::
 
-           >>> eval('1 + 2 * 3')
-           7
-           >>> import math
-           >>> eval('math.sqrt(5)')
-           2.2360679774997898
-           >>> eval('type(math.pi)')
-           <type 'float'>
+       >>> eval('1 + 2 * 3')
+       7
+       >>> import math
+       >>> eval('math.sqrt(5)')
+       2.2360679774997898
+       >>> eval('type(math.pi)')
+       <type 'float'>
 
-       Write a function called ``eval_loop`` that iteratively prompts
-       the user, takes the resulting input and evaluates it using
-       ``eval``, and prints the result.
+   Write a function called ``eval_loop`` that iteratively prompts
+   the user, takes the resulting input and evaluates it using
+   ``eval``, and prints the result.
 
-       It should continue until the user enters ``'done'``, and then
-       return the value of the last expression it evaluated.
+   It should continue until the user enters ``'done'``, and then
+   return the value of the last expression it evaluated.
 
-    3. The brilliant mathematician Srinivasa Ramanujan found an infinite
-       series [2]_ that can be used to generate a numerical
-       approximation of :math:`\pi`:
+3. The brilliant mathematician Srinivasa Ramanujan found an infinite
+   series [2]_ that can be used to generate a numerical
+   approximation of :math:`\pi`:
 
-       .. math::
+.. math::
 
-          \frac{1}{\pi} = \frac{2\sqrt{2}}{9801} 
-           \sum^\infty_{k=0} \frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}
+   \frac{1}{\pi} = \frac{2\sqrt{2}}{9801} 
+   \sum^\infty_{k=0} \frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}
 
-       Write a function called ``estimate_pi`` that uses this formula to
-       compute and return an estimate of :math:`\pi`. It should use a
-       ``while`` loop to compute terms of the summation until the last
-       term is smaller than ``1e-15`` (which is Python notation for
-       :math:`10^{-15}`). You can check the result by comparing it to
-       ``math.pi``.
+..
+
+   Write a function called ``estimate_pi`` that uses this formula to
+   compute and return an estimate of :math:`\pi`. It should use a
+   ``while`` loop to compute terms of the summation until the last
+   term is smaller than ``1e-15`` (which is Python notation for
+   :math:`10^{-15}`). You can check the result by comparing it to
+   ``math.pi``.
+
+
+.. rubric:: Footnotes
 
 .. [1]
    See http://wikipedia.org/wiki/Collatz_conjecture.
