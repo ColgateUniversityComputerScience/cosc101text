@@ -40,13 +40,13 @@ write a Python program to evaluate it. The first step is to decide what
 the parameters should be. In this case it should be clear that
 ``factorial`` takes an integer:
 
-::
+.. code-block:: python
 
     def factorial(n):
 
 If the argument happens to be 0, all we have to do is return 1:
 
-::
+.. code-block:: python
 
     def factorial(n):
         if n == 0:
@@ -56,7 +56,7 @@ Otherwise, and this is the interesting part, we have to make a recursive
 call to find the factorial of :math:`n-1` and then multiply it by
 :math:`n`:
 
-::
+.. code-block:: python
 
     def factorial(n):
         if n == 0:
@@ -119,7 +119,7 @@ consider how a problem can be formulated in terms of "smaller" versions
 of itself. In the case of the ``factorial`` function, we directly use
 the mathematical definition to accomplish this:
 
-::
+.. code-block:: python
 
     factorial(n) = n * factorial(n-1)
 
@@ -143,7 +143,7 @@ calls forever, and the program never terminates. This is known as
 **infinite recursion**, and it is generally not a good idea. Here is a
 minimal program with an infinite recursion:
 
-::
+.. code-block:: python
 
     def recurse():
         recurse()
@@ -152,7 +152,7 @@ In most programming environments, a program with infinite recursion does
 not really run forever. Python reports an error message when the maximum
 recursion depth is reached:
 
-::
+.. code-block:: python
 
       File "<stdin>", line 2, in recurse
       File "<stdin>", line 2, in recurse
@@ -183,11 +183,10 @@ work because the people who wrote the built-in functions were good
 programmers.
 
 The same is true when you call one of your own functions. For example,
-`we previously wrote a function called
-``is_divisible`` <#sec:booleanfn>`_ that determines whether one number
-is divisible by another. Once we have convinced ourselves that this
-function is correct—by examining the code and testing—we can use the
-function without looking at the body again.
+we previously wrote a function called ``is_divisible`` that determines 
+whether one number is divisible by another. Once we have convinced ourselves 
+that this function is correct—by examining the code and testing—we can 
+use the function without looking at the body again.
 
 The same is true of recursive programs. When you get to the recursive
 call, instead of following the flow of execution, you should assume that
@@ -221,7 +220,7 @@ function, it follows a *decrease and conquer* approach. The
 
 Translated into Python, it looks like this:
 
-::
+.. code-block:: python
 
     def fibonacci (n):
         if n == 0:
@@ -276,7 +275,7 @@ problem size! We can then check if the remaining string is a palindrome
 no chance the string is a palindrome. Translating all that to a
 function:
 
-::
+.. code-block:: python
 
     def isPalindrome(s):
         # string of 1 or fewer characters
@@ -301,7 +300,7 @@ Checking types
 
 What happens if we call ``factorial`` and give it 1.5 as an argument?
 
-::
+.. code-block:: python
 
     >>> factorial(1.5)
     RuntimeError: Maximum recursion depth exceeded
@@ -324,7 +323,7 @@ We can use the built-in function ``isinstance`` to verify the type of
 the argument. While we’re at it, we can also make sure the argument is
 positive:
 
-::
+.. code-block:: python
 
     def factorial (n):
         if not isinstance(n, int):
@@ -342,7 +341,7 @@ The first base case handles nonintegers; the second catches negative
 integers. In both cases, the program prints an error message and returns
 ``None`` to indicate that something went wrong:
 
-::
+.. code-block:: python
 
     >>> factorial('fred')
     Factorial is only defined for integers.
@@ -386,7 +385,7 @@ make the flow of execution more visible, especially when debugging
 recursive functions. For example, here is a version of ``factorial``
 with print statements:
 
-::
+.. code-block:: python
 
     def factorial(n):
         space = ' ' * (4 * n)
@@ -436,115 +435,120 @@ infinite recursion:
     A recursion that doesn’t have a base case, or never reaches it.
     Eventually, an infinite recursion causes a runtime error.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. Write a function that takes a possibly empty list of integers as
-       a parameter, and recursively computes and returns the sum of the
-       list of numbers. You can not use any built-in Python functions
-       except for ``len``.
 
-    2. Write a function that takes a possibly empty string as a
-       parameter and recursively produces a reversed copy of the string.
+1. Write a function that takes a possibly empty list of integers as
+   a parameter, and recursively computes and returns the sum of the
+   list of numbers. You can not use any built-in Python functions
+   except for ``len``.
 
-    3. Similar to the last problem, write a function that takes a
-       possibly empty *list* as a parameter (the list may contain *any*
-       Python data types), and recursively produces a reversed copy of
-       the list.
+2. Write a function that takes a possibly empty string as a
+   parameter and recursively produces a reversed copy of the string.
 
-    4. Read the following function and see if you can figure out what it
-       does, then run it.
+3. Similar to the last problem, write a function that takes a
+   possibly empty *list* as a parameter (the list may contain *any*
+   Python data types), and recursively produces a reversed copy of
+   the list.
 
-       ::
+4. Read the following function and see if you can figure out what it
+   does, then run it.
 
-           import turtle
+.. code-block:: python
 
-           def draw(length, n):
-               if n == 0:
-                   return
-               angle = 50
-               turtle.forward(length*n)
-               turtle.left(angle)
-               draw(length, n-1)
-               turtle.right(2*angle)
-               draw(length, n-1)
-               turtle.left(angle)
-               turtle.backward(length*n)
+   import turtle
 
-           draw(10, 4)
-           turtle.done()
+   def draw(length, n):
+       if n == 0:
+           return
+       angle = 50
+       turtle.forward(length*n)
+       turtle.left(angle)
+       draw(length, n-1)
+       turtle.right(2*angle)
+       draw(length, n-1)
+       turtle.left(angle)
+       turtle.backward(length*n)
 
-    5. The Koch curve is a fractal that looks something like this:
+   draw(10, 4)
+   turtle.done()
 
-       .. figure:: figs/koch.png
-          :align: center
-          :alt: Koch curve fractal.
+..
 
-          Koch curve fractal.
+5. The Koch curve is a fractal that looks something like this:
 
-       To draw a Koch curve with length :math:`x`, all you have to do is
+.. figure:: figs/koch.png
+   :align: center
+   :alt: Koch curve fractal.
 
-       1. Draw a Koch curve with length :math:`x/3`.
+   Koch curve fractal.
 
-       2. Turn left 60 degrees.
+..
 
-       3. Draw a Koch curve with length :math:`x/3`.
+   To draw a Koch curve with length :math:`x`, all you have to do is
 
-       4. Turn right 120 degrees.
+   1. Draw a Koch curve with length :math:`x/3`.
 
-       5. Draw a Koch curve with length :math:`x/3`.
+   2. Turn left 60 degrees.
 
-       6. Turn left 60 degrees.
+   3. Draw a Koch curve with length :math:`x/3`.
 
-       7. Draw a Koch curve with length :math:`x/3`.
+   4. Turn right 120 degrees.
 
-       The only exception is if :math:`x` is less than 3. In that case,
-       you can just draw a straight line with length :math:`x`.
+   5. Draw a Koch curve with length :math:`x/3`.
 
-       a. Write a function called ``koch`` that takes a turtle and a
-          length as parameters, and that uses the turtle to draw a Koch
-          curve with the given length.
+   6. Turn left 60 degrees.
 
-       b. Write a function called ``snowflake`` that draws three Koch
-          curves to make the outline of a snowflake.
+   7. Draw a Koch curve with length :math:`x/3`.
 
-       c. The Koch curve can be generalized in several ways. See
-          http://wikipedia.org/wiki/Koch_snowflake for examples and
-          implement your favorite.
+   The only exception is if :math:`x` is less than 3. In that case,
+   you can just draw a straight line with length :math:`x`.
 
-    6. The Ackermann function, :math:`A(m, n)`, is defined [3]_ as:
+     a. Write a function called ``koch`` that takes a turtle and a
+        length as parameters, and that uses the turtle to draw a Koch
+        curve with the given length.
 
-       :math:`A(m,n) =`
+     b. Write a function called ``snowflake`` that draws three Koch
+        curves to make the outline of a snowflake.
+
+     c. The Koch curve can be generalized in several ways. See
+        http://wikipedia.org/wiki/Koch_snowflake for examples and
+        implement your favorite.
+
+6. The Ackermann function, :math:`A(m, n)`, is defined [3]_ as:
+
+   :math:`A(m,n) =`
        
-         * :math:`n+1` if :math:`m = 0`
-         * :math:`A(m-1,1)` if :math:`m > 0 and n = 0`
-         * :math:`A(m-1, A(m, n-1))` if :math:`m > 0` and :math:`n > 0`
+   * :math:`n+1` if :math:`m = 0`
+   * :math:`A(m-1,1)` if :math:`m > 0 and n = 0`
+   * :math:`A(m-1, A(m, n-1))` if :math:`m > 0` and :math:`n > 0`
 
+..
 
-    ::
+   Write a function named `ack` that evaluates Ackerman’s function.
+   Use your function to evaluate `ack(3, 4)`, which should be 125. What
+   happens for larger values of `m` and `n`?
 
-       Write a function named `ack` that evaluates Ackerman’s function.
-       Use your function to evaluate `ack(3, 4)`, which should be 125. What
-       happens for larger values of `m` and `n`?
+7. A number, :math:`a`, is a power of :math:`b` if it is divisible
+   by :math:`b` and :math:`a/b` is a power of :math:`b`. Write a
+   function called ``is_power`` that takes parameters ``a`` and
+   ``b`` and returns ``True`` if ``a`` is a power of ``b``.
 
-    7. A number, :math:`a`, is a power of :math:`b` if it is divisible
-       by :math:`b` and :math:`a/b` is a power of :math:`b`. Write a
-       function called ``is_power`` that takes parameters ``a`` and
-       ``b`` and returns ``True`` if ``a`` is a power of ``b``.
+8. The greatest common divisor (GCD) of :math:`a` and :math:`b` is
+   the largest number that divides both of them with no
+   remainder [4]_.
 
-    8. The greatest common divisor (GCD) of :math:`a` and :math:`b` is
-       the largest number that divides both of them with no
-       remainder [4]_.
+   One way to find the GCD of two numbers is Euclid’s algorithm,
+   which is based on the observation that if :math:`r` is the
+   remainder when :math:`a` is divided by :math:`b`, then
+   :math:`gcd(a, b) = gcd(b, r)`. As a base case, we can consider
+   :math:`gcd(a, 0) = a`.
 
-       One way to find the GCD of two numbers is Euclid’s algorithm,
-       which is based on the observation that if :math:`r` is the
-       remainder when :math:`a` is divided by :math:`b`, then
-       :math:`gcd(a, b) = gcd(b, r)`. As a base case, we can consider
-       :math:`gcd(a, 0) = a`.
+   Write a function called ``gcd`` that takes parameters ``a`` and
+   ``b`` and returns their greatest common divisor. If you need
+   help, see http://wikipedia.org/wiki/Euclidean_algorithm.
 
-       Write a function called ``gcd`` that takes parameters ``a`` and
-       ``b`` and returns their greatest common divisor. If you need
-       help, see http://wikipedia.org/wiki/Euclidean_algorithm.
+.. rubric:: Footnotes
 
 .. [1]
    See http://wikipedia.org/wiki/Fibonacci_number.
