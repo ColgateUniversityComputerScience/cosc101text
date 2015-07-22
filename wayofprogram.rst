@@ -86,56 +86,45 @@ Python programs and the interpreter prints the result:
 The chevron, ``>>>``, is the **prompt** the interpreter uses to indicate
 that it is ready. If you type ``1 + 1``, the interpreter replies ``2``.
 
-Alternatively, you can store code in a file and use the interpreter to
-execute the contents of the file, which is called a **script**. By
-convention, Python scripts have names that end with ``.py``.
+To start Python in interactive interpreter mode, you can open a terminal
+application on your computer [1]_, then type ``python3``.  You should
+see a prompt similar to the following:
 
-In this course, we'll typically be writing programs within a text editor
-program called IDLE. A screenshot of IDLE is shown below. (Note that
-this screenshot was taken on a Linux system, and that one Python
-statement was executed in the interpreter after starting it up. On your
-own computer, the window may look slightly different.)
-
-.. figure:: figs/idlescreen.png
+.. figure:: figs/shellblank.png
    :align: center
-   :alt: Main IDLE window (the "shell").
+   :alt: A "blank" shell terminal after starting up Python version 3.
 
-   Main IDLE window (the "shell").
+The ``>>>`` prompt indicates that the Python3 interpreter is waiting to
+accept statements and commands from you.  At this point you *could* write
+any valid Python statement or expression, including a complete program.
+For many short examples in this book, that's exactly what we'll do, but for
+longer programs this is a bad idea: a mistake on one line can result
+in having to retype lots of code.  Instead, it is common to open a
+separate text editor window to write a program (often referred to as
+a **script**), then run the program at the shell.  By convention, Python
+programs/scripts have names that end with ``.py``.
 
-This window is what you'll see once IDLE first starts up. This window is
-also referred to as the "shell". All that means is that it is this
-window in which you can directly interact with the Python interpreter.
-We'll frequently use this window to experiment with different Python
-statements and expressions and for very short (1--2 line) programs. For
-anything more than a few lines, you should write and save your program
-as a "script". To create a script using IDLE, simply go to the File menu
-and select "New window". In the window that opens, you can type your
-program. To execute (run) the program, you can go to the "Run" menu and
-select "Run module". The screenshot below shows IDLE with a 1-line
-script. Again, IDLE running on other computer systems may look slightly
-different.
+There are many different text editors you can use to write your Python
+programs.  On Linux, common editors include ``gvim`` and ``gedit``.  On
+MacOS X, ``vim`` and ``Sublime Text`` are popular editors [2]_.  The
+following window shows the ``gvim`` program on Linux with one line of code
+already written (we'll look at this example further below):
 
-.. figure:: figs/idlescript.png
+.. figure:: figs/editorwindow.png
    :align: center
-   :alt: IDLE with a script window.
+   :alt: A gvim editor window
 
-   IDLE with a script window.
+Assuming that we save this program in a file named ``hello.py``, we could
+run this program at the shell by typing ``python3 hello.py``, as shown
+below:
 
-There are other ways to execute Python scripts. For example, you can
-open a terminal window and type ``python myprogram.py`` (assuming you
-saved a script in the file ``myprogram.py``). The details of opening a
-terminal window and executing Python scripts in this way vary among
-different operating systems (e.g., Linux, MacOS X, Windows, etc.).
-Normally, we will just be using IDLE in this course.
+.. figure:: figs/shellrun.png
+   :align: center
+   :alt: Running a program at the shell
 
-You are strongly encouraged to install Python on your own personal
-computer --- it's free! There are two options for installing Python: the
-official package at python.org, and a package with a few additional (and
-useful) libraries at enthought.com. These are available at
-http://www.python.org/download/ and http://enthought.com/repo/free/. It
-is recommended that you install the Enthought version, since different
-class exercises may make use of the additional libraries available with
-this distribution.
+You are strongly advised to install Python on your own computer --- it's
+free!  For this course, you will need Python version 3.4 or newer, which you
+can find at https://www.python.org/.  Do **not** use Python version 2 [3]_.
 
 What is a program?
 ==================
@@ -343,7 +332,7 @@ redundancy:
 literalness:
     Natural languages are full of idiom and metaphor. If I say, "The
     penny dropped," there is probably no penny and nothing
-    dropping. [1]_ Formal languages mean exactly what they say.
+    dropping. [4]_ Formal languages mean exactly what they say.
 
     People who grow up speaking a natural language (everyone!) often
     have a hard time adjusting to formal languages. In some ways, the
@@ -383,13 +372,13 @@ World!" In Python, it looks like this:
 
 .. code-block:: python
 
-    print 'Hello, World!'
+    print ('Hello, World!')
 
-This is an example of a **print statement**, which doesn't
+This is an example of the **print function**, which doesn't
 actually print anything on paper. It displays a value on the screen. In
 this case, the result is the words
 
-.. code-block:: python
+::
 
     Hello, World!
 
@@ -413,7 +402,8 @@ try out variations.
     1. Whenever you are experimenting with a new feature, you should try
        to make mistakes. In the "Hello, world!" program, what happens if
        you leave out one of the quotation marks? What if you leave out
-       both? What if you spell ``print`` wrong?
+       both? What if you leave out the parentheses?  What if you spell 
+       ``print`` wrong?
 
 This kind of experiment helps you remember what you read; it also helps
 with debugging, because you get to know what the error messages mean. It
@@ -425,7 +415,7 @@ emotions. If you are struggling with a difficult bug, you might feel
 angry, despondent or embarrassed.
 
 There is evidence that people naturally respond to computers as if they
-were people [2]_ .  When they work well, we think of them as teammates,
+were people [5]_ .  When they work well, we think of them as teammates,
 and when they are obstinate or rude, we respond to them the same way we
 respond to rude, obstinate people.
 
@@ -540,11 +530,6 @@ token:
 parse:
     To examine a program and analyze the syntactic structure.
 
-print statement:
-    An instruction that causes the Python interpreter to display a value
-    on the screen.
-
-
 .. rubric:: Exercises
 
 1. Ways to get help in Python. These two quasi-exercises show you
@@ -552,18 +537,18 @@ print statement:
    operations in Python.
 
    a. Use a web browser to go to the Python website
-      http://python.org. This page contains information about Python
+      https://www.python.org. This page contains information about Python
       and links to Python-related pages, and it gives you the
       ability to search the Python documentation.
 
       For example, if you enter ``print`` in the search window, the
       first link that appears is the documentation of the ``print``
-      statement. At this point, not all of it will make sense to
+      function.  At this point, not all of it will make sense to
       you, but it is good to know where it is.
 
    b. Start the Python interpreter and type ``help()`` to start the
       online help utility. Or you can type ``help('print')`` to get
-      information about the ``print`` statement.
+      information about the ``print`` function.
 
 2. Start the Python interpreter and use it as a calculator. Python's
    syntax for math operations is almost the same as standard
@@ -578,12 +563,36 @@ print statement:
    b. How many seconds are there in 8 weeks? Write a one-line Python
       program to print the answer.
 
+
 .. rubric:: Footnotes
 
-.. [1]
+
+.. [1] 
+   On MacOS, the built-in Terminal.app program works nicely.  You can find
+   it by navigating to the Applications folder.  On Linux, there are several
+   different terminal programs available.  Two common ones are ``xterm`` and
+   ``gnome-terminal``.  Depending on the version of Linux you are using,
+   some other program may also be available.
+
+.. [2]
+   As with terminal programs, there are many different text editors available,
+   with several good free options.  The most important thing to do with any
+   text editor you use is to ensure that it inserts *spaces* instead of *tabs*
+   when indenting.  In Python, indentation is important, and using spaces
+   instead of tab characters will help you to avoid some irritating and
+   confusing syntax errors.
+
+.. [3]
+   If you get mysterious syntax errors when running your programs at the
+   shell, ensure that you're running them by typing ``python3 program.py``
+   instead of ``python program.py``.  It is not uncommon for Python version 2
+   to come preinstalled on a computer, and the program named ``python`` is
+   often the Python 2 interpreter.
+
+.. [4]
    This idiom means that someone realized something after a period of
    confusion.
 
-.. [2]
+.. [5]
    See Reeves and Nass, *The Media Equation: How People Treat Computers,
    Television, and New Media Like Real People and Places*.
