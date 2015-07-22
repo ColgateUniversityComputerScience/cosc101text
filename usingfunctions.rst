@@ -16,7 +16,7 @@ specify the name and the sequence of statements. Later, you can "call"
 the function by name. We have already seen one example of a **function
 call**:
 
-::
+.. code-block:: python
 
     >>> type(32)
     <type 'int'>
@@ -35,7 +35,7 @@ Python provides built-in functions that convert values from one type to
 another. The ``int`` function takes any value and converts it to an
 integer, if it can, or complains otherwise:
 
-::
+.. code-block:: python
 
     >>> int('32')
     32
@@ -45,7 +45,7 @@ integer, if it can, or complains otherwise:
 ``int`` can convert floating-point values to integers, but it doesn't
 round off; it chops off the fraction part:
 
-::
+.. code-block:: python
 
     >>> int(3.99999)
     3
@@ -54,7 +54,7 @@ round off; it chops off the fraction part:
 
 ``float`` converts integers and strings to floating-point numbers:
 
-::
+.. code-block:: python
 
     >>> float(32)
     32.0
@@ -63,7 +63,7 @@ round off; it chops off the fraction part:
 
 Finally, ``str`` converts its argument to a string:
 
-::
+.. code-block:: python
 
     >>> str(32)
     '32'
@@ -83,7 +83,7 @@ waits for the user to type something. When the user presses ``Return``
 or ``Enter``, the program resumes and ``raw_input`` returns what the
 user typed as a string.
 
-::
+.. code-block:: python
 
     >>> response = raw_input()
     What are you waiting for?
@@ -94,7 +94,7 @@ Before getting input from the user, it is a good idea to print a prompt
 telling the user what to input. ``raw_input`` can take a prompt as an
 argument:
 
-::
+.. code-block:: python
 
     >>> name = raw_input('What...is your name?\n')
     What...is your name?
@@ -109,7 +109,7 @@ user’s input appears below the prompt.
 If you expect the user to type an integer, you can try to convert the
 return value to ``int``:
 
-::
+.. code-block:: python
 
     >>> prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
     >>> speed = raw_input(prompt)
@@ -121,7 +121,7 @@ return value to ``int``:
 But if the user types something other than a string of digits, you get
 an error:
 
-::
+.. code-block:: python
 
     >>> speed = raw_input(prompt)
     What...is the airspeed velocity of an unladen swallow?
@@ -137,7 +137,7 @@ More on strings
 A string is a **sequence** of characters. You can access the characters
 one at a time with the bracket operator:
 
-::
+.. code-block:: python
 
     >>> fruit = 'apple'
     >>> letter = fruit[1]
@@ -150,7 +150,7 @@ which character in the sequence you want (hence the name).
 
 But you might not get what you expect:
 
-::
+.. code-block:: python
 
     >>> print letter
     p
@@ -159,7 +159,7 @@ For most people, the first letter of ``'apple'`` is ``a``, not ``p``.
 But for computer scientists, the index is an offset from the beginning
 of the string, and the offset of the first letter is zero.
 
-::
+.. code-block:: python
 
     >>> letter = fruit[0]
     >>> print letter
@@ -182,7 +182,7 @@ string ``'apple'`` is 4, which is one less than the length of the string
 To get the last letter of a string, you might be tempted to try
 something like this:
 
-::
+.. code-block:: python
 
     >>> fruit = 'apple'
     >>> length = len(fruit)
@@ -200,7 +200,7 @@ like strings is ``len``. This function returns the number of items in
 the sequence as an integer. It can conveniently be used to access the
 last character of a string, no matter the length of the string:
 
-::
+.. code-block:: python
 
     >>> fruit = 'coconut'
     >>> fruitlen = len(fruit)
@@ -213,7 +213,7 @@ You can use any expression, including variables and operators, as an
 index, but the value of the index has to be an integer. Otherwise you
 get:
 
-::
+.. code-block:: python
 
     >>> letter = fruit[1.5]
     TypeError: string indices must be integers
@@ -222,7 +222,7 @@ Also, strings are *immutable*, which means that you cannot modify them
 once they're created. For example, if you try to modify one character of
 a string using an assignment statement, you'll get an error:
 
-::
+.. code-block:: python
 
     >>> fruit[0] = 'x'
     Traceback (most recent call last):
@@ -254,7 +254,7 @@ includes the ``for`` statement to help with repetitive tasks like this.
 Here is an example that simply prints out each character by itself, in
 sequence:
 
-::
+.. code-block:: python
 
     fruit = "kiwi"
     for char in fruit:
@@ -343,14 +343,14 @@ functions.
 
 Before we can use the module, we have to import it:
 
-::
+.. code-block:: python
 
     >>> import math
 
 This statement creates a **module object** named math. If you print the
 module object, you get some information about it:
 
-::
+.. code-block:: python
 
     >>> print math
     <module 'math' (built-in)>
@@ -361,7 +361,7 @@ module. To access one of the functions, you have to specify the name of
 the module and the name of the function, separated by a dot (also known
 as a period). This format is called **dot notation**.
 
-::
+.. code-block:: python
 
     >>> ratio = signal_power / noise_power
     >>> decibels = 10 * math.log10(ratio)
@@ -378,7 +378,7 @@ variable is a hint that ``sin`` and the other trigonometric functions
 (``cos``, ``tan``, etc.) take arguments in radians. To convert from
 degrees to radians, divide by 360 and multiply by :math:`2 \pi`:
 
-::
+.. code-block:: python
 
     >>> degrees = 45
     >>> radians = degrees / 360.0 * 2 * math.pi
@@ -392,7 +392,7 @@ accurate to about 15 digits.
 If you know your trigonometry, you can check the previous result by
 comparing it to the square root of two divided by two:
 
-::
+.. code-block:: python
 
     >>> math.sqrt(2) / 2.0
     0.707106781187
@@ -424,13 +424,13 @@ ability to take small building blocks and **compose** them. For example,
 the argument of a function can be any kind of expression, including
 arithmetic operators:
 
-::
+.. code-block:: python
 
     x = math.sin(degrees / 360.0 * 2 * math.pi)
 
 And even function calls:
 
-::
+.. code-block:: python
 
     x = math.exp(math.log(x+1))
 
@@ -439,7 +439,7 @@ expression, with one exception: the left side of an assignment statement
 has to be a variable name. Any other expression on the left side is a
 syntax error.
 
-::
+.. code-block:: python
 
     >>> minutes = hours * 60                 # right
     >>> hours * 60 = minutes                 # wrong!
@@ -461,7 +461,7 @@ to access each character of the string ``apple`` by index. Well, Python
 has a built-in function named ``range`` that can help with exactly that
 task. For example:
 
-::
+.. code-block:: python
 
     >>> range(4)
     [0, 1, 2, 3]
@@ -476,12 +476,12 @@ We'll learn more about lists soon.)
 We can use the ``range`` function in a ``for`` loop to print the
 integers from 0 through 3 as follows:
 
-::
+.. code-block:: python
 
     for index in range(4):
         print index
 
-::
+.. code-block:: python
 
     0
     1
@@ -492,7 +492,7 @@ Now, to solve the problem of printing the characters of a string *by
 index*, we can *compose* the ``range`` and ``len`` functions in a
 ``for`` loop, as follows:
 
-::
+.. code-block:: python
 
     fruit = 'kiwi'
     for index in range(len(fruit)):
@@ -536,7 +536,7 @@ I don't remember a good approximation to the square root of two off the
 top of my head, but I bet we can coerce Python into telling us! Here's
 one way how:
 
-::
+.. code-block:: python
 
     import math
 
@@ -565,7 +565,7 @@ decimal places to which to round the number. If we want to round to 2
 decimal places, we can modify the above program to compose the ``round``
 and ``math.sqrt`` functions:
 
-::
+.. code-block:: python
 
     import math
 
@@ -655,7 +655,7 @@ Syntax errors are usually easy to find, but there are a few gotchas.
 Whitespace errors can be tricky because spaces and tabs are invisible
 and we are used to ignoring them.
 
-::
+.. code-block:: python
 
     >>> x = 5
     >>>  y = 6
@@ -677,7 +677,7 @@ signal-to-noise ratio in decibels. The formula is
 
 In Python, you might write something like this:
 
-::
+.. code-block:: python::
 
     import math
     signal_power = 9
@@ -753,40 +753,39 @@ composition:
     Using an expression as part of a larger expression, or a statement
     as part of a larger statement.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    #. Ask for a three-character string from a user, then construct and
-       print a new string by swapping the first and last characters of
-       the string entered by the user. (You can assume that the user
-       always types a string consisting of 3 letters.) For example, if
-       the user types ``'box'``, your program should print ``'xob'``.
-       Note: using the ``if`` statement (discussed in the next chapter)
-       is off limits!
+#. Ask for a three-character string from a user, then construct and
+   print a new string by swapping the first and last characters of
+   the string entered by the user. (You can assume that the user
+   always types a string consisting of 3 letters.) For example, if
+   the user types ``'box'``, your program should print ``'xob'``.
+   Note: using the ``if`` statement (discussed in the next chapter)
+   is off limits!
 
-    #. Ask for a string from the user. Print the string right-justified
-       within a page width of 40 characters. For example, if a user
-       types ``'abecedarian'``, which is 11 characters long, your
-       program should print exactly 29 spaces followed by
-       ``'abecedarian'`` (i.e., the total width of what you print should
-       be exactly 40 characters). You can assume that the string entered
-       by the user is at most 40 characters long.
+#. Ask for a string from the user. Print the string right-justified
+   within a page width of 40 characters. For example, if a user
+   types ``'abecedarian'``, which is 11 characters long, your
+   program should print exactly 29 spaces followed by
+   ``'abecedarian'`` (i.e., the total width of what you print should
+   be exactly 40 characters). You can assume that the string entered
+   by the user is at most 40 characters long.
 
-    #. Construct a short program with a ``for`` loop to print the values
-       of the sequence 25, 50, 75, ... 175, 200. Your ``for`` loop
-       should use ``range`` with just one argument.
+#. Construct a short program with a ``for`` loop to print the values
+   of the sequence 25, 50, 75, ... 175, 200. Your ``for`` loop
+   should use ``range`` with just one argument.
 
-    #. Write a program that asks a user for a positive integer, then
-       prints a table of cubes from 1 through that number. Make the
-       table output as nice as you can using what we've covered so far.
-       For example, if a user enters the number 3, your program should
-       print the numbers 1, 8, and 27 (1\ :sup:`3`, 2\ :sup:`3`, and
-       3\ :sup:`3`) in a nice table.
+#. Write a program that asks a user for a positive integer, then
+   prints a table of cubes from 1 through that number. Make the
+   table output as nice as you can using what we've covered so far.
+   For example, if a user enters the number 3, your program should
+   print the numbers 1, 8, and 27 (1\ :sup:`3`, 2\ :sup:`3`, and
+   3\ :sup:`3`) in a nice table.
 
-    #. Write a program that asks a user for a string, then prints the
-       characters of the string *in reverse*, one on each line. For
-       example, if a user enters the string ``'magic'``, your program
-       should print:
+#. Write a program that asks a user for a string, then prints the
+   characters of the string *in reverse*, one on each line. For
+   example, if a user enters the string ``'magic'``, your program
+   should print:
 
        ::
 
@@ -796,25 +795,25 @@ Exercises
             a
             m
 
-    #. Modify the program to make a table of square roots by asking the
-       user for the largest number for which to compute the square root.
-       For example, if the user types ``11``, your table should show the
-       square roots from 0 through 11, including both end points.
+#. Modify the program to make a table of square roots by asking the
+   user for the largest number for which to compute the square root.
+   For example, if the user types ``11``, your table should show the
+   square roots from 0 through 11, including both end points.
 
-    #. Write a program to compute the square root of the sum of numbers
-       from 1 to 1000. You should use a ``for`` loop to compute the sum,
-       and the ``sqrt`` function in the ``math`` module to compute the
-       square root.
+#. Write a program to compute the square root of the sum of numbers
+   from 1 to 1000. You should use a ``for`` loop to compute the sum,
+   and the ``sqrt`` function in the ``math`` module to compute the
+   square root.
 
-    #. The interest earned on an investment can be computed as
-       ``interest = principal * rate``.
+#. The interest earned on an investment can be computed as
+   ``interest = principal * rate``.
 
-       Write a program that asks a user for an interest rate as a
-       floating point number, an investment amount as a floating point
-       number, and the number of years. Your program should print, for
-       each year, the current amount of the principal. Note to
-       economists and mathematicians: you should *not* use the
-       exponential formula for this problem.
+   Write a program that asks a user for an interest rate as a
+   floating point number, an investment amount as a floating point
+   number, and the number of years. Your program should print, for
+   each year, the current amount of the principal. Note to
+   economists and mathematicians: you should *not* use the
+   exponential formula for this problem.
 
        ::
 
@@ -827,9 +826,5 @@ Exercises
            After 4 years, the principal is 121.55
            After 5 years, the principal is 127.63
 
-.. raw:: html
-
-   <!-- make this section end! -->
-
-
+.. 
 
