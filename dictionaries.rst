@@ -19,7 +19,7 @@ The function ``dict`` creates a new dictionary with no items. Because
 ``dict`` is the name of a built-in function, you should avoid using it
 as a variable name.
 
-::
+.. code-block:: python
 
     >>> eng2sp = dict()
     >>> print eng2sp
@@ -28,7 +28,7 @@ as a variable name.
 The squiggly-brackets, ``{}``, represent an empty dictionary. To add
 items to the dictionary, you can use square brackets:
 
-::
+.. code-block:: python
 
     >>> eng2sp['one'] = 'uno'
 
@@ -36,7 +36,7 @@ This line creates an item that maps from the key ``'one'`` to the value
 ``'uno'``. If we print the dictionary again, we see a key-value pair
 with a colon between the key and value:
 
-::
+.. code-block:: python
 
     >>> print eng2sp
     {'one': 'uno'}
@@ -44,13 +44,13 @@ with a colon between the key and value:
 This output format is also an input format. For example, you can create
 a new dictionary with three items:
 
-::
+.. code-block:: python
 
     >>> eng2sp = {'one': 'uno', 'two': 'dos', 'three': 'tres'}
 
 But if you print ``eng2sp``, you might be surprised:
 
-::
+.. code-block:: python
 
     >>> print eng2sp
     {'one': 'uno', 'three': 'tres', 'two': 'dos'}
@@ -63,7 +63,7 @@ But that’s not a problem because the elements of a dictionary are never
 indexed with integer indices. Instead, you use the keys to look up the
 corresponding values:
 
-::
+.. code-block:: python
 
     >>> print eng2sp['two']
     'dos'
@@ -73,7 +73,7 @@ items doesn’t matter.
 
 If the key isn’t in the dictionary, you get an exception:
 
-::
+.. code-block:: python
 
     >>> print eng2sp['four']
     KeyError: 'four'
@@ -81,7 +81,7 @@ If the key isn’t in the dictionary, you get an exception:
 The ``len`` function works on dictionaries; it returns the number of
 key-value pairs:
 
-::
+.. code-block:: python
 
     >>> len(eng2sp)
     3
@@ -90,7 +90,7 @@ The ``in`` operator works on dictionaries; it tells you whether
 something appears as a *key* in the dictionary (appearing as a value is
 not good enough).
 
-::
+.. code-block:: python
 
     >>> 'one' in eng2sp
     True
@@ -101,7 +101,7 @@ To see whether something appears as a value in a dictionary, you can use
 the method ``values``, which returns the values as a list, and then use
 the ``in`` operator:
 
-::
+.. code-block:: python
 
     >>> vals = eng2sp.values()
     >>> 'uno' in vals
@@ -154,7 +154,7 @@ letters that do appear.
 
 Here is what the code might look like:
 
-::
+.. code-block:: python
 
     def histogram(s):
         d = dict()
@@ -176,7 +176,7 @@ already in the dictionary we increment ``d[c]``.
 
 Here’s how it works:
 
-::
+.. code-block:: python
 
     >>> h = histogram('brontosaurus')
     >>> print h
@@ -192,7 +192,7 @@ once; ``'o'`` appears twice, and so on.
        returns the corresponding value; otherwise it returns the default
        value. For example:
 
-       ::
+.. code-block:: python
 
            >>> h = histogram('a')
            >>> print h
@@ -202,8 +202,10 @@ once; ``'o'`` appears twice, and so on.
            >>> h.get('b', 0)
            0
 
-    Use ``get`` to write ``histogram`` more concisely. You should be
-    able to eliminate the ``if`` statement.
+..
+
+       Use ``get`` to write ``histogram`` more concisely. You should be
+       able to eliminate the ``if`` statement.
 
 Looping and dictionaries
 ------------------------
@@ -212,7 +214,7 @@ If you use a dictionary in a ``for`` statement, it traverses the keys of
 the dictionary. For example, ``print_hist`` prints each key and the
 corresponding value:
 
-::
+.. code-block:: python
 
     def print_hist(h):
         for c in h:
@@ -220,7 +222,7 @@ corresponding value:
 
 Here’s what the output looks like:
 
-::
+.. code-block:: python
 
     >>> h = histogram('parrot')
     >>> print_hist(h)
@@ -255,7 +257,7 @@ is no simple syntax to do a **reverse lookup**; you have to search.
 Here is a function that takes a value and returns the first key that
 maps to that value:
 
-::
+.. code-block:: python
 
     def reverse_lookup(d, v):
         for k in d:
@@ -274,7 +276,7 @@ dictionary as a value, so we raise an exception.
 
 Here is an example of a successful reverse lookup:
 
-::
+.. code-block:: python
 
     >>> h = histogram('parrot')
     >>> k = reverse_lookup(h, 2)
@@ -283,7 +285,7 @@ Here is an example of a successful reverse lookup:
 
 And an unsuccessful one:
 
-::
+.. code-block:: python
 
     >>> k = reverse_lookup(h, 3)
     Traceback (most recent call last):
@@ -297,7 +299,7 @@ one: it prints a traceback and an error message.
 The ``raise`` statement takes a detailed error message as an optional
 argument. For example:
 
-::
+.. code-block:: python
 
     >>> raise ValueError, 'value does not appear in the dictionary'
     Traceback (most recent call last):
@@ -324,7 +326,7 @@ each value in the inverted dictionary should be a list of letters.
 
 Here is a function that inverts a dictionary:
 
-::
+.. code-block:: python
 
     def invert_dict(d):
         inv = dict()
@@ -345,7 +347,7 @@ the list.
 
 Here is an example:
 
-::
+.. code-block:: python
 
     >>> hist = histogram('parrot')
     >>> print hist
@@ -370,7 +372,7 @@ outside the box, just to keep the diagram simple.
 Lists can be values in a dictionary, as this example shows, but they
 cannot be keys. Here’s what happens if you try:
 
-::
+.. code-block:: python
 
     >>> t = [1, 2, 3]
     >>> d = dict()
@@ -400,15 +402,6 @@ tuples, which we will see in the next chapter.
 
 Since dictionaries are mutable, they can’t be used as keys, but they
 *can* be used as values.
-
-.. raw:: html
-
-   <!--
-   > **Example**:
-   >
-   > 1. Read the documentation of the dictionary method `setdefault` and use
-   > it to write a more concise version of `invert_dict`.
-   -->
 
 Memos
 -----
@@ -442,7 +435,7 @@ by storing them in a dictionary. A previously computed value that is
 stored for later use is called a **memo**\  [1]_. Here is an
 implementation of ``fibonacci`` using memos:
 
-::
+.. code-block:: python
 
     known = {0:0, 1:1}
 
@@ -567,51 +560,52 @@ histogram:
 memo:
     A computed value stored to avoid unnecessary future computation.
 
-Exercises
----------
+.. rubric:: Exercises
 
-    1. Use a dictionary to write a faster, simpler version of
-       ``has_duplicates``. This function should take a list as a
-       parameter and return ``True`` if there is any object that appears
-       more than once in the list.
+1. Use a dictionary to write a faster, simpler version of
+   ``has_duplicates``. This function should take a list as a
+   parameter and return ``True`` if there is any object that appears
+   more than once in the list.
 
-    2. Two words are "rotate pairs" if you can rotate one of them and
-       get the other.
+2. Two words are "rotate pairs" if you can rotate one of them and
+   get the other.
 
-       Write a program that reads a wordlist and finds all the rotate
-       pairs.
+   Write a program that reads a wordlist and finds all the rotate
+   pairs.
 
-    3. Here’s another Puzzler from *Car Talk*\  [2]_:
+3. Here’s another Puzzler from *Car Talk*\  [2]_:
 
-       "This was sent in by a fellow named Dan O’Leary. He came upon a
-       common one-syllable, five-letter word recently that has the
-       following unique property. When you remove the first letter, the
-       remaining letters form a homophone of the original word, that is
-       a word that sounds exactly the same. Replace the first letter,
-       that is, put it back and remove the second letter and the result
-       is yet another homophone of the original word. And the question
-       is, what’s the word?
+   "This was sent in by a fellow named Dan O’Leary. He came upon a
+   common one-syllable, five-letter word recently that has the
+   following unique property. When you remove the first letter, the
+   remaining letters form a homophone of the original word, that is
+   a word that sounds exactly the same. Replace the first letter,
+   that is, put it back and remove the second letter and the result
+   is yet another homophone of the original word. And the question
+   is, what’s the word?
 
-       "Now I’m going to give you an example that doesn’t work. Let’s
-       look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like
-       to ‘wrack with pain.’ If I remove the first letter, I am left
-       with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see
-       the rack on that buck! It must have been a nine-pointer!’ It’s a
-       perfect homophone. If you put the ‘w’ back, and remove the ‘r,’
-       instead, you’re left with the word, ‘wack,’ which is a real word,
-       it’s just not a homophone of the other two words.
+   "Now I’m going to give you an example that doesn’t work. Let’s
+   look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like
+   to ‘wrack with pain.’ If I remove the first letter, I am left
+   with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see
+   the rack on that buck! It must have been a nine-pointer!’ It’s a
+   perfect homophone. If you put the ‘w’ back, and remove the ‘r,’
+   instead, you’re left with the word, ‘wack,’ which is a real word,
+   it’s just not a homophone of the other two words.
 
-       "But there is, however, at least one word that Dan and we know
-       of, which will yield two homophones if you remove either of the
-       first two letters to make two, new four-letter words. The
-       question is, what’s the word?"
+   "But there is, however, at least one word that Dan and we know
+   of, which will yield two homophones if you remove either of the
+   first two letters to make two, new four-letter words. The
+   question is, what’s the word?"
 
-       To check whether two words are homophones, you can use the CMU
-       Pronouncing Dictionary. You can download it from
-       http://www.speech.cs.cmu.edu/cgi-bin/cmudict. (The file you're
-       looking for is a text file named ``cmudict.0.7a``.)
+   To check whether two words are homophones, you can use the CMU
+   Pronouncing Dictionary. You can download it from
+   http://www.speech.cs.cmu.edu/cgi-bin/cmudict. (The file you're
+   looking for is a text file named ``cmudict.0.7a``.)
 
-       Write a program that lists all the words that solve the Puzzler.
+   Write a program that lists all the words that solve the Puzzler.
+
+.. rubric:: Footnotes
 
 .. [1]
    See http://wikipedia.org/wiki/Memoization.
