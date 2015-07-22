@@ -423,7 +423,7 @@ emotions. If you are struggling with a difficult bug, you might feel
 angry, despondent or embarrassed.
 
 There is evidence that people naturally respond to computers as if they
-were people[2]_.  When they work well, we think of them as teammates,
+were people [2]_ .  When they work well, we think of them as teammates,
 and when they are obstinate or rude, we respond to them the same way we
 respond to rude, obstinate people.
 
