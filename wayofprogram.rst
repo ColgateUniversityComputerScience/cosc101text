@@ -26,6 +26,8 @@ end. As we go along, that end will become clearer.
 The Python programming language
 ===============================
 
+.. index:: high-level language, low-level language
+
 The programming language you will learn is Python. Python is an example
 of a **high-level language**; other high-level languages you might have
 heard of are C, C++, Perl, and Java.
@@ -48,6 +50,8 @@ and have to be rewritten to run on another.
 Due to these advantages, almost all programs are written in high-level
 languages. Low-level languages are used only for a few specialized
 applications.
+
+.. index:: interpreter, compiler
 
 Two kinds of programs process high-level languages into low-level
 languages: **interpreters** and **compilers**. An interpreter reads a
@@ -86,6 +90,8 @@ Python programs and the interpreter prints the result:
 The chevron, ``>>>``, is the **prompt** the interpreter uses to indicate
 that it is ready. If you type ``1 + 1``, the interpreter replies ``2``.
 
+.. index:: interactive prompt
+
 To start Python in interactive interpreter mode, you can open a terminal
 application on your computer [1]_, then type ``python3``.  You should
 see a prompt similar to the following:
@@ -103,6 +109,8 @@ in having to retype lots of code.  Instead, it is common to open a
 separate text editor window to write a program (often referred to as
 a **script**), then run the program at the shell.  By convention, Python
 programs/scripts have names that end with ``.py``.
+
+.. index:: running a Python program
 
 There are many different text editors you can use to write your Python
 programs.  On Linux, common editors include ``gvim`` and ``gedit``.  On
@@ -125,6 +133,8 @@ below:
 You are strongly advised to install Python on your own computer --- it's
 free!  For this course, you will need Python version 3.4 or newer, which you
 can find at https://www.python.org/.  Do **not** use Python version 2 [3]_.
+
+.. index:: programs
 
 What is a program?
 ==================
@@ -166,6 +176,8 @@ of these basic instructions*.
 That may be a little vague, but we will come back to this topic when we
 talk about **algorithms**.
 
+.. index:: debugging
+
 What is debugging?
 ==================
 
@@ -181,6 +193,10 @@ Wikipedia <http://en.wikipedia.org/wiki/Grace_Hopper>`_).
 Three kinds of errors can occur in a program: syntax errors, runtime
 errors, and semantic errors. It is useful to distinguish between them in
 order to track them down more quickly.
+
+.. index:: types of errors
+
+.. index:: syntax errors
 
 Syntax errors
 -------------
@@ -200,6 +216,8 @@ programming career, you will probably spend a lot of time tracking down
 syntax errors. As you gain experience, you will make fewer errors and
 find them faster.
 
+.. index:: runtime errors
+
 Runtime errors
 --------------
 
@@ -210,6 +228,9 @@ something exceptional (and bad) has happened.
 
 Runtime errors are rare in the simple programs you will see in the first
 few chapters, so it might be a while before you encounter one.
+
+
+.. index:: semantic errors, logic errors
 
 Semantic errors
 ---------------
@@ -262,6 +283,8 @@ Users's Guide* Beta Version 1).
 Later chapters will make more suggestions about debugging, creating
 "tests" to ensure that your programs behave as expected, and other
 programming practices.
+
+.. index:: formal languages, natural languages
 
 Formal and natural languages
 ============================
@@ -366,13 +389,15 @@ difference in a formal language.
 The first program
 =================
 
+.. index:: print function
+
 Traditionally, the first program you write in a new language is called
 "Hello, World!" because all it does is display the words, "Hello,
 World!" In Python, it looks like this:
 
 .. code-block:: python
 
-    print ('Hello, World!')
+    print('Hello, World!')
 
 This is an example of the **print function**, which doesn't
 actually print anything on paper. It displays a value on the screen. In
@@ -388,6 +413,8 @@ text to be displayed; they don't appear in the result.
 Some people judge the quality of a programming language by the
 simplicity of the "Hello, World!" program. By this standard, Python does
 about as well as possible.
+
+.. index:: debugging
 
 Debugging
 =========

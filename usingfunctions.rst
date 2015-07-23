@@ -7,26 +7,33 @@ contain many functions that you can use in your programs. Over the span
 of this course we will use quite a few different modules and functions.
 This chapter is about how to tap into these features.
 
+.. index:: function, function call
+
 Function calls
 --------------
 
 In the context of programming, a **function** is a named sequence of
 statements that performs a computation. When you define a function, you
 specify the name and the sequence of statements. Later, you can "call"
-the function by name. We have already seen one example of a **function
-call**:
+the function by name. We have already seen two examples of **function
+calls**: ``print`` and ``type``.
 
 .. code-block:: python
 
+    >>> print("This is a function call!")
+    This is a function call!
     >>> type(32)
-    <type 'int'>
+    <class 'int'>
 
-The name of the function is ``type``. The expression in parentheses is
-called the **argument** of the function. The result, for this function,
-is the type of the argument.
+The two lines of code above show two **function names**: ``print`` and ``type``.
+Using the name followed by some (possibly empty) expression in parentheses
+is referred to as a **function call**.  The expression in parentheses
+is called the **argument** or **parameter** of the function.
 
 It is common to say that a function "takes" an argument and "returns" a
 result. The result is called the **return value**.
+
+.. index:: type conversion
 
 Type conversion functions
 -------------------------
@@ -70,36 +77,38 @@ Finally, ``str`` converts its argument to a string:
     >>> str(3.14159)
     '3.14159'
 
-Getting user input: the ``input`` and ``raw_input`` functions
+.. index:: user input, input
+
+Getting user input: the ``input`` function
 -------------------------------------------------------------
 
 The programs we have written so far are a bit rude in the sense that
 they accept no input from the user. They just do the same thing every
 time.
 
-Python provides a built-in function called ``raw_input`` that gets input
+Python 3 provides a built-in function called ``input`` [#]_ that gets input
 from the keyboard. When this function is called, the program stops and
 waits for the user to type something. When the user presses ``Return``
-or ``Enter``, the program resumes and ``raw_input`` returns what the
+or ``Enter``, the program resumes and ``input`` returns what the
 user typed as a string.
 
 .. code-block:: python
 
-    >>> response = raw_input()
+    >>> response = input()
     What are you waiting for?
-    >>> print response
+    >>> print(response)
     What are you waiting for?
 
 Before getting input from the user, it is a good idea to print a prompt
-telling the user what to input. ``raw_input`` can take a prompt as an
+telling the user what to input. ``input`` can take a prompt as an
 argument:
 
 .. code-block:: python
 
-    >>> name = raw_input('What...is your name?\n')
+    >>> name = input('What...is your name?\n')
     What...is your name?
     Arthur, King of the Britons!
-    >>> print name
+    >>> print(name)
     Arthur, King of the Britons!
 
 The sequence ``\n`` at the end of the prompt represents a **newline**,
@@ -112,7 +121,7 @@ return value to ``int``:
 .. code-block:: python
 
     >>> prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
-    >>> speed = raw_input(prompt)
+    >>> speed = input(prompt)
     What...is the airspeed velocity of an unladen swallow?
     17
     >>> int(speed)
@@ -123,13 +132,15 @@ an error:
 
 .. code-block:: python
 
-    >>> speed = raw_input(prompt)
+    >>> speed = input(prompt)
     What...is the airspeed velocity of an unladen swallow?
     What do you mean, an African or a European swallow?
     >>> int(speed)
     ValueError: invalid literal for int()
 
 We will see how to handle this kind of error later.
+
+.. index:: string indexing
 
 More on strings
 ---------------
@@ -152,7 +163,7 @@ But you might not get what you expect:
 
 .. code-block:: python
 
-    >>> print letter
+    >>> print(letter)
     p
 
 For most people, the first letter of ``'apple'`` is ``a``, not ``p``.
@@ -162,7 +173,7 @@ of the string, and the offset of the first letter is zero.
 .. code-block:: python
 
     >>> letter = fruit[0]
-    >>> print letter
+    >>> print(letter)
     a
 
 So ``a`` is the 0\ :sup:`th` letter (“zero-eth”) of ``'apple'``, ``p``
@@ -186,7 +197,7 @@ something like this:
 
     >>> fruit = 'apple'
     >>> length = len(fruit)
-    >>> print length
+    >>> print(length)
     5
     >>> last = fruit[length]
     IndexError: string index out of range
@@ -194,6 +205,8 @@ something like this:
 The reason for the ``IndexError`` is that there is no letter in
 ``'apple'`` with the index 5. To get the last character, you have to
 subtract 1 from the length of the string.
+
+.. index:: len
 
 A built-in Python function that we'll use frequently with sequence types
 like strings is ``len``. This function returns the number of items in
@@ -204,9 +217,9 @@ last character of a string, no matter the length of the string:
 
     >>> fruit = 'coconut'
     >>> fruitlen = len(fruit)
-    >>> print fruitlen
+    >>> print(fruitlen)
     7
-    >>> print fruit[fruitlen-1]
+    >>> print(fruit[fruitlen-1])
     't'
 
 You can use any expression, including variables and operators, as an
@@ -244,6 +257,8 @@ to access characters of a string.
     | negative indices    | -5     | -4     | -3     | -2     | -1     |
     +---------------------+--------+--------+--------+--------+--------+
 
+.. index:: for loop
+
 Case study 1: printing out the characters of a string
 -----------------------------------------------------
 
@@ -258,8 +273,8 @@ sequence:
 
     fruit = "kiwi"
     for char in fruit:
-        print char
-    print "done!"
+        print(char)
+    print("done!")
 
 There are quite a few new syntactical elements to this example, so let's
 go through it in detail.
@@ -273,7 +288,7 @@ The ``for`` statement is usually called a "``for`` loop", because of its
 repetitive nature. The effect of the program is to assign each letter of
 the string ``fruit`` to the variable ``char``, one by one. For each
 assignment, the indented statement block underneath the ``for``
-statement consisting of the line ``print char`` is executed. That is,
+statement consisting of the line ``print(char)`` is executed. That is,
 the statement block is *repeated* for each character in the string. As a
 result, each letter of the string is printed by itself on separate
 lines. The complete output of the program is shown below:
@@ -352,9 +367,8 @@ module object, you get some information about it:
 
 .. code-block:: python
 
-    >>> print math
-    <module 'math' (built-in)>
-    >>> 
+    >>> print(math)
+    <module 'math' from '/usr/local/Cellar/python3/3.4.3_2/Frameworks/Python.framework/Versions/3.4/lib/python3.4/lib-dynload/math.so'>
 
 The module object contains the functions and variables defined in the
 module. To access one of the functions, you have to specify the name of
@@ -452,26 +466,20 @@ In the next two case studies, we'll get practice with function
 composition and learn two new built-in Python functions: ``range`` and
 ``round``.
 
+.. index:: range
+
 We already know that we can use a for loop to access each character of a
 string, one by one. We also know that we can use an *index* to access
 individual characters in a string by position. What if we wanted to
 combine these two ideas, and cycle through the valid indices of a
-string? For example, if we wanted to go through the integer values 0..4
+string?  For example, if we wanted to go through the integer values 0..4
 to access each character of the string ``apple`` by index. Well, Python
 has a built-in function named ``range`` that can help with exactly that
-task. For example:
+task. 
 
-.. code-block:: python
-
-    >>> range(4)
-    [0, 1, 2, 3]
-    >>>
-
-The ``range`` function takes an integer as a parameter, and returns a
-sequence of integers from 0 through the supplied argument minus 1. (The
-sequence of integers that ``range`` returns is called a ``list`` in
-Python. A ``list`` is a sequence type with some similarities to strings.
-We'll learn more about lists soon.)
+The ``range`` function takes an integer as a parameter, and provides
+a way to *iterate* (or "loop") over a 
+sequence of integers from 0 through the supplied argument minus 1 [#]_ .
 
 We can use the ``range`` function in a ``for`` loop to print the
 integers from 0 through 3 as follows:
@@ -479,7 +487,7 @@ integers from 0 through 3 as follows:
 .. code-block:: python
 
     for index in range(4):
-        print index
+        print(index)
 
 .. code-block:: python
 
@@ -496,7 +504,7 @@ index*, we can *compose* the ``range`` and ``len`` functions in a
 
     fruit = 'kiwi'
     for index in range(len(fruit)):
-        print index, fruit[index]
+        print(index, fruit[index])
 
 In the statement block inside the ``for`` loop, we print both the value
 of the variable ``index``, and the character at the given index in the
@@ -517,6 +525,8 @@ One last note about the ``range`` function: it can actually take more
 than one argument to flexibly construct a variety of different numeric
 sequences. We'll learn about this more complex use of ``range`` a bit
 later.
+
+.. index:: import statement, importing modules
 
 Case study 3: making a table of square roots
 --------------------------------------------
@@ -540,9 +550,9 @@ one way how:
 
     import math
 
-    print "My amazing table of square roots!"
+    print("My amazing table of square roots!")
     for number in range(5):
-        print "The square root of", number, "is", math.sqrt(number)
+        print("The square root of", number, "is", math.sqrt(number))
 
 The output of our program should be:
 
@@ -569,9 +579,9 @@ and ``math.sqrt`` functions:
 
     import math
 
-    print "My super-amazing table of square roots!"
+    print("My super-amazing table of square roots!")
     for number in range(5):
-        print "The square root of", number, "is", round(math.sqrt(number),2)
+        print("The square root of", number, "is", round(math.sqrt(number),2))
 
 ::
 
@@ -585,6 +595,8 @@ and ``math.sqrt`` functions:
 Ah. That's better. Later, we'll learn ways to make our output look even
 nicer, but for now, ``round`` does a pretty good job.
 
+.. index:: debugging
+
 Debugging
 ---------
 
@@ -596,7 +608,7 @@ to functions and new syntax we've seen in this chapter.
 
    ::
 
-        >>> print math.sqrt(10)
+        >>> print(math.sqrt(10))
         Traceback (most recent call last):
           File "<stdin>", line 1, in <module>
         NameError: name 'math' is not defined     
@@ -611,7 +623,7 @@ to functions and new syntax we've seen in this chapter.
 
         mystring = ''
         for char in mystring:
-            print "The new phone books are here!"
+            print("The new phone books are here!")
 
    The result of this program is ... nothing! The reason is that the
    string, while valid, is "empty". Thus, there are no characters to be
@@ -635,7 +647,7 @@ to functions and new syntax we've seen in this chapter.
    ::
 
         >>> for value in 5:
-        ...     print value
+        ...     print(value)
         ... 
         Traceback (most recent call last):
           File "<stdin>", line 1, in <module>
@@ -650,6 +662,8 @@ shows contains a lot of information. The most useful parts are usually:
 
 -  What kind of error it was, and
 -  Where it occurred.
+
+.. index:: whitespace syntax errors
 
 Syntax errors are usually easy to find, but there are a few gotchas.
 Whitespace errors can be tricky because spaces and tabs are invisible
@@ -668,7 +682,16 @@ In this example, the problem is that the second line is indented by one
 space. But the error message points to ``y``, which is misleading. In
 general, error messages indicate where the problem was discovered, but
 the actual error might be earlier in the code, sometimes on a previous
-line.
+line.  
+
+.. index:: spaces versus tabs in Python programs
+
+Whitespace and indentation syntax errors can be particularly painful
+if your program contains a mix of spaces and tab characters.  Make sure
+that any text editor you use *always* uses spaces instead of tabs.  All
+good text editors have configuration settings that enable it to insert
+some number of spaces (4 is the Pythonic number) every time you hit the 
+tab key.
 
 The same is true of runtime errors. Suppose you are trying to compute a
 signal-to-noise ratio in decibels. The formula is
@@ -684,7 +707,7 @@ In Python, you might write something like this:
     noise_power = 10
     ratio = signal_power / noise_power
     decibels = 10 * math.log10(ratio)
-    print decibels
+    print(decibels)
 
 But when you run it, you get an error message:
 
@@ -828,3 +851,20 @@ composition:
 
 .. 
 
+.. todo:: More exercises, some web related
+
+
+.. rubric:: Footnotes
+
+.. [#] In Python version 2, the ``input`` function is called ``raw_input``. 
+       Also in Python 2, there is an ``input`` function, but it behaves
+       differently than the one in Python 3 in that it *evaluates* the
+       user input as a Python expression.  There is no analogous function
+       in Python 3.
+
+.. [#] In Python 2, ``range`` returns a list but in Python 3 it returns
+       an *iterator object*.  Returning an iterator object is much more
+       efficient because the whole list of numbers doesn't need to be
+       generated immediately as in Python 2.  If you're looping over a very 
+       large range, generating *all* the numbers in a list (as Python 2
+       does) can be really slow.
