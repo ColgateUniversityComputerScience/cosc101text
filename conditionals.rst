@@ -19,26 +19,26 @@ otherwise:
     >>> 5 == 6
     False
 
-``True`` and ``False`` are special values that belong to the type
+``True`` and ``False`` are special values that belong to the class type
 ``bool``; they are not strings:
 
 .. code-block:: python
 
     >>> type(True)
-    <type 'bool'>
+    <class 'bool'>
     >>> type(False)
-    <type 'bool'>
+    <class 'bool'>
 
 The ``==`` operator is one of the **relational operators**; the others
 are:
 
 .. code-block:: python
 
-          x != y               # x is not equal to y
-          x > y                # x is greater than y
-          x < y                # x is less than y
-          x >= y               # x is greater than or equal to y
-          x <= y               # x is less than or equal to y
+    x != y               # x is not equal to y
+    x > y                # x is greater than y
+    x < y                # x is less than y
+    x >= y               # x is greater than or equal to y
+    x <= y               # x is less than or equal to y
 
 Although these operations are probably familiar to you, the Python
 symbols are different from the mathematical symbols. A common error is
@@ -61,7 +61,7 @@ can also be used with strings. To see if two strings are equal:
 .. code-block:: python
 
     if word == 'banana':
-        print  'All right, bananas.'
+        print('All right, bananas.')
 
 Other relational operations are useful for putting words in alphabetical
 order:
@@ -69,12 +69,12 @@ order:
 .. code-block:: python
 
     if word < 'banana':
-        print 'Your word,' + word + ', comes before banana.'
+        print('Your word,' + word + ', comes before banana.')
     elif word > 'banana':
-        print 'Your word,' + word + ', comes after banana.'
+        print('Your word,' + word + ', comes after banana.')
     else:
         # must be equal!
-        print 'All right, bananas.'
+        print('All right, bananas.')
 
 Python does not handle uppercase and lowercase letters the same way that
 people do: all the uppercase letters come before all the lowercase
@@ -90,14 +90,19 @@ example, both of the following Boolean expressions would evaluate to
 
 .. code-block:: python
 
-    'a' in 'banana'
-    'nana' in 'banana'
+    >>> 'a' in 'banana'
+    True
+    >>> 'nana' in 'banana'
+    True
 
-But this one would evaluate to ``False``:
+But these would evaluate to ``False``:
 
 .. code-block:: python
 
-    'A' in 'banana'
+    >>> 'naan' in 'banana'
+    False
+    >>> 'BA' in 'banana'
+    False
 
 Modulus operator
 ----------------
@@ -361,6 +366,9 @@ conditionals, so we can get the same effect with the ``and`` operator:
     if 0 < x and x < 10:
         print 'x is a positive single-digit number.'
 
+
+.. index:: debugging
+
 Debugging
 ---------
 
@@ -471,4 +479,10 @@ pseudorandom:
    even if you have), read the Wikipedia page for detail on related
    games, and programs (and robots) that have been built to play
    RPS: http://en.wikipedia.org/wiki/Rock-paper-scissors.
+
+.. todo:: New exercises: do some accumulator pattern to remove tags
+          from a string.  
+
+.. rubric:: Footnotes
+
 

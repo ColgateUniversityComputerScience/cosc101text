@@ -958,6 +958,8 @@ assertion:
        to check whether sticks with the given lengths can form a
        triangle.
 
+.. todo:: Additional web-related exercises
+
 .. rubric:: Footnotes
 
 .. [1]

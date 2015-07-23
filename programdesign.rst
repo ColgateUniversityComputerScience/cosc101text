@@ -2,6 +2,9 @@
 Program design
 **************
 
+.. todo:: Fix this chapter to remove turtle and use modules like urllib and
+   json or http.client
+
 Why functions?
 --------------
 

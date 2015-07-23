@@ -851,7 +851,7 @@ composition:
 
 .. 
 
-.. todo:: More exercises, some web related
+.. todo:: More exercises, some web related ?
 
 
 .. rubric:: Footnotes
