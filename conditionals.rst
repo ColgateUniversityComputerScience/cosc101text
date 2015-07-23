@@ -117,10 +117,10 @@ The syntax is the same as for other operators:
 .. code-block:: python
 
     >>> quotient = 7 / 3
-    >>> print quotient
+    >>> print(quotient)
     2
     >>> remainder = 7 % 3
-    >>> print remainder
+    >>> print(remainder)
     1
 
 So 7 divided by 3 is 2 with 1 left over.
@@ -181,15 +181,16 @@ executed. If not, nothing happens.
 ``if`` statements have the same structure as the ``for`` statement: a
 header with a colon at the end, followed by an indented body. Statements
 like this are called **compound statements**. When ever you have a colon
-at the end of a program statement, IDLE will automatically place your
-cursor at a properly indented location on the next line. If you need to
+at the end of a program statement, indentation-aware text editors will
+will automatically place your cursor at a properly indented location 
+on the next line [#]_. If you need to
 do "manual" indentation, the convention in Python is to use 4 spaces
 (and no tabs).
 
 Again, for compound statements, there is no limit on the number of
 statements that can appear in the body, but there has to be at least
 one. Occasionally, it is useful to have a body with no statements
-(usually as a place keeper for code you haven’t written yet). In that
+(usually as a placeholder for code you haven’t written yet). In that
 case, you can use the ``pass`` statement, which does nothing.
 
 .. code-block:: python
@@ -207,9 +208,9 @@ gets executed. The syntax looks like this:
 .. code-block:: python
 
     if x%2 == 0:
-        print 'x is even'
+        print('x is even')
     else:
-        print 'x is odd'
+        print('x is odd')
 
 If the remainder when ``x`` is divided by 2 is 0, then we know that
 ``x`` is even, and the program displays a message to that effect. If the
@@ -247,7 +248,7 @@ next number in a long series. To see a sample, run this loop:
 
     for i in range(10):
         x = random.random()
-        print x
+        print(x)
 
 The function ``randint`` takes parameters ``low`` and ``high`` and
 returns an integer between ``low`` and ``high`` (including both).
@@ -267,9 +268,9 @@ comes up heads or tails), we could use the following program:
     import random
 
     if random.randint(0,1) == 0:
-        print "Heads!"
+        print("Heads!")
     else:
-        print "Tails!"
+        print("Tails!")
 
 The ``randint`` function will return 0 or 1 with equal probability, so
 that will effectively simulate a coin toss. Alternatively, we could use
@@ -280,9 +281,9 @@ the ``random`` function to do the same thing:
     import random
 
     if random.random() < 0.5:
-        print "Heads!"
+        print("Heads!")
     else:
-        print "Tails!"
+        print("Tails!")
 
 Chained conditionals
 --------------------
@@ -294,11 +295,11 @@ conditional**:
 .. code-block:: python
 
     if x < y:
-        print 'x is less than y'
+        print('x is less than y')
     elif x > y:
-        print 'x is greater than y'
+        print('x is greater than y')
     else:
-        print 'x and y are equal'
+        print('x and y are equal')
 
 ``elif`` is an abbreviation of "else if". Again, *exactly one branch
 will be executed*. There is no limit on the number of ``elif``
@@ -311,11 +312,11 @@ there doesn't have to be one.
 
     rps = random.randint(1,3)
     if rps == 1:
-        print "Rock!"
+        print("Rock!")
     elif rps == 2:
-        print "Paper!"
+        print("Paper!")
     elif rps == 3:
-        print "Scissors!"
+        print("Scissors!")
 
 Each condition is checked in order. If the first is ``False``, the next
 is checked, and so on. If one of them is ``True``, the corresponding
@@ -331,12 +332,12 @@ the trichotomy example like this:
 .. code-block:: python
 
     if x == y:
-        print 'x and y are equal'
+        print('x and y are equal')
     else:
         if x < y:
-            print 'x is less than y'
+            print('x is less than y')
         else:
-            print 'x is greater than y'
+            print('x is greater than y')
 
 The outer conditional contains two branches. The first branch contains a
 simple statement. The second branch contains another ``if`` statement,
@@ -356,7 +357,7 @@ single conditional:
 
     if 0 < x:
         if x < 10:
-            print 'x is a positive single-digit number.'
+            print('x is a positive single-digit number.')
 
 The ``print`` statement is executed only if we make it past both
 conditionals, so we can get the same effect with the ``and`` operator:
@@ -364,7 +365,7 @@ conditionals, so we can get the same effect with the ``and`` operator:
 .. code-block:: python
 
     if 0 < x and x < 10:
-        print 'x is a positive single-digit number.'
+        print('x is a positive single-digit number.')
 
 
 .. index:: debugging
@@ -383,10 +384,11 @@ program, we often want to know which *branch* is being taken. To do
 that, it can be helpful to insert ``print`` statements within ``if``,
 ``elif``, and ``else`` statement blocks. Adding ``print`` statements to
 help reveal what the program is doing is often referred to as **trace
-debugging**, **printf debugging**, or **caveman debugging**. (The term
+debugging**, **printf debugging**, or **caveman** or **cavewoman debugging**.
+(The term
 "printf debugging" comes from the ``printf`` function in the C language,
-which is fairly similar to the ``print`` statement in Python.) Although
-the term "caveman" doesn't cast a particularly favorable light on this
+which is fairly similar to the ``print`` function in Python.) Although
+the term "caveperson" doesn't cast a particularly favorable light on this
 technique, it is nonetheless an extremely useful and widely used method
 for understanding what a program is doing.
 
@@ -446,13 +448,13 @@ pseudorandom:
 
 .. code-block:: python
 
-    i = input("Gimme a number: ")
+    i = int(input("Gimme a number: "))
     if i == 0:
-        print "You entered zero"
+        print("You entered zero")
     if i == 1:
-        print "You entered one"
+        print("You entered one")
     else:
-        print "You entered something other than zero or one"
+        print("You entered something other than zero or one")
 
 ..
 
@@ -485,4 +487,7 @@ pseudorandom:
 
 .. rubric:: Footnotes
 
+.. [#] The basic IDLE editor will do automatic indentation, as will vim and
+       gvim, Sublime Text, gedit, and many other *good* editors.  Note that
+       some of these programs need to be configured to do automatic indentation.
 
