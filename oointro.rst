@@ -437,8 +437,7 @@ Putting all our work together, here is the full definition of the
             return "Point ({:.1f},{:.1f})".format(self.x, self.y)
 
 
-Glossary
---------
+.. rubric:: Glossary
 
 .. todo:: copy stuff from oodesign
 

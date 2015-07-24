@@ -1,7 +1,7 @@
-Dictionaries
-************
+Dictionaries and other built-in data structures
+***********************************************
 
-.. todo:: fold tuples into this chapter.
+.. todo:: fold tuples and sets into this chapter.
 
 A **dictionary** is like a list, but more general. In a list, the
 indices have to be integers; in a dictionary they can be (almost) any
@@ -505,8 +505,7 @@ debugging large datasets:
 Again, time you spend building scaffolding can reduce the time you spend
 debugging.
 
-Glossary
---------
+.. rubric:: Glossary
 
 dictionary:
     A mapping from a set of keys to their corresponding values.

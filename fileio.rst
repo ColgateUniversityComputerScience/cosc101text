@@ -743,8 +743,7 @@ another. You can find them (and read more about this issue) at
 http://wikipedia.org/wiki/Newline. Or, of course, you could write one
 yourself.
 
-Glossary
---------
+.. rubric:: Glossary
 
 file object:
     A value that represents an open file.

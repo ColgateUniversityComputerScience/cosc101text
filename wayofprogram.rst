@@ -461,8 +461,7 @@ useful for many activities beyond programming. At the end of each
 chapter there is a debugging section, like this one, with my thoughts
 about debugging. I hope they help!
 
-Glossary
-========
+.. rubric:: Glossary
 
 problem solving:
     The process of formulating a problem, finding a solution, and

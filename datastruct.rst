@@ -551,8 +551,7 @@ a time.
 Finding a hard bug requires reading, running, ruminating, and sometimes
 retreating. If you get stuck on one of these activities, try the others.
 
-Glossary
-========
+.. rubric:: Glossary
 
 default value:
     The value given to an optional parameter if no argument is provided.

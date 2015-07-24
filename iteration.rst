@@ -514,8 +514,7 @@ program where there might be errors and places where it is easy to put a
 check. Then choose a spot where you think the chances are about the same
 that the bug is before or after the check.
 
-Glossary
---------
+.. rubric:: Glossary
 
 initialization:
     An assignment that gives an initial value to a variable that will be

@@ -674,8 +674,7 @@ the wrong answer.
     1. Rewrite the last expression (``1.0 / 2.0 * pi``) so that the
        correct answer is reached.
 
-Glossary
---------
+.. rubric:: Glossary
 
 value:
     One of the basic units of data, like a number or string, that a

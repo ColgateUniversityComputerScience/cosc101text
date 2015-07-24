@@ -558,8 +558,7 @@ the parameters to a function is of the wrong shape. You can then search
 for instances where the function is called to find and fix situations in
 which the function is called incorrectly.
 
-Glossary
---------
+.. rubric:: Glossary
 
 tuple:
     An immutable sequence of elements.

@@ -951,8 +951,7 @@ PokerHand.
 If you violate this rule, your code will collapse like (sorry) a house
 of cards.
 
-Glossary
---------
+.. rubric:: Glossary
 
 class:
     A user-defined type. A class definition creates a new class object.

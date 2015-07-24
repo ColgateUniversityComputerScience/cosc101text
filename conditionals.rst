@@ -392,8 +392,7 @@ the term "caveperson" doesn't cast a particularly favorable light on this
 technique, it is nonetheless an extremely useful and widely used method
 for understanding what a program is doing.
 
-Glossary
---------
+.. rubric:: Glossary
 
 modulus operator:
     An operator, denoted with a percent sign (``%``), that works on

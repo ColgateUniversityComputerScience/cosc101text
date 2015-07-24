@@ -718,8 +718,7 @@ test cases should be. Here are some rules of thumb:
 You can also read more about unit testing on Wikipedia:
 http://en.wikipedia.org/wiki/Unit_testing.
 
-Glossary
---------
+.. rubric:: Glossary
 
 function:
     A named sequence of statements that performs some useful operation.

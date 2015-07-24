@@ -727,8 +727,7 @@ signal power and noise power with floating-point values.
 So in general, error messages tell you where the problem was discovered,
 but that is often not where it was caused.
 
-Glossary
---------
+.. rubric:: Glossary
 
 function:
     A named sequence of statements that performs some useful operation.

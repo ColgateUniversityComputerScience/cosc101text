@@ -26,14 +26,15 @@ Solving Problems with Python: Developing Web Applications Edition
    functionsindepth.rst
    programdesign.rst
    iteration.rst
+   stringslists.rst
+   htmlcss.rst
    oointro.rst
-   strings.rst
    fileio.rst
-   lists.rst
    dictionaries.rst
-   tuples.rst
-   datastruct.rst
    oodesign.rst
+   djangointro.rst
+   djangomvt.rst
+   djangoadvanced.rst
    debugging.rst
 
 Copyright

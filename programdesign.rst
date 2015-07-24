@@ -370,8 +370,7 @@ work correctly, the bug is in the caller, not the function.
 Note that the ``assert`` function described in the last chapter can be
 incredibly helpful for verifying pre- or post-conditions.
 
-Glossary
---------
+.. rubric:: Glossary
 
 divide and conquer:
     A problem solving strategy that proceeds by breaking down a problem
