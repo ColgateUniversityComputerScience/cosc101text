@@ -1,6 +1,7 @@
-*********************
 File input and output
 *********************
+
+.. todo:: add urllib stuff to this chapter
 
 Reading word lists
 ------------------

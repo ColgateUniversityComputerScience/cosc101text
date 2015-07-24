@@ -1,8 +1,10 @@
-*******
-Strings
-*******
+Advanced Strings and Lists
+**************************
 
-In this chapter, we dive into a bit more depth on strings.
+.. todo:: copy in stuff from lists; remove ord/chr; go into objects/methods
+   pretty early in this section, setting up for next chapter.
+
+In this chapter, we dive into a bit more depth on strings and lists.
 
 Traversal with a ``while`` loop
 -------------------------------

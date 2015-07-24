@@ -2,9 +2,6 @@
 Program design
 **************
 
-.. todo:: Fix this chapter to remove turtle and use modules like urllib and
-   json or http.client
-
 Why functions?
 --------------
 
@@ -100,8 +97,8 @@ them.
     def distance(x1, y1, x2, y2):
         dx = x2 - x1
         dy = y2 - y1
-        print 'dx is', dx
-        print 'dy is', dy
+        print('dx is', dx)
+        print('dy is', dy)
         return 0.0
 
 If the function is working, it should display ``'dx is 3'`` and
@@ -117,7 +114,7 @@ Next we compute the sum of squares of ``dx`` and ``dy``:
         dx = x2 - x1
         dy = y2 - y1
         dsquared = dx**2 + dy**2
-        print 'dsquared is: ', dsquared
+        print('dsquared is: ', dsquared)
         return 0.0
 
 Again, you would run the program at this stage and check the output
@@ -138,8 +135,57 @@ additional test cases to verify that the function *really* works.)
 Otherwise, you might want to print the value of ``result`` before the
 return statement.
 
+.. sidebar:: The ``print`` function and **keyword arguments**
+
+   The ``print`` function is a bit more powerful than we've shown or
+   used so far.  It can take several different **keyword arguments**
+   that can be used to control how output to the screen gets generated.
+   Two specific keyword arguments are ``sep`` and ``end``.
+
+   The ``sep`` keyword argument can be used to specify a string that
+   should be printed *between* each argument to the print function call.
+   By default, a single space is printed::
+
+       >>> print(1, 2, 3)
+       1 2 3
+
+   But if you call ``print`` with the ``sep`` keyword, you can change
+   that behavior::
+   
+       >>> print(1, 2, 3, sep="!!!")
+       1!!!2!!!3
+       >>> print(1, 2, 3, sep="")
+       123
+       >>> print(1, 2, 3, sep="+")
+       1+2+3
+   
+   With keyword arguments you *must* use the syntax ``parametername=value``.
+   For the ``print`` function, this should be somewhat obvious: if we did 
+   not specify ``sep='value'`` the function wouldn't know whether to just
+   print the argument or use it in a special way to control how output
+   should be created.
+
+   Another keyword argument to ``print`` is ``end``, which can be used
+   to specify a string that should be printed at the end of each line.
+   The default ``end`` string is ``\n'`` (the "newline" character), which
+   causes the output of ``print`` to appear on its own line.  By using
+   the ``end`` keyword argument, this behavior can be changed.  With
+   the following code::
+
+       print(1, 2, end='')
+       print(3)
+
+   The output would be::
+
+       1 23
+
+   Think about why the 2 and 3 have no space between them.  As an exercise,
+   rewrite the two lines of code above so that the output is ``1 2 3`` on
+   one line.
+
+
 The final version of the function doesn’t display anything when it runs;
-it only returns a value. The ``print`` statements we wrote are useful
+it only returns a value. The ``print`` function calls we wrote are useful
 for debugging, but once you get the function working, you should remove
 them. Code like that is called **scaffolding** because it is helpful for
 building the program but is not part of the final product.
@@ -215,362 +261,6 @@ concise by composing the function calls:
         return area(distance(xc, yc, xp, yp))
 
 
-Turtles
--------
-
-In this section, we'll use the ``turtle`` module which is built in to
-Python as a way to get more practice with program design concepts. The
-``turtle`` module provides a fairly simple way to draw on the screen.
-Here is an example to get started:
-
-.. code-block:: python
-
-    import turtle
-
-    def main():
-        turtle.forward(100)  # move forward 100 units
-        turtle.left(90)      # turn left 90 degrees
-
-        turtle.forward(100)  # forward 100 units
-        turtle.left(90)      # left 90 degrees
-
-        turtle.forward(100)  # forward 100 units
-        turtle.left(90)      # left 90 degrees
-
-        turtle.forward(100)  # forward 100 units
-        turtle.left(90)
-
-        turtle.done()        # all done!
-
-    main()
-
-The following screen shot shows the result of running the program. We
-first import the ``turtle`` module (which is built in to all Python
-versions). After that, we have a ``main`` function inside which we
-include all our turtle drawing statements. The ``forward`` function
-takes one parameter, which is the number of units to move forward. The
-``left`` function takes a number of degrees to turn to the left. A
-turtle starts out in the middle of the screen, facing to the right. If
-you carefully read the above program, you'll see that we have the turtle
-draw each side of a square. At the end, the turtle is left facing
-directly right again.
-
-.. figure:: figs/turtle.png
-   :align: center
-   :alt: Turtle window after running the example program
-
-   Turtle window after running the example program
-
-The ``turtle`` module contains other functions to steer the turtle
-around the screen, including ``backward``, ``right``, ``setposition``,
-and ``setheading``. The Python ``turtle`` documentation has all the
-details on these functions: http://docs.python.org/library/turtle.html.
-
-Also, each turtle is holding a pen, which is either down or up; if the
-pen is down, the turtle leaves a trail when it moves. The functions
-``penup`` and ``pendown`` can control whether the pen is up or down.
-There is also a ``pencolor`` function that controls the color of the
-pen.
-
-At the end of any ``turtle`` program, you should always call the
-``done`` function. If you do not call this function, you may need to
-restart IDLE after running a program that uses ``turtle``. (Different
-operating systems behave differently in this regard. Especially on
-Windows systems, you should remember to call ``turtle.done()`` at the
-end of a turtle drawing program.)
-
-    **Exercises**:
-
-       First, see if you can simplify the above program by using a ``for`` loop
-       to draw each side of the square.
-
-       Now, consider the following series using ``turtle``. They are meant
-       to be fun, but they have a point, too. While you are working on them,
-       think about what the point is.
-
-       The sections that immediately follow have solutions to the exercises, so
-       don’t look until you have finished (or at least tried).
-
-        1. Write a function called ``square`` that uses ``turtle`` to draw a
-           square.
-
-        2. Add a parameter, named ``length``, to ``square``. Modify the
-           function so length of the sides is ``length``, and then modify
-           the function call to provide an argument for the length. Run the
-           program again. Test your program with a range of values for
-           ``length``.
-
-        3. Make a copy of ``square`` and change the name to ``polygon``. Add
-           another parameter named ``n`` and modify the body so it draws an
-           n-sided regular polygon.
-    
-           Hint: instead of passing 90 to the ``left`` or ``right`` function
-           for turning the turtle, you'll need to specify a different value.
-           As another hint, the exterior angles of an n-sided regular
-           polygon are :math:`360.0 / n` degrees.
-    
-        4. Write a function called ``circle`` that takes a radius, ``r``, as
-           a parameter and that draws an approximate circle by invoking
-           ``polygon`` with an appropriate length and number of sides. Test
-           your function with a range of values of ``r``.
-
-           Hint: figure out the circumference of the circle and make sure
-           that ``length * n = circumference``.
-
-           Another hint: if the turtle drawing is too slow for your taste,
-           you can call ``turtle.speed('fastest')``.
-
-        5. Make a more general version of ``circle`` called ``arc`` that
-           takes an additional parameter ``angle``, which determines what
-           fraction of a circle to draw. ``angle`` is in units of degrees,
-           so when ``angle=360``, ``arc`` should draw a complete circle.
-
-Encapsulation
--------------
-
-The first exercise asks you to put your square-drawing code into a
-function definition and then call the function, passing the turtle as a
-parameter. Here is a solution:
-
-.. code-block:: python
-
-    import turtle
-
-    def square():
-        for i in range(4):
-            turtle.forward(100)
-            turtle.left(90)
-
-    square()
-    turtle.done()
-
-The innermost statements, ``forward`` and ``left`` are indented twice to
-show that they are inside the ``for`` loop, which is inside the function
-definition. The next line, ``square()``, is flush with the left margin,
-so that is the end of both the ``for`` loop and the function definition.
-
-The ``for`` loop above is a bit odd in the sense that we never use the
-variable ``i`` inside the statement body. This isn't uncommon in
-situations in which we want a statement body to be repeated a specific
-number of times, but we don't necessarily have to keep track of which
-iteration we're on.
-
-Wrapping a piece of code up in a function is called **encapsulation**.
-One of the benefits of encapsulation is that it attaches a name to the
-code, which serves as a kind of documentation. Another advantage is that
-if you re-use the code, it is more concise to call a function twice than
-to copy and paste the body!
-
-Generalization
---------------
-
-The next step is to add a ``length`` parameter to ``square``. Here is a
-solution:
-
-.. code-block:: python
-
-    import turtle
-
-    def square(length):
-        for i in range(4):
-            turtle.forward(length)
-            turtle.left(90)
-
-    square(100)
-    turtle.done()
-
-Adding a parameter to a function is called **generalization** because it
-makes the function more general: in the previous version, the square is
-always the same size; in this version it can be any size.
-
-The next step is also a generalization. Instead of drawing squares,
-``polygon`` draws regular polygons with any number of sides. Here is a
-solution:
-
-.. code-block:: python
-
-    import turtle
-
-    def polygon(n, length):
-        angle = 360.0 / n
-        for i in range(n):
-            turtle.forward(length)
-            turtle.left(angle)
-
-    polygon(7, 70)
-    turtle.done()
-
-This draws a 7-sided polygon with side length 70. If you have more than
-a few numeric arguments, it is easy to forget what they are, or what
-order they should be in. It is legal, and sometimes helpful, to include
-the names of the parameters in the argument list:
-
-.. code-block:: python
-
-    polygon(n=7, length=70)
-
-These are called **keyword arguments** because they include the
-parameter names as "keywords" (not to be confused with Python keywords
-like ``for`` and ``def``).
-
-This syntax makes the program more readable. It is also a reminder about
-how arguments and parameters work: when you call a function, the
-arguments are assigned to the parameters.
-
-Interface design
-----------------
-
-The next step is to write ``circle``, which takes a radius, ``r``, as a
-parameter. Here is a simple solution that uses ``polygon`` to draw a
-50-sided polygon:
-
-.. code-block:: python
-
-    def circle(r):
-        circumference = 2 * math.pi * r
-        n = 50
-        length = circumference / n
-        polygon(n, length)
-
-The first line computes the circumference of a circle with radius ``r``
-using the formula :math:`2 \pi r`. Since we use ``math.pi``, we have to
-import ``math``. Remember that by convention, ``import`` statements
-should be put at the beginning of the script.
-
-``n`` is the number of line segments in our approximation of a circle,
-so ``length`` is the length of each segment. Thus, ``polygon`` draws a
-50-sides polygon that approximates a circle with radius ``r``.
-
-One limitation of this solution is that ``n`` is a constant, which means
-that for very big circles, the line segments are too long, and for small
-circles, we waste time drawing very small segments. One solution would
-be to generalize the function by taking ``n`` as a parameter. This would
-give the user (whoever calls ``circle``) more control, but the interface
-would be less clean.
-
-The **interface** of a function is a summary of how it is used: what are
-the parameters? What does the function do? And what is the return value?
-An interface is "clean" if it is "as simple as possible, but not
-simpler." (Einstein)
-
-In this example, ``r`` belongs in the interface because it specifies the
-circle to be drawn. ``n`` is less appropriate because it pertains to the
-details of *how* the circle should be rendered.
-
-Rather than clutter up the interface, it is better to choose an
-appropriate value of ``n`` depending on ``circumference``:
-
-.. code-block:: python
-
-    def circle(r):
-        circumference = 2 * math.pi * r
-        n = int(circumference / 3) + 1
-        length = circumference / n
-        polygon(n, length)
-
-Now the number of segments is (approximately) ``circumference/3``, so
-the length of each segment is (approximately) 3, which is small enough
-that the circles look good, but big enough to be efficient, and
-appropriate for any size circle.
-
-Refactoring
------------
-
-When we wrote ``circle``, we were able to re-use ``polygon`` because a
-many-sided polygon is a good approximation of a circle. But ``arc`` is
-not as cooperative; we can’t use ``polygon`` or ``circle`` to draw an
-arc.
-
-One alternative is to start with a copy of ``polygon`` and transform it
-into ``arc``. The result might look like this:
-
-.. code-block:: python
-
-    def arc(r, angle):
-        arc_length = 2 * math.pi * r * angle / 360
-        n = int(arc_length / 3) + 1
-        step_length = arc_length / n
-        step_angle = float(angle) / n
-
-        for i in range(n):
-            turtle.forward(step_length)
-            turtle.left(step_angle)
-
-The second half of this function looks like ``polygon``, but we can't
-re-use ``polygon`` without changing the interface. We could generalize
-``polygon`` to take an angle as a third argument, but then ``polygon``
-would no longer be an appropriate name! Instead, let's call the more
-general function ``polyline``:
-
-.. code-block:: python
-
-    def polyline(n, length, angle):
-        for i in range(n):
-            turtle.forward(length)
-            turtle.forward(angle)
-
-Now we can rewrite ``polygon`` and ``arc`` to use ``polyline``:
-
-.. code-block:: python
-
-    def polygon(n, length):
-        angle = 360.0 / n
-        polyline(n, length, angle)
-
-    def arc(r, angle):
-        arc_length = 2 * math.pi * r * angle / 360
-        n = int(arc_length / 3) + 1
-        step_length = arc_length / n
-        step_angle = float(angle) / n
-        polyline(n, step_length, step_angle)
-
-Finally, we can rewrite ``circle`` to use ``arc``:
-
-.. code-block:: python
-
-    def circle(r):
-        arc(r, 360)
-
-This process—rearranging a program to improve function interfaces and
-facilitate code re-use—is called **refactoring**. In this case, we
-noticed that there was similar code in ``arc`` and ``polygon``, so we
-“factored it out” into ``polyline``.
-
-If we had planned ahead, we might have written ``polyline`` first and
-avoided refactoring, but often you don’t know enough at the beginning of
-a project to design all the interfaces. Once you start coding, you
-understand the problem better. Sometimes refactoring is a sign that you
-have learned something.
-
-Here's the full set of code we wrote:
-
-.. code-block:: python
-
-    import turtle
-    import math
-
-    def polyline(n, length, angle):
-        for i in range(n):
-            turtle.forward(length)
-            turtle.left(angle)
-
-    def polygon(n, length):
-        angle = 360.0 / n
-        polyline(n, length, angle)
-
-    def arc(r, angle):
-        arc_length = 2 * math.pi * r * angle / 360
-        n = int(arc_length / 3) + 1
-        step_length = arc_length / n
-        step_angle = float(angle) / n
-        polyline(n, step_length, step_angle)
-
-    def circle(r):
-        arc(r, 360)
-
-..
-
-
 A development plan
 ------------------
 
@@ -588,7 +278,11 @@ of this process are:
 4. Repeat steps 1–3 until you have a set of working functions. Copy and
    paste working code to avoid retyping (and re-debugging).
 
-5. Look for opportunities to improve the program by refactoring. For
+5. Look for opportunities to improve the program by **refactoring**.  
+   Refactoring simply means changing a program's structure without
+   modifying its behavior. Examples of refactoring might be to
+   improve a program by reducing (or eliminating) repeated statements,
+   or improving abstraction by creating a new function.  For
    example, if you have similar code in several places, consider
    factoring it into an appropriately general function.
 
@@ -596,36 +290,58 @@ This process has some drawbacks, but it can be useful if you don’t know
 ahead of time how to divide the program into functions. This approach
 lets you design as you go along.
 
-docstring
----------
+Guidelines for functions: SOFA
+------------------------------
+
+A somewhat goofy but useful acronym for thinking about what makes a "good" 
+function is SOFA.  The meaning of the acronym is this:
+
+   Functions should be:
+
+    * **S**\ hort,
+    * Do **O**\ ne thing,
+    * Take **F**\ ew arguments, and
+    * Implement a single level of **A**\ bstraction
+
+
+
+
+.. todo:: Make reference to uncle bob's book
+
+docstrings
+----------
 
 A **docstring** is a string at the beginning of a function that explains
-the interface (“doc” is short for “documentation”). Here is an example:
+the interface ("doc" is short for "documentation"). Here is an example:
 
-::
+.. code-block:: python
 
-    def polyline(length, n, angle):
-        """Draw n line segments with the given length and
-        angle (in degrees) between them.  
-        """    
-        for i in range(n):
-            turtle.forward(length)
-            turtle.left(angle)
+    def circle_area(xc, yc, xp, yp):
+        '''
+        (float, float, float, float) -> float
+
+        Compute the area of a circle.
+        '''
+        return area(distance(xc, yc, xp, yp))
 
 This docstring is a triple-quoted string, also known as a multiline
 string because the triple quotes allow the string to span more than one
-line.
+line.  
 
 It is terse, but it contains the essential information someone would
 need to use this function. It explains concisely what the function does
-(without getting into the details of how it does it). It explains what
-effect each parameter has on the behavior of the function and what type
-each parameter should be (if it is not obvious).
+(without getting into the details of how it does it).  The first line
+is traditionally a representation of the parameter types that the function
+accepts, and the data type that the function returns.  The explanation
+of the function should give enough detail for a user of the function
+to know how to use it and any details he or she should be aware of.
 
 Writing this kind of documentation is an important part of interface
 design. A well-designed interface should be simple to explain; if you
 are having a hard time explaining one of your functions, that might be a
 sign that the interface could be improved.
+
+.. index:: debugging
 
 Debugging
 ---------
@@ -707,36 +423,7 @@ postcondition:
 
 .. rubric:: Exercises
 
-1. Write an appropriately general set of functions that can draw
-   flowers like this:
+.. todo:: hangperson, run-length encoding, 
 
-.. figure:: figs/flowers.png
-   :align: center
-   :alt: Example flowers to draw with turtle graphics.
-
-..
-
-   Example flowers to draw with turtle graphics.
-
-2. Write an appropriately general set of functions that can draw
-   shapes like this:
-
-.. figure:: figs/pies.png
-   :align: center
-   :alt: Example shapes to draw with turtle graphics.
-
-..
-
-   Example shapes to draw with turtle graphics.
-
-3. The letters of the alphabet can be constructed from a moderate
-   number of basic elements, like vertical and horizontal lines and
-   a few curves. Design a font that can be drawn with a minimal
-   number of basic elements and then write functions that draw
-   letters of the alphabet.
-
-   You should write one function for each letter, with names
-   ``draw_a``, ``draw_b``, etc., and put your functions in a file
-   named ``letters.py``.
-
+.. rubric:: Footnotes
 

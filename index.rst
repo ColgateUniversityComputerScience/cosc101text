@@ -26,18 +26,18 @@ Solving Problems with Python: Developing Web Applications Edition
    functionsindepth.rst
    programdesign.rst
    iteration.rst
+   oointro.rst
    strings.rst
-   recursion.rst
    fileio.rst
    lists.rst
    dictionaries.rst
    tuples.rst
    datastruct.rst
-   oo.rst
+   oodesign.rst
    debugging.rst
 
 Copyright
-========
+=========
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License: http://creativecommons.org/licenses/by-nc-sa/4.0/
 

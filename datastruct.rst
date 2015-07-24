@@ -1,6 +1,7 @@
-************************************
 Case study: data structure selection
 ************************************
+
+.. todo: remove this chapter; just move some exercises into other chapters
 
 Word frequency analysis
 =======================

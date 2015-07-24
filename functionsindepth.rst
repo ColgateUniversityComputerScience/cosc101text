@@ -1,6 +1,7 @@
-******************
 Functions in depth
 ******************
+
+.. index:: def, defining functions
 
 Adding new functions
 --------------------
@@ -15,8 +16,8 @@ Here is an example:
 .. code-block:: python
 
     def print_lyrics():
-        print "I'm a lumberjack, and I'm okay."
-        print "I sleep all night and I work all day."
+        print("I'm a lumberjack, and I'm okay.")
+        print("I sleep all night and I work all day.")
 
 ``def`` is a keyword that indicates that this is a function definition.
 The name of the function is ``print_lyrics``. The rules for function
@@ -48,7 +49,7 @@ complete:
     ...
 
 To end the function, you have to enter an empty line (this is not
-necessary in a script).
+necessary when typing the code in a text editor to run as a script).
 
 Defining a function creates a variable with the same name.
 
@@ -105,8 +106,8 @@ program looks like this:
 .. code-block:: python
 
     def print_lyrics():
-        print "I'm a lumberjack, and I'm okay."
-        print "I sleep all night and I work all day."
+        print("I'm a lumberjack, and I'm okay.")
+        print("I sleep all night and I work all day.")
 
     def repeat_lyrics():
         print_lyrics()
@@ -133,6 +134,8 @@ before the first time it is called.
     2. Move the function call back to the bottom and move the definition
        of ``print_lyrics`` after the definition of ``repeat_lyrics``.
        What happens when you run this program? Why?
+
+.. index:: flow of execution
 
 Flow of execution
 -----------------
@@ -167,6 +170,8 @@ What’s the moral of this sordid tale? When you read a program, you don’t
 always want to read from top to bottom. Usually, you want to follow the
 flow of execution and read the program as Python would interpret it.
 
+.. index:: function parameters, function arguments
+
 Parameters and arguments
 ------------------------
 
@@ -182,8 +187,8 @@ an argument:
 .. code-block:: python
 
     def print_twice(bruce):
-        print bruce
-        print bruce
+        print(bruce)
+        print(bruce)
 
 This function assigns the argument to a parameter named ``bruce``. When
 the function is called, it prints the value of the parameter (whatever
@@ -237,8 +242,9 @@ matter what the value was called back home (in the caller); here in
 Variables and parameters are local
 ----------------------------------
 
-When you create a variable inside a function, it is **local**, which
-means that it only exists inside the function. For example:
+When you create a variable inside a function, it is **local** to the
+function, which means that it only exists inside the function. 
+For example:
 
 .. code-block:: python
 
@@ -262,11 +268,13 @@ try to print it, we get an exception:
 
 .. code-block:: python
 
-    >>> print cat
+    >>> print(cat)
     NameError: name 'cat' is not defined
 
 Parameters are also local. For example, outside ``print_twice``, there
 is no such thing as ``bruce``.
+
+.. index:: function return values
 
 Return values
 -------------
@@ -305,6 +313,8 @@ This script computes the square root of 5, but since it doesn’t store or
 display the result (i.e., there is no ``print`` statement), it is not
 very useful.
 
+.. index:: None type
+
 Functions that do not return anything (also called "void functions")
 might display something on the screen or have some other effect, but
 they don’t explicitly pass back a result. However, Python will
@@ -314,8 +324,8 @@ defined as follows:
 .. code-block:: python
 
     def print_twice(s):
-        print s
-        print s
+        print(s)
+        print(s)
         # nothing returned from this function
 
 In the interactive interpreter, we call the function and assign its
@@ -326,16 +336,16 @@ result to the variable ``result``:
     >>> result = print_twice('Bing')
     Bing
     Bing
-    >>> print result
+    >>> print(result)
     None
 
 The value ``None`` is not the same as the string ``'None'``. It is a
-special value that has its own type:
+special value that has its own class type:
 
 .. code-block:: python
 
-    >>> print type(None)
-    <type 'NoneType'>
+    >>> print(type(None))
+    <class 'NoneType'>
 
 Functions with return values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -405,7 +415,7 @@ return value is ``None``, which is not the absolute value of 0.
 
 .. code-block:: python
 
-    >>> print absolute_value(0)
+    >>> print(absolute_value(0))
     None
 
 By the way, Python provides a built-in function called ``abs`` that
@@ -415,6 +425,8 @@ computes absolute values.
 
     1. Write a ``compare`` function that returns ``1`` if ``x > y``,
        ``0`` if ``x == y``, and ``-1`` if ``x < y``.
+
+.. index:: stack diagrams
 
 Stack diagrams
 --------------
@@ -476,7 +488,7 @@ Boolean functions
 Functions can return booleans, which is often convenient for hiding
 complicated tests inside functions. For example:
 
-::
+.. code-block:: python
 
     def is_divisible(x, y):
         if x % y == 0:
@@ -525,6 +537,8 @@ But the extra comparison is unnecessary.
 
     1. Write a function ``is_between(x, y, z)`` that returns ``True`` if
        :math:`x \le y \le z` or ``False`` otherwise.
+
+.. index:: debugging
 
 Debugging
 ---------
@@ -825,7 +839,7 @@ assertion:
     named ``print_spam`` twice::
 
         def print_spam():
-            print 'spam'
+            print('spam')
 
         do_twice(print_spam)
 
@@ -867,20 +881,10 @@ assertion:
     Hint: to print more than one value on a line, you can print a
     comma-separated sequence::
 
-        print '+', '-'
+        print('+', '-')
 
-    If the sequence ends with a comma, Python leaves the line
-    unfinished, so the value printed next appears on the same line.
-
-    ::
-
-        print '+', 
-        print '-'
-
-    The output of these statements is ``'+ -'``.
-
-    A ``print`` statement all by itself ends the current line and
-    goes to the next line.
+    Note, however, that the ``print`` function will insert a space
+    between each of the comma-separated arguments. 
 
 7.  Use the previous function to draw a similar grid with four rows
     and four columns.
@@ -917,7 +921,7 @@ assertion:
 
         x = 1
         y = x + 1
-        print c(x, y+3, x+y)
+        print(c(x, y+3, x+y))
 
 10. Fermat’s Last Theorem says that there are no integers :math:`a`,
     :math:`b`, and :math:`c` such that :math:`a^n + b^n = c^n`
@@ -958,7 +962,7 @@ assertion:
        to check whether sticks with the given lengths can form a
        triangle.
 
-.. todo:: Additional web-related exercises
+.. todo:: Additional web-related exercises; Requests lib, beautifulsoup lib?
 
 .. rubric:: Footnotes
 
