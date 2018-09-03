@@ -4,6 +4,9 @@
 
 .. raw:: html
 
+    <h4>This text is Python 2 only</h4>
+    <p>It will possibly be updated in the future, but please be warned.
+
     <h4>Preface</h4>
 
 This book was originally written by A. Downey under the titles "How to
