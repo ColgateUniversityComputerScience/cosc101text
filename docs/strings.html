@@ -1,0 +1,699 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>8. Strings &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Recursion" href="recursion.html" />
+    <link rel="prev" title="7. Iteration" href="iteration.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="recursion.html" title="9. Recursion"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="iteration.html" title="7. Iteration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. Strings</a><ul>
+<li><a class="reference internal" href="#traversal-with-a-while-loop">8.1. Traversal with a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</a></li>
+<li><a class="reference internal" href="#string-slices">8.2. String slices</a></li>
+<li><a class="reference internal" href="#strings-are-immutable">8.3. Strings are immutable</a></li>
+<li><a class="reference internal" href="#searching">8.4. Searching</a></li>
+<li><a class="reference internal" href="#looping-and-counting">8.5. Looping and counting</a></li>
+<li><a class="reference internal" href="#string-methods">8.6. <code class="docutils literal notranslate"><span class="pre">string</span></code> methods</a></li>
+<li><a class="reference internal" href="#character-numeric-duality">8.7. Character-numeric duality</a></li>
+<li><a class="reference internal" href="#string-comparison-and-ordering">8.8. String comparison and ordering</a></li>
+<li><a class="reference internal" href="#debugging">8.9. Debugging</a></li>
+<li><a class="reference internal" href="#glossary">8.10. Glossary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="iteration.html"
+                        title="previous chapter">7. Iteration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="recursion.html"
+                        title="next chapter">9. Recursion</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/strings.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="strings">
+<h1>8. Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we dive into a bit more depth on strings.</p>
+<div class="section" id="traversal-with-a-while-loop">
+<h2>8.1. Traversal with a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop<a class="headerlink" href="#traversal-with-a-while-loop" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of situations in which a string must be processed one
+character at a time. We've already done this with <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, but
+<code class="docutils literal notranslate"><span class="pre">while</span></code> loops give us some additional flexibility. Often, we start at
+the beginning, select each character in turn, do something to it, and
+continue until the end. This pattern of processing is called a
+<strong>traversal</strong>. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">):</span>
+    <span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">print</span> <span class="n">letter</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This loop traverses the string and displays each letter on a line by
+itself. The loop condition is <code class="docutils literal notranslate"><span class="pre">index</span> <span class="pre">&lt;</span> <span class="pre">len(fruit)</span></code>, so when <code class="docutils literal notranslate"><span class="pre">index</span></code>
+is equal to the length of the string, the condition is false, and the
+body of the loop is not executed. The last character accessed is the one
+with the index <code class="docutils literal notranslate"><span class="pre">len(fruit)-1</span></code>, which is the last character in the
+string.</p>
+<blockquote>
+<div><p><strong>Examples</strong></p>
+<ol class="arabic simple">
+<li>Write a function that takes a string as an argument and displays
+the letters backward, one per line.</li>
+<li>Write a function that takes a string as an argument and displays
+the letters backward, all on the same line. (A space between
+letters is ok.)</li>
+<li>Write a function that takes a string as a parameter and returns
+the number of <code class="docutils literal notranslate"><span class="pre">'x'</span></code>s that appear before the first <code class="docutils literal notranslate"><span class="pre">'z'</span></code> in
+the string. For example, calling the function with the string
+<code class="docutils literal notranslate"><span class="pre">'xaxxyz!</span> <span class="pre">x?'</span></code> should yield the count 3, since there are 3
+<code class="docutils literal notranslate"><span class="pre">'x'</span></code>s that appear before the <code class="docutils literal notranslate"><span class="pre">'z'</span></code> in the string.</li>
+</ol>
+</div></blockquote>
+<p>The following example shows how to use concatenation (string addition)
+and a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to generate an abecedarian series (that is, in
+alphabetical order). In Robert McCloskey’s book <em>Make Way for
+Ducklings</em>, the names of the ducklings are Jack, Kack, Lack, Mack, Nack,
+Ouack, Pack, and Quack. This loop outputs these names in order:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prefixes</span> <span class="o">=</span> <span class="s1">&#39;JKLMNOPQ&#39;</span>
+<span class="n">suffix</span> <span class="o">=</span> <span class="s1">&#39;ack&#39;</span>
+
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">prefixes</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">letter</span> <span class="o">+</span> <span class="n">suffix</span>
+</pre></div>
+</div>
+<p>The output is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Jack</span>
+<span class="n">Kack</span>
+<span class="n">Lack</span>
+<span class="n">Mack</span>
+<span class="n">Nack</span>
+<span class="n">Oack</span>
+<span class="n">Pack</span>
+<span class="n">Qack</span>
+</pre></div>
+</div>
+<p>Of course, that’s not quite right because “Ouack” and “Quack” are
+misspelled.</p>
+<blockquote>
+<div><p><strong>Examples</strong>:</p>
+<ol class="arabic simple">
+<li>Modify the program to fix this error.</li>
+<li>Modify the program to use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop instead of a <code class="docutils literal notranslate"><span class="pre">for</span></code>
+loop.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="string-slices">
+<h2>8.2. String slices<a class="headerlink" href="#string-slices" title="Permalink to this headline">¶</a></h2>
+<p>A segment of a string is called a <strong>slice</strong>. Selecting a slice is
+similar to selecting a character:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Monty Python&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">Monty</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span>
+<span class="go">Python</span>
+</pre></div>
+</div>
+<p>The operator <code class="docutils literal notranslate"><span class="pre">[n:m]</span></code> returns the part of the string from the &quot;n-eth&quot;
+character to the &quot;m-eth&quot; character, including the first but excluding
+the last. This behavior is counterintuitive, but it might help to
+imagine the indices pointing <em>between</em> the characters, as in the
+following diagram:</p>
+<div class="figure align-center">
+<img alt="image" src="_images/banana.png" />
+</div>
+<p>If you omit the first index (before the colon), the slice starts at the
+beginning of the string. If you omit the second index, the slice goes to
+the end of the string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">&#39;ban&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="go">&#39;ana&#39;</span>
+</pre></div>
+</div>
+<p>If the first index is greater than or equal to the second the result is
+an <strong>empty string</strong>, represented by two quotation marks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>An empty string contains no characters and has length 0, but other than
+that, it is the same as any other string.</p>
+<p>Another way to slice a string is to use <em>three</em> indices. The third value
+is referred to as the <code class="docutils literal notranslate"><span class="pre">step</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">&#39;bnn&#39;</span>
+</pre></div>
+</div>
+<p>The three slice indices work similarly to the three arguments to the
+<code class="docutils literal notranslate"><span class="pre">range</span></code> function. In fact, you can think of the three slice parameters
+as being used in a <code class="docutils literal notranslate"><span class="pre">range</span></code> function call to <em>generate</em> the indices of
+values to be extracted (&quot;sliced out&quot;) from the string. <code class="docutils literal notranslate"><span class="pre">range(0,5,2)</span></code>
+would give the list <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2,</span> <span class="pre">4]</span></code>, so the slice yields a string composed
+of the characters at indices 0, 2, and 4.</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>Given that <code class="docutils literal notranslate"><span class="pre">fruit</span></code> is a string, what does <code class="docutils literal notranslate"><span class="pre">fruit[:]</span></code> mean?</li>
+<li>Can you construct a string slice that will return a reversed copy
+of the string?</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="strings-are-immutable">
+<h2>8.3. Strings are immutable<a class="headerlink" href="#strings-are-immutable" title="Permalink to this headline">¶</a></h2>
+<p>It is tempting to use the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator on the left side of an
+assignment, with the intention of changing a character in a string. For
+example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello, world!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span>
+<span class="go">TypeError: object does not support item assignment</span>
+</pre></div>
+</div>
+<p>The &quot;object&quot; in this case is the string and the &quot;item&quot; is the character
+you tried to assign. For now, an <strong>object</strong> is the same thing as a
+value, but we will refine that definition later. An <strong>item</strong> is one of
+the values in a sequence.</p>
+<p>The reason for the error is that strings are <strong>immutable</strong>, which means
+you can’t change an existing string. The best you can do is create a new
+string that is a variation on the original:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello, world!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_greeting</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span> <span class="o">+</span> <span class="n">greeting</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">new_greeting</span>
+<span class="go">Jello, world!</span>
+</pre></div>
+</div>
+<p>This example concatenates a new first letter onto a slice of
+<code class="docutils literal notranslate"><span class="pre">greeting</span></code>. It has no effect on the original string.</p>
+</div>
+<div class="section" id="searching">
+<h2>8.4. Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
+<p>What does the following function do? Read the function carefully before
+moving on. If it helps, you can trace the operation of two different
+calls to this function: <code class="docutils literal notranslate"><span class="pre">find('magic',</span> <span class="pre">'i')</span></code> and
+<code class="docutils literal notranslate"><span class="pre">find('magic',</span> <span class="pre">'z')</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">letter</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">letter</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">index</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>In a sense, <code class="docutils literal notranslate"><span class="pre">find</span></code> is the opposite of the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator. Instead of
+taking an index and extracting the corresponding character, it takes a
+character and finds the index where that character appears. If the
+character is not found, the function returns <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p>This is the first example we have seen of a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement inside
+a loop. If <code class="docutils literal notranslate"><span class="pre">word[index]</span> <span class="pre">==</span> <span class="pre">letter</span></code>, the function breaks out of the
+loop and returns immediately.</p>
+<p>If the character doesn’t appear in the string, the program exits the
+loop normally and returns <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p>This pattern of computation—traversing a sequence and returning when we
+find what we are looking for—is called a <strong>search</strong>.</p>
+<blockquote>
+<div><p><strong>Examples</strong>:</p>
+<ol class="arabic simple">
+<li>Modify <code class="docutils literal notranslate"><span class="pre">find</span></code> so that it has a third parameter, the index in
+<code class="docutils literal notranslate"><span class="pre">word</span></code> where it should start looking.</li>
+<li>Write a function named <code class="docutils literal notranslate"><span class="pre">findall</span></code> that takes a character to
+search for and a string, and returns a list of indices where the
+character is found in the string.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="looping-and-counting">
+<h2>8.5. Looping and counting<a class="headerlink" href="#looping-and-counting" title="Permalink to this headline">¶</a></h2>
+<p>The following program counts the number of times the letter <code class="docutils literal notranslate"><span class="pre">a</span></code>
+appears in a string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">count</span>
+</pre></div>
+</div>
+<p>This program demonstrates another pattern of computation called a
+<strong>counter</strong>. The variable <code class="docutils literal notranslate"><span class="pre">count</span></code> is initialized to 0 and then
+incremented each time an <code class="docutils literal notranslate"><span class="pre">a</span></code> is found. When the loop exits, <code class="docutils literal notranslate"><span class="pre">count</span></code>
+contains the result—the total number of <code class="docutils literal notranslate"><span class="pre">a</span></code>’s.</p>
+<blockquote>
+<div><p><strong>Examples</strong>:</p>
+<ol class="arabic simple">
+<li>Encapsulate this code in a function named <code class="docutils literal notranslate"><span class="pre">count</span></code>, and
+generalize it so that it accepts the string and the letter as
+arguments.</li>
+<li>Rewrite this function so that instead of traversing the string,
+it uses the three-parameter version of <code class="docutils literal notranslate"><span class="pre">find</span></code> from the previous
+section.</li>
+<li>Rewrite the function so that instead of passing a single
+character as a parameter, another string can be passed to the
+function. Try to generalize the function so that it works for any
+length of substring.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="string-methods">
+<h2>8.6. <code class="docutils literal notranslate"><span class="pre">string</span></code> methods<a class="headerlink" href="#string-methods" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>method</strong> is similar to a function ---it takes arguments and returns
+a value---but the syntax is different. For example, the method <code class="docutils literal notranslate"><span class="pre">upper</span></code>
+takes a string and returns a new string with all uppercase letters:</p>
+<p>Instead of the function syntax <code class="docutils literal notranslate"><span class="pre">upper(word)</span></code>, it uses the method
+syntax <code class="docutils literal notranslate"><span class="pre">word.upper()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">new_word</span>
+<span class="go">BANANA</span>
+</pre></div>
+</div>
+<p>This form of dot notation specifies the name of the method, <code class="docutils literal notranslate"><span class="pre">upper</span></code>,
+and the name of the string to apply the method to, <code class="docutils literal notranslate"><span class="pre">word</span></code>. The empty
+parentheses indicate that this method takes no argument.</p>
+<p>A method call is called an <strong>invocation</strong>; in this case, we would say
+that we are invoking <code class="docutils literal notranslate"><span class="pre">upper</span></code> on the <code class="docutils literal notranslate"><span class="pre">word</span></code>.</p>
+<p>As it turns out, there is a string method named <code class="docutils literal notranslate"><span class="pre">find</span></code> that is
+remarkably similar to the function we wrote:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">index</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>In this example, we invoke <code class="docutils literal notranslate"><span class="pre">find</span></code> on <code class="docutils literal notranslate"><span class="pre">word</span></code> and pass the letter we
+are looking for as a parameter.</p>
+<p>Actually, the <code class="docutils literal notranslate"><span class="pre">find</span></code> method is more general than our function; it can
+find substrings, not just characters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;na&#39;</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>It can take as a second argument the index where it should start:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;na&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>And as a third argument the index where it should stop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bob&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">-1</span>
+</pre></div>
+</div>
+<p>This search fails because <code class="docutils literal notranslate"><span class="pre">b</span></code> does not appear in the index range from
+<code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">2</span></code> (not including <code class="docutils literal notranslate"><span class="pre">2</span></code>).</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>There is a string method called <code class="docutils literal notranslate"><span class="pre">count</span></code> that is similar to the
+function in the previous exercise. Read the documentation of this
+method and write an invocation that counts the number of <code class="docutils literal notranslate"><span class="pre">a</span></code>s
+in <code class="docutils literal notranslate"><span class="pre">'banana'</span></code>.</li>
+</ol>
+</div></blockquote>
+<p>There are quite a few string methods, and you'll probably want to take a
+look at the documentation:
+<a class="reference external" href="http://docs.python.org/library/stdtypes.html#string-methods">http://docs.python.org/library/stdtypes.html#string-methods</a>. Below, we
+review several of the useful methods:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>method</strong></th>
+<th class="head"><strong>description</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">upper</span></code></td>
+<td>Return an upper-cased copy of the string.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">lower</span></code></td>
+<td>Return a lower-cased copy of the string.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">capitalize</span></code></td>
+<td>Return a copy of the string with the first character
+capitalized.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">count(s)</span></code></td>
+<td>Return the number of non-overlapping occurrences
+of the substring <code class="docutils literal notranslate"><span class="pre">s</span></code> in the string.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">replace(old,</span> <span class="pre">new)</span></code></td>
+<td>Return a copy of the string with all occurrences of
+<code class="docutils literal notranslate"><span class="pre">old</span></code> replaced by <code class="docutils literal notranslate"><span class="pre">new</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">strip</span></code></td>
+<td>Return a copy of the string with leading and trailing
+&quot;whitespace&quot; characters removed (spaces, tabs, and
+newline characters).</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">split</span></code></td>
+<td>Return a list of words in the string, separating the
+string by any whitespace characters.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that several of the methods above can take optional parameters,
+which modify the behavior of the method. Refer to the Python
+documentation for details on the various string methods.</p>
+</div>
+<div class="section" id="character-numeric-duality">
+<h2>8.7. Character-numeric duality<a class="headerlink" href="#character-numeric-duality" title="Permalink to this headline">¶</a></h2>
+<p>Internal to a computer, <em>all</em> data are represented <em>numerically</em>:
+images, sounds, videos, strings, and characters. Sometimes it is useful
+to be able to process characters <em>numerically</em> instead of as
+single-character strings.
+Python includes two built-in functions to help with this: <code class="docutils literal notranslate"><span class="pre">ord</span></code> and
+<code class="docutils literal notranslate"><span class="pre">chr</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ord(ch)</span></code> returns the numeric, or <em>ordinal</em> value of a character.
+<code class="docutils literal notranslate"><span class="pre">chr(n)</span></code> returns the character corresponding to a given number <code class="docutils literal notranslate"><span class="pre">n</span></code>.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="go">65</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="go">66</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="go">67</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">97</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="go">98</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+<span class="go">&#39;c&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">&#39;d&#39;</span>
+</pre></div>
+</div>
+<p>As you can see above, upper case letters and lower case letters are each
+organized sequentially. Upper case letters start at the ordinal value
+65, and lower case letters start at 97. Knowing these specific numbers
+is not important; it is useful to observe, however, that they're
+organized sequentially.</p>
+<p>The mappings between characters and their numeric equivalents is defined
+by several standards. The most historically relevant one is the American
+Standard Code for Information Interchange, or ASCII:
+<a class="reference external" href="http://en.wikipedia.org/wiki/Ascii">http://en.wikipedia.org/wiki/Ascii</a>. Unfortunately, ASCII, as the name
+suggests, is United States (and English) centric and cannot accommodate
+character sets from other languages such as Chinese, Russian, or Korean.
+The Unicode standard was developed to accommodate international
+character sets. Unicode is beyond the scope of this class, but if you're
+interested, you can read more on Wikipedia:
+<a class="reference external" href="http://en.wikipedia.org/wiki/Unicode">http://en.wikipedia.org/wiki/Unicode</a>.</p>
+</div>
+<div class="section" id="string-comparison-and-ordering">
+<h2>8.8. String comparison and ordering<a class="headerlink" href="#string-comparison-and-ordering" title="Permalink to this headline">¶</a></h2>
+<p>As we've already seen, the relational operators work on strings.
+However, Python does not handle uppercase and lowercase letters the same
+way that people do. All the uppercase letters come before all the
+lowercase letters, so <code class="docutils literal notranslate"><span class="pre">'Pineapple'</span></code> comes before <code class="docutils literal notranslate"><span class="pre">'banana'</span></code>.</p>
+<p>A common way to address this problem is to convert strings to a standard
+format, such as all lowercase, before performing the comparison. Keep
+that in mind in case you have to defend yourself against a man armed
+with a Pineapple.</p>
+</div>
+<div class="section" id="debugging">
+<h2>8.9. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>When you use indices to traverse the values in a sequence, it is tricky
+to get the beginning and end of the traversal right. Here is a function
+that is supposed to compare two words and return <code class="docutils literal notranslate"><span class="pre">True</span></code> if one of the
+words is the reverse of the other, but it contains two errors:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_reverse</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">word2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>The first <code class="docutils literal notranslate"><span class="pre">if</span></code> statement checks whether the words are the same length.
+If not, we can return <code class="docutils literal notranslate"><span class="pre">False</span></code> immediately and then, for the rest of
+the function, we can assume that the words are the same length.</p>
+<p><code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> are indices: <code class="docutils literal notranslate"><span class="pre">i</span></code> traverses <code class="docutils literal notranslate"><span class="pre">word1</span></code> forward while
+<code class="docutils literal notranslate"><span class="pre">j</span></code> traverses <code class="docutils literal notranslate"><span class="pre">word2</span></code> backward. If we find two letters that don’t
+match, we can return <code class="docutils literal notranslate"><span class="pre">False</span></code> immediately. If we get through the whole
+loop and all the letters match, we return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>If we test this function with the words &quot;pots&quot; and &quot;stop&quot;, we expect the
+return value <code class="docutils literal notranslate"><span class="pre">True</span></code>, but we get an IndexError:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_reverse</span><span class="p">(</span><span class="s1">&#39;pots&#39;</span><span class="p">,</span> <span class="s1">&#39;stop&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">  File &quot;reverse.py&quot;, line 15, in is_reverse</span>
+<span class="go">    if word1[i] != word2[j]:</span>
+<span class="go">IndexError: string index out of range</span>
+</pre></div>
+</div>
+<p>For debugging this kind of error, my first move is to print the values
+of the indices immediately before the line where the error appears.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>        <span class="c1"># print here</span>
+
+    <span class="k">if</span> <span class="n">word1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">word2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Now when I run the program again, I get more information:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_reverse</span><span class="p">(</span><span class="s1">&#39;pots&#39;</span><span class="p">,</span> <span class="s1">&#39;stop&#39;</span><span class="p">)</span>
+<span class="go">0 4</span>
+<span class="gp">...</span>
+<span class="go">IndexError: string index out of range</span>
+</pre></div>
+</div>
+<p>The first time through the loop, the value of <code class="docutils literal notranslate"><span class="pre">j</span></code> is 4, which is out
+of range for the string <code class="docutils literal notranslate"><span class="pre">'pots'</span></code>. The index of the last character is
+3, so the initial value for <code class="docutils literal notranslate"><span class="pre">j</span></code> should be <code class="docutils literal notranslate"><span class="pre">len(word2)-1</span></code>.</p>
+<p>If I fix that error and run the program again, I get:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_reverse</span><span class="p">(</span><span class="s1">&#39;pots&#39;</span><span class="p">,</span> <span class="s1">&#39;stop&#39;</span><span class="p">)</span>
+<span class="go">0 3</span>
+<span class="go">1 2</span>
+<span class="go">2 1</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>This time we get the right answer, but it looks like the loop only ran
+three times, which is suspicious. To get a better idea of what is
+happening, it is useful to draw a state diagram. During the first
+iteration, the frame for <code class="docutils literal notranslate"><span class="pre">is_reverse</span></code> looks like this:</p>
+<div class="figure align-center" id="id3">
+<img alt="State diagram for ``is_reverse`` example." src="_images/state4.png" />
+<p class="caption"><span class="caption-text">State diagram for <code class="docutils literal notranslate"><span class="pre">is_reverse</span></code> example.</span></p>
+</div>
+<p>I took a little license by arranging the variables in the frame and
+adding dotted lines to show that the values of <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> indicate
+characters in <code class="docutils literal notranslate"><span class="pre">word1</span></code> and <code class="docutils literal notranslate"><span class="pre">word2</span></code>.</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>Starting with this diagram, execute the program on paper,
+changing the values of <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> during each iteration.
+Find and fix the second error in this function.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="glossary">
+<h2>8.10. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>object:</dt>
+<dd>Something a variable can refer to. For now, you can use &quot;object&quot; and
+&quot;value&quot; interchangeably.</dd>
+<dt>sequence:</dt>
+<dd>An ordered set; that is, a set of values where each value is
+identified by an integer index.</dd>
+<dt>item:</dt>
+<dd>One of the values in a sequence.</dd>
+<dt>index:</dt>
+<dd>An integer value used to select an item in a sequence, such as a
+character in a string.</dd>
+<dt>slice:</dt>
+<dd>A part of a string specified by a range of indices.</dd>
+<dt>empty string:</dt>
+<dd>A string with no characters and length 0, represented by two
+quotation marks.</dd>
+<dt>immutable:</dt>
+<dd>The property of a sequence whose items cannot be assigned.</dd>
+<dt>traverse:</dt>
+<dd>To iterate through the items in a sequence, performing a similar
+operation on each.</dd>
+<dt>search:</dt>
+<dd>A pattern of traversal that stops when it finds what it is looking
+for.</dd>
+<dt>counter:</dt>
+<dd>A variable used to count something, usually initialized to zero and
+then incremented.</dd>
+<dt>method:</dt>
+<dd>A function that is associated with an object and called using dot
+notation.</dd>
+<dt>invocation:</dt>
+<dd>A statement that calls a method.</dd>
+</dl>
+<p class="rubric">Exercises</p>
+<ol class="arabic simple">
+<li>Write a function named <code class="docutils literal notranslate"><span class="pre">inboth</span></code> that takes two strings as
+parameters, and returns a list of all the characters that are
+contained in both strings. Write the function in a case-sensitive
+way.</li>
+<li>Rewrite the <code class="docutils literal notranslate"><span class="pre">inboth</span></code> function to work in a case-insensitive
+way.</li>
+<li>The following functions are all <em>intended</em> to check whether a
+string contains any lowercase letters, but at least some of them
+are wrong. For each function, describe what the function actually
+does (assuming that the parameter is a string).</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">any_lowercase1</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+   <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+       <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+           <span class="k">return</span> <span class="bp">True</span>
+       <span class="k">else</span><span class="p">:</span>
+           <span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">def</span> <span class="nf">any_lowercase2</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;c&#39;</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s1">&#39;True&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;False&#39;</span>
+
+<span class="k">def</span> <span class="nf">any_lowercase3</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">flag</span>
+
+<span class="k">def</span> <span class="nf">any_lowercase4</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="n">flag</span> <span class="ow">or</span> <span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">flag</span>
+
+<span class="k">def</span> <span class="nf">any_lowercase5</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p class="first">ROT13 is a weak form of encryption that involves &quot;rotating&quot; each
+letter in a word by 13 places <a class="footnote-reference" href="#id2" id="id1">[1]</a>. To rotate a letter means to
+shift it through the alphabet, wrapping around to the beginning
+if necessary, so 'A' shifted by 3 is 'D' and 'Z' shifted by 1 is
+'A'.</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">rotate_word</span></code> that takes a string and
+an integer as parameters, and that returns a new string that
+contains the letters from the original string &quot;rotated&quot; by the
+given amount.</p>
+<p>For example, &quot;cheer&quot; rotated by 7 is &quot;jolly&quot; and &quot;melon&quot; rotated
+by -10 is &quot;cubed&quot;.</p>
+</li>
+<li><p class="first">Write a program that asks for a phrase, then computes and prints
+the number of words and number of characters in the phrase.</p>
+</li>
+<li><p class="first">Write a program that asks for a phrase, then computes the number
+of upper and lower case letters, and prints the two counts.</p>
+</li>
+</ol>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>See <a class="reference external" href="http://wikipedia.org/wiki/ROT13">http://wikipedia.org/wiki/ROT13</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="recursion.html" title="9. Recursion"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="iteration.html" title="7. Iteration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

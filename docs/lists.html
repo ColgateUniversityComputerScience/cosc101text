@@ -1,0 +1,892 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>11. Lists &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="12. Dictionaries" href="dictionaries.html" />
+    <link rel="prev" title="10. File input and output" href="fileio.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dictionaries.html" title="12. Dictionaries"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fileio.html" title="10. File input and output"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">11. Lists</a><ul>
+<li><a class="reference internal" href="#list-slices">11.1. List slices</a></li>
+<li><a class="reference internal" href="#list-methods">11.2. List methods</a></li>
+<li><a class="reference internal" href="#deleting-elements">11.3. Deleting elements</a></li>
+<li><a class="reference internal" href="#lists-and-strings">11.4. Lists and strings</a></li>
+<li><a class="reference internal" href="#objects-and-values">11.5. Objects and values</a></li>
+<li><a class="reference internal" href="#aliasing">11.6. Aliasing</a></li>
+<li><a class="reference internal" href="#list-arguments">11.7. List arguments</a></li>
+<li><a class="reference internal" href="#searching-for-items-in-a-list">11.8. Searching for items in a list</a></li>
+<li><a class="reference internal" href="#map-filter-and-reduce">11.9. Map, filter and reduce</a><ul>
+<li><a class="reference internal" href="#first-class-functions">11.9.1. First class functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging">11.10. Debugging</a></li>
+<li><a class="reference internal" href="#glossary">11.11. Glossary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fileio.html"
+                        title="previous chapter">10. File input and output</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dictionaries.html"
+                        title="next chapter">12. Dictionaries</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/lists.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="lists">
+<h1>11. Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we go into more depth on lists. Lists are an incredibly
+useful data structure for solving a variety of problems. Before we dive
+in, you may wish to review the earlier section on lists, which appeared
+at the beginning of the &quot;iteration&quot; chapter.</p>
+<div class="section" id="list-slices">
+<h2>11.1. List slices<a class="headerlink" href="#list-slices" title="Permalink to this headline">¶</a></h2>
+<p>The slice operator we've used for strings also works on lists:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="go">[&#39;d&#39;, &#39;e&#39;, &#39;f&#39;]</span>
+</pre></div>
+</div>
+<p>If you omit the first index, the slice starts at the beginning. If you
+omit the second, the slice goes to the end. So if you omit both, the
+slice is a copy of the whole list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[:]</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]</span>
+</pre></div>
+</div>
+<p>Since lists are mutable, it is often useful to make a copy before
+performing operations that fold, spindle, or mutilate lists. <a class="footnote-reference" href="#id3" id="id1">[1]</a></p>
+<p>A slice operator on the left side of an assignment can update multiple
+elements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;a&#39;, &#39;x&#39;, &#39;y&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-methods">
+<h2>11.2. List methods<a class="headerlink" href="#list-methods" title="Permalink to this headline">¶</a></h2>
+<p>Python provides methods that operate on lists. For example, <code class="docutils literal notranslate"><span class="pre">append</span></code>
+adds a new element to the end of a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">extend</span></code> takes a list as an argument and appends all of the elements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t1</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span>
+</pre></div>
+</div>
+<p>This example leaves <code class="docutils literal notranslate"><span class="pre">t2</span></code> unmodified.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sort</span></code> arranges the elements of the list from low to high:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span>
+</pre></div>
+</div>
+<p>Note that the append, extend, and sort methods do not return anything
+(except None). So, a statement like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>will result in the list <code class="docutils literal notranslate"><span class="pre">t</span></code> reassigned to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>There is a <code class="docutils literal notranslate"><span class="pre">sorted</span></code> <em>function</em> built in to Python that takes a list as
+a parameter, and returns a new, sorted list. The original list is
+unchanged:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;d&#39;, &#39;c&#39;, &#39;e&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+</pre></div>
+</div>
+<p>There is also a <code class="docutils literal notranslate"><span class="pre">reverse</span></code> method for lists, and a <code class="docutils literal notranslate"><span class="pre">reversed</span></code>
+<em>function</em> that work somewhat similarly to <code class="docutils literal notranslate"><span class="pre">sort</span></code> and <code class="docutils literal notranslate"><span class="pre">sorted</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">reversed</span></code> function, instead of returning a list, returns an
+<em>iterator</em>. The way to turn the iterator into a list is to compose the
+list function with the <code class="docutils literal notranslate"><span class="pre">reversed</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;e&#39;, &#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">reversed</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">&lt;listreverseiterator object at 0x10f1e56d0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;e&#39;, &#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">count</span></code> method, similar to strings, takes one item as a parameter
+and returns an integer count of occurrences of all identical items in
+the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">index</span></code> method, again, similar to strings, takes up to two
+parameters. The first parameter is an item to search for, and the second
+(optional) parameter is the starting index to search from. If a second
+parameter is not specified, the default value of 0 is used. Importantly,
+if an item you search for (i.e., the first parameter to <code class="docutils literal notranslate"><span class="pre">index</span></code>) is
+<em>not</em> in the list, you'll get a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> exception. Note that
+there is no <code class="docutils literal notranslate"><span class="pre">find</span></code> method for lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ValueError</span>: <span class="n">&#39;x&#39; is not in list</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-elements">
+<h2>11.3. Deleting elements<a class="headerlink" href="#deleting-elements" title="Permalink to this headline">¶</a></h2>
+<p>There are several ways to delete elements from a list. If you know the
+index of the element you want, you can use <code class="docutils literal notranslate"><span class="pre">pop</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;a&#39;, &#39;c&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+<span class="go">b</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pop</span></code> modifies the list and returns the element that was removed. If
+you don’t provide an index, it deletes and returns the last element.</p>
+<p>If you don’t need the removed value, you can use the <code class="docutils literal notranslate"><span class="pre">del</span></code> operator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;a&#39;, &#39;c&#39;]</span>
+</pre></div>
+</div>
+<p>If you know the element you want to remove (but not the index), you can
+use <code class="docutils literal notranslate"><span class="pre">remove</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;a&#39;, &#39;c&#39;]</span>
+</pre></div>
+</div>
+<p>The return value from <code class="docutils literal notranslate"><span class="pre">remove</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>To remove more than one element, you can use <code class="docutils literal notranslate"><span class="pre">del</span></code> with a slice index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;a&#39;, &#39;f&#39;]</span>
+</pre></div>
+</div>
+<p>As usual, the slice selects all the elements up to, but not including,
+the second index.</p>
+</div>
+<div class="section" id="lists-and-strings">
+<h2>11.4. Lists and strings<a class="headerlink" href="#lists-and-strings" title="Permalink to this headline">¶</a></h2>
+<p>A string is a sequence of characters and a list is a sequence of values,
+but a list of characters is not the same as a string. To convert from a
+string to a list of characters, you can use <code class="docutils literal notranslate"><span class="pre">list</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;spam&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;s&#39;, &#39;p&#39;, &#39;a&#39;, &#39;m&#39;]</span>
+</pre></div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">list</span></code> is the name of a built-in function, you should avoid
+using it as a variable name. I also avoid <code class="docutils literal notranslate"><span class="pre">l</span></code> because it looks too
+much like <code class="docutils literal notranslate"><span class="pre">1</span></code>. So that’s why many of the examples in this chapter use
+<code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">list</span></code> function breaks a string into individual letters. If you
+want to break a string into words, you can use the <code class="docutils literal notranslate"><span class="pre">split</span></code> method, as
+we saw in the strings chapter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;pining for the fjords&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[&#39;pining&#39;, &#39;for&#39;, &#39;the&#39;, &#39;fjords&#39;]</span>
+</pre></div>
+</div>
+<p>An optional argument called a <strong>delimiter</strong> specifies which characters
+to use as word boundaries. The following example uses a hyphen as a
+delimiter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;spam-spam-spam&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+<span class="go">[&#39;spam&#39;, &#39;spam&#39;, &#39;spam&#39;]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">join</span></code> is the inverse of <code class="docutils literal notranslate"><span class="pre">split</span></code>. It takes a list of strings and
+concatenates the elements. <code class="docutils literal notranslate"><span class="pre">join</span></code> is a string method, so you have to
+invoke it on the delimiter and pass the list as a parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pining&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;fjords&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delimiter</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">&#39;pining for the fjords&#39;</span>
+</pre></div>
+</div>
+<p>In this case the delimiter is a space character, so <code class="docutils literal notranslate"><span class="pre">join</span></code> puts a
+space between words. To concatenate strings without spaces, you can use
+the empty string, <code class="docutils literal notranslate"><span class="pre">''</span></code>, as a delimiter.</p>
+</div>
+<div class="section" id="objects-and-values">
+<h2>11.5. Objects and values<a class="headerlink" href="#objects-and-values" title="Permalink to this headline">¶</a></h2>
+<p>If we execute these assignment statements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+</pre></div>
+</div>
+<p>We know that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> both refer to a string, but we don’t know
+whether they refer to the <em>same</em> string. There are two possible states:</p>
+<div class="figure align-center" id="id5">
+<img alt="Variables referring to different objects, and variables that refer to the same object." src="_images/list1.png" />
+<p class="caption"><span class="caption-text">Variables referring to different objects, and variables that refer to
+the same object.</span></p>
+</div>
+<p>In one case, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> refer to two different objects that have
+the same value. In the second case, they refer to the same object.</p>
+<p>To check whether two variables refer to the same object, you can use the
+<code class="docutils literal notranslate"><span class="pre">is</span></code> operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>In this example, Python only created one string object, and both <code class="docutils literal notranslate"><span class="pre">a</span></code>
+and <code class="docutils literal notranslate"><span class="pre">b</span></code> refer to it.</p>
+<p>But when you create two lists, you get two objects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>So the state diagram looks like this:</p>
+<div class="figure align-center" id="id6">
+<img alt="Variables that refer to two different list objects." src="_images/list2.png" />
+<p class="caption"><span class="caption-text">Variables that refer to two different list objects.</span></p>
+</div>
+<p>In this case we would say that the two lists are <strong>equivalent</strong>, because
+they have the same elements, but not <strong>identical</strong>, because they are not
+the same object. If two objects are identical, they are also equivalent,
+but if they are equivalent, they are not necessarily identical.</p>
+<p>Until now, we have been using “object” and “value” interchangeably, but
+it is more precise to say that an object has a value. If you execute
+<code class="docutils literal notranslate"><span class="pre">[1,2,3]</span></code>, you get a list object whose value is a sequence of
+integers. If another list has the same elements, we say it has the same
+value, but it is not the same object.</p>
+</div>
+<div class="section" id="aliasing">
+<h2>11.6. Aliasing<a class="headerlink" href="#aliasing" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">a</span></code> refers to an object and you assign <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code>, then both
+variables refer to the same object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="ow">is</span> <span class="n">a</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The state diagram looks like this:</p>
+<div class="figure align-center" id="id7">
+<img alt="Variables that are &quot;aliases&quot; of each other; they refer to the same list object." src="_images/list3.png" />
+<p class="caption"><span class="caption-text">Variables that are &quot;aliases&quot; of each other; they refer to the same
+list object.</span></p>
+</div>
+<p>The association of a variable with an object is called a <strong>reference</strong>.
+In this example, there are two references to the same object.</p>
+<p>An object with more than one reference has more than one name, so we say
+that the object is <strong>aliased</strong>.</p>
+<p>If the aliased object is mutable, changes made with one alias affect the
+other:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">a</span>
+<span class="go">[17, 2, 3]</span>
+</pre></div>
+</div>
+<p>Although this behavior can be useful, it is error-prone. In general, it
+is safer to avoid aliasing when you are working with mutable objects.</p>
+<p>For immutable objects like strings, aliasing is not as much of a
+problem. In this example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+</pre></div>
+</div>
+<p>It almost never makes a difference whether <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> refer to the
+same string or not.</p>
+</div>
+<div class="section" id="list-arguments">
+<h2>11.7. List arguments<a class="headerlink" href="#list-arguments" title="Permalink to this headline">¶</a></h2>
+<p>When you pass a list to a function, the function gets a reference to the
+list. If the function modifies a list parameter, the caller sees the
+change. For example, <code class="docutils literal notranslate"><span class="pre">delete_head</span></code> removes the first element from a
+list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_head</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">del</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Here’s how it is used:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delete_head</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">letters</span>
+<span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
+</pre></div>
+</div>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">t</span></code> and the variable <code class="docutils literal notranslate"><span class="pre">letters</span></code> are aliases for the
+same object. The stack diagram looks like this:</p>
+<div class="figure align-center" id="id8">
+<img alt="Variable ``letters`` and parameter variable ``t`` refer to the same list object in memory." src="_images/stack5.png" />
+<p class="caption"><span class="caption-text">Variable <code class="docutils literal notranslate"><span class="pre">letters</span></code> and parameter variable <code class="docutils literal notranslate"><span class="pre">t</span></code> refer to the same
+list object in memory.</span></p>
+</div>
+<p>Since the list is shared by two frames, I drew it between them.</p>
+<p>It is important to distinguish between operations that modify lists and
+operations that create new lists. For example, the <code class="docutils literal notranslate"><span class="pre">append</span></code> method
+modifies a list, but the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator creates a new list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t1</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t2</span>
+<span class="go">None</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t3</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t3</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="ow">is</span> <span class="n">t3</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>This difference is important when you write functions that are supposed
+to modify lists. For example, this function <em>does not</em> delete the head
+of a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bad_delete_head</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>              <span class="c1"># WRONG!</span>
+</pre></div>
+</div>
+<p>The slice operator creates a new list and the assignment makes <code class="docutils literal notranslate"><span class="pre">t</span></code>
+refer to it, but none of that has any effect on the list that was passed
+as an argument.</p>
+<p>An alternative is to write a function that creates and returns a new
+list. For example, <code class="docutils literal notranslate"><span class="pre">tail</span></code> returns all but the first element of a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tail</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+<p>This function leaves the original list unmodified. Here’s how it is
+used:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rest</span> <span class="o">=</span> <span class="n">tail</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">rest</span>
+<span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
+</pre></div>
+</div>
+<p><strong>Examples</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Write a function called <code class="docutils literal notranslate"><span class="pre">chop</span></code> that takes a list and modifies
+it, removing the first and last elements, and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</li>
+<li>Write a function called <code class="docutils literal notranslate"><span class="pre">middle</span></code> that takes a list and returns
+a new list that contains all but the first and last elements.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="searching-for-items-in-a-list">
+<h2>11.8. Searching for items in a list<a class="headerlink" href="#searching-for-items-in-a-list" title="Permalink to this headline">¶</a></h2>
+<p>Say that we have a very large list of words called <code class="docutils literal notranslate"><span class="pre">wordlist</span></code>, and we
+want to check whether the word <code class="docutils literal notranslate"><span class="pre">zyzzy</span></code> is in the list. We have a few
+options so far:</p>
+<ol class="arabic simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">in</span></code> operator.</li>
+<li>The list <code class="docutils literal notranslate"><span class="pre">count</span></code> method (if the count is greater than zero, the
+word is in the list).</li>
+<li>The list <code class="docutils literal notranslate"><span class="pre">index</span></code> method.</li>
+<li>A &quot;homegrown&quot; function that searches the list, one word after
+another.</li>
+</ol>
+<p>The first two of the four options above just tell us whether the word is
+in the list, and the last two can tell us the <em>location</em> (index) of the
+word in the list. Taking approach 3, if we wanted to write a function
+called <code class="docutils literal notranslate"><span class="pre">findWord</span></code> that returns the index of the word in the list (or
+-1 if the word isn't found), here's how we could do it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">findWord</span><span class="p">(</span><span class="n">wordlist</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Check whether word is in the wordlist.  Return</span>
+<span class="sd">    the index of the word if found, or -1 otherwise.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># The index method causes a ValueError exception</span>
+        <span class="c1"># if the item we&#39;re searching for is not found.</span>
+        <span class="k">return</span> <span class="n">wordlist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># if we get here, we know the word isn&#39;t in</span>
+        <span class="c1">#  the list, so just return -1.</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>Examples</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Write a <code class="docutils literal notranslate"><span class="pre">findWord2</span></code> function to implement option 4: it
+shouldn't use any list methods while doing the same thing as
+<code class="docutils literal notranslate"><span class="pre">findWord</span></code>. That is, it should search the wordlist for the word
+and return the index where it occurs. If the word isn't found,
+the function should return -1.</li>
+<li>Say we have a list of 100,000 words. If the word we're looking
+for is not in the list, how many comparisons between the word
+we're searching for and a word in the list do we need to make?
+(This is the <em>worst case</em> situation for trying to find a word. It
+should be pretty easy to identify the number of comparisons we
+have to make.)</li>
+</ol>
+</div></blockquote>
+<p>For all four options above, the worst case is pretty ugly: we have to
+search the entire list. This search technique is called <strong>linear
+search</strong>, because we have to linearly search each and every item in the
+list. Even with a fast, modern computer, linearly searching a very large
+list is best avoided if possible.</p>
+<p>What if we were to simply <em>sort</em> the list of words? If the list is in
+alphabetical order, we can speed things up with a <strong>bisection search</strong>
+(also known as <strong>binary search</strong>), which is similar to what you do when
+you look a word up in the dictionary. You start in the middle and check
+to see whether the word you are looking for comes before the word in the
+middle of the list. If so, then you search the first half of the list
+the same way. Otherwise you search the second half.</p>
+<p>Either way, you cut the remaining search space in half. If the word list
+has 115,000 words, it will take about 17 steps to find the word or
+conclude that it’s not there. This is a huge improvement over the worst
+case with linear search! Writing a function to perform a binary search
+is left as an exercise, and interestingly, binary search lends itself
+nicely to a recursive implementation.</p>
+<p>You should also know that Python includes a <code class="docutils literal notranslate"><span class="pre">bisect</span></code> module that
+contains an implementation of binary search. You can check out the
+documentation for it here: <a class="reference external" href="http://docs.python.org/library/bisect.html">http://docs.python.org/library/bisect.html</a>.</p>
+</div>
+<div class="section" id="map-filter-and-reduce">
+<h2>11.9. Map, filter and reduce<a class="headerlink" href="#map-filter-and-reduce" title="Permalink to this headline">¶</a></h2>
+<p>To add up all the numbers in a list, you can use a loop like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">total</span></code> is initialized to 0. Each time through the loop, <code class="docutils literal notranslate"><span class="pre">x</span></code> gets
+one element from the list.</p>
+<p>As the loop executes, <code class="docutils literal notranslate"><span class="pre">total</span></code> accumulates the sum of the elements; a
+variable used this way is sometimes called an <strong>accumulator</strong>.</p>
+<p>Adding up the elements of a list is such a common operation that Python
+provides the built-in function, <code class="docutils literal notranslate"><span class="pre">sum</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>An operation like this that combines a sequence of elements into a
+single value is sometimes called <strong>reduce</strong>.</p>
+<p>Sometimes you want to traverse one list while building another. For
+example, the following function takes a list of strings and returns a
+new list that contains capitalized strings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">capitalize_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">res</span></code> is initialized with an empty list; each time through the loop,
+we append the next element. So <code class="docutils literal notranslate"><span class="pre">res</span></code> is another kind of accumulator.</p>
+<p>An operation like <code class="docutils literal notranslate"><span class="pre">capitalize_all</span></code> is sometimes called a <strong>map</strong>
+because it &quot;maps&quot; a function (in this case the method <code class="docutils literal notranslate"><span class="pre">capitalize</span></code>)
+onto each of the elements in a sequence.</p>
+<p>Another common operation is to select some of the elements from a list
+and return a sublist. For example, the following function takes a list
+of strings and returns a list that contains only the uppercase strings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">only_upper</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">isupper</span></code> is a string method that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the string
+contains only upper case letters.</p>
+<p>An operation like <code class="docutils literal notranslate"><span class="pre">only_upper</span></code> is called a <strong>filter</strong> because it
+selects some of the elements and filters out the others.</p>
+<div class="section" id="first-class-functions">
+<h3>11.9.1. First class functions<a class="headerlink" href="#first-class-functions" title="Permalink to this headline">¶</a></h3>
+<p>This is an advanced topic, but fits well with the idea of <em>mapping</em> and
+lists.</p>
+<p>Let's say we wanted to generalize the mapping function we wrote above,
+to apply different transformations to lists of strings. Our original
+example was to produce a new list in which each original string is
+capitalized, but we might want to apply different functions, such as
+changing all the strings to lower case, to upper case, or to obtain a
+list of all the string lengths. What we'd like to avoid is to write
+separate functions for each of these tasks.</p>
+<p>In Python, functions are objects that can be passed as parameters to
+other functions. To generalize the <code class="docutils literal notranslate"><span class="pre">capitalize_all</span></code> function, what we
+can do is pass in a mapping function as a second parameter to a more
+general function we'll call <code class="docutils literal notranslate"><span class="pre">mapper</span></code>. To each item in the input list,
+we'll apply our mapping function, which will produce a new item to be
+added onto a result list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mapper</span><span class="p">(</span><span class="n">input_list</span><span class="p">,</span> <span class="n">mapping_function</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+        <span class="n">new_value</span> <span class="o">=</span> <span class="n">mapping_function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span><span class="s1">&#39;kiwi&#39;</span><span class="p">,</span><span class="s1">&#39;star fruit&#39;</span><span class="p">]</span>
+<span class="n">lower_list</span> <span class="o">=</span> <span class="n">mapper</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tolower</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So above, <code class="docutils literal notranslate"><span class="pre">tolower</span></code> is our mapping function that gets passed into the
+<code class="docutils literal notranslate"><span class="pre">mapper</span></code>. Inside <code class="docutils literal notranslate"><span class="pre">mapper</span></code>, each item in the original list is
+transformed by the mapping function and added on to a new list.</p>
+<p>This is great --- we've generalized the idea of mapping. But we can do
+even better.</p>
+<p>It seems a waste to write a two-line function like <code class="docutils literal notranslate"><span class="pre">tolower</span></code>, when it
+is so simple. To simplify this part of our program, we can use what is
+called a <strong>lambda</strong> in Python. Lambdas are short, &quot;anonymous&quot; functions
+that can be defined at the point at which they're needed. The syntax for
+writing a lambda function is to use the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> keyword, followed by
+a comma-separated list of parameters, a colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>), and a short (at
+most one line) Python expression. Importantly, there is no explicit
+return statement in a <code class="docutils literal notranslate"><span class="pre">lambda</span></code>. Python just uses the result of the
+expression as the return value.</p>
+<p>For example, here is a function defined with <code class="docutils literal notranslate"><span class="pre">lambda</span></code> that takes two
+parameters, and returns their sum. We assign the result of the
+<code class="docutils literal notranslate"><span class="pre">lambda</span></code> expression to the variable <code class="docutils literal notranslate"><span class="pre">addtwo</span></code>. The result is just a
+function object, just like any function object that gets created with
+<code class="docutils literal notranslate"><span class="pre">def</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">addtwo</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">addtwo</span>
+<span class="go">&lt;function &lt;lambda&gt; at 0x10ca0e938&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">addtwo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+<p>Now, to modify our example above using a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> expression (and
+adding on a couple more examples of mapping):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mapper</span><span class="p">(</span><span class="n">input_list</span><span class="p">,</span> <span class="n">mapping_function</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+        <span class="n">new_value</span> <span class="o">=</span> <span class="n">mapping_function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span><span class="s1">&#39;kiwi&#39;</span><span class="p">,</span><span class="s1">&#39;star fruit&#39;</span><span class="p">]</span>
+<span class="n">upper_list</span> <span class="o">=</span> <span class="n">mapper</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="n">lower_list</span> <span class="o">=</span> <span class="n">mapper</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="n">len_list</span> <span class="o">=</span> <span class="n">mapper</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>As you can see, using <code class="docutils literal notranslate"><span class="pre">lambda</span></code> makes our mapping code more compact,
+and still fairly easy to read and understand.</p>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>11.10. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Careless use of lists (and other mutable objects) can lead to long hours
+of debugging. Here are some common pitfalls and ways to avoid them:</p>
+<ol class="arabic">
+<li><p class="first">Don’t forget that most list methods modify the argument and return
+<code class="docutils literal notranslate"><span class="pre">None</span></code>. This is the opposite of the string methods, which return a
+new string and leave the original alone.</p>
+<p>If you are used to writing string code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>It is tempting to write list code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>           <span class="c1"># WRONG!</span>
+</pre></div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">sort</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, the next operation you perform
+with <code class="docutils literal notranslate"><span class="pre">t</span></code> is likely to fail.</p>
+<p>Before using list methods and operators, you should read the
+documentation carefully and then test them in interactive mode. The
+methods and operators that lists share with other sequences (like
+strings) are documented at <a class="reference external" href="http://docs.python.org/lib/typesseq.html">http://docs.python.org/lib/typesseq.html</a>.
+The methods and operators that only apply to mutable sequences are
+documented at <a class="reference external" href="http://docs.python.org/lib/typesseq-mutable.html">http://docs.python.org/lib/typesseq-mutable.html</a>.</p>
+</li>
+<li><p class="first">Pick an idiom and stick with it.</p>
+<p>Part of the problem with lists is that there are too many ways to do
+things. For example, to remove an element from a list, you can use
+<code class="docutils literal notranslate"><span class="pre">pop</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code>, <code class="docutils literal notranslate"><span class="pre">del</span></code>, or even a slice assignment.</p>
+<p>To add an element, you can use the <code class="docutils literal notranslate"><span class="pre">append</span></code> method or the <code class="docutils literal notranslate"><span class="pre">+</span></code>
+operator. Assuming that <code class="docutils literal notranslate"><span class="pre">t</span></code> is a list and <code class="docutils literal notranslate"><span class="pre">x</span></code> is a list element,
+these are right:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And these are wrong:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>          <span class="c1"># WRONG!</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>        <span class="c1"># WRONG!</span>
+<span class="n">t</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>                <span class="c1"># WRONG!</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">x</span>              <span class="c1"># WRONG!</span>
+</pre></div>
+</div>
+<p>Try out each of these examples in interactive mode to make sure you
+understand what they do. Notice that only the last one causes a
+runtime error; the other three are legal, but they do the wrong
+thing.</p>
+</li>
+<li><p class="first">Make copies to avoid aliasing.</p>
+<p>If you want to use a method like <code class="docutils literal notranslate"><span class="pre">sort</span></code> that modifies the argument,
+but you need to keep the original list as well, you can make a copy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orig</span> <span class="o">=</span> <span class="n">t</span><span class="p">[:]</span>
+<span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In this example you could also use the built-in function <code class="docutils literal notranslate"><span class="pre">sorted</span></code>,
+which returns a new, sorted list and leaves the original alone. But
+in that case you should avoid using <code class="docutils literal notranslate"><span class="pre">sorted</span></code> as a variable name!</p>
+</li>
+</ol>
+</div>
+<div class="section" id="glossary">
+<h2>11.11. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>list:</dt>
+<dd>A sequence of values.</dd>
+<dt>element:</dt>
+<dd>One of the values in a list (or other sequence), also called items.</dd>
+<dt>index:</dt>
+<dd>An integer value that indicates an element in a list.</dd>
+<dt>nested list:</dt>
+<dd>A list that is an element of another list.</dd>
+<dt>list traversal:</dt>
+<dd>The sequential accessing of each element in a list.</dd>
+<dt>mapping:</dt>
+<dd>A relationship in which each element of one set corresponds to an
+element of another set. For example, a list is a mapping from
+indices to elements.</dd>
+<dt>accumulator:</dt>
+<dd>A variable used in a loop to add up or accumulate a result.</dd>
+<dt>augmented assignment:</dt>
+<dd>A statement that updates the value of a variable using an operator
+like <code class="docutils literal notranslate"><span class="pre">+=</span></code>.</dd>
+<dt>reduce:</dt>
+<dd>A processing pattern that traverses a sequence and accumulates the
+elements into a single result.</dd>
+<dt>map:</dt>
+<dd>A processing pattern that traverses a sequence and performs an
+operation on each element.</dd>
+<dt>filter:</dt>
+<dd>A processing pattern that traverses a list and selects the elements
+that satisfy some criterion.</dd>
+<dt>object:</dt>
+<dd>Something a variable can refer to. An object has a type and a value.</dd>
+<dt>equivalent:</dt>
+<dd>Having the same value.</dd>
+<dt>identical:</dt>
+<dd>Being the same object (which implies equivalence).</dd>
+<dt>reference:</dt>
+<dd>The association between a variable and its value.</dd>
+<dt>aliasing:</dt>
+<dd>A circumstance where two or more variables refer to the same object.</dd>
+<dt>delimiter:</dt>
+<dd>A character or string used to indicate where a string should be
+split.</dd>
+<dt>linear search:</dt>
+<dd>The approach of searching for an item in a list by inspecting each
+element in the list, one after another.</dd>
+<dt>binary search:</dt>
+<dd>Also known as <em>bisection search</em>. An approach for searching a list
+which assumes the items in the list in sorted order. It proceeds by
+checking the middle element, and deciding whether the item to search
+for is in the first half or second half of the list. The &quot;search
+space&quot; is repeately cut in half by applying this same idea to
+smaller and smaller portions of the list.</dd>
+</dl>
+<p class="rubric">Exercises</p>
+<ol class="arabic">
+<li><p class="first">Write a function called <code class="docutils literal notranslate"><span class="pre">is_sorted</span></code> that takes a list as a
+parameter and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the list is sorted in ascending
+order and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. You can assume (as a precondition)
+that the elements of the list can be compared with the relational
+operators <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, etc.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">is_sorted([1,2,2])</span></code> should return <code class="docutils literal notranslate"><span class="pre">True</span></code> and
+<code class="docutils literal notranslate"><span class="pre">is_sorted(['b','a'])</span></code> should return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</li>
+<li><p class="first">Two words are anagrams if you can rearrange the letters from one
+to spell the other. Write a function called <code class="docutils literal notranslate"><span class="pre">is_anagram</span></code> that
+takes two strings and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if they are anagrams.</p>
+</li>
+<li><p class="first">The (so-called) Birthday Paradox:</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">has_duplicates</span></code> that takes a list and
+returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is any element that appears more than
+once. It should not modify the original list.</p>
+<p>If there are 23 students in your class, what are the chances that
+two of you have the same birthday? You can estimate this
+probability by generating random samples of 23 birthdays and
+checking for matches. Hint: you can generate random birthdays
+with the <code class="docutils literal notranslate"><span class="pre">randint</span></code> function in the <code class="docutils literal notranslate"><span class="pre">random</span></code> module.</p>
+<p>You can read about this problem at
+<a class="reference external" href="http://wikipedia.org/wiki/Birthday_paradox">http://wikipedia.org/wiki/Birthday_paradox</a>.</p>
+</li>
+<li><p class="first">Write a function called <code class="docutils literal notranslate"><span class="pre">remove_duplicates</span></code> that takes a list
+and returns a new list with only the unique elements from the
+original. Hint: they don’t have to be in the same order.</p>
+</li>
+<li><p class="first">Write a function that reads the file <code class="docutils literal notranslate"><span class="pre">words.txt</span></code> and builds a
+list with one element per word. Write two versions of this
+function, one using the <code class="docutils literal notranslate"><span class="pre">append</span></code> method and the other using the
+idiom <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">t</span> <span class="pre">+</span> <span class="pre">[x]</span></code>. Which one takes longer to run? Why?</p>
+</li>
+<li><p class="first">Two words are a “reverse pair” if each is the reverse of the
+other. Write a program that finds all the reverse pairs in the
+word list.</p>
+</li>
+<li><p class="first">Two words &quot;interlock&quot; if taking alternating letters from each
+forms a new word <a class="footnote-reference" href="#id4" id="id2">[2]</a>. For example, “shoe” and “cold” interlock
+to form “schooled.”</p>
+<ol class="loweralpha simple">
+<li>Write a program that finds all pairs of words that interlock.
+Hint: don’t enumerate all pairs!</li>
+<li>Can you find any words that are three-way interlocked; that
+is, every third letter forms a word, starting from the first,
+second or third?</li>
+</ol>
+</li>
+<li><p class="first">Binary search implementation.</p>
+<ol class="loweralpha simple">
+<li>Write a function called <code class="docutils literal notranslate"><span class="pre">bisect_iterative</span></code> that takes a
+sorted list and a target value and <em>iteratively</em> finds and
+returns the index of the value in the list, if it's there, or
+<code class="docutils literal notranslate"><span class="pre">None</span></code> if it's not. You should use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop and no
+recursion in this version.</li>
+<li>Write a function called <code class="docutils literal notranslate"><span class="pre">bisect_recursive</span></code> that takes a
+sorted list and a target value and <em>recursively</em> finds and
+returns the index of the value in the list, if it's there, or
+<code class="docutils literal notranslate"><span class="pre">None</span></code> if it's not. There should not be any explicit loops
+in your solution.</li>
+</ol>
+</li>
+</ol>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The admonition &quot;Do not fold, spindle, or mutilate&quot; was printed on the
+punch cards that were used by early computers. See
+<a class="reference external" href="http://www.alteich.com/tidbits/t042202.htm">http://www.alteich.com/tidbits/t042202.htm</a> and
+<a class="reference external" href="http://design.osu.edu/carlson/history/PDFs/lubar-hollerith.pdf">http://design.osu.edu/carlson/history/PDFs/lubar-hollerith.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>This exercise is inspired by an example at <a class="reference external" href="http://puzzlers.org">http://puzzlers.org</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dictionaries.html" title="12. Dictionaries"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fileio.html" title="10. File input and output"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,685 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>13. Tuples &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="14. Case study: data structure selection" href="datastruct.html" />
+    <link rel="prev" title="12. Dictionaries" href="dictionaries.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="datastruct.html" title="14. Case study: data structure selection"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dictionaries.html" title="12. Dictionaries"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">13. Tuples</a><ul>
+<li><a class="reference internal" href="#tuples-are-immutable">13.1. Tuples are immutable</a></li>
+<li><a class="reference internal" href="#tuple-assignment">13.2. Tuple assignment</a></li>
+<li><a class="reference internal" href="#tuples-as-return-values">13.3. Tuples as return values</a></li>
+<li><a class="reference internal" href="#variable-length-argument-tuples">13.4. Variable-length argument tuples</a></li>
+<li><a class="reference internal" href="#lists-and-tuples">13.5. Lists and tuples</a></li>
+<li><a class="reference internal" href="#dictionaries-and-tuples">13.6. Dictionaries and tuples</a></li>
+<li><a class="reference internal" href="#comparing-tuples">13.7. Comparing tuples</a></li>
+<li><a class="reference internal" href="#sequences-of-sequences">13.8. Sequences of sequences</a></li>
+<li><a class="reference internal" href="#debugging">13.9. Debugging</a></li>
+<li><a class="reference internal" href="#glossary">13.10. Glossary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dictionaries.html"
+                        title="previous chapter">12. Dictionaries</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="datastruct.html"
+                        title="next chapter">14. Case study: data structure selection</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tuples.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tuples">
+<h1>13. Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tuples-are-immutable">
+<h2>13.1. Tuples are immutable<a class="headerlink" href="#tuples-are-immutable" title="Permalink to this headline">¶</a></h2>
+<p>A tuple is a sequence of values. The values can be any type, and they
+are indexed by integers, so in that respect tuples are a lot like lists.
+The important difference is that <em>tuples are immutable</em>.</p>
+<p>Syntactically, a tuple is a comma-separated list of values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span>
+</pre></div>
+</div>
+<p>Although it is not necessary, it is common to enclose tuples in
+parentheses:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To create a tuple with a single element, you have to include a final
+comma:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="go">&lt;type &#39;tuple&#39;&gt;</span>
+</pre></div>
+</div>
+<p>A value in parentheses is not a tuple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<span class="go">&lt;type &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Another way to create a tuple is the built-in function <code class="docutils literal notranslate"><span class="pre">tuple</span></code>. With
+no argument, it creates an empty tuple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">()</span>
+</pre></div>
+</div>
+<p>If the argument is a sequence (string, list or tuple), the result is a
+tuple with the elements of the sequence:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;lupins&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">(&#39;l&#39;, &#39;u&#39;, &#39;p&#39;, &#39;i&#39;, &#39;n&#39;, &#39;s&#39;)</span>
+</pre></div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is the name of a built-in function, you should avoid
+using it as a variable name.</p>
+<p>Most list operators also work on tuples. The bracket operator is used to
+index an element:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;a&#39;</span>
+</pre></div>
+</div>
+<p>And the slice operator selects a range of elements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">(&#39;b&#39;, &#39;c&#39;)</span>
+</pre></div>
+</div>
+<p>But if you try to modify one of the elements of the tuple, you get an
+error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="go">TypeError: object doesn&#39;t support item assignment</span>
+</pre></div>
+</div>
+<p>You can't modify the elements of a tuple, but you can replace one tuple
+with another:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,)</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">(&#39;A&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tuple-assignment">
+<h2>13.2. Tuple assignment<a class="headerlink" href="#tuple-assignment" title="Permalink to this headline">¶</a></h2>
+<p>It is often useful to swap the values of two variables. With
+conventional assignments, you have to use a temporary variable. For
+example, to swap <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">temp</span>
+</pre></div>
+</div>
+<p>This solution is cumbersome; <strong>tuple assignment</strong> is more elegant:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>The left side is a tuple of variables; the right side is a tuple of
+expressions. Each value is assigned to its respective variable. All the
+expressions on the right side are evaluated before any of the
+assignments.</p>
+<p>The number of variables on the left and the number of values on the
+right have to be the same:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="go">ValueError: too many values to unpack</span>
+</pre></div>
+</div>
+<p>More generally, the right side can be any kind of sequence (string, list
+or tuple). For example, to split an email address into a user name and a
+domain, you could write:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">addr</span> <span class="o">=</span> <span class="s1">&#39;monty@python.org&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uname</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">addr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The return value from <code class="docutils literal notranslate"><span class="pre">split</span></code> is a list with two elements; the first
+element is assigned to <code class="docutils literal notranslate"><span class="pre">uname</span></code>, the second to <code class="docutils literal notranslate"><span class="pre">domain</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">uname</span>
+<span class="go">monty</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">domain</span>
+<span class="go">python.org</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tuples-as-return-values">
+<h2>13.3. Tuples as return values<a class="headerlink" href="#tuples-as-return-values" title="Permalink to this headline">¶</a></h2>
+<p>Strictly speaking, a function can only return one value, but if the
+value is a tuple, the effect is the same as returning multiple values.
+For example, if you want to divide two integers and compute the quotient
+and remainder, it is inefficient to compute <code class="docutils literal notranslate"><span class="pre">x/y</span></code> and then <code class="docutils literal notranslate"><span class="pre">x%y</span></code>. It
+is better to compute them both at the same time.</p>
+<p>The built-in function <code class="docutils literal notranslate"><span class="pre">divmod</span></code> takes two arguments and returns a tuple
+of two values, the quotient and remainder. You can store the result as a
+tuple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">(2, 1)</span>
+</pre></div>
+</div>
+<p>Or use tuple assignment to store the elements separately:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">quot</span><span class="p">,</span> <span class="n">rem</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">quot</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">rem</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>Here is an example of a function that returns a tuple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code> and <code class="docutils literal notranslate"><span class="pre">min</span></code> are built-in functions that find the largest and
+smallest elements of a sequence. <code class="docutils literal notranslate"><span class="pre">min_max</span></code> computes both and returns a
+tuple of two values.</p>
+</div>
+<div class="section" id="variable-length-argument-tuples">
+<h2>13.4. Variable-length argument tuples<a class="headerlink" href="#variable-length-argument-tuples" title="Permalink to this headline">¶</a></h2>
+<p>Functions can take a variable number of arguments. A parameter name that
+begins with <code class="docutils literal notranslate"><span class="pre">*</span></code> <strong>gathers</strong> arguments into a tuple. For example,
+<code class="docutils literal notranslate"><span class="pre">printall</span></code> takes any number of arguments and prints them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printall</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">args</span>
+</pre></div>
+</div>
+<p>The gather parameter can have any name you like, but <code class="docutils literal notranslate"><span class="pre">args</span></code> is
+conventional. Here's how the function works:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">printall</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="go">(1, 2.0, &#39;3&#39;)</span>
+</pre></div>
+</div>
+<p>The complement of gather is <strong>scatter</strong>. If you have a sequence of
+values and you want to pass it to a function as multiple arguments, you
+can use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator. For example, <code class="docutils literal notranslate"><span class="pre">divmod</span></code> takes exactly two
+arguments; it doesn't work with a tuple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">divmod</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">TypeError: divmod expected 2 arguments, got 1</span>
+</pre></div>
+</div>
+<p>But if you scatter the tuple, it works:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">divmod</span><span class="p">(</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="go">(2, 1)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic">
+<li><p class="first">Many of the built-in functions use variable-length argument
+tuples. For example, <code class="docutils literal notranslate"><span class="pre">max</span></code> and <code class="docutils literal notranslate"><span class="pre">min</span></code> can take any number of
+arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>But <code class="docutils literal notranslate"><span class="pre">sum</span></code> does not:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">TypeError: sum expected at most 2 arguments, got 3</span>
+</pre></div>
+</div>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">sumall</span></code> that takes any number of
+arguments and returns their sum.</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="lists-and-tuples">
+<h2>13.5. Lists and tuples<a class="headerlink" href="#lists-and-tuples" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">zip</span></code> is a built-in function that takes two or more sequences and
+&quot;zips&quot; them into a list <a class="footnote-reference" href="#id5" id="id1">[1]</a> of tuples where each tuple contains one
+element from each sequence.</p>
+<p>This example zips a string and a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">zip</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="go">[(&#39;a&#39;, 0), (&#39;b&#39;, 1), (&#39;c&#39;, 2)]</span>
+</pre></div>
+</div>
+<p>The result is a list of tuples where each tuple contains a character
+from the string and the corresponding element from the list.</p>
+<p>If the sequences are not the same length, the result has the length of
+the shorter one.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;Anne&#39;</span><span class="p">,</span> <span class="s1">&#39;Elk&#39;</span><span class="p">)</span>
+<span class="go">[(&#39;A&#39;, &#39;E&#39;), (&#39;n&#39;, &#39;l&#39;), (&#39;n&#39;, &#39;k&#39;)]</span>
+</pre></div>
+</div>
+<p>You can use tuple assignment in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to traverse a list of
+tuples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">number</span><span class="p">,</span> <span class="n">letter</span>
+</pre></div>
+</div>
+<p>Each time through the loop, Python selects the next tuple in the list
+and assigns the elements to <code class="docutils literal notranslate"><span class="pre">letter</span></code> and <code class="docutils literal notranslate"><span class="pre">number</span></code>. The output of
+this loop is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">a</span>
+<span class="mi">1</span> <span class="n">b</span>
+<span class="mi">2</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>If you combine <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code> and tuple assignment, you get a useful
+idiom for traversing two (or more) sequences at the same time. For
+example, <code class="docutils literal notranslate"><span class="pre">has_match</span></code> takes two sequences, <code class="docutils literal notranslate"><span class="pre">t1</span></code> and <code class="docutils literal notranslate"><span class="pre">t2</span></code>, and
+returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is an index <code class="docutils literal notranslate"><span class="pre">i</span></code> such that
+<code class="docutils literal notranslate"><span class="pre">t1[i]</span> <span class="pre">==</span> <span class="pre">t2[i]</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_match</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+</div>
+<p>If you need to traverse the elements of a sequence and their indices,
+you can use the built-in function <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">element</span>
+</pre></div>
+</div>
+<p>The output of this loop is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">a</span>
+<span class="mi">1</span> <span class="n">b</span>
+<span class="mi">2</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>Again.</p>
+</div>
+<div class="section" id="dictionaries-and-tuples">
+<h2>13.6. Dictionaries and tuples<a class="headerlink" href="#dictionaries-and-tuples" title="Permalink to this headline">¶</a></h2>
+<p>Dictionaries have a method called <code class="docutils literal notranslate"><span class="pre">items</span></code> that returns a list of
+tuples, where each tuple is a key-value pair <a class="footnote-reference" href="#id6" id="id2">[2]</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">[(&#39;a&#39;, 0), (&#39;c&#39;, 2), (&#39;b&#39;, 1)]</span>
+</pre></div>
+</div>
+<p>As you should expect from a dictionary, the items are in no particular
+order.</p>
+<p>Conversely, you can use a list of tuples to initialize a new dictionary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">d</span>
+<span class="go">{&#39;a&#39;: 0, &#39;c&#39;: 2, &#39;b&#39;: 1}</span>
+</pre></div>
+</div>
+<p>Combining <code class="docutils literal notranslate"><span class="pre">dict</span></code> with <code class="docutils literal notranslate"><span class="pre">zip</span></code> yields a concise way to create a
+dictionary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">d</span>
+<span class="go">{&#39;a&#39;: 0, &#39;c&#39;: 2, &#39;b&#39;: 1}</span>
+</pre></div>
+</div>
+<p>The dictionary method <code class="docutils literal notranslate"><span class="pre">update</span></code> also takes a list of tuples and adds
+them, as key-value pairs, to an existing dictionary.</p>
+<p>Combining <code class="docutils literal notranslate"><span class="pre">items</span></code>, tuple assignment and <code class="docutils literal notranslate"><span class="pre">for</span></code>, you get the idiom for
+traversing the keys and values of a dictionary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">val</span><span class="p">,</span> <span class="n">key</span>
+</pre></div>
+</div>
+<p>The output of this loop is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">a</span>
+<span class="mi">2</span> <span class="n">c</span>
+<span class="mi">1</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Again.</p>
+<p>It is common to use tuples as keys in dictionaries (primarily because
+you can't use lists). For example, a telephone directory might map from
+last-name, first-name pairs to telephone numbers. Assuming that we have
+defined <code class="docutils literal notranslate"><span class="pre">last</span></code>, <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">number</span></code>, we could write:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">directory</span><span class="p">[(</span><span class="n">last</span><span class="p">,</span><span class="n">first</span><span class="p">)]</span> <span class="o">=</span> <span class="n">number</span>
+</pre></div>
+</div>
+<p>The expression in brackets is a tuple. We could use tuple assignment to
+traverse this dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">last</span><span class="p">,</span> <span class="n">first</span> <span class="ow">in</span> <span class="n">directory</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">directory</span><span class="p">[(</span><span class="n">last</span><span class="p">,</span><span class="n">first</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>This loop traverses the keys in <code class="docutils literal notranslate"><span class="pre">directory</span></code>, which are tuples. It
+assigns the elements of each tuple to <code class="docutils literal notranslate"><span class="pre">last</span></code> and <code class="docutils literal notranslate"><span class="pre">first</span></code>, then
+prints the name and corresponding telephone number.</p>
+<p>There are two ways to represent tuples in a state diagram. The more
+detailed version shows the indices and elements just as they appear in a
+list. For example, the tuple <code class="docutils literal notranslate"><span class="pre">('Cleese',</span> <span class="pre">'John')</span></code> would appear:</p>
+<div class="figure align-center" id="id9">
+<img alt="2-tuple example" src="_images/tuple1.png" />
+<p class="caption"><span class="caption-text">2-tuple example</span></p>
+</div>
+<p>But in a larger diagram you might want to leave out the details. For
+example, a diagram of the telephone directory might appear:</p>
+<div class="figure align-center" id="id10">
+<img alt="Another tuple example" src="_images/dict2.png" />
+<p class="caption"><span class="caption-text">Another tuple example</span></p>
+</div>
+<p>Here the tuples are shown using Python syntax as a graphical shorthand.</p>
+<p>The telephone number in the diagram is the complaints line for the BBC,
+so please don't call it.</p>
+</div>
+<div class="section" id="comparing-tuples">
+<h2>13.7. Comparing tuples<a class="headerlink" href="#comparing-tuples" title="Permalink to this headline">¶</a></h2>
+<p>The relational operators work with tuples and other sequences; Python
+starts by comparing the first element from each sequence. If they are
+equal, it goes on to the next elements, and so on, until it finds
+elements that differ. Subsequent elements are not considered (even if
+they are really big).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2000000</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">sort</span></code> function works the same way. It sorts primarily by first
+element, but in the case of a tie, it sorts by second element, and so
+on.</p>
+<p>This feature lends itself to a pattern called <strong>DSU</strong> for</p>
+<dl class="docutils">
+<dt>Decorate</dt>
+<dd>a sequence by building a list of tuples with one or more sort keys
+preceding the elements from the sequence,</dd>
+<dt>Sort</dt>
+<dd>the list of tuples, and</dd>
+<dt>Undecorate</dt>
+<dd>by extracting the sorted elements of the sequence.</dd>
+</dl>
+<p>For example, suppose you have a list of words and you want to sort them
+from longest to shortest:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sort_by_length</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+       <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">),</span> <span class="n">word</span><span class="p">))</span>
+
+    <span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">length</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>The first loop builds a list of tuples, where each tuple is a word
+preceded by its length.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sort</span></code> compares the first element, length, first, and only considers
+the second element to break ties. The keyword argument <code class="docutils literal notranslate"><span class="pre">reverse=True</span></code>
+tells <code class="docutils literal notranslate"><span class="pre">sort</span></code> to go in decreasing order.</p>
+<p>The second loop traverses the list of tuples and builds a list of words
+in descending order of length.</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<p>In this example, ties are broken by comparing words, so words with
+the same length appear in reverse alphabetical order. For other
+applications you might want to break ties at random. Modify this
+example so that words with the same length appear in random order.
+Hint: see the <code class="docutils literal notranslate"><span class="pre">random</span></code> function in the <code class="docutils literal notranslate"><span class="pre">random</span></code> module.</p>
+</div></blockquote>
+</div>
+<div class="section" id="sequences-of-sequences">
+<h2>13.8. Sequences of sequences<a class="headerlink" href="#sequences-of-sequences" title="Permalink to this headline">¶</a></h2>
+<p>I have focused on lists of tuples, but almost all of the examples in
+this chapter also work with lists of lists, tuples of tuples, and tuples
+of lists. To avoid enumerating the possible combinations, it is
+sometimes easier to talk about sequences of sequences.</p>
+<p>In many contexts, the different kinds of sequences (strings, lists and
+tuples) can be used interchangeably. So how and why do you choose one
+over the others?</p>
+<p>To start with the obvious, strings are more limited than other sequences
+because the elements have to be characters. They are also immutable. If
+you need the ability to change the characters in a string (as opposed to
+creating a new string), you might want to use a list of characters
+instead.</p>
+<p>Lists are more common than tuples, mostly because they are mutable. But
+there are a few cases where you might prefer tuples:</p>
+<ol class="arabic simple">
+<li>In some contexts, like a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, it is syntactically
+simpler to create a tuple than a list. In other contexts, you might
+prefer a list.</li>
+<li>If you want to use a sequence as a dictionary key, you have to use an
+immutable type like a tuple or string.</li>
+<li>If you are passing a sequence as an argument to a function, using
+tuples reduces the potential for unexpected behavior due to aliasing.</li>
+</ol>
+<p>Because tuples are immutable, they don't provide methods like <code class="docutils literal notranslate"><span class="pre">sort</span></code>
+and <code class="docutils literal notranslate"><span class="pre">reverse</span></code>, which modify existing lists. But Python provides the
+built-in functions <code class="docutils literal notranslate"><span class="pre">sorted</span></code> and <code class="docutils literal notranslate"><span class="pre">reversed</span></code>, which take any sequence
+as a parameter and return a new list with the same elements in a
+different order.</p>
+</div>
+<div class="section" id="debugging">
+<h2>13.9. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Lists, dictionaries and tuples are known generically as <strong>data
+structures</strong>; in this chapter we are starting to see compound data
+structures, like lists of tuples, and dictionaries that contain tuples
+as keys and lists as values. Compound data structures are useful, but
+they are prone to what I call <strong>shape errors</strong>; that is, errors caused
+when a data structure has the wrong type, size or composition. For
+example, if you are expecting a list with one integer and I give you a
+plain old integer (not in a list), it won't work.</p>
+<p>A strategy for ferreting out such problems is to use the <code class="docutils literal notranslate"><span class="pre">assert</span></code>
+function discussed earlier to test the shape of data structures that are
+passed in to functions. Python includes a function called <code class="docutils literal notranslate"><span class="pre">isinstance</span></code>
+that can test whether a variable is an instance of a particular data
+type. You can compose that with <code class="docutils literal notranslate"><span class="pre">assert</span></code> to ensure that the data types
+your function receives are what you expect.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AssertionError</span>
+</pre></div>
+</div>
+<p>If you create assertions like this and they fail, you know that one of
+the parameters to a function is of the wrong shape. You can then search
+for instances where the function is called to find and fix situations in
+which the function is called incorrectly.</p>
+</div>
+<div class="section" id="glossary">
+<h2>13.10. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>tuple:</dt>
+<dd>An immutable sequence of elements.</dd>
+<dt>tuple assignment:</dt>
+<dd>An assignment with a sequence on the right side and a tuple of
+variables on the left. The right side is evaluated and then its
+elements are assigned to the variables on the left.</dd>
+<dt>gather:</dt>
+<dd>The operation of assembling a variable-length argument tuple.</dd>
+<dt>scatter:</dt>
+<dd>The operation of treating a sequence as a list of arguments.</dd>
+<dt>DSU:</dt>
+<dd>Abbreviation of “decorate-sort-undecorate,” a pattern that involves
+building a list of tuples, sorting, and extracting part of the
+result.</dd>
+<dt>data structure:</dt>
+<dd>A collection of related values, often organized in lists,
+dictionaries, tuples, etc.</dd>
+<dt>shape (of a data structure):</dt>
+<dd>A summary of the type, size and composition of a data structure.</dd>
+</dl>
+<p class="rubric">Exercises</p>
+<ol class="arabic">
+<li><p class="first">Write a function called <code class="docutils literal notranslate"><span class="pre">most_frequent</span></code> that takes a string and
+prints the letters in decreasing order of frequency. Find text
+samples from several different languages and see how letter
+frequency varies between languages. Compare your results with the
+tables at <a class="reference external" href="http://wikipedia.org/wiki/Letter_frequencies">http://wikipedia.org/wiki/Letter_frequencies</a>.</p>
+</li>
+<li><p class="first">Write a program that reads a word list from a file (see <a class="reference external" href="#sec:wordlist">this
+section</a>) and prints all the sets of words that
+are anagrams.</p>
+<p>Here is an example of what the output might look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;deltas&#39;</span><span class="p">,</span> <span class="s1">&#39;desalt&#39;</span><span class="p">,</span> <span class="s1">&#39;lasted&#39;</span><span class="p">,</span> <span class="s1">&#39;salted&#39;</span><span class="p">,</span> <span class="s1">&#39;slated&#39;</span><span class="p">,</span> <span class="s1">&#39;staled&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;retainers&#39;</span><span class="p">,</span> <span class="s1">&#39;ternaries&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;generating&#39;</span><span class="p">,</span> <span class="s1">&#39;greatening&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;resmelts&#39;</span><span class="p">,</span> <span class="s1">&#39;smelters&#39;</span><span class="p">,</span> <span class="s1">&#39;termless&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Hint: you might want to build a dictionary that maps from a set
+of letters to a list of words that can be spelled with those
+letters. The question is, how can you represent the set of
+letters in a way that can be used as a key?</p>
+</li>
+<li><p class="first">Modify the previous program so that it prints the largest set of
+anagrams first, followed by the second largest set, and so on.</p>
+</li>
+<li><p class="first">In Scrabble, a &quot;bingo&quot; is when you play all seven tiles in your
+rack along with a letter on the board to form an eight-letter
+word. What set of 8 letters forms the most possible bingos? Hint:
+there are seven.</p>
+</li>
+<li><p class="first">Two words form a &quot;metathesis pair&quot; if you can transform one into
+the other by swapping two letters <a class="footnote-reference" href="#id7" id="id3">[3]</a>; for example, “converse”
+and “conserve.” Write a program that finds all of the metathesis
+pairs in the dictionary. Hint: don’t test all pairs of words, and
+don’t test all possible swaps.</p>
+</li>
+<li><p class="first">Here’s another Car Talk Puzzler <a class="footnote-reference" href="#id8" id="id4">[4]</a>:</p>
+<p>&quot;What is the longest English word, that remains a valid English
+word, as you remove its letters one at a time?</p>
+<p>&quot;Now, letters can be removed from either end, or the middle, but
+you can’t rearrange any of the letters. Every time you drop a
+letter, you wind up with another English word. If you do that,
+you’re eventually going to wind up with one letter and that too
+is going to be an English word—one that’s found in the
+dictionary. I want to know what’s the longest word and how many
+letters does it have?</p>
+<p>I’m going to give you a little modest example: Sprite. Ok? You
+start off with sprite, you take a letter off, one from the
+interior of the word, take the r away, and we’re left with the
+word spite, then we take the e off the end, we’re left with spit,
+we take the s off, we’re left with pit, it, and I.&quot;</p>
+<p>Write a program to find all words that can be reduced in this
+way, and then find the longest one.</p>
+<p>This exercise is a little more challenging than most, so here are
+some suggestions:</p>
+<ul class="simple">
+<li>You might want to write a function that takes a word and
+computes a list of all the words that can be formed by
+removing one letter. These are the “children” of the word.</li>
+<li>Recursively, a word is reducible if any of its children are
+reducible. As a base case, you can consider the empty string
+reducible.</li>
+<li>The wordlist I provided, <code class="docutils literal notranslate"><span class="pre">words.txt</span></code>, doesn’t contain single
+letter words. So you might want to add “I”, “a”, and the empty
+string.</li>
+<li>To improve the performance of your program, you might want to
+memoize the words that are known to be reducible.</li>
+</ul>
+</li>
+</ol>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>In Python 3.0, <code class="docutils literal notranslate"><span class="pre">zip</span></code> returns an iterator of tuples, but for most
+purposes, an iterator behaves like a list.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>This behavior is slightly different in Python 3.0.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>This exercise is inspired by an example at <a class="reference external" href="http://puzzlers.org">http://puzzlers.org</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://www.cartalk.com/content/puzzler/transcripts/200651">http://www.cartalk.com/content/puzzler/transcripts/200651</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="datastruct.html" title="14. Case study: data structure selection"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dictionaries.html" title="12. Dictionaries"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

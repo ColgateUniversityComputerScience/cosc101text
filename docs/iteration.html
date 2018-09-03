@@ -1,0 +1,679 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>7. Iteration &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Strings" href="strings.html" />
+    <link rel="prev" title="6. Program design" href="programdesign.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="strings.html" title="8. Strings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="programdesign.html" title="6. Program design"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Iteration</a><ul>
+<li><a class="reference internal" href="#an-introduction-to-lists">7.1. An introduction to lists</a><ul>
+<li><a class="reference internal" href="#lists-are-mutable">7.1.1. Lists are mutable</a></li>
+<li><a class="reference internal" href="#traversing-a-list">7.1.2. Traversing a list</a></li>
+<li><a class="reference internal" href="#range-revisited">7.1.3. <code class="docutils literal notranslate"><span class="pre">range</span></code> revisited</a></li>
+<li><a class="reference internal" href="#list-operations">7.1.4. List operations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-while-statement">7.2. The <code class="docutils literal notranslate"><span class="pre">while</span></code> statement</a></li>
+<li><a class="reference internal" href="#break">7.3. <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li><a class="reference internal" href="#square-roots">7.4. Square roots</a></li>
+<li><a class="reference internal" href="#algorithms">7.5. Algorithms</a></li>
+<li><a class="reference internal" href="#debugging">7.6. Debugging</a></li>
+<li><a class="reference internal" href="#glossary">7.7. Glossary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="programdesign.html"
+                        title="previous chapter">6. Program design</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="strings.html"
+                        title="next chapter">8. Strings</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iteration.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="iteration">
+<h1>7. Iteration<a class="headerlink" href="#iteration" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we'll learn about a way to repeat (loop) over a set of
+statements that is more general than the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop we have already
+encountered. First, a slight detour to learn a bit more about lists.</p>
+<div class="section" id="an-introduction-to-lists">
+<h2>7.1. An introduction to lists<a class="headerlink" href="#an-introduction-to-lists" title="Permalink to this headline">¶</a></h2>
+<p>Like a string, a <strong>list</strong> is a sequence of values. In a string, the
+values are characters; in a list, they can be <em>any</em> type. The values in
+a list are called <strong>elements</strong> or sometimes <strong>items</strong>.</p>
+<p>There are several ways to create a new list; the simplest is to enclose
+the comma-separated elements in square brackets (<code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;crunchy frog&#39;</span><span class="p">,</span> <span class="s1">&#39;ram bladder&#39;</span><span class="p">,</span> <span class="s1">&#39;lark vomit&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The first example is a list of four integers. The second is a list of
+three strings. (Mmmm... crunchy frog.) The elements of a list don’t have
+to be the same type. The following list contains a string, a float, an
+integer, and (lo!) another list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>A list within another list is <strong>nested</strong>.</p>
+<p>A list that contains no elements is called an empty list; you can create
+one with empty brackets, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<p>As you might expect, you can assign list values to variables:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cheddar&#39;</span><span class="p">,</span> <span class="s1">&#39;Edam&#39;</span><span class="p">,</span> <span class="s1">&#39;Gouda&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">empty</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cheeses</span><span class="p">,</span> <span class="n">numbers</span><span class="p">,</span> <span class="n">empty</span>
+<span class="go">[&#39;Cheddar&#39;, &#39;Edam&#39;, &#39;Gouda&#39;] [17, 123] []</span>
+</pre></div>
+</div>
+<div class="section" id="lists-are-mutable">
+<h3>7.1.1. Lists are mutable<a class="headerlink" href="#lists-are-mutable" title="Permalink to this headline">¶</a></h3>
+<p>The syntax for accessing the elements of a list is the same as for
+accessing the characters of a string---the bracket operator. The
+expression inside the brackets specifies the index. Remember that the
+indices start at 0:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cheeses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">Cheddar</span>
+</pre></div>
+</div>
+<p>Unlike strings, lists are <em>mutable</em>. When the bracket operator appears
+on the left side of an assignment, it identifies the element of the list
+that will be modified through assignment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">numbers</span>
+<span class="go">[17, 5]</span>
+</pre></div>
+</div>
+<p>The one-eth element of <code class="docutils literal notranslate"><span class="pre">numbers</span></code>, which used to be 123, is now 5.</p>
+<p>You can think of a list as a relationship between indices and elements.
+This relationship is called a <strong>mapping</strong>; each index “maps to” one of
+the elements. Here is a state diagram showing <code class="docutils literal notranslate"><span class="pre">cheeses</span></code>, <code class="docutils literal notranslate"><span class="pre">numbers</span></code>
+and <code class="docutils literal notranslate"><span class="pre">empty</span></code>:</p>
+<div class="figure align-center" id="id5">
+<img alt="Using lists to make &quot;mappings&quot;." src="_images/list_state.png" />
+<p class="caption"><span class="caption-text">Using lists to make &quot;mappings&quot;.</span></p>
+</div>
+<p>Lists are represented by boxes with the word “list” outside and the
+elements of the list inside. <code class="docutils literal notranslate"><span class="pre">cheeses</span></code> refers to a list with three
+elements indexed 0, 1 and 2. <code class="docutils literal notranslate"><span class="pre">numbers</span></code> contains two elements; the
+diagram shows that the value of the second element has been reassigned
+from 123 to 5. <code class="docutils literal notranslate"><span class="pre">empty</span></code> refers to a list with no elements.</p>
+<p>List indices work the same way as string indices:</p>
+<ul class="simple">
+<li>Any integer expression can be used as an index.</li>
+<li>If you try to read or write an element that does not exist, you get
+an <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>.</li>
+<li>If an index has a negative value, it counts backward from the end of
+the list.</li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">in</span></code> operator also works on lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cheddar&#39;</span><span class="p">,</span> <span class="s1">&#39;Edam&#39;</span><span class="p">,</span> <span class="s1">&#39;Gouda&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Edam&#39;</span> <span class="ow">in</span> <span class="n">cheeses</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Brie&#39;</span> <span class="ow">in</span> <span class="n">cheeses</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="traversing-a-list">
+<h3>7.1.2. Traversing a list<a class="headerlink" href="#traversing-a-list" title="Permalink to this headline">¶</a></h3>
+<p>The most common way to traverse the elements of a list is with a <code class="docutils literal notranslate"><span class="pre">for</span></code>
+loop. The syntax is the same as for strings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cheese</span> <span class="ow">in</span> <span class="n">cheeses</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">cheese</span>
+</pre></div>
+</div>
+<p>This works well if you only need to read the elements of the list. But
+if you want to write or update the elements, you need the indices. A
+common way to do that is to combine the functions <code class="docutils literal notranslate"><span class="pre">range</span></code> and <code class="docutils literal notranslate"><span class="pre">len</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
+    <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>This loop traverses the list and updates each element. <code class="docutils literal notranslate"><span class="pre">len</span></code> returns
+the number of elements in the list. <code class="docutils literal notranslate"><span class="pre">range</span></code> returns a list of indices
+from 0 to <span class="math notranslate nohighlight">\(n-1\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the length of the list. Each
+time through the loop <code class="docutils literal notranslate"><span class="pre">i</span></code> gets the index of the next element. The
+assignment statement in the body uses <code class="docutils literal notranslate"><span class="pre">i</span></code> to read the old value of the
+element and to assign the new value.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop over an empty list never executes the body:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[]:</span>
+    <span class="k">print</span> <span class="s1">&#39;This never happens.&#39;</span>
+</pre></div>
+</div>
+<p>Although a list can contain another list, the nested list still counts
+as a single element. The length of this list is four:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Brie&#39;</span><span class="p">,</span> <span class="s1">&#39;Roquefort&#39;</span><span class="p">,</span> <span class="s1">&#39;Pol le Veq&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="range-revisited">
+<h3>7.1.3. <code class="docutils literal notranslate"><span class="pre">range</span></code> revisited<a class="headerlink" href="#range-revisited" title="Permalink to this headline">¶</a></h3>
+<p>Earlier, we learned to use the <code class="docutils literal notranslate"><span class="pre">range</span></code> function to loop over the
+indices of a string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># count the lower case e&#39;s in a string</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;that&#39;s cheesy&quot;</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>We learned that <code class="docutils literal notranslate"><span class="pre">range</span></code>, when given an integer parameter, will cause
+the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop iterator variable (<code class="docutils literal notranslate"><span class="pre">index</span></code>, above) to &quot;take on&quot; the
+values 0, 1, 2, ... <code class="docutils literal notranslate"><span class="pre">len(s)-1</span></code>.</p>
+<p>Besides accepting one parameter, <code class="docutils literal notranslate"><span class="pre">range</span></code> can accept either 2 or 3
+parameters, giving us more flexibility in how to generate a list of
+numbers. When called with two parameters, <code class="docutils literal notranslate"><span class="pre">range(i,</span> <span class="pre">j)</span></code> returns the
+list of integers <code class="docutils literal notranslate"><span class="pre">[i,</span> <span class="pre">i+1,</span> <span class="pre">i+2,</span> <span class="pre">...,</span> <span class="pre">j-1]</span></code>. When called with three
+parameters, <code class="docutils literal notranslate"><span class="pre">range(i,</span> <span class="pre">j,</span> <span class="pre">k)</span></code> the third value represents a <code class="docutils literal notranslate"><span class="pre">step</span></code> to
+increment or decrement by when creating the sequence. It is, by default,
+1, but can be any integral value. Here are some examples with <code class="docutils literal notranslate"><span class="pre">range</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">[0, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">[0, 3]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-operations">
+<h3>7.1.4. List operations<a class="headerlink" href="#list-operations" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">+</span></code> operator concatenates lists, similar to string concatenation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c</span>
+<span class="go">[1, 2, 3, 4, 5, 6]</span>
+</pre></div>
+</div>
+<p>In the same way, the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator repeats a list a given number of
+times:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="go">[0, 0, 0, 0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="go">[1, 2, 3, 1, 2, 3, 1, 2, 3]</span>
+</pre></div>
+</div>
+<p>The first example repeats <code class="docutils literal notranslate"><span class="pre">[0]</span></code> four times. The second example repeats
+the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> three times.</p>
+<p>There are four useful built-in functions relevant to lists. We've
+already seen <code class="docutils literal notranslate"><span class="pre">len</span></code>, which returns the length of a sequence. There are
+also <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, and <code class="docutils literal notranslate"><span class="pre">sum</span></code>, which return the minimum and maximum
+values in a list, and the sum of a list of integers, respectively. For
+example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">42</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">min</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<span class="go">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<span class="go">52</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-while-statement">
+<h2>7.2. The <code class="docutils literal notranslate"><span class="pre">while</span></code> statement<a class="headerlink" href="#the-while-statement" title="Permalink to this headline">¶</a></h2>
+<p>Computers are often used to automate repetitive tasks. Repeating
+identical or similar tasks without making errors is something that
+computers do well and people do poorly.</p>
+<p>We have seen several programs that use the <code class="docutils literal notranslate"><span class="pre">for</span></code> statement to perform
+repetition, which is also called <strong>iteration</strong>. Because iteration is so
+common, Python provides several language features to make it easier. One
+is, of course, the <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, and another is the <code class="docutils literal notranslate"><span class="pre">while</span></code>
+statement.</p>
+<p>Let's say we're obsessed with rockets blasting off to the moon, and that
+we want a function that prints a &quot;countdown&quot; sequence. Here is how we
+might do that with a <code class="docutils literal notranslate"><span class="pre">while</span></code> statement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">print</span> <span class="s1">&#39;Blastoff!&#39;</span>
+</pre></div>
+</div>
+<p>You can almost read the <code class="docutils literal notranslate"><span class="pre">while</span></code> statement as if it were English:</p>
+<blockquote>
+<div>&quot;While <code class="docutils literal notranslate"><span class="pre">n</span></code> is greater than 0, display the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> and then
+reduce the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> by 1. When you get to 0, display the word
+<code class="docutils literal notranslate"><span class="pre">Blastoff!</span></code>&quot;.</div></blockquote>
+<p>More formally, here is the flow of execution for a <code class="docutils literal notranslate"><span class="pre">while</span></code> statement:</p>
+<ol class="arabic simple">
+<li>Evaluate the condition, yielding <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
+<li>If the condition is <code class="docutils literal notranslate"><span class="pre">False</span></code>, exit the <code class="docutils literal notranslate"><span class="pre">while</span></code> statement and
+continue execution at the next statement.</li>
+<li>If the condition is <code class="docutils literal notranslate"><span class="pre">True</span></code>, execute the body and then go back to
+step 1 (thus making a <strong>loop</strong>).</li>
+</ol>
+<p>The body of the loop should change the value of one or more variables so
+that eventually the condition becomes <code class="docutils literal notranslate"><span class="pre">False</span></code> and the loop terminates.
+Otherwise the loop will repeat forever, which is called an <strong>infinite
+loop</strong>.</p>
+<p>In the case of <code class="docutils literal notranslate"><span class="pre">countdown</span></code>, we can prove that the loop terminates
+because we know that the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> is finite, and we can see that
+the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> gets smaller each time through the loop, so
+eventually we have to get to 0. In other cases, it is not so easy to
+tell:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">n</span><span class="p">,</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>        <span class="c1"># n is even</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>               <span class="c1"># n is odd</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>The condition for this loop is <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">!=</span> <span class="pre">1</span></code>, so the loop will continue
+until <code class="docutils literal notranslate"><span class="pre">n</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>, which makes the condition false.</p>
+<p>Each time through the loop, the program outputs the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> and
+then checks whether it is even or odd. If it is even, <code class="docutils literal notranslate"><span class="pre">n</span></code> is divided
+by 2. If it is odd, the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> is replaced with <code class="docutils literal notranslate"><span class="pre">n*3+1</span></code>. For
+example, if the argument passed to <code class="docutils literal notranslate"><span class="pre">sequence</span></code> is 3, the resulting
+sequence is 3, 10, 5, 16, 8, 4, 2, 1.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">n</span></code> sometimes increases and sometimes decreases, there is no
+obvious proof that <code class="docutils literal notranslate"><span class="pre">n</span></code> will ever reach 1, or that the program
+terminates. For some particular values of <code class="docutils literal notranslate"><span class="pre">n</span></code>, we can prove
+termination. For example, if the starting value is a power of two, then
+the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> will be even each time through the loop until it
+reaches 1. The previous example ends with such a sequence, starting with
+16.</p>
+<p>The hard question is whether we can prove that this program terminates
+for <em>all positive values</em> of <code class="docutils literal notranslate"><span class="pre">n</span></code>. So far <a class="footnote-reference" href="#id3" id="id1">[1]</a>, no one has been able to
+prove it <em>or</em> disprove it!</p>
+</div>
+<div class="section" id="break">
+<h2>7.3. <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you don't know whether to end a loop until you get half way
+through the body. In that case you can use the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement to
+&quot;jump&quot; out of the loop.</p>
+<p>For example, suppose you want to take input from the user until they
+type <code class="docutils literal notranslate"><span class="pre">done</span></code>. You could write:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s1">&#39;&gt; &#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s1">&#39;done&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">print</span> <span class="n">line</span>
+
+<span class="k">print</span> <span class="s1">&#39;Done!&#39;</span>
+</pre></div>
+</div>
+<p>The loop condition is <code class="docutils literal notranslate"><span class="pre">True</span></code>, which is always true, so the loop runs
+until it hits the break statement.</p>
+<p>Each time through, it prompts the user with an angle bracket. If the
+user types <code class="docutils literal notranslate"><span class="pre">done</span></code>, the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement exits the loop. Otherwise
+the program echoes whatever the user types and goes back to the top of
+the loop. Here’s a sample run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt; not done
+not done
+&gt; done
+Done!
+</pre></div>
+</div>
+<p>This way of writing <code class="docutils literal notranslate"><span class="pre">while</span></code> loops is common because you can check the
+condition anywhere in the loop (not just at the top) and you can express
+the stop condition affirmatively (&quot;stop when this happens&quot;) rather than
+negatively (&quot;keep going until that happens.&quot;).</p>
+</div>
+<div class="section" id="square-roots">
+<h2>7.4. Square roots<a class="headerlink" href="#square-roots" title="Permalink to this headline">¶</a></h2>
+<p>Loops are often used in programs that compute numerical results by
+starting with an approximate answer and iteratively improving it.</p>
+<p>For example, one way of computing square roots is Newton’s method.
+Suppose that you want to know the square root of <span class="math notranslate nohighlight">\(a\)</span>. If you start
+with almost any estimate, <span class="math notranslate nohighlight">\(x\)</span>, you can compute a better estimate
+with the following formula:</p>
+<div class="math notranslate nohighlight">
+\[y = \frac{x+\frac{a}{x}}{2}\]</div>
+<p>For example, if <span class="math notranslate nohighlight">\(a\)</span> is 4 and <span class="math notranslate nohighlight">\(x\)</span> is 3:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y</span>
+<span class="go">2.16666666667</span>
+</pre></div>
+</div>
+<p>Which is closer to the correct answer (<span class="math notranslate nohighlight">\(\sqrt{4} = 2\)</span>). If we
+repeat the process with the new estimate, it gets even closer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y</span>
+<span class="go">2.00641025641</span>
+</pre></div>
+</div>
+<p>After a few more updates, the estimate is almost exact:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y</span>
+<span class="go">2.00001024003</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y</span>
+<span class="go">2.00000000003</span>
+</pre></div>
+</div>
+<p>In general we don’t know ahead of time how many steps it will take to
+get to the right answer, but we know when we get there because the
+estimate stops changing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">y</span>
+<span class="go">2.0</span>
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">x</span></code>, we can stop. Here is a loop that starts with an initial
+estimate, <code class="docutils literal notranslate"><span class="pre">x</span></code>, and improves it until it stops changing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>For most values of <code class="docutils literal notranslate"><span class="pre">a</span></code> this works fine, but in general it is dangerous
+to test <code class="docutils literal notranslate"><span class="pre">float</span></code> equality. Floating-point values are only approximately
+right: most rational numbers, like <span class="math notranslate nohighlight">\(1/3\)</span>, and irrational numbers,
+like <span class="math notranslate nohighlight">\(\sqrt{2}\)</span>, can’t be represented exactly with a <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+<p>Rather than checking whether <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are exactly equal, it is
+safer to use the built-in function <code class="docutils literal notranslate"><span class="pre">abs</span></code> to compute the absolute
+value, or magnitude, of the difference between them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> has a value like <code class="docutils literal notranslate"><span class="pre">0.0000001</span></code> that determines how
+close is close enough.</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>Encapsulate this loop in a function called <code class="docutils literal notranslate"><span class="pre">square_root</span></code> that
+takes <code class="docutils literal notranslate"><span class="pre">a</span></code> as a parameter, chooses a reasonable value of <code class="docutils literal notranslate"><span class="pre">x</span></code>,
+and returns an estimate of the square root of <code class="docutils literal notranslate"><span class="pre">a</span></code>.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="algorithms">
+<h2>7.5. Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Newton’s method is an example of an <strong>algorithm</strong>: it is a mechanical
+process for solving a category of problems (in this case, computing
+square roots).</p>
+<p>It is not easy to define an algorithm. It might help to start with
+something that is not an algorithm. When you learned to multiply
+single-digit numbers, you probably memorized the multiplication table.
+In effect, you memorized 100 specific solutions. That kind of knowledge
+is not algorithmic.</p>
+<p>But if you were &quot;lazy,&quot; you probably cheated by learning a few tricks.
+For example, to find the product of <span class="math notranslate nohighlight">\(n\)</span> and 9, you can write
+<span class="math notranslate nohighlight">\(n-1\)</span> as the first digit and <span class="math notranslate nohighlight">\(10-n\)</span> as the second digit.
+This trick is a general solution for multiplying any single-digit number
+by 9. That’s an algorithm!</p>
+<p>Similarly, the techniques you learned for addition with carrying,
+subtraction with borrowing, and long division are all algorithms. One of
+the characteristics of algorithms is that they do not require any
+intelligence to carry out. They are mechanical processes in which each
+step follows from the last according to a simple set of rules.</p>
+<p>The process of designing algorithms is interesting, intellectually
+challenging, and a central part of what we call <em>program design</em>. Some
+of the things that people do naturally, without difficulty or conscious
+thought, are the hardest to express algorithmically. Understanding
+natural language is a good example. We all do it, but so far no one has
+been able to explain <em>how</em> we do it, at least not in the form of an
+algorithm.</p>
+</div>
+<div class="section" id="debugging">
+<h2>7.6. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>As you start writing bigger programs, you might find yourself spending
+more time debugging. More code means more chances to make an error and
+more place for bugs to hide.</p>
+<p>One way to cut your debugging time is &quot;debugging by bisection&quot;. For
+example, if there are 100 lines in your program and you check them one
+at a time, it would take 100 steps.</p>
+<p>Instead, try to break the problem in half. Look at the middle of the
+program, or near it, for an intermediate value you can check. Add a
+<code class="docutils literal notranslate"><span class="pre">print</span></code> statement (or something else that has a verifiable effect) and
+run the program.</p>
+<p>If the mid-point check is incorrect, there must be a problem in the
+first half of the program. If it is correct, the problem is in the
+second half.</p>
+<p>Every time you perform a check like this, you cut in half the number of
+lines that have to be searched. After six steps (which is fewer than
+100), you would be down to one or two lines of code, at least in theory.</p>
+<p>In practice it is not always clear what the &quot;middle of the program&quot; is
+and not always possible to check it. It doesn’t make sense to count
+lines and find the exact midpoint. Instead, think about places in the
+program where there might be errors and places where it is easy to put a
+check. Then choose a spot where you think the chances are about the same
+that the bug is before or after the check.</p>
+</div>
+<div class="section" id="glossary">
+<h2>7.7. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>initialization:</dt>
+<dd>An assignment that gives an initial value to a variable that will be
+updated.</dd>
+<dt>increment:</dt>
+<dd>An update that increases the value of a variable (often by one).</dd>
+<dt>decrement:</dt>
+<dd>An update that decreases the value of a variable.</dd>
+<dt>iteration:</dt>
+<dd>Repeated execution of a set of statements using either a recursive
+function call or a loop.</dd>
+<dt>infinite loop:</dt>
+<dd>A loop in which the terminating condition is never satisfied.</dd>
+</dl>
+<p class="rubric">Exercises</p>
+<ol class="arabic">
+<li><p class="first">To test the square root algorithm in this chapter, you could
+compare it with <code class="docutils literal notranslate"><span class="pre">math.sqrt</span></code>. Write a function named
+<code class="docutils literal notranslate"><span class="pre">test_square_root</span></code> that prints a table like this:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="29%" />
+<col width="26%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><span class="math notranslate nohighlight">\(a\)</span></th>
+<th class="head"><code class="docutils literal notranslate"><span class="pre">square_root(a)</span></code></th>
+<th class="head"><code class="docutils literal notranslate"><span class="pre">math.sqrt(a)</span></code></th>
+<th class="head">difference</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>2.0</td>
+<td>1.41421356237</td>
+<td>1.41421356237</td>
+<td>2.22044604925e-16</td>
+</tr>
+<tr class="row-even"><td>3.0</td>
+<td>1.73205080757</td>
+<td>1.73205080757</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>4.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td>5.0</td>
+<td>2.2360679775</td>
+<td>2.2360679775</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>6.0</td>
+<td>2.44948974278</td>
+<td>2.44948974278</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td>7.0</td>
+<td>2.64575131106</td>
+<td>2.64575131106</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>8.0</td>
+<td>2.82842712475</td>
+<td>2.82842712475</td>
+<td>4.4408920985e-16</td>
+</tr>
+<tr class="row-even"><td>9.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p>The first column is a number, <span class="math notranslate nohighlight">\(a\)</span>; the second column is the
+square root of <span class="math notranslate nohighlight">\(a\)</span> computed with the <code class="docutils literal notranslate"><span class="pre">square_root</span></code>
+function; the third column is the square root computed by
+<code class="docutils literal notranslate"><span class="pre">math.sqrt</span></code>; the fourth column is the absolute value of the
+difference between the two estimates.</p>
+</li>
+<li><p class="first">The built-in function <code class="docutils literal notranslate"><span class="pre">eval</span></code> takes a string and evaluates it
+using the Python interpreter. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;1 + 2 * 3&#39;</span><span class="p">)</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;math.sqrt(5)&#39;</span><span class="p">)</span>
+<span class="go">2.2360679774997898</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;type(math.pi)&#39;</span><span class="p">)</span>
+<span class="go">&lt;type &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">eval_loop</span></code> that iteratively prompts
+the user, takes the resulting input and evaluates it using
+<code class="docutils literal notranslate"><span class="pre">eval</span></code>, and prints the result.</p>
+<p>It should continue until the user enters <code class="docutils literal notranslate"><span class="pre">'done'</span></code>, and then
+return the value of the last expression it evaluated.</p>
+</li>
+<li><p class="first">The brilliant mathematician Srinivasa Ramanujan found an infinite
+series <a class="footnote-reference" href="#id4" id="id2">[2]</a> that can be used to generate a numerical
+approximation of <span class="math notranslate nohighlight">\(\pi\)</span>:</p>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\pi} = \frac{2\sqrt{2}}{9801}
+\sum^\infty_{k=0} \frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}\]</div>
+<blockquote>
+<div>Write a function called <code class="docutils literal notranslate"><span class="pre">estimate_pi</span></code> that uses this formula to
+compute and return an estimate of <span class="math notranslate nohighlight">\(\pi\)</span>. It should use a
+<code class="docutils literal notranslate"><span class="pre">while</span></code> loop to compute terms of the summation until the last
+term is smaller than <code class="docutils literal notranslate"><span class="pre">1e-15</span></code> (which is Python notation for
+<span class="math notranslate nohighlight">\(10^{-15}\)</span>). You can check the result by comparing it to
+<code class="docutils literal notranslate"><span class="pre">math.pi</span></code>.</div></blockquote>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>See <a class="reference external" href="http://wikipedia.org/wiki/Collatz_conjecture">http://wikipedia.org/wiki/Collatz_conjecture</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>See <a class="reference external" href="http://wikipedia.org/wiki/Pi">http://wikipedia.org/wiki/Pi</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="strings.html" title="8. Strings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="programdesign.html" title="6. Program design"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

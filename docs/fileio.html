@@ -1,0 +1,896 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10. File input and output &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. Lists" href="lists.html" />
+    <link rel="prev" title="9. Recursion" href="recursion.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="lists.html" title="11. Lists"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="recursion.html" title="9. Recursion"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. File input and output</a><ul>
+<li><a class="reference internal" href="#reading-word-lists">10.1. Reading word lists</a></li>
+<li><a class="reference internal" href="#practice-exercises">10.2. Practice exercises</a></li>
+<li><a class="reference internal" href="#search">10.3. Search</a></li>
+<li><a class="reference internal" href="#looping-with-indices">10.4. Looping with indices</a></li>
+<li><a class="reference internal" href="#reading-and-writing">10.5. Reading and writing</a></li>
+<li><a class="reference internal" href="#the-format-method-for-strings">10.6. The <code class="docutils literal notranslate"><span class="pre">format</span></code> method for strings</a></li>
+<li><a class="reference internal" href="#advanced-files-filenames-and-paths">10.7. Advanced files: filenames and paths</a></li>
+<li><a class="reference internal" href="#catching-exceptions">10.8. Catching exceptions</a></li>
+<li><a class="reference internal" href="#case-study-1-retrieving-and-processing-files-available-on-the-internet">10.9. Case study 1: retrieving and processing files available on the internet</a></li>
+<li><a class="reference internal" href="#writing-modules">10.10. Writing modules</a></li>
+<li><a class="reference internal" href="#debugging">10.11. Debugging</a></li>
+<li><a class="reference internal" href="#glossary">10.12. Glossary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="recursion.html"
+                        title="previous chapter">9. Recursion</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lists.html"
+                        title="next chapter">11. Lists</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/fileio.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="file-input-and-output">
+<h1>10. File input and output<a class="headerlink" href="#file-input-and-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="reading-word-lists">
+<h2>10.1. Reading word lists<a class="headerlink" href="#reading-word-lists" title="Permalink to this headline">¶</a></h2>
+<p>Several of the examples and exercises in this chapter require a (big)
+list of English words. There are many of word lists available on the
+Internet, but the one most suitable for our purpose is one of the word
+lists collected and contributed to the public domain by Grady Ward as
+part of the Moby lexicon project <a class="footnote-reference" href="#id5" id="id1">[1]</a>. It includes is a list of 117,969
+official crosswords; that is, words that are considered valid in
+crossword puzzles and other word games. I've extracted and posted this
+list at: <a class="reference external" href="http://cs.colgate.edu/~jsommers/cosc101/words.txt">http://cs.colgate.edu/~jsommers/cosc101/words.txt</a></p>
+<p>This file is in <em>plain text</em> (as the suffix <code class="docutils literal notranslate"><span class="pre">.txt</span></code> suggests), so you
+can open it with a text editor, but you can also read it from Python.
+The built-in function <code class="docutils literal notranslate"><span class="pre">open</span></code> takes the name of the file as a parameter
+and returns a <strong>file object</strong> you can use to read the file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;words.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">fin</span>
+<span class="go">&lt;open file &#39;words.txt&#39;, mode &#39;r&#39; at 0xb7f4b380&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fin</span></code> is a common name for a file object used for input (&quot;<em>f</em>ile
+<em>in</em>put&quot;). Mode <code class="docutils literal notranslate"><span class="pre">'r'</span></code> indicates that this file is open for reading
+(as opposed to <code class="docutils literal notranslate"><span class="pre">'w'</span></code> for writing).</p>
+<p>The file object provides several methods for reading, including
+<code class="docutils literal notranslate"><span class="pre">readline</span></code>, which reads characters from the file until it gets to a
+newline and returns the result as a string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">&#39;aa\r\n&#39;</span>
+</pre></div>
+</div>
+<p>The first word in this particular list is &quot;aa,&quot; which is a kind of lava.
+The sequence <code class="docutils literal notranslate"><span class="pre">\r\n</span></code> represents two whitespace characters, a carriage
+return (<code class="docutils literal notranslate"><span class="pre">\r</span></code>) and a newline (<code class="docutils literal notranslate"><span class="pre">\n</span></code>), that separate this word from the
+next.</p>
+<p>The file object keeps track of where it is in the file, so if you call
+<code class="docutils literal notranslate"><span class="pre">readline</span></code> again, you get the next word:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">&#39;aah\r\n&#39;</span>
+</pre></div>
+</div>
+<p>The next word is &quot;aah,&quot; which is a perfectly legitimate word, so stop
+looking at me like that. If it's the whitespace that’s bothering you, we
+can get rid of it with the string method <code class="docutils literal notranslate"><span class="pre">strip</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">word</span>
+<span class="go">aahed</span>
+</pre></div>
+</div>
+<p>You can also use a file object as part of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. This program
+reads <code class="docutils literal notranslate"><span class="pre">words.txt</span></code> and prints each word, one per line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;words.txt&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">print</span> <span class="n">word</span>
+<span class="n">fin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The above program also includes a call to the <code class="docutils literal notranslate"><span class="pre">close</span></code> method as the
+last statement. You should always remember to close files when you're
+done with them!</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>Write a program that reads <code class="docutils literal notranslate"><span class="pre">words.txt</span></code> and prints only the
+words with more than 20 characters (not counting whitespace). At
+the end of your program, you should also print out the number of
+words that are longer than 20 characters (not including
+whitespace).</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="practice-exercises">
+<h2>10.2. Practice exercises<a class="headerlink" href="#practice-exercises" title="Permalink to this headline">¶</a></h2>
+<p>There are solutions to these exercises in the next section. You should
+at least attempt each one before you read the solutions.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">In 1939 Ernest Vincent Wright published a 50,000 word novel
+called <em>Gadsby</em> that does not contain the letter &quot;e.&quot; Since 'e'
+is the most common letter in English, that’s not easy to do.</p>
+<p>In fact, it is difficult to construct a solitary thought without
+using that most common symbol. It is slow going at first, but
+with caution and hours of training you can gradually gain
+facility.</p>
+<p>All right, I’ll stop now.</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">has_no_e</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the
+given word doesn't have the letter 'e' in it.</p>
+</li>
+<li><p class="first">Write a program that uses your <code class="docutils literal notranslate"><span class="pre">has_no_e</span></code> function to print
+only the words in <code class="docutils literal notranslate"><span class="pre">words.txt</span></code> that have no <code class="docutils literal notranslate"><span class="pre">e</span></code>. You should
+also compute and print the percentage of words in the file that
+have no 'e'.</p>
+</li>
+<li><p class="first">Write a function named <code class="docutils literal notranslate"><span class="pre">avoids</span></code> that takes a word and a string
+of forbidden letters, and that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the word
+doesn't use any of the forbidden letters.</p>
+</li>
+<li><p class="first">Write a program to prompt the user to enter a string of forbidden
+letters and print the number of words in <code class="docutils literal notranslate"><span class="pre">words.txt</span></code> that do
+not contain any of them.</p>
+<p>Fun challenge: can you find a combination of 5 forbidden letters
+that excludes the <em>smallest</em> number of words?</p>
+</li>
+<li><p class="first">Write a function named <code class="docutils literal notranslate"><span class="pre">uses_only</span></code> that takes a word and a
+string of letters, and that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the word contains
+only letters in the list.</p>
+<p>Fun challenge: can you make a sentence using only the letters
+<code class="docutils literal notranslate"><span class="pre">acefhlo</span></code>? Other than &quot;Hoe alfalfa?&quot;</p>
+</li>
+<li><p class="first">Write a function named <code class="docutils literal notranslate"><span class="pre">uses_all</span></code> that takes a word and a
+string of required letters, and that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the word
+uses all the required letters at least once. How many words are
+there that use all the vowels <code class="docutils literal notranslate"><span class="pre">aeiou</span></code>? How about <code class="docutils literal notranslate"><span class="pre">aeiouy</span></code>?</p>
+</li>
+<li><p class="first">Write a function called <code class="docutils literal notranslate"><span class="pre">is_abecedarian</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code>
+if the letters in a word appear in alphabetical order (double
+letters are ok). How many abecedarian words are there?</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="search">
+<h2>10.3. Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
+<p>All of the exercises in the previous section have something in common;
+they can be solved with the search pattern we previously saw with the
+<code class="docutils literal notranslate"><span class="pre">find</span></code> function we wrote in the strings chapter. The simplest example
+is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_no_e</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop traverses the characters in <code class="docutils literal notranslate"><span class="pre">word</span></code>. If we find the
+letter “e”, we can immediately return <code class="docutils literal notranslate"><span class="pre">False</span></code>; otherwise we have to go
+to the next letter. If we exit the loop normally, that means we didn’t
+find an “e”, so we return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">avoids</span></code> is a more general version of <code class="docutils literal notranslate"><span class="pre">has_no_e</span></code> but it has the same
+structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">avoids</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">forbidden</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">forbidden</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>We can return <code class="docutils literal notranslate"><span class="pre">False</span></code> as soon as we find a forbidden letter; if we get
+to the end of the loop, we return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">uses_only</span></code> is similar except that the sense of the condition is
+reversed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_only</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">available</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Instead of a list of forbidden letters, we have a list of available
+letters. If we find a letter in <code class="docutils literal notranslate"><span class="pre">word</span></code> that is not in <code class="docutils literal notranslate"><span class="pre">available</span></code>,
+we can return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">uses_all</span></code> is similar except that we reverse the role of the word and
+the string of letters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_all</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">required</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">required</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Instead of traversing the letters in <code class="docutils literal notranslate"><span class="pre">word</span></code>, the loop traverses the
+required letters. If any of the required letters do not appear in the
+word, we can return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>If you were really thinking like a computer scientist, you would have
+recognized that <code class="docutils literal notranslate"><span class="pre">uses_all</span></code> was an instance of a previously-solved
+problem, and you would have written:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_all</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">required</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">uses_only</span><span class="p">(</span><span class="n">required</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is an example of a program development method called <strong>problem
+recognition</strong>, which means that you recognize the problem you are
+working on as an instance of a previously-solved problem, and apply a
+previously-developed solution.</p>
+</div>
+<div class="section" id="looping-with-indices">
+<h2>10.4. Looping with indices<a class="headerlink" href="#looping-with-indices" title="Permalink to this headline">¶</a></h2>
+<p>I wrote the functions in the previous section with <code class="docutils literal notranslate"><span class="pre">for</span></code> loops because
+I only needed the characters in the strings; I didn’t have to do
+anything with the indices.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">is_abecedarian</span></code> we have to compare adjacent letters, which is a
+little tricky with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">previous</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>An alternative is to use recursion:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="n">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+<p>Another option is to use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>The loop starts at <code class="docutils literal notranslate"><span class="pre">i=0</span></code> and ends when <code class="docutils literal notranslate"><span class="pre">i=len(word)-1</span></code>. Each time
+through the loop, it compares the <span class="math notranslate nohighlight">\(i\)</span>th character (which you can
+think of as the current character) to the <span class="math notranslate nohighlight">\(i+1\)</span>th character
+(which you can think of as the next).</p>
+<p>If the next character is less than (alphabetically before) the current
+one, then we have discovered a break in the abecedarian trend, and we
+return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>If we get to the end of the loop without finding a fault, then the word
+passes the test. To convince yourself that the loop ends correctly,
+consider an example like <code class="docutils literal notranslate"><span class="pre">'flossy'</span></code>. The length of the word is 6, so
+the last time the loop runs is when <code class="docutils literal notranslate"><span class="pre">i</span></code> is 4, which is the index of
+the second-to-last character. On the last iteration, it compares the
+second-to-last character to the last, which is what we want.</p>
+<p>Here is a version of <code class="docutils literal notranslate"><span class="pre">is_palindrome</span></code> that uses two indices; one starts
+at the beginning and goes up; the other starts at the end and goes down.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">j</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">word</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Or, if you noticed that this is an instance of a previously-solved
+problem, you might have written:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">is_reverse</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--
+
+## Persistence
+
+Most of the programs we have seen so far are transient in the sense that
+they run for a short time and produce some output, but when they end,
+their data disappears. If you run the program again, it starts with a
+clean slate.
+
+Other programs are **persistent**: they run for a long time (or all the
+time); they keep at least some of their data in permanent storage (a
+hard drive, for example); and if they shut down and restart, they pick
+up where they left off.
+
+Examples of persistent programs are operating systems, which run pretty
+much whenever a computer is on, and web servers, which run all the time,
+waiting for requests to come in on the network.
+
+One of the simplest ways for programs to maintain their data is by
+reading and writing text files. We have already seen programs that read
+text files; in this chapter we will see programs that write them.
+
+An alternative is to store the state of the program in a database. In
+this chapter I will present a simple database and a module, `pickle`,
+that makes it easy to store program data.
+
+--></div>
+<div class="section" id="reading-and-writing">
+<h2>10.5. Reading and writing<a class="headerlink" href="#reading-and-writing" title="Permalink to this headline">¶</a></h2>
+<p>A text file is a sequence of characters stored on a permanent medium
+like a hard drive, flash memory, or CD-ROM. <a class="reference external" href="#sec:wordlist">We saw how to open and read
+a file earlier</a>.</p>
+<p>To write a file, you have to open it with mode <code class="docutils literal notranslate"><span class="pre">'w'</span></code> as a second
+parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">fout</span>
+<span class="go">&lt;open file &#39;output.txt&#39;, mode &#39;w&#39; at 0xb7eb2410&gt;</span>
+</pre></div>
+</div>
+<p>If the file already exists, opening it in write mode clears out the old
+data and starts fresh, so be careful! If the file doesn’t exist, a new
+one is created.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">write</span></code> method puts data into the file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">line1</span> <span class="o">=</span> <span class="s2">&quot;This here&#39;s the wattle,</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Again, the file object keeps track of where it is, so if you call
+<code class="docutils literal notranslate"><span class="pre">write</span></code> again, it adds the new data to the end.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">line2</span> <span class="o">=</span> <span class="s2">&quot;the emblem of our land.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As we saw with reading, when you are done writing, you should close the
+file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-format-method-for-strings">
+<h2>10.6. The <code class="docutils literal notranslate"><span class="pre">format</span></code> method for strings<a class="headerlink" href="#the-format-method-for-strings" title="Permalink to this headline">¶</a></h2>
+<p>The argument of <code class="docutils literal notranslate"><span class="pre">write</span></code> has to be a string, so if we want to put other
+values in a file, we have to convert them to strings. The easiest way to
+do that is with the <code class="docutils literal notranslate"><span class="pre">str</span></code> conversion function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">52</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>An alternative is to use the <strong>``format`` method</strong> on strings. The
+string on which the format method is called should contain <strong>replacement
+fields</strong> surrounded by curly braces (<code class="docutils literal notranslate"><span class="pre">{}</span></code>). Arguments to the
+<code class="docutils literal notranslate"><span class="pre">format</span></code> method are inserted in the replacement fields, in order.</p>
+<p>Here are some examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;My name is {}!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Tim!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which results in the string <code class="docutils literal notranslate"><span class="pre">'My</span> <span class="pre">name</span> <span class="pre">is</span> <span class="pre">Tim!'</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;{} is the answer to life,</span>
+<span class="sd">   the universe,</span>
+<span class="sd">   and something else, maybe&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which results in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;41 is the answer to life, the universe, and something else, maybe&#39;</span>
+</pre></div>
+</div>
+<p>Within the curly braces, you can specify <em>how</em> the replacement item
+should be formatted. For example, you can specify that replacement items
+should be centered, left justified, or right justified within some
+column width, or that a floating point number be shown with a certain
+number of decimal places:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I am {:d} years old in dog years&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">age</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Assuming <code class="docutils literal notranslate"><span class="pre">age</span></code> is defined, this will convert <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">*</span> <span class="pre">7</span></code> to a
+decimal integer (that's the <code class="docutils literal notranslate"><span class="pre">d</span></code> in the replacement field). If
+<code class="docutils literal notranslate"><span class="pre">age</span></code> is 2, the resulting string is just
+<code class="docutils literal notranslate"><span class="pre">'I</span> <span class="pre">am</span> <span class="pre">14</span> <span class="pre">years</span> <span class="pre">old</span> <span class="pre">in</span> <span class="pre">dog</span> <span class="pre">years'</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Center this: {:^30}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;my string&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, the caret character (<code class="docutils literal notranslate"><span class="pre">^</span></code>) means to center the
+replacement item, and the value 30 is the field width. So the
+string <code class="docutils literal notranslate"><span class="pre">my</span> <span class="pre">string</span></code> is centered in a 30-character width. In
+addition to <code class="docutils literal notranslate"><span class="pre">^</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> to left-justify an item,
+and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> to right-justify an item.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;PI to 3 decimal places is {:.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, we specify that we want to convert the
+replacement item to a floating point number (the <code class="docutils literal notranslate"><span class="pre">f</span></code>), and
+show 3 decimal places (the <code class="docutils literal notranslate"><span class="pre">.3</span></code> preceding the <code class="docutils literal notranslate"><span class="pre">f</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">5.532</span><span class="p">]</span>
+<span class="s1">&#39;x,y = {:.1f},{:.1f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In this example, we have two replacement fields, each with
+floating point format specifiers. Because we have two
+replacement fields, we need two replacement items as arguments
+to the <code class="docutils literal notranslate"><span class="pre">format</span></code> method.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> method is useful, but the replacement field syntax is a
+bit complex and we won't go into any more depth here. For full details,
+please refer to the Python documentation:
+<a class="reference external" href="http://docs.python.org/library/string.html#formatstrings">http://docs.python.org/library/string.html#formatstrings</a>. (Finally, note
+that if you're using a version of Python less than 2.7, the format
+method works a bit differently. Please ensure that you're using Python
+2.7.)</p>
+</div>
+<div class="section" id="advanced-files-filenames-and-paths">
+<h2>10.7. Advanced files: filenames and paths<a class="headerlink" href="#advanced-files-filenames-and-paths" title="Permalink to this headline">¶</a></h2>
+<p>Files are organized into <strong>directories</strong> (also called &quot;folders&quot;). Every
+running program has a &quot;current directory,&quot; which is the default
+directory for most operations. For example, when you open a file for
+reading, Python looks for it in the current directory.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> module provides functions for working with files and
+directories (&quot;os&quot; stands for &quot;operating system&quot;). <code class="docutils literal notranslate"><span class="pre">os.getcwd</span></code> returns
+the name of the current directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cwd</span>
+<span class="go">/Users/jsommers</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cwd</span></code> stands for “current working directory.” The result in this
+example is <code class="docutils literal notranslate"><span class="pre">/Users/jsommers</span></code>, which is the home directory of a user
+named <code class="docutils literal notranslate"><span class="pre">jsommers</span></code>.</p>
+<p>A string like <code class="docutils literal notranslate"><span class="pre">cwd</span></code> that identifies a file is called a <strong>path</strong>. A
+<strong>relative path</strong> starts from the current directory; an <strong>absolute
+path</strong> starts from the topmost directory in the file system.</p>
+<p>The paths we have seen so far are simple filenames, so they are relative
+to the current directory. To find the absolute path to a file, you can
+use <code class="docutils literal notranslate"><span class="pre">os.path.abspath</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;memo.txt&#39;</span><span class="p">)</span>
+<span class="go">&#39;/Users/jsommers/memo.txt&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.exists</span></code> checks whether a file or directory exists:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;memo.txt&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>If it exists, <code class="docutils literal notranslate"><span class="pre">os.path.isdir</span></code> checks whether it’s a directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;memo.txt&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;music&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">os.path.isfile</span></code> checks whether it’s a file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.listdir</span></code> returns a list of the files (and other directories) in
+the given directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span>
+<span class="go">[&#39;music&#39;, &#39;photos&#39;, &#39;memo.txt&#39;]</span>
+</pre></div>
+</div>
+<p>To demonstrate these functions, the following example &quot;walks&quot; through a
+directory, prints the names of all the files, and calls itself
+recursively on all the directories.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">print</span> <span class="n">path</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os.path.join</span></code> takes a directory and a file name and joins them into a
+complete path.</p>
+<blockquote>
+<div><p><strong>Exercise</strong></p>
+<ol class="arabic">
+<li><p class="first">Modify <code class="docutils literal notranslate"><span class="pre">walk</span></code> so that instead of printing the names of the
+files, it returns a list of names.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> module provides a function called <code class="docutils literal notranslate"><span class="pre">walk</span></code> that is
+similar to this one but more versatile. Read the documentation
+and use it to print the names of the files in a given directory
+and its subdirectories.</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="catching-exceptions">
+<h2>10.8. Catching exceptions<a class="headerlink" href="#catching-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>A lot of things can go wrong when you try to read and write files. If
+you try to open a file that doesn’t exist, you get an <code class="docutils literal notranslate"><span class="pre">IOError</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;bad_file&#39;</span><span class="p">)</span>
+<span class="go">IOError: [Errno 2] No such file or directory: &#39;bad_file&#39;</span>
+</pre></div>
+</div>
+<p>If you don’t have permission to access a file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="go">IOError: [Errno 13] Permission denied: &#39;/etc/passwd&#39;</span>
+</pre></div>
+</div>
+<p>And if you try to open a directory for reading, you get</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/Users&#39;</span><span class="p">)</span>
+<span class="go">IOError: [Errno 21] Is a directory</span>
+</pre></div>
+</div>
+<p>To avoid these errors, you could use functions like <code class="docutils literal notranslate"><span class="pre">os.path.exists</span></code>
+and <code class="docutils literal notranslate"><span class="pre">os.path.isfile</span></code>, but it would take a lot of time and code to
+check all the possibilities (if &quot;<code class="docutils literal notranslate"><span class="pre">Errno</span> <span class="pre">21</span></code>&quot; is any indication,
+there are at least 21 things that can go wrong).</p>
+<p>It is better to go ahead and try, and deal with problems if they happen,
+which is exactly what the <code class="docutils literal notranslate"><span class="pre">try</span></code> statement does. The syntax is similar
+to an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;bad_file&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">line</span>
+    <span class="n">fin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;Something went wrong.&#39;</span>
+</pre></div>
+</div>
+<p>Python starts by executing the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause. If all goes well, it
+skips the <code class="docutils literal notranslate"><span class="pre">except</span></code> clause and proceeds. If an exception occurs, it
+jumps out of the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause and executes the <code class="docutils literal notranslate"><span class="pre">except</span></code> clause.</p>
+<p>Handling an exception with a <code class="docutils literal notranslate"><span class="pre">try</span></code> statement is called <strong>catching</strong> an
+exception. In this example, the <code class="docutils literal notranslate"><span class="pre">except</span></code> clause prints an error
+message that is not very helpful. In general, catching an exception
+gives you a chance to fix the problem, or try again, or at least end the
+program gracefully.</p>
+</div>
+<div class="section" id="case-study-1-retrieving-and-processing-files-available-on-the-internet">
+<h2>10.9. Case study 1: retrieving and processing files available on the internet<a class="headerlink" href="#case-study-1-retrieving-and-processing-files-available-on-the-internet" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">urllib2</span></code> module provides methods for manipulating URLs and
+downloading files from the internet. Interestingly, opening a URL on the
+internet using this module is very similar to opening a file stored on
+your own computer.</p>
+<p>At the beginning of this chapter, we saw that a copy of the
+<code class="docutils literal notranslate"><span class="pre">words.txt</span></code> file is stored at
+<a class="reference external" href="http://cs.colgate.edu/~jsommers/cosc101/words.txt">http://cs.colgate.edu/~jsommers/cosc101/words.txt</a>. Using the <code class="docutils literal notranslate"><span class="pre">urllib2</span></code>
+module, we can open and process the file, even though it isn't locally
+stored!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib2</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;http://cs.colgate.edu/~jsommers/cosc101/words.txt&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">connection</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">line</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The only difference between this program and an equivalent program that
+reads a locally stored file is how the file is opened! (And, of course,
+we need to import the <code class="docutils literal notranslate"><span class="pre">urllib2</span></code> module). Note that if you run the
+above program, you'll see each word in the <code class="docutils literal notranslate"><span class="pre">words.txt</span></code> file, followed
+by a blank line. Make sure you understand <em>why</em> that's the case, and
+that you know how to modify the above program to <em>only</em> print each word
+on a line (and not the blank lines).</p>
+</div>
+<div class="section" id="writing-modules">
+<h2>10.10. Writing modules<a class="headerlink" href="#writing-modules" title="Permalink to this headline">¶</a></h2>
+<p>Any file that contains Python code can be imported as a module. For
+example, suppose you have a file named <code class="docutils literal notranslate"><span class="pre">wc.py</span></code> with the following
+code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">linecount</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+
+<span class="k">print</span> <span class="n">linecount</span><span class="p">(</span><span class="s1">&#39;wc.py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you run this program, it reads itself and prints the number of lines
+in the file, which is 7. You can also import it like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">wc</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>Now you have a module object <code class="docutils literal notranslate"><span class="pre">wc</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wc</span>
+<span class="go">&lt;module &#39;wc&#39; from &#39;wc.py&#39;&gt;</span>
+</pre></div>
+</div>
+<p>That provides a function called <code class="docutils literal notranslate"><span class="pre">linecount</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wc</span><span class="o">.</span><span class="n">linecount</span><span class="p">(</span><span class="s1">&#39;wc.py&#39;</span><span class="p">)</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>So that’s how you write modules in Python.</p>
+<p>The only problem with this example is that when you import the module it
+executes the test code at the bottom. Normally when you import a module,
+it defines new functions but it doesn’t execute them.</p>
+<p>Programs that will be imported as modules often use the following idiom:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">linecount</span><span class="p">(</span><span class="s1">&#39;wc.py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__name__</span></code> is a built-in variable that is set when the program starts.
+If the program is running as a script, <code class="docutils literal notranslate"><span class="pre">__name__</span></code> has the value
+<code class="docutils literal notranslate"><span class="pre">__main__</span></code>; in that case, the test code is executed. Otherwise, if the
+module is being imported, the test code is skipped.</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>Type this example into a file named <code class="docutils literal notranslate"><span class="pre">wc.py</span></code> and run it as a
+script. Then run the Python interpreter and <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">wc</span></code>. What
+is the value of <code class="docutils literal notranslate"><span class="pre">__name__</span></code> when the module is being imported?</li>
+</ol>
+<p>Warning: If you import a module that has already been imported,
+Python does nothing. It does not re-read the file, even if it has
+changed.</p>
+<p>If you want to reload a module, you can use the built-in function
+<code class="docutils literal notranslate"><span class="pre">reload</span></code>, but it can be tricky, so the safest thing to do is
+restart the interpreter and then import the module again.</p>
+</div></blockquote>
+</div>
+<div class="section" id="debugging">
+<h2>10.11. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>When you are reading and writing files, you might run into problems with
+whitespace. These errors can be hard to debug because spaces, tabs and
+newlines are normally invisible:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;1 2</span><span class="se">\t</span><span class="s1"> 3</span><span class="se">\n</span><span class="s1"> 4&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span>
+<span class="go">1 2  3</span>
+<span class="go"> 4</span>
+</pre></div>
+</div>
+<p>The built-in function <code class="docutils literal notranslate"><span class="pre">repr</span></code> can help. It takes any object as an
+argument and returns a string representation of the object. For strings,
+it represents whitespace characters with backslash sequences:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&#39;1 2\t 3\n 4&#39;</span>
+</pre></div>
+</div>
+<p>This can be helpful for debugging.</p>
+<p>One other problem you might run into is that different systems use
+different characters to indicate the end of a line. Some systems use a
+newline, represented <code class="docutils literal notranslate"><span class="pre">\n</span></code>. Others use a return character, represented
+<code class="docutils literal notranslate"><span class="pre">\r</span></code>. Some use both. If you move files between different systems,
+these inconsistencies might cause problems.</p>
+<p>For most systems, there are applications to convert from one format to
+another. You can find them (and read more about this issue) at
+<a class="reference external" href="http://wikipedia.org/wiki/Newline">http://wikipedia.org/wiki/Newline</a>. Or, of course, you could write one
+yourself.</p>
+</div>
+<div class="section" id="glossary">
+<h2>10.12. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>file object:</dt>
+<dd>A value that represents an open file.</dd>
+</dl>
+<!--
+problem recognition:
+  ~ A way of solving a problem by expressing it as an instance of a
+    previously-solved problem.
+
+special case:
+  ~ A test case that is atypical or non-obvious (and less likely to be
+    handled correctly).
+--><dl class="docutils">
+<dt>format string:</dt>
+<dd>A string, used with the format method, that contains replacement
+fields.</dd>
+<dt>replacement field:</dt>
+<dd>A sequence of characters in a format string, like <code class="docutils literal notranslate"><span class="pre">{:d}</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">{:.2f}</span></code>, or even just <code class="docutils literal notranslate"><span class="pre">{}</span></code>, that specifies how a replacement
+item should be formatted.</dd>
+<dt>text file:</dt>
+<dd>A sequence of characters stored in permanent storage like a hard
+drive.</dd>
+<dt>directory:</dt>
+<dd>A named collection of files, also called a folder.</dd>
+<dt>path:</dt>
+<dd>A string that identifies a file.</dd>
+<dt>relative path:</dt>
+<dd>A path that starts from the current directory.</dd>
+<dt>absolute path:</dt>
+<dd>A path that starts from the topmost directory in the file system.</dd>
+<dt>catch:</dt>
+<dd>To prevent an exception from terminating a program using the <code class="docutils literal notranslate"><span class="pre">try</span></code>
+and <code class="docutils literal notranslate"><span class="pre">except</span></code> statements.</dd>
+</dl>
+<p class="rubric">Exercises</p>
+<ol class="arabic">
+<li><p class="first">This question is based on a Puzzler that was broadcast on the
+radio program <em>Car Talk</em> <a class="footnote-reference" href="#id6" id="id2">[2]</a>:</p>
+<p>Give me a word with three consecutive double letters. I’ll give
+you a couple of words that almost qualify, but don’t. For
+example, the word committee, c-o-m-m-i-t-t-e-e. It would be great
+except for the ‘i’ that sneaks in there. Or Mississippi:
+M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would
+work. But there is a word that has three consecutive pairs of
+letters and to the best of my knowledge this may be the only
+word. Of course there are probably 500 more but I can only think
+of one. What is the word?</p>
+<p>Write a program to find it.</p>
+</li>
+<li><p class="first">Here’s another <em>Car Talk</em> Puzzler <a class="footnote-reference" href="#id7" id="id3">[3]</a>:</p>
+<p>&quot;I was driving on the highway the other day and I happened to
+notice my odometer. Like most odometers, it shows six digits, in
+whole miles only. So, if my car had 300,000 miles, for example,
+I’d see 3-0-0-0-0-0.</p>
+<p>&quot;Now, what I saw that day was very interesting. I noticed that
+the last 4 digits were palindromic; that is, they read the same
+forward as backward. For example, 5-4-4-5 is a palindrome, so my
+odometer could have read 3-1-5-4-4-5.</p>
+<p>&quot;One mile later, the last 5 numbers were palindromic. For
+example, it could have read 3-6-5-4-5-6. One mile after that, the
+middle 4 out of 6 numbers were palindromic. And you ready for
+this? One mile later, all 6 were palindromic!</p>
+<p>&quot;The question is, what was on the odometer when I first looked?&quot;</p>
+<p>Write a Python program that tests all the six-digit numbers and
+prints any numbers that satisfy these requirements.</p>
+</li>
+<li><p class="first">Here’s another <em>Car Talk</em> Puzzler you can solve with a
+search <a class="footnote-reference" href="#id8" id="id4">[4]</a>:</p>
+<p>&quot;Recently I had a visit with my mom and we realized that the two
+digits that make up my age when reversed resulted in her age. For
+example, if she’s 73, I’m 37. We wondered how often this has
+happened over the years but we got sidetracked with other topics
+and we never came up with an answer.</p>
+<p>&quot;When I got home I figured out that the digits of our ages have
+been reversible six times so far. I also figured out that if
+we’re lucky it would happen again in a few years, and if we’re
+really lucky it would happen one more time after that. In other
+words, it would have happened 8 times over all. So the question
+is, how old am I now?&quot;</p>
+<p>Write a Python program that searches for solutions to this
+Puzzler. Hint: you might find the string method <code class="docutils literal notranslate"><span class="pre">zfill</span></code> useful.</p>
+</li>
+<li><p class="first">The website <a class="reference external" href="http://www.uszip.com">http://www.uszip.com</a> provides information about every
+zip code in the country. For example, the URL
+<a class="reference external" href="http://www.uszip.com/zip/13346">http://www.uszip.com/zip/13346</a> provides information about
+Hamilton, NY, including population, longitude and latitude, etc.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">urllib2</span></code> module, write a program that prompts the
+user for a zip code and prints the name and population of the
+corresponding town.</p>
+<p>Note: the text you get from uszip.com is in HTML, the language
+most web pages are written in. Even if you don't know HTML, you
+should be able to extract the information you are looking for.</p>
+<p>By the way, your program is an example of a &quot;screen scraper.&quot; You
+can read more about this term at
+<a class="reference external" href="http://wikipedia.org/wiki/Screen_scraping">http://wikipedia.org/wiki/Screen_scraping</a>.</p>
+</li>
+<li><p class="first">In a large collection of MP3 files, there may be more than one
+copy of the same song, stored in different directories or with
+different file names. The goal of this exercise is to search for
+these duplicates.</p>
+<ol class="loweralpha">
+<li><p class="first">Write a program that searches a directory and all of its
+subdirectories, recursively, and returns a list of complete
+paths for all files with a given suffix (like <code class="docutils literal notranslate"><span class="pre">.mp3</span></code>). Hint:
+<code class="docutils literal notranslate"><span class="pre">os.path</span></code> provides several useful functions for manipulating
+file and path names.</p>
+</li>
+<li><p class="first">To recognize duplicates, you can use a hash function that
+reads the file and generates a short summary of the contents.
+For example, MD5 (Message-Digest algorithm 5) takes an
+arbitrarily-long &quot;message&quot; and returns a 128-bit &quot;checksum.&quot;
+The probability is very small that two files with different
+contents will return the same checksum. You can read about MD5
+at <a class="reference external" href="http://wikipedia.org/wiki/Md5">http://wikipedia.org/wiki/Md5</a>.</p>
+<p>To obtain the MD5 checksum on the contents of a file, you can
+use the <code class="docutils literal notranslate"><span class="pre">hashlib</span></code> module, built in to Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">csum</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">csum</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;Nobody inspects the spammish repetition.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">csum</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="go">&#39;dc6480df97e6f16ec0aa18c96522aee6&#39;</span>
+</pre></div>
+</div>
+<p>With the <code class="docutils literal notranslate"><span class="pre">update</span></code> method on the <code class="docutils literal notranslate"><span class="pre">csum</span></code> object, you can
+update the checksum by adding new strings (or file contents).
+When you're done processing the contents of a file, you can
+use the <code class="docutils literal notranslate"><span class="pre">hexdigest</span></code> method to obtain the final checksum in
+hexadecimal form.</p>
+</li>
+</ol>
+</li>
+</ol>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://wikipedia.org/wiki/Moby_Project">http://wikipedia.org/wiki/Moby_Project</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://www.cartalk.com/content/puzzler/transcripts/200725">http://www.cartalk.com/content/puzzler/transcripts/200725</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://www.cartalk.com/content/puzzler/transcripts/200803">http://www.cartalk.com/content/puzzler/transcripts/200803</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://www.cartalk.com/content/puzzler/transcripts/200813">http://www.cartalk.com/content/puzzler/transcripts/200813</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="lists.html" title="11. Lists"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="recursion.html" title="9. Recursion"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

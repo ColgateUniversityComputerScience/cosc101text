@@ -1,0 +1,397 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>17. Postscript &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="16. Appendix: Debugging" href="debugging.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="debugging.html" title="16. Appendix: Debugging"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">17. Postscript</a><ul>
+<li><a class="reference internal" href="#the-strange-history-of-this-book">17.1. The strange history of this book</a></li>
+<li><a class="reference internal" href="#acknowledgements">17.2. Acknowledgements</a></li>
+<li><a class="reference internal" href="#contributor-list">17.3. Contributor List</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="debugging.html"
+                        title="previous chapter">16. Appendix: Debugging</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/postfix.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="postscript">
+<h1>17. Postscript<a class="headerlink" href="#postscript" title="Permalink to this headline">¶</a></h1>
+<p>Note: this was originally the preface to &quot;How to think like a computer
+scientist&quot; by Allen Downey.</p>
+<div class="section" id="the-strange-history-of-this-book">
+<h2>17.1. The strange history of this book<a class="headerlink" href="#the-strange-history-of-this-book" title="Permalink to this headline">¶</a></h2>
+<p>In January 1999 I was preparing to teach an introductory programming
+class in Java. I had taught it three times and I was getting frustrated.
+The failure rate in the class was too high and, even for students who
+succeeded, the overall level of achievement was too low.</p>
+<p>One of the problems I saw was the books. They were too big, with too
+much unnecessary detail about Java, and not enough high-level guidance
+about how to program. And they all suffered from the trap door effect:
+they would start out easy, proceed gradually, and then somewhere around
+Chapter 5 the bottom would fall out. The students would get too much new
+material, too fast, and I would spend the rest of the semester picking
+up the pieces.</p>
+<p>Two weeks before the first day of classes, I decided to write my own
+book. My goals were:</p>
+<ul class="simple">
+<li>Keep it short. It is better for students to read 10 pages than not
+read 50 pages.</li>
+<li>Be careful with vocabulary. I tried to minimize the jargon and define
+each term at first use.</li>
+<li>Build gradually. To avoid trap doors, I took the most difficult
+topics and split them into a series of small steps.</li>
+<li>Focus on programming, not the programming language. I included the
+minimum useful subset of Java and left out the rest.</li>
+</ul>
+<p>I needed a title, so on a whim I chose <em>How to Think Like a Computer
+Scientist</em>.</p>
+<p>My first version was rough, but it worked. Students did the reading, and
+they understood enough that I could spend class time on the hard topics,
+the interesting topics and (most important) letting the students
+practice.</p>
+<p>I released the book under the GNU Free Documentation License, which
+allows users to copy, modify, and distribute the book.</p>
+<p>What happened next is the cool part. Jeff Elkner, a high school teacher
+in Virginia, adopted my book and translated it into Python. He sent me a
+copy of his translation, and I had the unusual experience of learning
+Python by reading my own book.</p>
+<p>Jeff and I revised the book, incorporated a case study by Chris Meyers,
+and in 2001 we released <em>How to Think Like a Computer Scientist:
+Learning with Python</em>, also under the GNU Free Documentation License. As
+Green Tea Press, I published the book and started selling hard copies
+through Amazon.com and college book stores. Other books from Green Tea
+Press are available at <a class="reference external" href="http://greenteapress.com">http://greenteapress.com</a>.</p>
+<p>In 2003 I started teaching at Olin College and I got to teach Python for
+the first time. The contrast with Java was striking. Students struggled
+less, learned more, worked on more interesting projects, and generally
+had a lot more fun.</p>
+<p>Over the last five years I have continued to develop the book,
+correcting errors, improving some of the examples and adding material,
+especially exercises. In 2008 I started work on a major revision—at the
+same time, I was contacted by an editor at Cambridge University Press
+who was interested in publishing the next edition. Good timing!</p>
+<p>The result is this book, now with the less grandiose title <em>Think
+Python</em>. Some of the changes are:</p>
+<ul class="simple">
+<li>I added a section about debugging at the end of each chapter. These
+sections present general techniques for finding and avoiding bugs,
+and warnings about Python pitfalls.</li>
+<li>I removed the material in the last few chapters about the
+implementation of lists and trees. I still love those topics, but I
+thought they were incongruent with the rest of the book.</li>
+<li>I added more exercises, ranging from short tests of understanding to
+a few substantial projects.</li>
+<li>I added a series of case studies—longer examples with exercises,
+solutions, and discussion. Some of them are based on Swampy, a suite
+of Python programs I wrote for use in my classes. Swampy, code
+examples, and some solutions are available from
+<a class="reference external" href="http://thinkpython.com">http://thinkpython.com</a>.</li>
+<li>I expanded the discussion of program development plans and basic
+design patterns.</li>
+<li>The use of Python is more idiomatic. The book is still about
+programming, not Python, but now I think the book gets more leverage
+from the language.</li>
+</ul>
+<p>I hope you enjoy working with this book, and that it helps you learn to
+program and think, at least a little bit, like a computer scientist.</p>
+<p>Allen B. Downey
+Needham MA
+Allen Downey is an Associate Professor of Computer Science at the
+Franklin W. Olin College of Engineering.</p>
+</div>
+<div class="section" id="acknowledgements">
+<h2>17.2. Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>First and most importantly, I thank Jeff Elkner, who translated my Java
+book into Python, which got this project started and introduced me to
+what has turned out to be my favorite language.</p>
+<p>I also thank Chris Meyers, who contributed several sections to <em>How to
+Think Like a Computer Scientist</em>.</p>
+<p>And I thank the Free Software Foundation for developing the GNU Free
+Documentation License, which helped make my collaboration with Jeff and
+Chris possible.</p>
+<p>I also thank the editors at Lulu who worked on <em>How to Think Like a
+Computer Scientist</em>.</p>
+<p>I thank all the students who worked with earlier versions of this book
+and all the contributors (listed below) who sent in corrections and
+suggestions.</p>
+<p>And I thank my wife, Lisa, for her work on this book, and Green Tea
+Press, and everything else, too.</p>
+</div>
+<div class="section" id="contributor-list">
+<h2>17.3. Contributor List<a class="headerlink" href="#contributor-list" title="Permalink to this headline">¶</a></h2>
+<p>More than 100 sharp-eyed and thoughtful readers have sent in suggestions
+and corrections over the past few years. Their contributions, and
+enthusiasm for this project, have been a huge help.</p>
+<p>If you have a suggestion or correction, please send email to
+<code class="docutils literal notranslate"><span class="pre">feedback&#64;thinkpython.com</span></code>. If I make a change based on your feedback,
+I will add you to the contributor list (unless you ask to be omitted).</p>
+<p>If you include at least part of the sentence the error appears in, that
+makes it easy for me to search. Page and section numbers are fine, too,
+but not quite as easy to work with. Thanks!</p>
+<ul class="simple">
+<li>Lloyd Hugh Allen sent in a correction to Section 8.4.</li>
+<li>Yvon Boulianne sent in a correction of a semantic error in Chapter 5.</li>
+<li>Fred Bremmer submitted a correction in Section 2.1.</li>
+<li>Jonah Cohen wrote the Perl scripts to convert the LaTeX source for
+this book into beautiful HTML.</li>
+<li>Michael Conlon sent in a grammar correction in Chapter 2 and an
+improvement in style in Chapter 1, and he initiated discussion on the
+technical aspects of interpreters.</li>
+<li>Benoit Girard sent in a correction to a humorous mistake in Section
+5.6.</li>
+<li>Courtney Gleason and Katherine Smith wrote <code class="docutils literal notranslate"><span class="pre">horsebet.py</span></code>, which was
+used as a case study in an earlier version of the book. Their program
+can now be found on the website.</li>
+<li>Lee Harr submitted more corrections than we have room to list here,
+and indeed he should be listed as one of the principal editors of the
+text.</li>
+<li>James Kaylin is a student using the text. He has submitted numerous
+corrections.</li>
+<li>David Kershaw fixed the broken <code class="docutils literal notranslate"><span class="pre">catTwice</span></code> function in Section 3.10.</li>
+<li>Eddie Lam has sent in numerous corrections to Chapters 1, 2, and 3.
+He also fixed the Makefile so that it creates an index the first time
+it is run and helped us set up a versioning scheme.</li>
+<li>Man-Yong Lee sent in a correction to the example code in Section 2.4.</li>
+<li>David Mayo pointed out that the word ``unconsciously&quot; in Chapter 1
+needed to be changed to ``subconsciously&quot;.</li>
+<li>Chris McAloon sent in several corrections to Sections 3.9 and 3.10.</li>
+<li>Matthew J. Moelter has been a long-time contributor who sent in
+numerous corrections and suggestions to the book.</li>
+<li>Simon Dicon Montford reported a missing function definition and
+several typos in Chapter 3. He also found errors in the <code class="docutils literal notranslate"><span class="pre">increment</span></code>
+function in Chapter 13.</li>
+<li>John Ouzts corrected the definition of ``return value&quot; in Chapter
+3.</li>
+<li>Kevin Parks sent in valuable comments and suggestions as to how to
+improve the distribution of the book.</li>
+<li>David Pool sent in a typo in the glossary of Chapter 1, as well as
+kind words of encouragement.</li>
+<li>Michael Schmitt sent in a correction to the chapter on files and
+exceptions.</li>
+<li>Robin Shaw pointed out an error in Section 13.1, where the printTime
+function was used in an example without being defined.</li>
+<li>Paul Sleigh found an error in Chapter 7 and a bug in Jonah Cohen’s
+Perl script that generates HTML from LaTeX.</li>
+<li>Craig T. Snydal is testing the text in a course at Drew University.
+He has contributed several valuable suggestions and corrections.</li>
+<li>Ian Thomas and his students are using the text in a programming
+course. They are the first ones to test the chapters in the latter
+half of the book, and they have made numerous corrections and
+suggestions.</li>
+<li>Keith Verheyden sent in a correction in Chapter 3.</li>
+<li>Peter Winstanley let us know about a longstanding error in our Latin
+in Chapter 3.</li>
+<li>Chris Wrobel made corrections to the code in the chapter on file I/O
+and exceptions.</li>
+<li>Moshe Zadka has made invaluable contributions to this project. In
+addition to writing the first draft of the chapter on Dictionaries,
+he provided continual guidance in the early stages of the book.</li>
+<li>Christoph Zwerschke sent several corrections and pedagogic
+suggestions, and explained the difference between <em>gleich</em> and
+<em>selbe</em>.</li>
+<li>James Mayer sent us a whole slew of spelling and typographical
+errors, including two in the contributor list.</li>
+<li>Hayden McAfee caught a potentially confusing inconsistency between
+two examples.</li>
+<li>Angel Arnal is part of an international team of translators working
+on the Spanish version of the text. He has also found several errors
+in the English version.</li>
+<li>Tauhidul Hoque and Lex Berezhny created the illustrations in Chapter
+1 and improved many of the other illustrations.</li>
+<li>Dr. Michele Alzetta caught an error in Chapter 8 and sent some
+interesting pedagogic comments and suggestions about Fibonacci and
+Old Maid.</li>
+<li>Andy Mitchell caught a typo in Chapter 1 and a broken example in
+Chapter 2.</li>
+<li>Kalin Harvey suggested a clarification in Chapter 7 and caught some
+typos.</li>
+<li>Christopher P. Smith caught several typos and helped us update the
+book for Python 2.2.</li>
+<li>David Hutchins caught a typo in the Foreword.</li>
+<li>Gregor Lingl is teaching Python at a high school in Vienna, Austria.
+He is working on a German translation of the book, and he caught a
+couple of bad errors in Chapter 5.</li>
+<li>Julie Peters caught a typo in the Preface.</li>
+<li>Florin Oprina sent in an improvement in <code class="docutils literal notranslate"><span class="pre">makeTime</span></code>, a correction in
+<code class="docutils literal notranslate"><span class="pre">printTime</span></code>, and a nice typo.</li>
+<li>D.&nbsp;J.&nbsp;Webre suggested a clarification in Chapter 3.</li>
+<li>Ken found a fistful of errors in Chapters 8, 9 and 11.</li>
+<li>Ivo Wever caught a typo in Chapter 5 and suggested a clarification in
+Chapter 3.</li>
+<li>Curtis Yanko suggested a clarification in Chapter 2.</li>
+<li>Ben Logan sent in a number of typos and problems with translating the
+book into HTML.</li>
+<li>Jason Armstrong saw the missing word in Chapter 2.</li>
+<li>Louis Cordier noticed a spot in Chapter 16 where the code didn’t
+match the text.</li>
+<li>Brian Cain suggested several clarifications in Chapters 2 and 3.</li>
+<li>Rob Black sent in a passel of corrections, including some changes for
+Python 2.2.</li>
+<li>Jean-Philippe Rey at Ecole Centrale Paris sent a number of patches,
+including some updates for Python 2.2 and other thoughtful
+improvements.</li>
+<li>Jason Mader at George Washington University made a number of useful
+suggestions and corrections.</li>
+<li>Jan Gundtofte-Bruun reminded us that “a error” is an error.</li>
+<li>Abel David and Alexis Dinno reminded us that the plural of “matrix”
+is “matrices”, not “matrixes”. This error was in the book for years,
+but two readers with the same initials reported it on the same day.
+Weird.</li>
+<li>Charles Thayer encouraged us to get rid of the semi-colons we had put
+at the ends of some statements and to clean up our use of “argument”
+and “parameter”.</li>
+<li>Roger Sperberg pointed out a twisted piece of logic in Chapter 3.</li>
+<li>Sam Bull pointed out a confusing paragraph in Chapter 2.</li>
+<li>Andrew Cheung pointed out two instances of “use before def.”</li>
+<li>C. Corey Capel spotted the missing word in the Third Theorem of
+Debugging and a typo in Chapter 4.</li>
+<li>Alessandra helped clear up some Turtle confusion.</li>
+<li>Wim Champagne found a brain-o in a dictionary example.</li>
+<li>Douglas Wright pointed out a problem with floor division in <code class="docutils literal notranslate"><span class="pre">arc</span></code>.</li>
+<li>Jared Spindor found some jetsam at the end of a sentence.</li>
+<li>Lin Peiheng sent a number of very helpful suggestions.</li>
+<li>Ray Hagtvedt sent in two errors and a not-quite-error.</li>
+<li>Torsten Hübsch pointed out an inconsistency in Swampy.</li>
+<li>Inga Petuhhov corrected an example in Chapter 14.</li>
+<li>Arne Babenhauserheide sent several helpful corrections.</li>
+<li>Mark E. Casida is is good at spotting repeated words.</li>
+<li>Scott Tyler filled in a that was missing. And then sent in a heap of
+corrections.</li>
+<li>Gordon Shephard sent in several corrections, all in separate emails.</li>
+<li>Andrew Turner <code class="docutils literal notranslate"><span class="pre">spot</span></code>ted an error in Chapter 8.</li>
+<li>Adam Hobart fixed a problem with floor division in <code class="docutils literal notranslate"><span class="pre">arc</span></code>.</li>
+<li>Daryl Hammond and Sarah Zimmerman pointed out that I served up
+<code class="docutils literal notranslate"><span class="pre">math.pi</span></code> too early. And Zim spotted a typo.</li>
+<li>George Sass found a bug in a Debugging section.</li>
+<li>Brian Bingham suggested Exercise&nbsp;{exrotatepairs}.</li>
+<li>Leah Engelbert-Fenton pointed out that I used <code class="docutils literal notranslate"><span class="pre">tuple</span></code> as a variable
+name, contrary to my own advice. And then found a bunch of typos and
+a “use before def.”</li>
+<li>Joe Funke spotted a typo.</li>
+<li>Chao-chao Chen found an inconsistency in the Fibonacci example.</li>
+<li>Jeff Paine knows the difference between space and spam.</li>
+<li>Lubos Pintes sent in a typo.</li>
+<li>Gregg Lind and Abigail Heithoff suggested Exercise&nbsp;{checksum}.</li>
+<li>Max Hailperin has sent in a number of corrections and suggestions.
+Max is one of the authors of the extraordinary * Concrete
+Abstractions*, which you might want to read when you are done with
+this book.</li>
+<li>Chotipat Pornavalai found an error in an error message.</li>
+<li>Stanislaw Antol sent a list of very helpful suggestions.</li>
+<li>Eric Pashman sent a number of corrections for Chapters 4–11.</li>
+<li>Miguel Azevedo found some typos.</li>
+<li>Jianhua Liu sent in a long list of corrections.</li>
+<li>Nick King found a missing word.</li>
+<li>Martin Zuther sent a long list of suggestions.</li>
+<li>Adam Zimmerman found an inconsistency in my instance of an “instance”
+and several other errors.</li>
+<li>Ratnakar Tiwari suggested a footnote explaining degenerate triangles.</li>
+<li>Anurag Goel suggested another solution for <code class="docutils literal notranslate"><span class="pre">is_abecedarian</span></code> and
+sent some additional corrections. And he knows how to spell Jane
+Austen.</li>
+<li>Kelli Kratzer spotted one of the typos.</li>
+<li>Mark Griffiths pointed out a confusing example in Chapter 3.</li>
+<li>Roydan Ongie found an error in my Newton’s method.</li>
+<li>Patryk Wolowiec helped me with a problem in the HTML version.</li>
+<li>Mark Chonofsky told me about a new keyword in Python 3.0.</li>
+<li>Russell Coleman helped me with my geometry.</li>
+<li>Wei Huang spotted several typographical errors.</li>
+<li>Karen Barber spotted the the oldest typo in the book.</li>
+<li>Nam Nguyen found a typo and pointed out that I used the Decorator
+pattern but didn’t mention it by name.</li>
+<li>Stéphane Morin sent in several corrections and suggestions.</li>
+<li>Paul Stoop corrected a typo in <code class="docutils literal notranslate"><span class="pre">uses_only</span></code>.</li>
+<li>Eric Bronner pointed out a confusion in the discussion of the order
+of operations.</li>
+<li>Alexandros Gezerlis set a new standard for the number and quality of
+suggestions he submitted. We are deeply grateful!</li>
+<li>Gray Thomas knows his right from his left.</li>
+<li>Giovanni Escobar Sosa sent a long list of corrections and
+suggestions.</li>
+<li>Alix Etienne fixed one of the URLs.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="debugging.html" title="16. Appendix: Debugging"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

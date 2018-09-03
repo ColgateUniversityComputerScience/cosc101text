@@ -1,0 +1,620 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>1. The way of the program &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Variables, expressions and statements" href="varexpr.html" />
+    <link rel="prev" title="Solving Problems with Python" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="varexpr.html" title="2. Variables, expressions and statements"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Solving Problems with Python"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. The way of the program</a><ul>
+<li><a class="reference internal" href="#the-python-programming-language">1.1. The Python programming language</a></li>
+<li><a class="reference internal" href="#what-is-a-program">1.2. What is a program?</a></li>
+<li><a class="reference internal" href="#what-is-debugging">1.3. What is debugging?</a><ul>
+<li><a class="reference internal" href="#syntax-errors">1.3.1. Syntax errors</a></li>
+<li><a class="reference internal" href="#runtime-errors">1.3.2. Runtime errors</a></li>
+<li><a class="reference internal" href="#semantic-errors">1.3.3. Semantic errors</a></li>
+<li><a class="reference internal" href="#experimental-debugging">1.3.4. Experimental debugging</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#formal-and-natural-languages">1.4. Formal and natural languages</a></li>
+<li><a class="reference internal" href="#the-first-program">1.5. The first program</a></li>
+<li><a class="reference internal" href="#debugging">1.6. Debugging</a></li>
+<li><a class="reference internal" href="#glossary">1.7. Glossary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Solving Problems with Python</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="varexpr.html"
+                        title="next chapter">2. Variables, expressions and statements</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/wayofprogram.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-way-of-the-program">
+<h1>1. The way of the program<a class="headerlink" href="#the-way-of-the-program" title="Permalink to this headline">¶</a></h1>
+<p>The goal of this book is to teach you to think like a computer
+scientist. This way of thinking combines some of the best features of
+mathematics, engineering, and natural science. Like mathematicians,
+computer scientists use formal languages to denote ideas (specifically
+computations). Like engineers, they design things, assembling components
+into systems and evaluating tradeoffs among alternatives. Like
+scientists, they observe the behavior of complex systems, form
+hypotheses, and test predictions.</p>
+<p>The single most important skill for a computer scientist is <strong>problem
+solving</strong>. Problem solving means the ability to formulate problems,
+think creatively about solutions, and express a solution clearly and
+accurately. As it turns out, the process of learning to program is an
+excellent opportunity to practice problem-solving skills. That's why
+this chapter is called, &quot;The way of the program.&quot;</p>
+<p>On one level, you will be learning to program, a useful skill by itself.
+On another level, you will use programming as a means to an end. As we
+go along, that end will become clearer.</p>
+<div class="section" id="the-python-programming-language">
+<h2>1.1. The Python programming language<a class="headerlink" href="#the-python-programming-language" title="Permalink to this headline">¶</a></h2>
+<p>The programming language you will learn is Python. Python is an example
+of a <strong>high-level language</strong>; other high-level languages you might have
+heard of are C, C++, Perl, and Java.</p>
+<p>There are also <strong>low-level languages</strong>, sometimes referred to as
+&quot;machine languages&quot; or &quot;assembly languages.&quot; Loosely speaking, computers
+can only execute programs written in low-level languages. So programs
+written in a high-level language have to be processed before they can
+run. This extra processing takes some time, which is a small
+disadvantage of high-level languages.</p>
+<p>The advantages are enormous. First, it is much easier to program in a
+high-level language. Programs written in a high-level language take less
+time to write, they are shorter and easier to read, and they are more
+likely to be correct. Second, high-level languages are <strong>portable</strong>,
+meaning that they can run on different kinds of computers with few or no
+modifications. Low-level programs can run on only one kind of computer
+and have to be rewritten to run on another.</p>
+<p>Due to these advantages, almost all programs are written in high-level
+languages. Low-level languages are used only for a few specialized
+applications.</p>
+<p>Two kinds of programs process high-level languages into low-level
+languages: <strong>interpreters</strong> and <strong>compilers</strong>. An interpreter reads a
+high-level program and executes it, meaning that it does what the
+program says. It processes the program a little at a time, alternately
+reading lines and performing computations.</p>
+<div class="figure align-center" id="id5">
+<img alt="Running an &quot;interpreted&quot; program." src="_images/interpret.png" />
+<p class="caption"><span class="caption-text">Running an &quot;interpreted&quot; program.</span></p>
+</div>
+<p>A compiler reads the program and translates it completely before the
+program starts running. In this context, the high-level program is
+called the <strong>source code</strong>, and the translated program is called the
+<strong>object code</strong> or the <strong>executable</strong>. Once a program is compiled, you
+can execute it repeatedly without further translation.</p>
+<div class="figure align-center" id="id6">
+<img alt="Running a &quot;compiled&quot; program." src="_images/compile.png" />
+<p class="caption"><span class="caption-text">Running a &quot;compiled&quot; program.</span></p>
+</div>
+<p>Python is considered an interpreted language because Python programs are
+executed by an interpreter. There are two ways to use the interpreter:
+<strong>interactive mode</strong> and <strong>script mode</strong>. In interactive mode, you type
+Python programs and the interpreter prints the result:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>The chevron, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>, is the <strong>prompt</strong> the interpreter uses to indicate
+that it is ready. If you type <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">1</span></code>, the interpreter replies <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<p>Alternatively, you can store code in a file and use the interpreter to
+execute the contents of the file, which is called a <strong>script</strong>. By
+convention, Python scripts have names that end with <code class="docutils literal notranslate"><span class="pre">.py</span></code>.</p>
+<p>In this course, we'll typically be writing programs within a text editor
+program called IDLE. A screenshot of IDLE is shown below. (Note that
+this screenshot was taken on a Linux system, and that one Python
+statement was executed in the interpreter after starting it up. On your
+own computer, the window may look slightly different.)</p>
+<div class="figure align-center" id="id7">
+<img alt="Main IDLE window (the &quot;shell&quot;)." src="_images/idlescreen.png" />
+<p class="caption"><span class="caption-text">Main IDLE window (the &quot;shell&quot;).</span></p>
+</div>
+<p>This window is what you'll see once IDLE first starts up. This window is
+also referred to as the &quot;shell&quot;. All that means is that it is this
+window in which you can directly interact with the Python interpreter.
+We'll frequently use this window to experiment with different Python
+statements and expressions and for very short (1--2 line) programs. For
+anything more than a few lines, you should write and save your program
+as a &quot;script&quot;. To create a script using IDLE, simply go to the File menu
+and select &quot;New window&quot;. In the window that opens, you can type your
+program. To execute (run) the program, you can go to the &quot;Run&quot; menu and
+select &quot;Run module&quot;. The screenshot below shows IDLE with a 1-line
+script. Again, IDLE running on other computer systems may look slightly
+different.</p>
+<div class="figure align-center" id="id8">
+<img alt="IDLE with a script window." src="_images/idlescript.png" />
+<p class="caption"><span class="caption-text">IDLE with a script window.</span></p>
+</div>
+<p>There are other ways to execute Python scripts. For example, you can
+open a terminal window and type <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">myprogram.py</span></code> (assuming you
+saved a script in the file <code class="docutils literal notranslate"><span class="pre">myprogram.py</span></code>). The details of opening a
+terminal window and executing Python scripts in this way vary among
+different operating systems (e.g., Linux, MacOS X, Windows, etc.).
+Normally, we will just be using IDLE in this course.</p>
+<p>You are strongly encouraged to install Python on your own personal
+computer --- it's free! There are two options for installing Python: the
+official package at python.org, and a package with a few additional (and
+useful) libraries at enthought.com. These are available at
+<a class="reference external" href="http://www.python.org/download/">http://www.python.org/download/</a> and <a class="reference external" href="http://enthought.com/repo/free/">http://enthought.com/repo/free/</a>. It
+is recommended that you install the Enthought version, since different
+class exercises may make use of the additional libraries available with
+this distribution.</p>
+</div>
+<div class="section" id="what-is-a-program">
+<h2>1.2. What is a program?<a class="headerlink" href="#what-is-a-program" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>program</strong> is a sequence of instructions that specifies how to
+perform a computation. The computation might be something mathematical,
+such as solving a system of equations or finding the roots of a
+polynomial, but it can also be a symbolic computation, such as searching
+and replacing text in a document or (strangely enough) compiling a
+program.</p>
+<p>The details look different in different languages, but a few basic
+instructions appear in just about every language:</p>
+<dl class="docutils">
+<dt>input:</dt>
+<dd>Get data from the keyboard, a file, or some other device.</dd>
+<dt>output:</dt>
+<dd>Display data on the screen or send data to a file or other device.</dd>
+<dt>math:</dt>
+<dd>Perform basic mathematical operations like addition and
+multiplication.</dd>
+<dt>conditional execution:</dt>
+<dd>Check for certain conditions and execute the appropriate sequence of
+statements.</dd>
+<dt>repetition:</dt>
+<dd>Perform some action repeatedly, usually with some variation.</dd>
+</dl>
+<p>Believe it or not, that's pretty much all there is to it. Every program
+you've ever used, no matter how complicated, is made up of instructions
+that look pretty much like these. So you can think of programming as
+<em>the process of breaking a large, complex task into smaller and smaller
+subtasks until the subtasks are simple enough to be performed with one
+of these basic instructions</em>.</p>
+<p>That may be a little vague, but we will come back to this topic when we
+talk about <strong>algorithms</strong>.</p>
+</div>
+<div class="section" id="what-is-debugging">
+<h2>1.3. What is debugging?<a class="headerlink" href="#what-is-debugging" title="Permalink to this headline">¶</a></h2>
+<p>Programming is error-prone. For whimsical reasons, programming errors
+are called <strong>bugs</strong> and the process of tracking them down is called
+<strong>debugging</strong>. Interestingly, one of the original uses of the term &quot;bug&quot;
+actually had to do with insects: an error in an early computer system
+was traced to a problem caused by a moth trapped in an electronic
+circuit! An early computer pioneer, Grace Hopper, is credited with
+having coined the term (<a class="reference external" href="http://en.wikipedia.org/wiki/Grace_Hopper">read more about Grace Hopper on
+Wikipedia</a>).</p>
+<p>Three kinds of errors can occur in a program: syntax errors, runtime
+errors, and semantic errors. It is useful to distinguish between them in
+order to track them down more quickly.</p>
+<div class="section" id="syntax-errors">
+<h3>1.3.1. Syntax errors<a class="headerlink" href="#syntax-errors" title="Permalink to this headline">¶</a></h3>
+<p>Python can only execute a program if the syntax is correct; otherwise,
+the interpreter displays an error message. <strong>Syntax</strong> refers to the
+structure of a program and the rules about that structure. For example,
+parentheses have to come in matching pairs, so <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">+</span> <span class="pre">2)</span></code> is legal, but
+<code class="docutils literal notranslate"><span class="pre">8)</span></code> is a <strong>syntax error</strong>.</p>
+<p>In English readers can tolerate most syntax errors, which is why we can
+read the poetry of e. e. cummings without spewing error messages. Python
+is not so forgiving. If there is a single syntax error anywhere in your
+program, Python will display an error message and quit, and you will not
+be able to run your program. During the first few weeks of your
+programming career, you will probably spend a lot of time tracking down
+syntax errors. As you gain experience, you will make fewer errors and
+find them faster.</p>
+</div>
+<div class="section" id="runtime-errors">
+<h3>1.3.2. Runtime errors<a class="headerlink" href="#runtime-errors" title="Permalink to this headline">¶</a></h3>
+<p>The second type of error is a runtime error, so called because the error
+does not appear until after the program has started running. These
+errors are also called <strong>exceptions</strong> because they usually indicate that
+something exceptional (and bad) has happened.</p>
+<p>Runtime errors are rare in the simple programs you will see in the first
+few chapters, so it might be a while before you encounter one.</p>
+</div>
+<div class="section" id="semantic-errors">
+<h3>1.3.3. Semantic errors<a class="headerlink" href="#semantic-errors" title="Permalink to this headline">¶</a></h3>
+<p>The third type of error is the <strong>semantic error</strong>. If there is a
+semantic error in your program, it will run successfully in the sense
+that the computer will not generate any error messages, but it will not
+do the right thing. It will do something else. Specifically, it will do
+what you told it to do.</p>
+<p>The problem is that the program you wrote is not the program you wanted
+to write. The meaning (semantics) of the program is wrong. Identifying
+semantic errors can be tricky because it requires you to work backward
+by looking at the output of the program and trying to figure out what it
+is doing.</p>
+</div>
+<div class="section" id="experimental-debugging">
+<h3>1.3.4. Experimental debugging<a class="headerlink" href="#experimental-debugging" title="Permalink to this headline">¶</a></h3>
+<p>One of the most important skills you will acquire is debugging. Although
+it can be frustrating, debugging is one of the most intellectually rich,
+challenging, and interesting parts of programming.</p>
+<p>In some ways, debugging is like detective work. You are confronted with
+clues, and you have to infer the processes and events that led to the
+results you see.</p>
+<p>Debugging is also like an experimental science. Once you have an idea
+about what is going wrong, you modify your program and try again. If
+your hypothesis was correct, then you can predict the result of the
+modification, and you take a step closer to a working program. If your
+hypothesis was wrong, you have to come up with a new one. As Sherlock
+Holmes pointed out, &quot;When you have eliminated the impossible, whatever
+remains, however improbable, must be the truth.&quot; (A. Conan Doyle, <em>The
+Sign of Four</em>)</p>
+<p>For some people, programming and debugging are the same thing. That is,
+programming is the process of gradually debugging a program until it
+does what you want. The idea is that you should start with a program
+that does <em>something</em> and make small modifications, debugging them as
+you go, so that you always have a working program.</p>
+<p>For example, Linux is an operating system that contains thousands of
+lines of code, but it started out as a simple program Linus Torvalds
+used to explore the Intel 80386 chip. According to Larry Greenfield,
+&quot;One of Linus's earlier projects was a program that would switch between
+printing AAAA and BBBB. This later evolved to Linux.&quot; (<em>The Linux
+Users's Guide</em> Beta Version 1).</p>
+<p>Later chapters will make more suggestions about debugging, creating
+&quot;tests&quot; to ensure that your programs behave as expected, and other
+programming practices.</p>
+</div>
+</div>
+<div class="section" id="formal-and-natural-languages">
+<h2>1.4. Formal and natural languages<a class="headerlink" href="#formal-and-natural-languages" title="Permalink to this headline">¶</a></h2>
+<p><strong>Natural languages</strong> are the languages people speak, such as English,
+Spanish, and French. They were not designed by people (although people
+try to impose some order on them); they evolved naturally.</p>
+<p><strong>Formal languages</strong> are languages that are designed by people for
+specific applications. For example, the notation that mathematicians use
+is a formal language that is particularly good at denoting relationships
+among numbers and symbols. Chemists use a formal language to represent
+the chemical structure of molecules. And most importantly:</p>
+<blockquote>
+<div><strong>Programming languages are formal languages that have been designed
+to express computations.</strong></div></blockquote>
+<p>Formal languages tend to have strict rules about syntax. For example,
+<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">3</span> <span class="pre">=</span> <span class="pre">6</span></code> is a syntactically correct mathematical statement, but
+<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">$</span> <span class="pre">6</span></code> is not. H<sub>2</sub>O is a syntactically correct
+chemical formula, but <sub>2</sub>Zz is not.</p>
+<p>Syntax rules come in two flavors, pertaining to <em>tokens</em> and structure.
+Tokens are the basic elements of the language, such as words, numbers,
+and chemical elements. One of the problems with <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">$</span> <span class="pre">6</span></code> is that
+<code class="docutils literal notranslate"><span class="pre">$</span></code> is not a legal token in mathematics (at least as far as I know).
+Similarly, <sub>2</sub>Zz is not legal because there is no element with
+the abbreviation <code class="docutils literal notranslate"><span class="pre">Zz</span></code>.</p>
+<p>The second type of syntax error pertains to the structure of a
+statement; that is, the way the tokens are arranged. The statement
+<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">$</span> <span class="pre">6</span></code> is illegal because even though <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> are legal
+tokens, you can't have one right after the other. Similarly, in a
+chemical formula the subscript comes after the element name, not before.</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>Write a well-structured English sentence with invalid tokens in
+it. Then write another sentence with all valid tokens but with
+invalid structure.</li>
+</ol>
+</div></blockquote>
+<p>When you read a sentence in English or a statement in a formal language,
+you have to figure out what the structure of the sentence is (although
+in a natural language you do this subconsciously). This process is
+called <strong>parsing</strong>.</p>
+<p>For example, when you hear the sentence, &quot;The penny dropped,&quot; you
+understand that &quot;the penny&quot; is the subject and &quot;dropped&quot; is the
+predicate. Once you have parsed a sentence, you can figure out what it
+means, or the semantics of the sentence. Assuming that you know what a
+penny is and what it means to drop, you will understand the general
+implication of this sentence.</p>
+<p>Although formal and natural languages have many features in common ---
+tokens, structure, syntax, and semantics --- there are some differences:</p>
+<dl class="docutils">
+<dt>ambiguity:</dt>
+<dd>Natural languages are full of ambiguity, which people deal with by
+using contextual clues and other information. Formal languages are
+designed to be nearly or completely unambiguous, which means that
+any statement has exactly one meaning, regardless of context.</dd>
+<dt>redundancy:</dt>
+<dd>In order to make up for ambiguity and reduce misunderstandings,
+natural languages employ lots of redundancy. As a result, they are
+often verbose. Formal languages are less redundant and more concise.</dd>
+<dt>literalness:</dt>
+<dd><p class="first">Natural languages are full of idiom and metaphor. If I say, &quot;The
+penny dropped,&quot; there is probably no penny and nothing
+dropping. <a class="footnote-reference" href="#id3" id="id1">[1]</a> Formal languages mean exactly what they say.</p>
+<p class="last">People who grow up speaking a natural language (everyone!) often
+have a hard time adjusting to formal languages. In some ways, the
+difference between formal and natural language is like the
+difference between poetry and prose, but more so:</p>
+</dd>
+<dt>Poetry:</dt>
+<dd>Words are used for their sounds as well as for their meaning, and
+the whole poem together creates an effect or emotional response.
+Ambiguity is not only common but often deliberate.</dd>
+<dt>Prose:</dt>
+<dd>The literal meaning of words is more important, and the structure
+contributes more meaning. Prose is more amenable to analysis than
+poetry but still often ambiguous.</dd>
+<dt>Programs:</dt>
+<dd>The meaning of a computer program is unambiguous and literal, and
+can be understood entirely by analysis of the tokens and structure.</dd>
+</dl>
+<p>Here are some suggestions for reading programs (and other formal
+languages). First, remember that formal languages are much more dense
+than natural languages, so it takes longer to read them. Also, the
+structure is very important, so it is usually not a good idea to read
+from top to bottom, left to right. Instead, learn to parse the program
+in your head, identifying the tokens and interpreting the structure.
+Finally, the details matter. Small errors in spelling and punctuation,
+which you can get away with in natural languages, can make a big
+difference in a formal language.</p>
+</div>
+<div class="section" id="the-first-program">
+<h2>1.5. The first program<a class="headerlink" href="#the-first-program" title="Permalink to this headline">¶</a></h2>
+<p>Traditionally, the first program you write in a new language is called
+&quot;Hello, World!&quot; because all it does is display the words, &quot;Hello,
+World!&quot; In Python, it looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;Hello, World!&#39;</span>
+</pre></div>
+</div>
+<p>This is an example of a <strong>print statement</strong>, which doesn't
+actually print anything on paper. It displays a value on the screen. In
+this case, the result is the words</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>Hello, World!
+</pre></div>
+</div>
+<p>The quotation marks in the program mark the beginning and end of the
+text to be displayed; they don't appear in the result.</p>
+<p>Some people judge the quality of a programming language by the
+simplicity of the &quot;Hello, World!&quot; program. By this standard, Python does
+about as well as possible.</p>
+</div>
+<div class="section" id="debugging">
+<h2>1.6. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>It is a good idea to read this book in front of a computer so you can
+try out the examples as you go. You can run most of the examples in
+interactive mode, but if you put the code into a script, it is easier to
+try out variations.</p>
+<blockquote>
+<div><p><strong>Example</strong>:</p>
+<ol class="arabic simple">
+<li>Whenever you are experimenting with a new feature, you should try
+to make mistakes. In the &quot;Hello, world!&quot; program, what happens if
+you leave out one of the quotation marks? What if you leave out
+both? What if you spell <code class="docutils literal notranslate"><span class="pre">print</span></code> wrong?</li>
+</ol>
+</div></blockquote>
+<p>This kind of experiment helps you remember what you read; it also helps
+with debugging, because you get to know what the error messages mean. It
+is better to make mistakes now and on purpose than later and
+accidentally.</p>
+<p>Programming, and especially debugging, sometimes brings out strong
+emotions. If you are struggling with a difficult bug, you might feel
+angry, despondent or embarrassed.</p>
+<p>There is evidence that people naturally respond to computers as if they
+were people <a class="footnote-reference" href="#id4" id="id2">[2]</a> .  When they work well, we think of them as teammates,
+and when they are obstinate or rude, we respond to them the same way we
+respond to rude, obstinate people.</p>
+<p>Preparing for these reactions might help you deal with them. One
+approach is to think of the computer as an employee with certain
+strengths, like speed and precision, and particular weaknesses, like
+lack of empathy and inability to grasp the big picture.</p>
+<p>Your job is to be a good manager: find ways to take advantage of the
+strengths and mitigate the weaknesses. And find ways to use your
+emotions to engage with the problem, without letting your reactions
+interfere with your ability to work effectively.</p>
+<p>Learning to debug can be frustrating, but it is a valuable skill that is
+useful for many activities beyond programming. At the end of each
+chapter there is a debugging section, like this one, with my thoughts
+about debugging. I hope they help!</p>
+</div>
+<div class="section" id="glossary">
+<h2>1.7. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>problem solving:</dt>
+<dd>The process of formulating a problem, finding a solution, and
+expressing the solution.</dd>
+<dt>high-level language:</dt>
+<dd>A programming language like Python that is designed to be easy for
+humans to read and write.</dd>
+<dt>low-level language:</dt>
+<dd>A programming language that is designed to be easy for a computer to
+execute; also called <em>machine language</em> or <em>assembly language</em>.</dd>
+<dt>portability:</dt>
+<dd>A property of a program that can run on more than one kind of
+computer.</dd>
+<dt>interpret:</dt>
+<dd>To execute a program in a high-level language by translating it one
+line at a time.</dd>
+<dt>compile:</dt>
+<dd>To translate a program written in a high-level language into a
+low-level language all at once, in preparation for later execution.</dd>
+<dt>source code:</dt>
+<dd>A program in a high-level language before being compiled.</dd>
+<dt>object code:</dt>
+<dd>The output of the compiler after it translates the program.</dd>
+<dt>executable:</dt>
+<dd>Another name for object code that is ready to be executed.</dd>
+<dt>prompt:</dt>
+<dd>Characters displayed by the interpreter to indicate that it is ready
+to take input from the user.</dd>
+<dt>script:</dt>
+<dd>A program stored in a file (usually one that will be interpreted).</dd>
+<dt>interactive mode:</dt>
+<dd>A way of using the Python interpreter by typing commands and
+expressions at the prompt.</dd>
+<dt>script mode:</dt>
+<dd>A way of using the Python interpreter to read and execute statements
+in a script.</dd>
+<dt>program:</dt>
+<dd>A set of instructions that specifies a computation.</dd>
+<dt>algorithm:</dt>
+<dd>A general process for solving a category of problems.</dd>
+<dt>bug:</dt>
+<dd>An error in a program.</dd>
+<dt>debugging:</dt>
+<dd>The process of finding and removing any of the three kinds of
+programming errors.</dd>
+<dt>syntax:</dt>
+<dd>The structure of a program.</dd>
+<dt>syntax error:</dt>
+<dd>An error in a program that makes it impossible to parse (and
+therefore impossible to interpret).</dd>
+<dt>exception:</dt>
+<dd>An error that is detected while the program is running.</dd>
+<dt>semantics:</dt>
+<dd>The meaning of a program.</dd>
+<dt>semantic error:</dt>
+<dd>An error in a program that makes it do something other than what the
+programmer intended.</dd>
+<dt>natural language:</dt>
+<dd>Any one of the languages that people speak that evolved naturally.</dd>
+<dt>formal language:</dt>
+<dd>Any one of the languages that people have designed for specific
+purposes, such as representing mathematical ideas or computer
+programs; all programming languages are formal languages.</dd>
+<dt>token:</dt>
+<dd>One of the basic elements of the syntactic structure of a program,
+analogous to a word in a natural language.</dd>
+<dt>parse:</dt>
+<dd>To examine a program and analyze the syntactic structure.</dd>
+<dt>print statement:</dt>
+<dd>An instruction that causes the Python interpreter to display a value
+on the screen.</dd>
+</dl>
+<p class="rubric">Exercises</p>
+<ol class="arabic">
+<li><p class="first">Ways to get help in Python. These two quasi-exercises show you
+ways in which you can get help on different statements and
+operations in Python.</p>
+<ol class="loweralpha">
+<li><p class="first">Use a web browser to go to the Python website
+<a class="reference external" href="http://python.org">http://python.org</a>. This page contains information about Python
+and links to Python-related pages, and it gives you the
+ability to search the Python documentation.</p>
+<p>For example, if you enter <code class="docutils literal notranslate"><span class="pre">print</span></code> in the search window, the
+first link that appears is the documentation of the <code class="docutils literal notranslate"><span class="pre">print</span></code>
+statement. At this point, not all of it will make sense to
+you, but it is good to know where it is.</p>
+</li>
+<li><p class="first">Start the Python interpreter and type <code class="docutils literal notranslate"><span class="pre">help()</span></code> to start the
+online help utility. Or you can type <code class="docutils literal notranslate"><span class="pre">help('print')</span></code> to get
+information about the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Start the Python interpreter and use it as a calculator. Python's
+syntax for math operations is almost the same as standard
+mathematical notation. For example, the symbols <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/</span></code> denote addition, subtraction and division, as you would
+expect. The symbol for multiplication is <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+<ol class="loweralpha simple">
+<li>If you run a 10 kilometer race in 43 minutes 30 seconds, what
+is your average time per mile? What is your average speed in
+miles per hour? (Hint: there are 1.61 kilometers in a mile).</li>
+<li>How many seconds are there in 8 weeks? Write a one-line Python
+program to print the answer.</li>
+</ol>
+</li>
+</ol>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This idiom means that someone realized something after a period of
+confusion.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>See Reeves and Nass, <em>The Media Equation: How People Treat Computers,
+Television, and New Media Like Real People and Places</em>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="varexpr.html" title="2. Variables, expressions and statements"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Solving Problems with Python"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

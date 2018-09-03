@@ -1,0 +1,325 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Solving Problems with Python &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. The way of the program" href="wayofprogram.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="wayofprogram.html" title="1. The way of the program"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wayofprogram.html"
+                        title="next chapter">1. The way of the program</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="solving-problems-with-python">
+<h1>Solving Problems with Python<a class="headerlink" href="#solving-problems-with-python" title="Permalink to this headline">¶</a></h1>
+<h4>Preface</h4><p>This book was originally written by A. Downey under the titles &quot;How to
+think like a computer scientist&quot;, and &quot;Python for software design.&quot;
+Under terms of the GNU Public License, his text has been remixed and
+modified for use at Colgate University.  For the original source text,
+see &lt;<a class="reference external" href="http://thinkpython.com">http://thinkpython.com</a>&gt;.  See the Postscript for original book credits.</p>
+<p>The source text for this book is written in reStructuredText and converted
+to pdf, ebook, and HTML using the excellent Sphinx documentation tool
+(&lt;<a class="reference external" href="http://sphinx.pocoo.org">http://sphinx.pocoo.org</a>&gt;).  All code and book
+source is available under terms of the GNU Public License and hosted
+at github.com &lt;<a class="reference external" href="https://github.com/ColgateUniversityComputerScience">https://github.com/ColgateUniversityComputerScience</a>&gt;.</p>
+<p>Contributors:</p>
+<ul class="simple">
+<li><ol class="first upperalpha" start="13">
+<li>Hay</li>
+</ol>
+</li>
+<li>A.D. Jaggard</li>
+<li><ol class="first upperalpha" start="10">
+<li>Sommers</li>
+</ol>
+</li>
+</ul>
+<p>Current Editor:</p>
+<ul class="simple">
+<li><ol class="first upperalpha" start="10">
+<li>Sommers</li>
+</ol>
+</li>
+</ul>
+<h3>Contents:</h3><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wayofprogram.html">1. The way of the program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wayofprogram.html#the-python-programming-language">1.1. The Python programming language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wayofprogram.html#what-is-a-program">1.2. What is a program?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wayofprogram.html#what-is-debugging">1.3. What is debugging?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wayofprogram.html#formal-and-natural-languages">1.4. Formal and natural languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wayofprogram.html#the-first-program">1.5. The first program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wayofprogram.html#debugging">1.6. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wayofprogram.html#glossary">1.7. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="varexpr.html">2. Variables, expressions and statements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#values-and-types">2.1. Values and types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#variables">2.2. Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#variable-names-and-keywords">2.3. Variable names and keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#statements">2.4. Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#operators-and-operands">2.5. Operators and operands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#expressions">2.6. Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#order-of-operations">2.7. Order of operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#string-operations">2.8. String operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#reassignment">2.9. Reassignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#updating-variables">2.10. Updating variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#comments">2.11. Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#debugging">2.12. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varexpr.html#glossary">2.13. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usingfunctions.html">3. Using functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#function-calls">3.1. Function calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#type-conversion-functions">3.2. Type conversion functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#getting-user-input-the-input-and-raw-input-functions">3.3. Getting user input: the <code class="docutils literal notranslate"><span class="pre">input</span></code> and <code class="docutils literal notranslate"><span class="pre">raw_input</span></code> functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#more-on-strings">3.4. More on strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#case-study-1-printing-out-the-characters-of-a-string">3.5. Case study 1: printing out the characters of a string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#math-functions">3.6. Math functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#composition">3.7. Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#case-study-2-string-traversal-using-range-len-and-a-for-loop">3.8. Case study 2: string traversal using <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code>, and a for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#case-study-3-making-a-table-of-square-roots">3.9. Case study 3: making a table of square roots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#debugging">3.10. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingfunctions.html#glossary">3.11. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">4. Making decisions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conditionals.html#boolean-expressions">4.1. Boolean expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functionsindepth.html">5. Functions in depth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#adding-new-functions">5.1. Adding new functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#definitions-and-uses">5.2. Definitions and uses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#flow-of-execution">5.3. Flow of execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#parameters-and-arguments">5.4. Parameters and arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#variables-and-parameters-are-local">5.5. Variables and parameters are local</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#return-values">5.6. Return values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#stack-diagrams">5.7. Stack diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#boolean-functions">5.8. Boolean functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#debugging">5.9. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionsindepth.html#glossary">5.10. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programdesign.html">6. Program design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#why-functions">6.1. Why functions?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#incremental-development">6.2. Incremental development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#composition">6.3. Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#turtles">6.4. Turtles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#encapsulation">6.5. Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#generalization">6.6. Generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#interface-design">6.7. Interface design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#refactoring">6.8. Refactoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#a-development-plan">6.9. A development plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#docstring">6.10. docstring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#debugging">6.11. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programdesign.html#glossary">6.12. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="iteration.html">7. Iteration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iteration.html#an-introduction-to-lists">7.1. An introduction to lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iteration.html#the-while-statement">7.2. The <code class="docutils literal notranslate"><span class="pre">while</span></code> statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iteration.html#break">7.3. <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="iteration.html#square-roots">7.4. Square roots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iteration.html#algorithms">7.5. Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iteration.html#debugging">7.6. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iteration.html#glossary">7.7. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">8. Strings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#traversal-with-a-while-loop">8.1. Traversal with a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#string-slices">8.2. String slices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#strings-are-immutable">8.3. Strings are immutable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#searching">8.4. Searching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#looping-and-counting">8.5. Looping and counting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#string-methods">8.6. <code class="docutils literal notranslate"><span class="pre">string</span></code> methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#character-numeric-duality">8.7. Character-numeric duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#string-comparison-and-ordering">8.8. String comparison and ordering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#debugging">8.9. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#glossary">8.10. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recursion.html">9. Recursion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#chicken-meet-egg">9.1. Chicken, meet egg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#decrease-and-conquer">9.2. Decrease and conquer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#infinite-recursion">9.3. Infinite recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#leap-of-faith">9.4. Leap of faith</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#two-more-examples">9.5. Two more examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#checking-types">9.6. Checking types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#a-theoretical-aside">9.7. A theoretical aside</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#debugging">9.8. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recursion.html#glossary">9.9. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileio.html">10. File input and output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#reading-word-lists">10.1. Reading word lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#practice-exercises">10.2. Practice exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#search">10.3. Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#looping-with-indices">10.4. Looping with indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#reading-and-writing">10.5. Reading and writing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#the-format-method-for-strings">10.6. The <code class="docutils literal notranslate"><span class="pre">format</span></code> method for strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#advanced-files-filenames-and-paths">10.7. Advanced files: filenames and paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#catching-exceptions">10.8. Catching exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#case-study-1-retrieving-and-processing-files-available-on-the-internet">10.9. Case study 1: retrieving and processing files available on the internet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#writing-modules">10.10. Writing modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#debugging">10.11. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileio.html#glossary">10.12. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">11. Lists</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#list-slices">11.1. List slices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#list-methods">11.2. List methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#deleting-elements">11.3. Deleting elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#lists-and-strings">11.4. Lists and strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#objects-and-values">11.5. Objects and values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#aliasing">11.6. Aliasing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#list-arguments">11.7. List arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#searching-for-items-in-a-list">11.8. Searching for items in a list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#map-filter-and-reduce">11.9. Map, filter and reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#debugging">11.10. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html#glossary">11.11. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dictionaries.html">12. Dictionaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dictionaries.html#dictionary-as-a-set-of-counters">12.1. Dictionary as a set of counters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionaries.html#looping-and-dictionaries">12.2. Looping and dictionaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionaries.html#reverse-lookup">12.3. Reverse lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionaries.html#dictionaries-and-lists">12.4. Dictionaries and lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionaries.html#memos">12.5. Memos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionaries.html#debugging">12.6. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dictionaries.html#glossary">12.7. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tuples.html">13. Tuples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#tuples-are-immutable">13.1. Tuples are immutable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#tuple-assignment">13.2. Tuple assignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#tuples-as-return-values">13.3. Tuples as return values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#variable-length-argument-tuples">13.4. Variable-length argument tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#lists-and-tuples">13.5. Lists and tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#dictionaries-and-tuples">13.6. Dictionaries and tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#comparing-tuples">13.7. Comparing tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#sequences-of-sequences">13.8. Sequences of sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#debugging">13.9. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuples.html#glossary">13.10. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datastruct.html">14. Case study: data structure selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#word-frequency-analysis">14.1. Word frequency analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#word-histogram">14.2. Word histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#most-common-words">14.3. Most common words</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#optional-parameters">14.4. Optional parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#dictionary-subtraction">14.5. Dictionary subtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#random-words">14.6. Random words</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#markov-analysis">14.7. Markov analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#data-structures">14.8. Data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#debugging">14.9. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastruct.html#glossary">14.10. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oo.html">15. Classes and objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#user-defined-types">15.1. User-defined types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#attributes-and-methods">15.2. Attributes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#object-oriented-program-design">15.3. Object-oriented program design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#a-rectangle-class">15.4. A <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#a-circle-class">15.5. A <code class="docutils literal notranslate"><span class="pre">Circle</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#inheritance">15.6. Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#copying-objects">15.7. Copying objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#an-in-depth-example-card-games">15.8. An in-depth example: card games</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#hand-class">15.9. <code class="docutils literal notranslate"><span class="pre">Hand</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#class-diagrams">15.10. Class diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#debugging">15.11. Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oo.html#glossary">15.12. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">16. Appendix: Debugging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#syntax-errors">16.1. Syntax errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#runtime-errors">16.2. Runtime errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#flow-of-execution">16.3. Flow of Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#semantic-errors">16.4. Semantic errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="postfix.html">17. Postscript</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="postfix.html#the-strange-history-of-this-book">17.1. The strange history of this book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postfix.html#acknowledgements">17.2. Acknowledgements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postfix.html#contributor-list">17.3. Contributor List</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="wayofprogram.html" title="1. The way of the program"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

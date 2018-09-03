@@ -1,0 +1,515 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4. Making decisions &#8212; Solving Problems with Python (version 07.2015)</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Functions in depth" href="functionsindepth.html" />
+    <link rel="prev" title="3. Using functions" href="usingfunctions.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="functionsindepth.html" title="5. Functions in depth"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usingfunctions.html" title="3. Using functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Making decisions</a><ul>
+<li><a class="reference internal" href="#boolean-expressions">4.1. Boolean expressions</a><ul>
+<li><a class="reference internal" href="#modulus-operator">4.1.1. Modulus operator</a></li>
+<li><a class="reference internal" href="#logical-operators">4.1.2. Logical operators</a></li>
+<li><a class="reference internal" href="#conditional-execution">4.1.3. Conditional execution</a></li>
+<li><a class="reference internal" href="#alternative-execution">4.1.4. Alternative execution</a></li>
+<li><a class="reference internal" href="#case-study-simulating-a-coin-toss">4.1.5. Case study: simulating a coin toss</a></li>
+<li><a class="reference internal" href="#chained-conditionals">4.1.6. Chained conditionals</a></li>
+<li><a class="reference internal" href="#nested-conditionals">4.1.7. Nested conditionals</a></li>
+<li><a class="reference internal" href="#debugging">4.1.8. Debugging</a></li>
+<li><a class="reference internal" href="#glossary">4.1.9. Glossary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usingfunctions.html"
+                        title="previous chapter">3. Using functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="functionsindepth.html"
+                        title="next chapter">5. Functions in depth</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/conditionals.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="making-decisions">
+<h1>4. Making decisions<a class="headerlink" href="#making-decisions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="boolean-expressions">
+<h2>4.1. Boolean expressions<a class="headerlink" href="#boolean-expressions" title="Permalink to this headline">¶</a></h2>
+<p>Solving almost any problem requires that we make <em>decisions</em>, and at the
+heart of decision-making within programs are <strong>Boolean</strong> values and
+expressions. A <strong>boolean expression</strong> is one that is either true or
+false. The following examples use the operator <code class="docutils literal notranslate"><span class="pre">==</span></code>, which compares
+two operands and produces <code class="docutils literal notranslate"><span class="pre">True</span></code> if they are equal and <code class="docutils literal notranslate"><span class="pre">False</span></code>
+otherwise:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">==</span> <span class="mi">6</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> are special values that belong to the type
+<code class="docutils literal notranslate"><span class="pre">bool</span></code>; they are not strings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">&lt;type &#39;bool&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">&lt;type &#39;bool&#39;&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">==</span></code> operator is one of the <strong>relational operators</strong>; the others
+are:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span>               <span class="c1"># x is not equal to y</span>
+<span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>                <span class="c1"># x is greater than y</span>
+<span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>                <span class="c1"># x is less than y</span>
+<span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span>               <span class="c1"># x is greater than or equal to y</span>
+<span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span>               <span class="c1"># x is less than or equal to y</span>
+</pre></div>
+</div>
+<p>Although these operations are probably familiar to you, the Python
+symbols are different from the mathematical symbols. A common error is
+to use a single equal sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) instead of a double equal sign
+(<code class="docutils literal notranslate"><span class="pre">==</span></code>). Remember that <code class="docutils literal notranslate"><span class="pre">=</span></code> is an assignment operator and <code class="docutils literal notranslate"><span class="pre">==</span></code> is a
+relational operator. There is no such thing as <code class="docutils literal notranslate"><span class="pre">=&lt;</span></code> or <code class="docutils literal notranslate"><span class="pre">=&gt;</span></code>.</p>
+<p>You can use the relational operators to check whether a value is within
+a numerical range:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Besides applying these relational operators to numerical operands, they
+can also be used with strings. To see if two strings are equal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
+    <span class="k">print</span>  <span class="s1">&#39;All right, bananas.&#39;</span>
+</pre></div>
+</div>
+<p>Other relational operations are useful for putting words in alphabetical
+order:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span> <span class="o">&lt;</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;Your word,&#39;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s1">&#39;, comes before banana.&#39;</span>
+<span class="k">elif</span> <span class="n">word</span> <span class="o">&gt;</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;Your word,&#39;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s1">&#39;, comes after banana.&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># must be equal!</span>
+    <span class="k">print</span> <span class="s1">&#39;All right, bananas.&#39;</span>
+</pre></div>
+</div>
+<p>Python does not handle uppercase and lowercase letters the same way that
+people do: all the uppercase letters come before all the lowercase
+letters. When we look at strings in more detail in a later chapter,
+we'll revisit this issue.</p>
+<p>Lastly, there is a Boolean operator called <code class="docutils literal notranslate"><span class="pre">in</span></code> that can be used with
+sequence types in Python to test whether one sequence is contained
+within another. The most common use for in with strings is to test
+whether a character or substring is contained within a string. For
+example, both of the following Boolean expressions would evaluate to
+<code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
+<span class="s1">&#39;nana&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
+</pre></div>
+</div>
+<p>But this one would evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;A&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="modulus-operator">
+<h3>4.1.1. Modulus operator<a class="headerlink" href="#modulus-operator" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>modulus operator</strong> is not specifically related to Boolean
+variables or making decisions, but will be useful in various problems
+that we'll soon encounter. The modulus (or &quot;mod&quot;) operator works on
+integers and yields the remainder when the first operand is divided by
+the second. In Python, the modulus operator is a percent sign (<code class="docutils literal notranslate"><span class="pre">%</span></code>).
+The syntax is the same as for other operators:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">quotient</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">/</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">quotient</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">%</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">remainder</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>So 7 divided by 3 is 2 with 1 left over.</p>
+<p>The modulus operator turns out to be surprisingly useful. For example,
+you can check whether one number is divisible by another --- if
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">y</span></code> is zero, then <code class="docutils literal notranslate"><span class="pre">x</span></code> is divisible by <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>Also, you can extract the right-most digit or digits from a number. For
+example, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">10</span></code> yields the right-most digit of <code class="docutils literal notranslate"><span class="pre">x</span></code> (in base 10).
+Similarly <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">100</span></code> yields the last two digits.</p>
+</div>
+<div class="section" id="logical-operators">
+<h3>4.1.2. Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h3>
+<p>There are three <strong>logical operators</strong>: <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code>. The
+semantics (meaning) of these operators is similar to their meaning in
+English. For example, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">and</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">10</span></code> is true only if <code class="docutils literal notranslate"><span class="pre">x</span></code> is
+greater than 0 <em>and</em> less than 10.</p>
+<p><code class="docutils literal notranslate"><span class="pre">n%2</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">or</span> <span class="pre">n%3</span> <span class="pre">==</span> <span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>either</em> of the conditions is
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, that is, if the number is divisible by 2 <em>or</em> 3.</p>
+<p>Finally, the <code class="docutils literal notranslate"><span class="pre">not</span></code> operator negates a boolean expression, so
+<code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, that is, if <code class="docutils literal notranslate"><span class="pre">x</span></code>
+is less than or equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>Strictly speaking, the operands of the logical operators should be
+boolean expressions, but Python is not very strict. Any nonzero number
+is interpreted as <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">17</span> <span class="ow">and</span> <span class="bp">True</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>This flexibility can be useful, but there are some subtleties to it that
+can be confusing. You should avoid exploiting this behavior as it tends
+to make programs more difficult to read and understand.</p>
+</div>
+<div class="section" id="conditional-execution">
+<h3>4.1.3. Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">¶</a></h3>
+<p>In order to write useful programs, we almost always need the ability to
+check conditions and change the behavior of the program accordingly.
+<strong>Conditional statements</strong> give us this ability. The simplest form is
+the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x is positive&#39;</span>
+</pre></div>
+</div>
+<p>The boolean expression after the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is called the
+<strong>condition</strong>. If it is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the indented statement gets
+executed. If not, nothing happens.</p>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> statements have the same structure as the <code class="docutils literal notranslate"><span class="pre">for</span></code> statement: a
+header with a colon at the end, followed by an indented body. Statements
+like this are called <strong>compound statements</strong>. When ever you have a colon
+at the end of a program statement, IDLE will automatically place your
+cursor at a properly indented location on the next line. If you need to
+do &quot;manual&quot; indentation, the convention in Python is to use 4 spaces
+(and no tabs).</p>
+<p>Again, for compound statements, there is no limit on the number of
+statements that can appear in the body, but there has to be at least
+one. Occasionally, it is useful to have a body with no statements
+(usually as a place keeper for code you haven’t written yet). In that
+case, you can use the <code class="docutils literal notranslate"><span class="pre">pass</span></code> statement, which does nothing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">pass</span>          <span class="c1"># need to handle negative values!</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="alternative-execution">
+<h3>4.1.4. Alternative execution<a class="headerlink" href="#alternative-execution" title="Permalink to this headline">¶</a></h3>
+<p>A second form of the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <strong>alternative execution</strong>, in
+which there are two possibilities and the condition determines which one
+gets executed. The syntax looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x is even&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x is odd&#39;</span>
+</pre></div>
+</div>
+<p>If the remainder when <code class="docutils literal notranslate"><span class="pre">x</span></code> is divided by 2 is 0, then we know that
+<code class="docutils literal notranslate"><span class="pre">x</span></code> is even, and the program displays a message to that effect. If the
+condition is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the second set of statements is executed. Since
+the condition must be <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, exactly one of the
+alternatives will be executed. The alternatives are called <strong>branches</strong>,
+because they are branches in the flow of execution.</p>
+</div>
+<div class="section" id="case-study-simulating-a-coin-toss">
+<h3>4.1.5. Case study: simulating a coin toss<a class="headerlink" href="#case-study-simulating-a-coin-toss" title="Permalink to this headline">¶</a></h3>
+<p>Given the same inputs, most computer programs generate the same outputs
+every time, so they are said to be <strong>deterministic</strong>. Determinism is
+usually a good thing, since we expect the same calculation to yield the
+same result. For some applications, though, we want the computer to be
+unpredictable. Games are an obvious example, but there are more.</p>
+<p>Making a program truly nondeterministic turns out to be not so easy, but
+there are ways to make it at least <em>seem</em> nondeterministic. One of them
+is to use algorithms that generate <strong>pseudorandom</strong> numbers.
+Pseudorandom numbers are not truly random because they are generated by
+a deterministic computation, but just by looking at the numbers it is
+all but impossible to distinguish them from random.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">random</span></code> module provides functions that generate pseudorandom
+numbers (which we'll simply call &quot;random&quot; from now on).</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">random</span></code> returns a random float between 0.0 and 1.0
+(including 0.0 but not 1.0). Each time you call <code class="docutils literal notranslate"><span class="pre">random</span></code>, you get the
+next number in a long series. To see a sample, run this loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="k">print</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">randint</span></code> takes parameters <code class="docutils literal notranslate"><span class="pre">low</span></code> and <code class="docutils literal notranslate"><span class="pre">high</span></code> and
+returns an integer between <code class="docutils literal notranslate"><span class="pre">low</span></code> and <code class="docutils literal notranslate"><span class="pre">high</span></code> (including both).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+<p>So, one way to simulate tossing a fair coin (i.e., with equal chance it
+comes up heads or tails), we could use the following program:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Heads!&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Tails!&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">randint</span></code> function will return 0 or 1 with equal probability, so
+that will effectively simulate a coin toss. Alternatively, we could use
+the <code class="docutils literal notranslate"><span class="pre">random</span></code> function to do the same thing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Heads!&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Tails!&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="chained-conditionals">
+<h3>4.1.6. Chained conditionals<a class="headerlink" href="#chained-conditionals" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes there are more than two possibilities and we need more than
+two branches. One way to express a computation like that is a <strong>chained
+conditional</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x is less than y&#39;</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x is greater than y&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x and y are equal&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">elif</span></code> is an abbreviation of &quot;else if&quot;. Again, <em>exactly one branch
+will be executed</em>. There is no limit on the number of <code class="docutils literal notranslate"><span class="pre">elif</span></code>
+statements. If there is an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause, it has to be at the end, but
+there doesn't have to be one.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">rps</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">rps</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Rock!&quot;</span>
+<span class="k">elif</span> <span class="n">rps</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Paper!&quot;</span>
+<span class="k">elif</span> <span class="n">rps</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Scissors!&quot;</span>
+</pre></div>
+</div>
+<p>Each condition is checked in order. If the first is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the next
+is checked, and so on. If one of them is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the corresponding
+branch executes, and the statement ends. Even if more than one condition
+is <code class="docutils literal notranslate"><span class="pre">True</span></code>, only the first <code class="docutils literal notranslate"><span class="pre">True</span></code> branch executes.</p>
+</div>
+<div class="section" id="nested-conditionals">
+<h3>4.1.7. Nested conditionals<a class="headerlink" href="#nested-conditionals" title="Permalink to this headline">¶</a></h3>
+<p>One conditional can also be nested within another. We could have written
+the trichotomy example like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x and y are equal&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s1">&#39;x is less than y&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s1">&#39;x is greater than y&#39;</span>
+</pre></div>
+</div>
+<p>The outer conditional contains two branches. The first branch contains a
+simple statement. The second branch contains another <code class="docutils literal notranslate"><span class="pre">if</span></code> statement,
+which has two branches of its own. Those two branches are both simple
+statements, although they could have been conditional statements as
+well.</p>
+<p>Although the indentation of the statements makes the structure apparent,
+<strong>nested conditionals</strong> become difficult to read very quickly. In
+general, it is a good idea to avoid them when you can.</p>
+<p>Logical operators often provide a way to simplify nested conditional
+statements. For example, we can rewrite the following code using a
+single conditional:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s1">&#39;x is a positive single-digit number.&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">print</span></code> statement is executed only if we make it past both
+conditionals, so we can get the same effect with the <code class="docutils literal notranslate"><span class="pre">and</span></code> operator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;x is a positive single-digit number.&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugging">
+<h3>4.1.8. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><em>The most effective debugging tool is still careful thought,
+coupled</em> <em>with judiciously placed print statements.</em></p>
+<blockquote>
+<div>Brian Kernighan, &quot;Unix for Beginners&quot; (1979)</div></blockquote>
+</div></blockquote>
+<p>Debugging problems can become a bit more complex when dealing with
+conditional statements. To understand what is causing a problem in a
+program, we often want to know which <em>branch</em> is being taken. To do
+that, it can be helpful to insert <code class="docutils literal notranslate"><span class="pre">print</span></code> statements within <code class="docutils literal notranslate"><span class="pre">if</span></code>,
+<code class="docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code> statement blocks. Adding <code class="docutils literal notranslate"><span class="pre">print</span></code> statements to
+help reveal what the program is doing is often referred to as <strong>trace
+debugging</strong>, <strong>printf debugging</strong>, or <strong>caveman debugging</strong>. (The term
+&quot;printf debugging&quot; comes from the <code class="docutils literal notranslate"><span class="pre">printf</span></code> function in the C language,
+which is fairly similar to the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement in Python.) Although
+the term &quot;caveman&quot; doesn't cast a particularly favorable light on this
+technique, it is nonetheless an extremely useful and widely used method
+for understanding what a program is doing.</p>
+</div>
+<div class="section" id="glossary">
+<h3>4.1.9. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>modulus operator:</dt>
+<dd>An operator, denoted with a percent sign (<code class="docutils literal notranslate"><span class="pre">%</span></code>), that works on
+integers and yields the remainder when one number is divided by
+another.</dd>
+<dt>boolean expression:</dt>
+<dd>An expression whose value is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</dd>
+<dt>relational operator:</dt>
+<dd>One of the operators that compares its operands: <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>.</dd>
+<dt>logical operator:</dt>
+<dd>One of the operators that combines boolean expressions: <code class="docutils literal notranslate"><span class="pre">and</span></code>,
+<code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code>.</dd>
+<dt>conditional statement:</dt>
+<dd>A statement that controls the flow of execution depending on some
+condition.</dd>
+<dt>condition:</dt>
+<dd>The boolean expression in a conditional statement that determines
+which branch is executed.</dd>
+<dt>compound statement:</dt>
+<dd>A statement that consists of a header and a body. The header ends
+with a colon (:). The body is indented relative to the header.</dd>
+<dt>branch:</dt>
+<dd>One of the alternative sequences of statements in a conditional
+statement.</dd>
+<dt>chained conditional:</dt>
+<dd>A conditional statement with a series of alternative branches.</dd>
+<dt>nested conditional:</dt>
+<dd>A conditional statement that appears in one of the branches of
+another conditional statement.</dd>
+<dt>deterministic:</dt>
+<dd>Pertaining to a program that does the same thing each time it runs,
+given the same inputs.</dd>
+<dt>pseudorandom:</dt>
+<dd>Pertaining to a sequence of numbers that appear to be random, but
+are generated by a deterministic program.</dd>
+</dl>
+<p class="rubric">Exercises</p>
+<ol class="arabic simple">
+<li>Consider the following program:</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gimme a number: &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;You entered zero&quot;</span>
+<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;You entered one&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;You entered something other than zero or one&quot;</span>
+</pre></div>
+</div>
+<blockquote>
+<div>Given an input of <code class="docutils literal notranslate"><span class="pre">0</span></code>, what will the program print? Why?</div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first">Write a program that asks for the number of a year (e.g., 1982)
+and prints whether that year was a leap year or not. A year is a
+leap year if it is evenly divisible by 4. If a year is also
+evenly divisible by 100 it is <em>not</em> a leap year, unless it is
+evenly divisible by 400 as well.</p>
+<p>For example, 1980 and 2012 were leap years. 1900 was <em>not</em> a leap
+year (evenly divisible by 100), but 2000 was (evenly divisible by
+100 <em>and</em> 400).</p>
+</li>
+<li><p class="first">Write a short program to play one round of rock-paper-scissors.
+Ask the user to enter 0, 1, or 2 to correspond to rock, paper,
+and scissors. Use the <code class="docutils literal notranslate"><span class="pre">random</span></code> module to have the computer
+randomly choose rock, paper, or scissors. Print a message
+indicating who wins, or whether there was a tie.</p>
+<p>For those who haven't played rock, paper, scissors before (and
+even if you have), read the Wikipedia page for detail on related
+games, and programs (and robots) that have been built to play
+RPS: <a class="reference external" href="http://en.wikipedia.org/wiki/Rock-paper-scissors">http://en.wikipedia.org/wiki/Rock-paper-scissors</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="functionsindepth.html" title="5. Functions in depth"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usingfunctions.html" title="3. Using functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Solving Problems with Python (version 07.2015)</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2015, Joel Sommers, Ed..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>
